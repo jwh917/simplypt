@@ -1,0 +1,2 @@
+class PhysicalTherapist < CompUser
+end

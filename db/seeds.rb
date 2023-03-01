@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "🌱 Seeding ...."
+
+
+admin1 = Administrator.create(username: "J0516", password_digest: "JWH", name: "Julien",email: "jwh@simplypt.org")
+pt1 = PhysicalTherapist.create(username: "K0530", password_digest: "KWH", name: "Ken",email: "kwh@simplypt.org")
+
+puts "✅ Done seeding!"

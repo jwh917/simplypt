@@ -1,0 +1,2 @@
+class CompUser < ApplicationRecord
+end
