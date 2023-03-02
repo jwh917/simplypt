@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2023_03_01_203246) do
   create_table "appointments", force: :cascade do |t|
     t.integer "patient_id"
     t.integer "physical_therapist_id"
-    t.integer "administrators_id"
+    t.integer "administrator_id"
     t.integer "time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
