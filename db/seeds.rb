@@ -8,10 +8,10 @@
 
 puts "🌱 Seeding ...."
 
-# admin1 = Administrator.create(username: "J0917", password_digest: "JWH", name: "Julien", email: "jwh@simplypt.org")
+admin1 = Administrator.create(username: "J0917", password_digest: "JWH", name: "Julien", email: "jwh@simplypt.org")
 
-# pt1 = PhysicalTherapist.create(username: "K0530", password_digest: "KWH", name: "Ken", email: "kwh@simplypt.org")
-# pt2 = PhysicalTherapist.create(username: "J0926", password_digest: "JACH", name: "Janet", email: "jach@simplypt.org")
+pt1 = PhysicalTherapist.create(username: "K0530", password_digest: "KWH", name: "Ken", email: "kwh@simplypt.org")
+pt2 = PhysicalTherapist.create(username: "J0926", password_digest: "JACH", name: "Janet", email: "jach@simplypt.org")
 
 
 # patient1 = Patient.create(username: "AJ", password_digest: "1234", name: "AJ", email: "aj@simplypt.org", dob: "01/12/1993", address: "33 Bernhard st NY 11550", phone: 1234567890, sex: "female", muscle_injury: "abdominals", physical_therapist_id: 2)
