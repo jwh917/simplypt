@@ -4,5 +4,6 @@ class Appointment < ApplicationRecord
   belongs_to :administrator
 
   validates :time, presence: true
+  validates :date, presence: true
 
 end

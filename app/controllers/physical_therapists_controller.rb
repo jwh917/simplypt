@@ -9,7 +9,7 @@ class PhysicalTherapistsController < ApplicationController
     end
   
     def show
-      physical_therapist = find_adm
+      physical_therapist = find_pt
       render json: physical_therapist
     end
   

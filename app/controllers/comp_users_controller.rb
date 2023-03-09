@@ -1,0 +1,2 @@
+class CompUsersController < ApplicationController
+end
