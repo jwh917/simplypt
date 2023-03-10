@@ -8,9 +8,22 @@ Rails.application.routes.draw do
   resources :administrators
   resources :comp_users
 
-  # post "/login", to: "sessions#create"
 
-  # delete "/logout", to: "sessions#destroy"
+  post "/signup", to: "comp_users#create"
+
+  get "/all_comp_users", to: "comp_users#all"
+  
+  get "/me", to: "comp_users#show"
+
+  patch "/me", to: "comp_users#update"
+
+  delete "/me", to: "comp_users#destroy"
+
+
+  post "/login", to: "sessions#create"
+
+  delete "/logout", to: "sessions#destroy"
+  
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
