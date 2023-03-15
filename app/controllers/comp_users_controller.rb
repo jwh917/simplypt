@@ -30,7 +30,6 @@ class CompUsersController < ApplicationController
   end
 
 
-
   private
 
   def compuser_params

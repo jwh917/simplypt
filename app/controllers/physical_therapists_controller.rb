@@ -1,5 +1,5 @@
 class PhysicalTherapistsController < ApplicationController
-
+  skip_before_action :authorize
     # R
     # login/logout
 
@@ -9,7 +9,7 @@ class PhysicalTherapistsController < ApplicationController
     end
   
     def show
-      physical_therapist = find_pt
+      physical_therapist = find_adm
       render json: physical_therapist
     end
   
@@ -18,8 +18,5 @@ class PhysicalTherapistsController < ApplicationController
     def find_pt
       PhysicalTherapist.find(params[:id])
     end
-
-      # params
-
 
 end

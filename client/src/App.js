@@ -11,9 +11,9 @@ import StorePage from "./StorePage";
 function App() {
 
 
-  // - Home 
+  // - Home   
+  // - About: Therapist Available 
   // - New Patient: Username Password then Patient Info 
-  // - Therapist Available 
   // - Sign In: Administrators, Patients and Physical Therapist 
   // - Store: Store Home, Store Search and Store Cart 
 
@@ -24,13 +24,11 @@ function App() {
 
       <Switch>
 
-        
-
-        <Route exact path="/newpatient">
-          <NewPatientPage />
-        </Route>
         <Route exact path="/about">
           <AboutPage />
+        </Route>
+        <Route exact path="/newpatient">
+          <NewPatientPage />
         </Route>
         <Route exact path="/signin">
           <SignInPage />
