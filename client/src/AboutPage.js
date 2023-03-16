@@ -20,7 +20,7 @@ function AboutPage(){
   
   return (
     <>
-      <h1>About</h1>
+      <h1>About Us</h1>
 
       <img src={ptPic6} alt="ptPic1" />
 

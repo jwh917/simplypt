@@ -48,17 +48,6 @@ function NavBar() {
       </NavLink>
 
       <NavLink
-        to="/newpatient"
-        exact
-        style={linkStyles}
-        activeStyle={{
-          background: "lightgrey",
-        }}
-      >
-        New Patient
-      </NavLink>
-
-      <NavLink
         to="/signin"
         exact
         style={linkStyles}
@@ -66,11 +55,11 @@ function NavBar() {
           background: "lightgrey",
         }}
       >
-        Sign In
+        New Patient <br/> - <br/> Sign In
       </NavLink>
 
       <NavLink
-        to="/store"
+        to="/store/home"
         exact
         style={linkStyles}
         activeStyle={{
@@ -80,7 +69,7 @@ function NavBar() {
         Store
       </NavLink>
 
-
+        {/* if user is logged in */}
       {/* <LogoutButton setUser={setUser}/> */}
     </div>
   );

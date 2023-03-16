@@ -2,21 +2,12 @@ import './App.css';
 import { Switch, Route } from "react-router-dom";
 import NavBar from "./NavBar";
 import HomePage from "./HomePage";
-import NewPatientPage from "./NewPatientPage";
 import AboutPage from "./AboutPage";
-import SignInPage from "./SignInPage";
+import NewPatientSignInPage from "./NewPatientSignInPage";
 import StorePage from "./StorePage";
 
 
 function App() {
-
-
-  // - Home   
-  // - About: Therapist Available 
-  // - New Patient: Username Password then Patient Info 
-  // - Sign In: Administrators, Patients and Physical Therapist 
-  // - Store: Store Home, Store Search and Store Cart 
-
 
   return (
     <>
@@ -27,13 +18,10 @@ function App() {
         <Route exact path="/about">
           <AboutPage />
         </Route>
-        <Route exact path="/newpatient">
-          <NewPatientPage />
-        </Route>
         <Route exact path="/signin">
-          <SignInPage />
+          <NewPatientSignInPage />
         </Route>
-        <Route exact path="/store">
+        <Route path="/store">
           <StorePage />
         </Route>
         <Route exact path="/">
