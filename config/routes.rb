@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :appointments
   resources :patients
   resources :physical_therapists
-  resources :administrators
   resources :comp_users
 
 
@@ -23,7 +22,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
 
   delete "/logout", to: "sessions#destroy"
-  
+
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
