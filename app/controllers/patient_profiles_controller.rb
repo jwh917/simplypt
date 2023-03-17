@@ -40,7 +40,7 @@ class PatientProfilesController < ApplicationController
       end
     
       def pat_pro_params
-        params.permit(:patient_id, :dob, :address, :phone, :sex, muscle_injury:)
+        params.permit(:patient_id, :dob, :address, :phone, :sex, :muscle_injury)
       end
     
       def render_not_found_response
