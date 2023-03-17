@@ -1,5 +1,5 @@
 class AppointmentsController < ApplicationController
-  # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     # CRUD
     # login/logout
@@ -42,8 +42,8 @@ class AppointmentsController < ApplicationController
       params.permit(:patient_id, :physical_therapist_id, :administrator_id, :time, :date)
     end
   
-    # def render_not_found_response
-    #   render json: { error: "Appointment not found" }, status: :not_found
-    # end
+    def render_not_found_response
+      render json: { error: "Appointment not found" }, status: :not_found
+    end
 
 end

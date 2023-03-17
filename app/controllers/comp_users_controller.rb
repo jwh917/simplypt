@@ -1,4 +1,5 @@
 class CompUsersController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
   skip_before_action :authorize, only: [:create]
 
@@ -34,5 +35,9 @@ class CompUsersController < ApplicationController
 
   def compuser_params
     params.permit(:username, :password, :password_confirmation, :name, :email, :image, :type)
+  end
+
+  def render_not_found_response
+    render json: { error: "Comp User not found" }, status: :not_found
   end
 end

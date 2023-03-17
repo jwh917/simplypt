@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
+import { useSelector } from "react-redux";
+import { selectUser } from "./userSlice";
+import LogoutButton from "./LogoutButton";
 
 
 const linkStyles = {
@@ -18,6 +20,7 @@ const linkStyles = {
 
 function NavBar() {
 
+  const user = useSelector(selectUser);
 
 
   return (
@@ -69,8 +72,7 @@ function NavBar() {
         Store
       </NavLink>
 
-        {/* if user is logged in */}
-      {/* <LogoutButton setUser={setUser}/> */}
+        {user ? <LogoutButton /> : "" }
     </div>
   );
 }

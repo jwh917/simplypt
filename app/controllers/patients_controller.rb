@@ -1,5 +1,5 @@
 class PatientsController < ApplicationController
-# rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     # CRUD
     # login/logout
@@ -39,11 +39,11 @@ class PatientsController < ApplicationController
     end
   
     def pat_params
-      params.permit(:username, :password, :password_confirmation, :name, :email, :dob, :address, :phone, :sex, :muscle_injury, :physical_therapist_id, :image)
+      params.permit(:username, :password, :password_confirmation, :name, :email, type:, :image)
     end
   
-    # def render_not_found_response
-    #   render json: { error: "Patient not found" }, status: :not_found
-    # end
+    def render_not_found_response
+      render json: { error: "Patient not found" }, status: :not_found
+    end
 
 end

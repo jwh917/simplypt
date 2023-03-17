@@ -1,5 +1,5 @@
 class ExercisesController < ApplicationController
-  # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     # CRD
     # error messsages
@@ -36,8 +36,8 @@ class ExercisesController < ApplicationController
       params.permit(:patient_id, :physical_therapist_id, :description, :muscle)
     end
   
-    # def render_not_found_response
-    #   render json: { error: "Patient not found" }, status: :not_found
-    # end
+    def render_not_found_response
+      render json: { error: "Exercise not found" }, status: :not_found
+    end
 end
 
