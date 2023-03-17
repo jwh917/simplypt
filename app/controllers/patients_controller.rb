@@ -39,7 +39,7 @@ class PatientsController < ApplicationController
     end
   
     def pat_params
-      params.permit(:username, :password, :password_confirmation, :name, :email, type:, :image)
+      params.permit(:username, :password, :password_confirmation, :name, :email, :type, :image)
     end
   
     def render_not_found_response
