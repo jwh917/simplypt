@@ -20,8 +20,8 @@ function SignUpForm({setLoginSignup}) {
   function inputOnChange(e) {
     const name = e.target.name;
     const value = e.target.value;
-    console.log(name)
-    console.log(value)
+    // console.log(name)
+    // console.log(value)
     setUserInput({
       ...userInput, //spreading the userInput
       [name]: value, //inserting the name and value the user typed in
@@ -31,7 +31,7 @@ function SignUpForm({setLoginSignup}) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(userInput)
+    // console.log(userInput)
     dispatch(userSignup(userInput));
 
   }
