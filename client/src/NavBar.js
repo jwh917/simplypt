@@ -72,7 +72,8 @@ function NavBar() {
         Store
       </NavLink>
 
-        {user ? <LogoutButton /> : "" }
+
+      {user ? <LogoutButton /> : "" }
     </div>
   );
 }

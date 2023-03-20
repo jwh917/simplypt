@@ -1,10 +1,18 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-// CU
+// CRUD
 
 export const profileCreate = createAsyncThunk("profile/create", (newProfile) =>
   fetch("/patient_profiles", {
     method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(newProfile),
+  }).then((res) => res.json())
+);
+
+export const profileUpdate = createAsyncThunk("profile/update", (newProfile) =>
+  fetch(`/patient_profiles/${newProfile.id}`, {
+    method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(newProfile),
   }).then((res) => res.json())
@@ -16,13 +24,14 @@ const profileSlice = createSlice({
   initialState: {
     value: null, // object of patient_profile 
   },
-  reducers: {
-    // update
-  },
+  reducers: {},
   extraReducers: {
     [profileCreate.fulfilled](state, action) {
       state.value = action.payload;
-    }
+    },
+    [profileUpdate.fulfilled](state, action) {
+      state.value = action.payload;
+    },
   },
 });
 

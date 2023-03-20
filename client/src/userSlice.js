@@ -25,13 +25,13 @@ export const userSignup = createAsyncThunk("user/signup", (userInput) =>
 );
 
 // USER PATCH
-// export const userUpdate = createAsyncThunk("user/update", (user) =>
-//   fetch("/me", {
-//     method: "PATCH",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify(user),
-//   }).then((res) => res.json())
-// );
+export const userUpdate = createAsyncThunk("user/update", (user) =>
+  fetch("/me", {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(user),
+  }).then((res) => res.json())
+);
 
 
 // DELETE USER
@@ -61,13 +61,16 @@ const userSlice = createSlice({
     [fetchUser.fulfilled](state, action) {
       state.value = action.payload;
     },
-    [userLogout.fulfilled](state, action) {
+    [userLogout.fulfilled](state) {
       state.value = null;
     },
     [userLogin.fulfilled](state, action) {
       state.value = action.payload;
     },
     [userSignup.fulfilled](state, action) {
+      state.value = action.payload;
+    },
+    [userUpdate.fulfilled](state, action) {
       state.value = action.payload;
     },
   },

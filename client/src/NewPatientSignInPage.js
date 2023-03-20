@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUser, fetchUser } from "./userSlice";
 import Login from "./Login";
 import ProfileForm from "./ProfileForm";
+import PatientDashBoard from "./PatientDashBoard";
+import PhysicalTherapistDashBoard from "./PhysicalTherapistDashBoard";
 
 
 function NewPatientSignInPage(){
@@ -31,10 +33,34 @@ function NewPatientSignInPage(){
   // Patient DashBoard
   // PhysicalTherapist DashBoard
   // Administrator DashBoard - Future
+
+  function showDashBoard(user){
+    switch (user.type) {
+      case "Patient":
+        console.log("Patient");
+        // Patient DashBoard
+        return <PatientDashBoard/>
+        break;
+      case "PhysicalTherapist":
+        console.log("PhysicalTherapist");
+        // PhysicalTherapist DashBoard
+        return <PhysicalTherapistDashBoard/>
+        break;
+      case "Administrator":
+        console.log("Administrator");
+        // Administrator DashBoard
+        break;
+      default:
+        console.log(`Sorry, that type doesn't exist ${user.type}`);
+    }
+  }
   
   return (
     <>
-      NewPatientSignInPage
+      {/* NewPatientSignInPage
+      <br/>
+      <br/> */}
+      {showDashBoard(user)}
     </>
   );
 }
