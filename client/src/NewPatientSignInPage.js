@@ -24,7 +24,7 @@ function NewPatientSignInPage(){
   // user is a Patient
   if (user.type === "Patient" && user.patient_profile === null) return <ProfileForm/>
 
-  console.log(user)
+  // console.log(user)
   // depending on user type depends on the dashboard they will get either patients or pt ... in future - admin
   // if (user.type === "Patient" &&
   // if (user.type === "PhysicalTherapist" &&
@@ -37,7 +37,7 @@ function NewPatientSignInPage(){
   function showDashBoard(user){
     switch (user.type) {
       case "Patient":
-        console.log("Patient");
+        // console.log("Patient");
         // Patient DashBoard
         return <PatientDashBoard/>
         break;

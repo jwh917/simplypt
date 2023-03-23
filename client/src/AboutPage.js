@@ -25,7 +25,9 @@ function AboutPage(){
       <img src={ptPic6} alt="ptPic1" />
 
       <h2>Optimized schedule along with allowing patients\therapist to view their appointments and therapist can communicate various information that consist of inspirational emails, workouts, store recommendations.</h2>
-      
+
+      <h2>Everyday: 9am-5pm <br/> Treatment session: 1hr</h2>
+
       <h3>Muscles Treated</h3>
       <h3>
         <ul>

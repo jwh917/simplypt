@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 // CRUD
+// user
+// ...user.profile 
+// initialState
 
 export const profileCreate = createAsyncThunk("profile/create", (newProfile) =>
   fetch("/patient_profiles", {

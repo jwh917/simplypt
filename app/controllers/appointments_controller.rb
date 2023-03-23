@@ -39,7 +39,7 @@ class AppointmentsController < ApplicationController
     end
   
     def app_params
-      params.permit(:patient_id, :physical_therapist_id, :administrator_id, :time, :date)
+      params.permit(:patient_id, :physical_therapist_id, :time, :date)
     end
   
     def render_not_found_response

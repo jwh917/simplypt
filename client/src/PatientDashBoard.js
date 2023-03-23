@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, selectErrors, userUpdate } from "./userSlice";
 import { profileUpdate, profileSelectErrors } from "./profileSlice";
+import ScheduleAppointment from "./ScheduleAppointment";
+import NewConfirmationInfo from "./NewConfirmationInfo";
+
+
+
 
 
 function PatientDashBoard() {
@@ -22,9 +27,23 @@ function PatientDashBoard() {
 
   // const [showConfirm, setShowConfirm] = useState(false);
 
+  const [showScheduleAppointment, setShowScheduleAppointment] = useState(false);
+
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
+  const [confirmationInfo, setConfirmationInfo] = useState("");
+
+  function givenConfirmationInfo(info){
+    setConfirmationInfo(info)
+  }
+  
   // const handleClick = () => {
   //   setShowConfirm(true);
   // };
+
+  const handleAppClick = () => {
+    setShowScheduleAppointment(true);
+  };
 
   const [userInput, setUserInput] = useState({
     username: username,
@@ -80,7 +99,6 @@ function PatientDashBoard() {
   // DISPATCH  
   // PATCH
   // Update User Info 
-  // password and conformation 
   // Update User Profile
 
 
@@ -99,6 +117,16 @@ function PatientDashBoard() {
   }
 
   // DELETE USER
+
+
+
+
+
+
+
+  // Appointments
+
+
 
 
 
@@ -205,9 +233,22 @@ function PatientDashBoard() {
 
       </form>
 
+      <br/>
+      <br/>
+      <br/>
+
+      <h3>Appointments and Visits</h3>
+      <button onClick={handleAppClick}>Schedule an Appointment</button>
+      {showScheduleAppointment ? <ScheduleAppointment setShowScheduleAppointment={setShowScheduleAppointment} setShowConfirmation={setShowConfirmation} givenConfirmationInfo={givenConfirmationInfo}/> : "" }
+      {showConfirmation ? <NewConfirmationInfo setShowConfirmation={setShowConfirmation} confirmationInfo={confirmationInfo}/> : "" }
+      
+      <h4>Upcoming Visits</h4>
+      <h4>Past Visits</h4>
 
 
-      <h3>Appointments</h3>
+      <br/>
+      <br/>
+      <br/>
 
       <h3>Physical Therapists</h3>
       
