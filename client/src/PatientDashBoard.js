@@ -4,6 +4,7 @@ import { selectUser, selectErrors, userUpdate } from "./userSlice";
 import { profileUpdate, profileSelectErrors } from "./profileSlice";
 import ScheduleAppointment from "./ScheduleAppointment";
 import NewConfirmationInfo from "./NewConfirmationInfo";
+import UpcomingVisits from "./UpcomingVisits";
 
 
 
@@ -20,6 +21,7 @@ function PatientDashBoard() {
   const dispatch = useDispatch();
 
   // console.log(user)
+  // console.log(user.appointments)
 
   const {username, name, email, image} = user
 
@@ -96,12 +98,6 @@ function PatientDashBoard() {
   }
 
 
-  // DISPATCH  
-  // PATCH
-  // Update User Info 
-  // Update User Profile
-
-
   function handleSubmitUser(e) {
     e.preventDefault();
 
@@ -115,6 +111,25 @@ function PatientDashBoard() {
     dispatch(profileUpdate(newProfileInput));
 
   }
+
+
+  // const allPTs = user.physical_therapists.map
+
+  // {user.physicaltherapists}
+  // const allPTs = [...new Set(user.physical_therapists)]; 
+
+  const allPTs = Array.from(new Set(user.physical_therapists.map(a => a.id))).map(id => {
+    return user.physical_therapists.find(a => a.id === id)
+  })
+
+  // console.log(allPTs)
+  const showAllPTS = allPTs.map((pt) => (
+    <div key={pt.id}>
+      <img style={{height:"100px", width:"100px"}} src={pt.image} alt="pt" />
+      <p>Name: {pt.name}</p>
+      <p>Email: {pt.email}</p>
+    </div>
+  ))
 
   // DELETE USER
 
@@ -132,7 +147,7 @@ function PatientDashBoard() {
 
   return (
     <>
-      <h1>Patient DashBoard</h1>
+      <h1><u>Patient DashBoard</u></h1>
 
       {/* <span>
         {showConfirm ? (
@@ -148,7 +163,7 @@ function PatientDashBoard() {
       </span>  */}
     
 
-      <h2>Patient User Info</h2>
+      <h3><u>Patient User Info</u></h3>
 
       {/* user image */}
       <img src={image} alt="PatientPic" width="250px" height="250px"/>
@@ -185,7 +200,7 @@ function PatientDashBoard() {
       </form>
 
 
-      <h2>Patient Profile Info</h2>
+      <h3><u>Patient Profile Info</u></h3>
 
       <form onSubmit={handleSubmitProfile}>
 
@@ -237,22 +252,36 @@ function PatientDashBoard() {
       <br/>
       <br/>
 
-      <h3>Appointments and Visits</h3>
+      <h2><u>Appointments and Visits</u></h2>
       <button onClick={handleAppClick}>Schedule an Appointment</button>
       {showScheduleAppointment ? <ScheduleAppointment setShowScheduleAppointment={setShowScheduleAppointment} setShowConfirmation={setShowConfirmation} givenConfirmationInfo={givenConfirmationInfo}/> : "" }
       {showConfirmation ? <NewConfirmationInfo setShowConfirmation={setShowConfirmation} confirmationInfo={confirmationInfo}/> : "" }
       
-      <h4>Upcoming Visits</h4>
-      <h4>Past Visits</h4>
+      <br/>
+      <br/>
+
+      <h2><u>Upcoming Visits</u></h2>
+      {/*before current date order and date order */}
+      {user.appointments.length === 0 ? <h4>No Upcoming Visits</h4> : ""}
+      <UpcomingVisits/>
 
 
       <br/>
       <br/>
-      <br/>
+      {/* <h2><u>Past Visits</u></h2> */}
+      {/* if pasted current date order */}
 
-      <h3>Physical Therapists</h3>
+
+
+      <h2><u>Physical Therapists</u></h2>
+      {user.physical_therapists.length === 0 ? <h4>No Treaments By Any Physical Therapists</h4> : ""}
+
+      {showAllPTS}
+
       
-      <h3>Exercises</h3>
+      <h2><u>Exercises</u></h2>
+      {user.exercises.length === 0 ? <h4>0 Exercises Available</h4> : ""}
+
 
 
     </>

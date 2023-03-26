@@ -11,6 +11,14 @@ export const appointmentCreate = createAsyncThunk("appointment/create", (newAppo
     body: JSON.stringify(newAppointment),
   }).then((res) => res.json())
 );
+
+export const fetchAppointments = createAsyncThunk("appointments/fetchAppointments", () => {
+
+  return fetch("/appointments")
+    .then((response) => response.json())
+    .then((data) => data);
+});
+
 const appointmentSlice = createSlice({
   name: "appointments",
   initialState: {
@@ -25,11 +33,16 @@ const appointmentSlice = createSlice({
     },
     [appointmentCreate.fulfilled](state, action) {
       state.entities = action.payload;
-      state.status = "idle";
+      // state.status = "idle";
+    },    
+    [fetchAppointments.fulfilled](state, action) {
+      state.entities = action.payload;
+      // state.status = "idle";
     },
     
   },
 });
+
 
 
 

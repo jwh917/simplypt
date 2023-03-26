@@ -56,6 +56,18 @@ const userSlice = createSlice({
         value: {...state.value, patient_profile: action.payload},
       }
     },
+    addAppointment(state, action) {
+      return {
+        ...state,
+        value: {...state.value, appointments: [...state.value.appointments, action.payload]},
+      }
+    },
+    addPhysicalTherapist(state, action) {
+      return {
+        ...state,
+        value: {...state.value, physical_therapists: [...state.value.physical_therapists, action.payload]},
+      }
+    }
   },
   extraReducers: {
     [fetchUser.fulfilled](state, action) {
@@ -86,6 +98,6 @@ export const selectErrors = (state) => {
   return user && user.errors ? user.errors : [];
 };
 
-export const { addProfile } = userSlice.actions;
+export const { addProfile, addAppointment, addPhysicalTherapist } = userSlice.actions;
 
 export default userSlice.reducer;

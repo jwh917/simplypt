@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectUser } from "./userSlice";
+import { selectUser, addAppointment, addPhysicalTherapist } from "./userSlice";
 import { appointmentCreate } from "./appointmentSlice";
 
 
@@ -10,6 +10,8 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
   const dispatch = useDispatch();
 
   const user = useSelector(selectUser);
+
+  // console.log(user)
 
   const allPTs = useSelector((state) => state.pts.entities);
 
@@ -39,19 +41,13 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
   // console.log(appointmentInfo)
 
 
- let today = new Date().toISOString().split('T')[0];
-
-
-
-//  dispatch 
-
   const appointmentSubmit = (e) => {
     e.preventDefault();
     dispatch(appointmentCreate(appointmentInfo));
-    // add to the appointments array
-    // dispatch(appointmentCreate(appointmentInfo));
-    setShowScheduleAppointment(false)
+    dispatch(addAppointment(appointmentInfo));
+    dispatch(addPhysicalTherapist(selectedPT));
 
+    setShowScheduleAppointment(false)
     setShowConfirmation(true)
 
     const newConfirmationInfo = {
@@ -63,6 +59,8 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
 
     givenConfirmationInfo(newConfirmationInfo)
   };
+
+  let today = new Date().toISOString().split('T')[0];
 
 
   return (
@@ -90,15 +88,15 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
 
         <label htmlFor="time">Time:</label>
         <select name="time" onChange={appointmentChange}>
-          <option value="9">9 am</option>
-          <option value="10">10 am</option>
-          <option value="11">11 am</option>
-          <option value="12">12 pm</option>
+          <option value="9 am">9 am</option>
+          <option value="10 am">10 am</option>
+          <option value="11 am">11 am</option>
+          <option value="12 pm">12 pm</option>
           <option disabled value="1">1 pm</option>
-          <option value="2">2 pm</option>
-          <option value="3">3 pm</option>
-          <option value="4">4 pm</option>
-          <option value="5">5 pm</option>
+          <option value="2 pm">2 pm</option>
+          <option value="3 pm">3 pm</option>
+          <option value="4 pm">4 pm</option>
+          <option value="5 pm">5 pm</option>
         </select>
 
         <br/>

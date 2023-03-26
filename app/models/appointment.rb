@@ -3,6 +3,6 @@ class Appointment < ApplicationRecord
   belongs_to :physical_therapist
 
   validates :time, presence: true
-  validates :date, presence: true
+  validates :date, presence: true, uniqueness: true
 
 end
