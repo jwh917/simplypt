@@ -67,7 +67,29 @@ const userSlice = createSlice({
         ...state,
         value: {...state.value, physical_therapists: [...state.value.physical_therapists, action.payload]},
       }
-    }
+    },
+    deletePhysicalTherapist(state, action) {
+      console.log(action)
+
+      // return {
+      //   ...state,
+      //   value: {...state.value, physical_therapists: state.value.physical_therapists.filter((pt) => (pt.id !== action.payload))},
+      // }
+      const index = state.value.physical_therapists.findIndex((pt) => pt.id === action.payload);
+      state.value.physical_therapists.splice(index, 1);
+    },
+    deleteAppointment(state, action) {
+      console.log(action)
+      // return {
+      //   ...state,
+      //   value: {...state.value, appointments: state.value.appointments.filter((appt) => (appt.id !== action.payload))},
+      // }
+      const index = state.value.appointments.findIndex((appt) => appt.id === action.payload);
+      console.log(index + 1)
+      console.log(state.value.appointments.splice(index + 1, 1))
+      state.value.appointments.splice(index, 1);
+    },
+
   },
   extraReducers: {
     [fetchUser.fulfilled](state, action) {
@@ -98,6 +120,6 @@ export const selectErrors = (state) => {
   return user && user.errors ? user.errors : [];
 };
 
-export const { addProfile, addAppointment, addPhysicalTherapist } = userSlice.actions;
+export const { addProfile, addAppointment, addPhysicalTherapist, deletePhysicalTherapist, deleteAppointment } = userSlice.actions;
 
 export default userSlice.reducer;

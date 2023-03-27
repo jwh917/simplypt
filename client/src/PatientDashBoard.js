@@ -262,7 +262,7 @@ function PatientDashBoard() {
 
       <h2><u>Upcoming Visits</u></h2>
       {/*before current date order and date order */}
-      {user.appointments.length === 0 ? <h4>No Upcoming Visits</h4> : ""}
+      {user.appointments.length === 0 ? <h4>No Upcoming Visits Scheduled</h4> : ""}
       <UpcomingVisits/>
 
 
@@ -280,7 +280,7 @@ function PatientDashBoard() {
 
       
       <h2><u>Exercises</u></h2>
-      {user.exercises.length === 0 ? <h4>0 Exercises Available</h4> : ""}
+      {user.exercises.length === 0 ? <h4>0 Exercises Available</h4> : <h4>{user.exercises.length} Exercises Available</h4>}
 
 
 

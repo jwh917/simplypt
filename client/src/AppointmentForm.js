@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser, addAppointment, addPhysicalTherapist } from "./userSlice";
-import { appointmentCreate } from "./appointmentSlice";
+import { appointmentCreate, appointmentErrors } from "./appointmentSlice";
 
 
 
@@ -11,11 +11,25 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
 
   const user = useSelector(selectUser);
 
+  // const errors = useSelector(appointmentErrors);
+
+
   // console.log(user)
+  // console.log(errors)
 
   const allPTs = useSelector((state) => state.pts.entities);
 
   const selectedPT = allPTs.find((pt) => pt.name === physicalTherapist)
+
+  // console.log(selectedPT.id)
+
+  // const [formSelectedPT, setFormSelectedPT] = useState(selectedPT)
+
+  
+
+
+  // const [appointmentInfo, setAppointmentInfo] = useState({
+
 
   const [appointmentInfo, setAppointmentInfo] = useState({
     patient_id: user.id,
@@ -23,6 +37,9 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
     date: "",
     time: "9",
   });
+
+  // console.log(appointmentInfo)
+
 
 
   function appointmentChange(e) {
@@ -43,8 +60,16 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
 
   const appointmentSubmit = (e) => {
     e.preventDefault();
-    dispatch(appointmentCreate(appointmentInfo));
-    dispatch(addAppointment(appointmentInfo));
+
+    const newAppointmentInfo = {
+      patient_id: user.id,
+      physical_therapist_id: selectedPT.id,
+      date: appointmentInfo.date,
+      time: appointmentInfo.time
+    }
+
+    dispatch(appointmentCreate(newAppointmentInfo));
+    dispatch(addAppointment(newAppointmentInfo));
     dispatch(addPhysicalTherapist(selectedPT));
 
     setShowScheduleAppointment(false)
@@ -101,6 +126,9 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
 
         <br/>
         <br/>
+
+        {/* {errors.map((err) => (<h6 key={err}>{err}</h6>))} */}
+
 
         <button>Book Appointment</button>
 

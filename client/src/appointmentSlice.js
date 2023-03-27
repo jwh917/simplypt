@@ -1,8 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-// user
-// ...user.appointments 
-// initialState
 
 export const appointmentCreate = createAsyncThunk("appointment/create", (newAppointment) =>
   fetch("/appointments", {
@@ -13,11 +10,15 @@ export const appointmentCreate = createAsyncThunk("appointment/create", (newAppo
 );
 
 export const fetchAppointments = createAsyncThunk("appointments/fetchAppointments", () => {
-
   return fetch("/appointments")
     .then((response) => response.json())
     .then((data) => data);
 });
+
+export const appointmentDelete = createAsyncThunk("appointment/delete", (appointmentId) =>
+  fetch(`/appointments/${appointmentId}`, {
+    method: "DELETE"})
+);
 
 const appointmentSlice = createSlice({
   name: "appointments",
@@ -43,6 +44,11 @@ const appointmentSlice = createSlice({
   },
 });
 
+
+export const appointmentErrors = (state) => {
+  const appointment = state.appointments.entities;
+  return appointment.errors ? appointment.errors : [];
+};
 
 
 
