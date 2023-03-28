@@ -21,11 +21,18 @@ export const profileUpdate = createAsyncThunk("profile/update", (newProfile) =>
   }).then((res) => res.json())
 );
 
+export const fetchProfiles = createAsyncThunk("pts/fetchPTs", () => {
+  return fetch("/patient_profiles")
+    .then((response) => response.json())
+    .then((data) => data);
+});
+
 
 const profileSlice = createSlice({
   name: "patient_profile",
   initialState: {
     value: null, // object of patient_profile 
+    entities: []
   },
   reducers: {},
   extraReducers: {
@@ -34,6 +41,10 @@ const profileSlice = createSlice({
     },
     [profileUpdate.fulfilled](state, action) {
       state.value = action.payload;
+    },
+    [fetchProfiles.fulfilled](state, action) {
+      state.entities = action.payload;
+      // state.status = "idle";
     },
   },
 });

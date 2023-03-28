@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser, addAppointment, addPhysicalTherapist } from "./userSlice";
-import { appointmentCreate, appointmentErrors } from "./appointmentSlice";
+import { appointmentCreate } from "./appointmentSlice";
+// import { appointmentCreate, appointmentErrors } from "./appointmentSlice";
 
 
 
@@ -24,9 +25,6 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
   // console.log(selectedPT.id)
 
   // const [formSelectedPT, setFormSelectedPT] = useState(selectedPT)
-
-  
-
 
   // const [appointmentInfo, setAppointmentInfo] = useState({
 

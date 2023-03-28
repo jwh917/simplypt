@@ -34,6 +34,8 @@ function UpcomingVisits() {
 
   
   const showAppt = user.appointments.map((appt) => {
+    
+    // eslint-disable-next-line
     const ptName = user.physical_therapists.map((pt) => {
       if(pt.id === appt.physical_therapist_id)
       return pt.name

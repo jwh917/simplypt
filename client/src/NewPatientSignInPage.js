@@ -5,6 +5,7 @@ import Login from "./Login";
 import ProfileForm from "./ProfileForm";
 import PatientDashBoard from "./PatientDashBoard";
 import PhysicalTherapistDashBoard from "./PhysicalTherapistDashBoard";
+import { fetchProfiles } from "./profileSlice";
 
 
 function NewPatientSignInPage(){
@@ -16,7 +17,8 @@ function NewPatientSignInPage(){
   useEffect(() => {
 
     dispatch(fetchUser());
-    
+    dispatch(fetchProfiles());
+        
   }, [dispatch]);
 
   if (!user) return <Login/>;
@@ -26,25 +28,26 @@ function NewPatientSignInPage(){
 
   // console.log(user)
   // depending on user type depends on the dashboard they will get either patients or pt ... in future - admin
-  // if (user.type === "Patient" &&
-  // if (user.type === "PhysicalTherapist" &&
-  // if (user.type === "Administrator" &&
+
 
   // Patient DashBoard
   // PhysicalTherapist DashBoard
   // Administrator DashBoard - Future
 
+  
   function showDashBoard(user){
     switch (user.type) {
       case "Patient":
         // console.log("Patient");
         // Patient DashBoard
         return <PatientDashBoard/>
+        // eslint-disable-next-line
         break;
       case "PhysicalTherapist":
-        console.log("PhysicalTherapist");
+        // console.log("Physical Therapist");
         // PhysicalTherapist DashBoard
         return <PhysicalTherapistDashBoard/>
+        // eslint-disable-next-line
         break;
       case "Administrator":
         console.log("Administrator");

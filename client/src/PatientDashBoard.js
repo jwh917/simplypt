@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUser, selectErrors, userUpdate } from "./userSlice";
-import { profileUpdate, profileSelectErrors } from "./profileSlice";
+import { selectUser, userUpdate } from "./userSlice";
+import { profileUpdate } from "./profileSlice";
 import ScheduleAppointment from "./ScheduleAppointment";
 import NewConfirmationInfo from "./NewConfirmationInfo";
 import UpcomingVisits from "./UpcomingVisits";
@@ -14,13 +14,10 @@ function PatientDashBoard() {
 
   const user = useSelector(selectUser);
 
-  const userErrors = useSelector(selectErrors);
-
-  const profileErrors = useSelector(profileSelectErrors);
 
   const dispatch = useDispatch();
 
-  // console.log(user)
+  console.log(user)
   // console.log(user.appointments)
 
   const {username, name, email, image} = user
@@ -166,7 +163,7 @@ function PatientDashBoard() {
       <h3><u>Patient User Info</u></h3>
 
       {/* user image */}
-      <img src={image} alt="PatientPic" width="250px" height="250px"/>
+      <img src={image} alt="PatientPic" width="150px" height="150px"/>
 
 
       <form onSubmit={handleSubmitUser}>
@@ -180,7 +177,7 @@ function PatientDashBoard() {
         <input type="email" placeholder="Email" name="email" value={userInput.email} onChange={inputOnChangeUser}/>
 
         <label htmlFor="type">Type</label>
-        <select name="type" onChange={inputOnChangeUser}>
+        <select name="type">
           <option value="Patient">Patient</option>
         </select>
 
@@ -194,8 +191,6 @@ function PatientDashBoard() {
         <input type="password" placeholder="Password Confirmation" name="password_confirmation" onChange={inputOnChangeUser}/>
 
         <button type="submit"> Edit User Info </button>
-
-        {userErrors.map((err) => (<h6 key={err}>{err}</h6>))}
 
       </form>
 
@@ -226,25 +221,27 @@ function PatientDashBoard() {
         <label htmlFor="muscle_injury">Muscle Injury:</label>
         <select name="muscle_injury" value={newProfileInput.muscle_injury} onChange={inputOnChangeProfile}>
           <option value="abductors">abductors</option>
+          <option value="abs">abs</option>
           <option value="adductors">adductors</option>
           <option value="biceps">biceps</option>
           <option value="calves">calves</option>
-          <option value="chest">chest</option>
+          <option value="cardiovascular%20system">cardiovascular system</option>
+          <option value="delts">delts</option>
           <option value="forearms">forearms</option>
           <option value="glutes">glutes</option>
           <option value="hamstrings">hamstrings</option>
-          <option value="lower back">lower back</option>
-          <option value="middle back">middle back</option>
-          <option value="neck">neck</option>
-          <option value="quadriceps">quadriceps</option>
+          <option value="lats">lats</option>
+          <option value="levator%20scapulae">levator scapulae</option>
+          <option value="pectorals">pectorals</option>
+          <option value="quads">quads</option>
+          <option value="serratus%20anterior">serratus anterior</option>
+          <option value="spine">spine</option>
           <option value="traps">traps</option>
           <option value="triceps">triceps</option>
+          <option value="upper%20back">upper back</option>
         </select>
 
         <button>Edit Profile Info</button>
-
-        {profileErrors.map((err) => (<h6 key={err}>{err}</h6>))}
-
 
       </form>
 

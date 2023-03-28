@@ -31,26 +31,29 @@ function AboutPage(){
       <h3>Muscles Treated</h3>
       <h3>
         <ul>
-          <li>abdominals</li>
           <li>abductors</li>
+          <li>abs</li>
           <li>adductors</li>
           <li>biceps</li>
           <li>calves</li>
-          <li>chest</li>
+          <li>cardiovascular system</li>
+          <li>delts</li>
           <li>forearms</li>
           <li>glutes</li>
           <li>hamstrings</li>
-          <li>lower back</li>
-          <li>middle back</li>
-          <li>neck</li>
-          <li>quadriceps</li>
+          <li>lats</li>
+          <li>levator scapulae</li>
+          <li>pectorals</li>
+          <li>quads</li>
+          <li>serratus anterior</li>
+          <li>spine</li>
           <li>traps</li>
+          <li>triceps</li>
           <li>triceps</li>
         </ul>
       </h3>
 
       <img src={ptPic7} alt="ptPic7" />
-
 
       <br/>
       <br/>

@@ -76,20 +76,25 @@ function ProfileForm() {
 
       <label htmlFor="muscle_injury">Muscle Injury:</label>
       <select name="muscle_injury" onChange={inputOnChange}>
-        <option value="abductors">abductors</option>
-        <option value="adductors">adductors</option>
-        <option value="biceps">biceps</option>
-        <option value="calves">calves</option>
-        <option value="chest">chest</option>
-        <option value="forearms">forearms</option>
-        <option value="glutes">glutes</option>
-        <option value="hamstrings">hamstrings</option>
-        <option value="lower back">lower back</option>
-        <option value="middle back">middle back</option>
-        <option value="neck">neck</option>
-        <option value="quadriceps">quadriceps</option>
-        <option value="traps">traps</option>
-        <option value="triceps">triceps</option>
+      <option value="abductors">abductors</option>
+          <option value="abs">abs</option>
+          <option value="adductors">adductors</option>
+          <option value="biceps">biceps</option>
+          <option value="calves">calves</option>
+          <option value="cardiovascular%20system">cardiovascular system</option>
+          <option value="delts">delts</option>
+          <option value="forearms">forearms</option>
+          <option value="glutes">glutes</option>
+          <option value="hamstrings">hamstrings</option>
+          <option value="lats">lats</option>
+          <option value="levator%20scapulae">levator scapulae</option>
+          <option value="pectorals">pectorals</option>
+          <option value="quads">quads</option>
+          <option value="serratus%20anterior">serratus anterior</option>
+          <option value="spine">spine</option>
+          <option value="traps">traps</option>
+          <option value="triceps">triceps</option>
+          <option value="upper%20back">upper back</option>
       </select>
 
       <button>Continue...</button>
