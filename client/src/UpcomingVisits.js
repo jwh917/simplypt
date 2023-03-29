@@ -1,9 +1,7 @@
 import React from "react";
-import { selectUser } from "./userSlice";
-// import { selectUser, deleteAppointment, deletePhysicalTherapist } from "./userSlice";
-// import { appointmentDelete } from "./appointmentSlice";
-import { useSelector } from "react-redux";
-// import { useSelector, useDispatch } from "react-redux";
+import { selectUser, deleteAppointment, deletePhysicalTherapist } from "./userSlice";
+import { appointmentDelete } from "./appointmentSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 
 
@@ -11,24 +9,22 @@ function UpcomingVisits() {
     
   const user = useSelector(selectUser);
 
-  // const dispatch = useDispatch();
-
-
-  // console.log(user)
-  // console.log(user.appointments)
-  // console.log(user.physical_therapists)
+  const dispatch = useDispatch();
 
   function handleDeleteAppointment(e){
-    // const apptId = e.target.value
-    // const ptId = e.target.name
 
-    // console.log(apptId)
-    // console.log(ptId)
+    const apptId = parseInt(e.target.value) 
+    const ptId = parseInt(e.target.name)
 
-    // dispatch(deleteAppointment(apptId));
-    // dispatch(deletePhysicalTherapist(ptId));
+    // user function
+    dispatch(deleteAppointment(apptId));
 
-    // dispatch(appointmentDelete(apptId));
+    // delete request
+    dispatch(appointmentDelete(apptId));
+
+    if(user.appointments.filter((appt) => (appt.physical_therapist_id === ptId)).length === 1){
+      dispatch(deletePhysicalTherapist(ptId));
+    }
 
   }
 
@@ -41,10 +37,7 @@ function UpcomingVisits() {
       return pt.name
     })
 
-    // console.log(ptName)
     const uniqueNames = [...new Set(ptName)];
-    // console.log(uniqueNames)
-
 
     return (
       <section key={appt.id}>

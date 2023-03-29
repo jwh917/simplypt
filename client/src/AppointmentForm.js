@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser, addAppointment, addPhysicalTherapist } from "./userSlice";
-import { appointmentCreate } from "./appointmentSlice";
-// import { appointmentCreate, appointmentErrors } from "./appointmentSlice";
 
 
 
@@ -12,8 +10,7 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
 
   const user = useSelector(selectUser);
 
-  // const errors = useSelector(appointmentErrors);
-
+  const [errors, setErrors] = useState([]);
 
   // console.log(user)
   // console.log(errors)
@@ -22,12 +19,6 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
 
   const selectedPT = allPTs.find((pt) => pt.name === physicalTherapist)
 
-  // console.log(selectedPT.id)
-
-  // const [formSelectedPT, setFormSelectedPT] = useState(selectedPT)
-
-  // const [appointmentInfo, setAppointmentInfo] = useState({
-
 
   const [appointmentInfo, setAppointmentInfo] = useState({
     patient_id: user.id,
@@ -35,9 +26,6 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
     date: "",
     time: "9",
   });
-
-  // console.log(appointmentInfo)
-
 
 
   function appointmentChange(e) {
@@ -53,8 +41,6 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
     });
   }
 
-  // console.log(appointmentInfo)
-
 
   const appointmentSubmit = (e) => {
     e.preventDefault();
@@ -66,13 +52,6 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
       time: appointmentInfo.time
     }
 
-    dispatch(appointmentCreate(newAppointmentInfo));
-    dispatch(addAppointment(newAppointmentInfo));
-    dispatch(addPhysicalTherapist(selectedPT));
-
-    setShowScheduleAppointment(false)
-    setShowConfirmation(true)
-
     const newConfirmationInfo = {
       patient_info: user,
       pt_info: selectedPT,
@@ -80,6 +59,26 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
       time: appointmentInfo.time
     }
 
+    fetch("/appointments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newAppointmentInfo),
+      }).then((r) => {
+      if (r.ok) {
+        r.json().then((newAppointmentInfo) => {
+          dispatch(addAppointment(newAppointmentInfo));
+        })
+      } else {
+        r.json().then((err) => setErrors(err.error));
+      }
+
+    });
+
+    dispatch(addPhysicalTherapist(selectedPT))
+    setShowScheduleAppointment(false)
+    setShowConfirmation(true)
     givenConfirmationInfo(newConfirmationInfo)
   };
 
@@ -125,7 +124,7 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
         <br/>
         <br/>
 
-        {/* {errors.map((err) => (<h6 key={err}>{err}</h6>))} */}
+        {errors.map((err) => (<h6 key={err}>{err}</h6>))}
 
 
         <button>Book Appointment</button>

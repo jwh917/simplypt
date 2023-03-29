@@ -1,22 +1,33 @@
-import React, {useEffect} from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchPTs } from "./ptsSlice";
+import React from "react";
+// import React, {useEffect} from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { fetchPTs } from "./ptsSlice";
 import ptPic5 from './ptPic5.jpg'; 
 import ptPic6 from './ptPic6.gif'; 
 import ptPic7 from './ptPic7.gif'; 
+// import { selectUser } from "./userSlice";
 
 
 function AboutPage(){
 
-  const allPTs = useSelector((state) => state.pts.entities);
+  // const allPTs = useSelector((state) => state.pts.entities);
 
-  const dispatch = useDispatch();
+  // const user = useSelector(selectUser);
 
-  useEffect(() => {
-    dispatch(fetchPTs());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
 
-  // console.log(allPTs)
+  // useEffect(() => {
+  //   dispatch(fetchPTs());
+  // }, [dispatch]);
+
+  // const showAllPTs = allPTs.map((pt) => {  
+  //   return (
+  //   <div key={pt.id}>
+  //     <img style={{height:"100px", width:"100px"}} src={pt.image} alt="pt" />
+  //     <p>Name: {pt.name}</p>
+  //     <p>Email: {pt.email}</p>
+  //   </div>
+  //   )})
   
   return (
     <>
@@ -60,13 +71,14 @@ function AboutPage(){
 
 
       <h4>Therapist Available</h4>
-      {allPTs.map((pt) => (
+      {/* {user ? showAllPTs : ""} */}
+      {/* {allPTs.map((pt) => (
         <div key={pt.id}>
           <img style={{height:"100px", width:"100px"}} src={pt.image} alt="pt" />
           <p>Name: {pt.name}</p>
           <p>Email: {pt.email}</p>
         </div>
-      ))}
+      ))} */}
 
       <br/>
       <br/>

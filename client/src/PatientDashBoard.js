@@ -17,7 +17,7 @@ function PatientDashBoard() {
 
   const dispatch = useDispatch();
 
-  console.log(user)
+  // console.log(user)
   // console.log(user.appointments)
 
   const {username, name, email, image} = user
