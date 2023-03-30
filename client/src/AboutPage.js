@@ -17,7 +17,7 @@ function AboutPage(){
   // const dispatch = useDispatch();
 
   // useEffect(() => {
-  //   dispatch(fetchPTs());
+    // dispatch(fetchPTs());
   // }, [dispatch]);
 
   // const showAllPTs = allPTs.map((pt) => {  

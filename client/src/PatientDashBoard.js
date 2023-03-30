@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, userUpdate } from "./userSlice";
 import { profileUpdate } from "./profileSlice";
 import ScheduleAppointment from "./ScheduleAppointment";
 import NewConfirmationInfo from "./NewConfirmationInfo";
 import UpcomingVisits from "./UpcomingVisits";
+import { fetchPTs } from "./ptsSlice";
 
 
 
@@ -14,8 +15,11 @@ function PatientDashBoard() {
 
   const user = useSelector(selectUser);
 
-
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchPTs());
+  }, [dispatch]);
 
   // console.log(user)
   // console.log(user.appointments)
@@ -54,7 +58,7 @@ function PatientDashBoard() {
     image: image
   });
 
-    // console.log(userInput)
+    console.log(userInput)
 
 
   function inputOnChangeUser(e) {
@@ -128,18 +132,38 @@ function PatientDashBoard() {
     </div>
   ))
 
+  
+  // console.log(allPTs)
+  const PTs = useSelector((state) => state.pts.entities);
+  // console.log(PTs)
+
+  // console.log(user.exercises)
+
+  const exercises = Array.from(new Set(user.exercises.map(obj => obj.name))).map(name => {
+    return user.exercises.find(obj => obj.name === name);
+  });
+
+  // console.log(exercises)
+
+  const allExercises = exercises.map((exercise) => {
+    const selectedPT = PTs.find((pt) => pt.id === exercise.physical_therapist_id)
+    // console.log(selectedPT)
+    return (
+      <div key={exercise.id}>
+        <p><u>Exercise given by PT {selectedPT.name} </u></p>
+        <img src={exercise.gifurl} alt="exercise.gifUrl" width="150px" height="150px"/>
+        <p>Name: {exercise.description}</p>
+        <p>Muscle: {exercise.muscle}</p>
+        <p>Equipment Needed: {exercise.equipment}</p>
+      </div>
+    )
+
+  })
+
   // DELETE USER
 
 
-
-
-
-
-
   // Appointments
-
-
-
 
 
   return (
@@ -275,10 +299,14 @@ function PatientDashBoard() {
 
       {showAllPTS}
 
+
+      <br/>
+      <br/>
+
       
       <h2><u>Exercises</u></h2>
-      {user.exercises.length === 0 ? <h4>0 Exercises Available</h4> : <h4>{user.exercises.length} Exercises Available</h4>}
-
+      {exercises.length === 0 ? <h4>0 Exercises Available</h4> : <h4>{exercises.length} Exercises Available</h4>}
+      {allExercises}
 
 
     </>

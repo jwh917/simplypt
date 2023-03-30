@@ -33,11 +33,10 @@ class ExercisesController < ApplicationController
     end
   
     def exe_params
-      params.permit(:patient_id, :physical_therapist_id, :description, :muscle)
+      params.permit(:patient_id, :physical_therapist_id, :description, :muscle, :equipment, :gifurl)
     end
   
     def render_not_found_response
       render json: { error: "Exercise not found" }, status: :not_found
     end
 end
-

@@ -113,21 +113,20 @@ function PhysicalTherapistDashBoard() {
  
 
   function assignExercises(e){
-    // console.log(e.target.value)
-    // console.log(e.target.name)
     setPatientId(e.target.value)
     setMuscleInjury(e.target.name)
     setShowExerciseForm(true)
   }
 
 
-  console.log(allPatientsInfo)
+  // console.log(allPatientsInfo)
   // calcuate age
 
   const showAllPatientsInfo = allPatientsInfo.map((patient) => {
-
+    // console.log(patient)
     return(
     <div key={patient.id}>
+      <img src={patient.image} alt="patientImage" width="150px" height="150px"/>
       <p>Name: {patient.name}</p>
       <p>Email: {patient.email}</p>
       <p>Phone: {patient.profile.phone}</p>
@@ -196,7 +195,7 @@ function PhysicalTherapistDashBoard() {
       {user.patients.length === 0 ? <h4>No Patients Have Appointments</h4> : ""}
       {showAllPatientsInfo}
 
-      {showExerciseForm ? <ExerciseForm patientId={patientId} muscleInjury={muscleInjury} /> : " "}
+      {showExerciseForm ? <ExerciseForm patientId={patientId} muscleInjury={muscleInjury} setShowExerciseForm={setShowExerciseForm}/> : " "}
       
 
       
