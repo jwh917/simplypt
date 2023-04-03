@@ -1,20 +1,58 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, selectErrors, userUpdate } from "./userSlice";
 import ExerciseForm from "./ExerciseForm";
+import { fetchAppointments } from "./appointmentSlice";
+
 
 
 function PhysicalTherapistDashBoard() {
+
+  const [exerciseKey, setExerciseKey] = useState("")
+
+  useEffect(() => {
+
+    fetch("/exercise_key")
+      .then(response => response.json())
+      .then(data => setExerciseKey(data))
+        
+  }, []);
+
+  // console.log(exerciseKey)
+
+  const dispatch = useDispatch();
+
+
+  useEffect(() => {
+
+    dispatch(fetchAppointments());
+        
+  }, [dispatch]);
+
+  // const [patientProfiles, setPatientProfiles] = useState([])
+
+  // useEffect(() => {
+
+  //   fetch("/patient_profiles").then((res) => {
+  //     if (res.ok) {
+  //       res.json().then((profiles) => setPatientProfiles(profiles));
+  //     }
+  //   });
+
+    
+  // }, []);
+
+  // console.log(patientProfiles)
 
   const user = useSelector(selectUser);
 
   const userErrors = useSelector(selectErrors);
 
-  // console.log(user)
+  console.log(user)
   // console.log(user.appointments)
   // console.log(user.patients)
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const {username, name, email, image} = user
 
@@ -65,42 +103,7 @@ function PhysicalTherapistDashBoard() {
 
 
 
-  const allProfiles = useSelector((state) => state.patient_profile.entities);
-
-  // console.log(allProfiles)
-
-  // Remove Duplicates from an Array of Objects
-  const uniqueIds = [];
-  
-  const unique = user.patients.filter(element => {
-    const isDuplicate = uniqueIds.includes(element.id);
-  
-    if (!isDuplicate) {
-      uniqueIds.push(element.id);
-  
-      return true;
-    }
-  
-    return false;
-  });
-
-  // console.log(uniqueIds)
-  // console.log(unique)
-
-  const allPatientsInfo = unique.map((patient) => {
-    let patientObj = {...patient}
-
-    // eslint-disable-next-line
-    allProfiles.map((profile) => {
-      if(profile.patient_id === patient.id){
-        patientObj = {...patientObj, profile}
-      }
-
-    })
-
-    return patientObj
-
-  })
+  // console.log(appointmentInfo)
 
   const [showExerciseForm, setShowExerciseForm] = useState(false)
 
@@ -119,21 +122,46 @@ function PhysicalTherapistDashBoard() {
   }
 
 
-  // console.log(allPatientsInfo)
+  const appointmentInfo = useSelector((state) => state.appointments.entities);
+
+  console.log(appointmentInfo)
+
+  const showInfo = appointmentInfo.filter(pts => pts.physical_therapist_id === user.id);
+
+  console.log(showInfo)
+
+
+  // appts but yea
+  function removeDuplicates(patients) {
+      const uniqueIds = new Set();
+      const uniquePatients = [];
+      for (const patient of patients) {
+        if (!uniqueIds.has(patient.patient_id)) {
+          uniqueIds.add(patient.patient_id);
+          uniquePatients.push(patient);
+        }
+      }
+      return uniquePatients;
+    }
+
+  console.log(removeDuplicates(showInfo))
+
+  
+
   // calcuate age
 
-  const showAllPatientsInfo = allPatientsInfo.map((patient) => {
+  const showAllPatientsInfo = removeDuplicates(showInfo).map((patientInfo) => {
     // console.log(patient)
     return(
-    <div key={patient.id}>
-      <img src={patient.image} alt="patientImage" width="150px" height="150px"/>
-      <p>Name: {patient.name}</p>
-      <p>Email: {patient.email}</p>
-      <p>Phone: {patient.profile.phone}</p>
-      <p>DOB: {patient.profile.dob}</p>
-      <p>Sex: {patient.profile.sex}</p>
-      <p>Muscle Injury: {patient.profile.muscle_injury}</p>
-      <button value={patient.id} name={patient.profile.muscle_injury} onClick={assignExercises}>Assign Exercises 💪🏽🦵🏼🦶🏿</button>
+    <div key={patientInfo.patient_id}>
+      <img src={patientInfo.patient.image} alt="patientImage" width="150px" height="150px"/>
+      <p>Name: {patientInfo.patient.name}</p>
+      <p>Email: {patientInfo.patient.email}</p>
+      <p>Phone: {patientInfo.patient.patient_profile.phone}</p>
+      <p>DOB: {patientInfo.patient.patient_profile.dob}</p>
+      <p>Sex: {patientInfo.patient.patient_profile.sex}</p>
+      <p>Muscle Injury: {patientInfo.patient.patient_profile.muscle_injury}</p>
+      <button value={patientInfo.patient_id} name={patientInfo.patient.patient_profile.muscle_injury} onClick={assignExercises}>Assign Exercises 💪🏽🦵🏼🦶🏿</button>
       {/* opens up excerises from api  */}
       {/* PT pick one and it is posted/created for a patient */}
       <p>___________________</p>
@@ -195,7 +223,7 @@ function PhysicalTherapistDashBoard() {
       {user.patients.length === 0 ? <h4>No Patients Have Appointments</h4> : ""}
       {showAllPatientsInfo}
 
-      {showExerciseForm ? <ExerciseForm patientId={patientId} muscleInjury={muscleInjury} setShowExerciseForm={setShowExerciseForm}/> : " "}
+      {showExerciseForm ? <ExerciseForm patientId={patientId} muscleInjury={muscleInjury} setShowExerciseForm={setShowExerciseForm} exerciseKey={exerciseKey}/> : " "}
       
 
       

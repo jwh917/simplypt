@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser, addAppointment, addPhysicalTherapist } from "./userSlice";
+import emailjs from '@emailjs/browser';
 
 
 
-function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShowConfirmation , givenConfirmationInfo}) {
+function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShowConfirmation , givenConfirmationInfo, emailService, emailKey}) {
 
   const dispatch = useDispatch();
 
@@ -59,6 +60,8 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
       time: appointmentInfo.time
     }
 
+    // console.log(newConfirmationInfo)
+
     fetch("/appointments", {
       method: "POST",
       headers: {
@@ -68,18 +71,32 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
       }).then((r) => {
       if (r.ok) {
         r.json().then((newAppointmentInfo) => {
-          dispatch(addAppointment(newAppointmentInfo));
-        })
+            dispatch(addAppointment(newAppointmentInfo))
+            dispatch(addPhysicalTherapist(selectedPT))
+            setShowScheduleAppointment(false)
+            setShowConfirmation(true)
+            // givenConfirmationInfo(newConfirmationInfo)
+
+            emailjs.send(`${emailService.email_service}`, "template_kvqnewo", newConfirmationInfo, `${emailKey.email_key}`)
+              .then(res => {
+                console.log("Success", res)
+              }, error => {
+                console.log("Failed...", error)
+              })
+        
+          
+          })
       } else {
         r.json().then((err) => setErrors(err.error));
       }
 
     });
 
-    dispatch(addPhysicalTherapist(selectedPT))
-    setShowScheduleAppointment(false)
-    setShowConfirmation(true)
+    // dispatch(addPhysicalTherapist(selectedPT))
+    // setShowScheduleAppointment(false)
+    // setShowConfirmation(true)
     givenConfirmationInfo(newConfirmationInfo)
+
   };
 
   let today = new Date().toISOString().split('T')[0];

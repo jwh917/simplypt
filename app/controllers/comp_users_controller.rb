@@ -29,6 +29,21 @@ class CompUsersController < ApplicationController
     user.destroy
     head :no_content
   end
+  
+
+  def email_service 
+    render json: { email_service: ENV["email_service"] }
+  end
+
+  def email_key
+    render json: { email_key: ENV["email_key"] }
+  end
+
+  def exercise_key 
+    render json: { exercise_key: ENV["exercise_key"] }
+  end
+
+
 
 
   private

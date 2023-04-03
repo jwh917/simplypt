@@ -11,6 +11,13 @@ Rails.application.routes.draw do
   post "/signup", to: "comp_users#create"
 
   get "/all_comp_users", to: "comp_users#all"
+
+
+  get "/email_service", to: "comp_users#email_service"
+  get "/email_key", to: "comp_users#email_key"
+  get "/exercise_key", to: "comp_users#exercise_key"
+
+  
   
   get "/me", to: "comp_users#show"
 

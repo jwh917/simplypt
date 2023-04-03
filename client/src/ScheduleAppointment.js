@@ -5,6 +5,25 @@ import AppointmentForm from "./AppointmentForm";
 
 
 function ScheduleAppointment({setShowScheduleAppointment, setShowConfirmation, givenConfirmationInfo}) {
+
+  const [emailService, setEmailService] = useState("")
+  const [emailKey, setEmailKey ]= useState("")
+
+  
+  useEffect(() => {
+
+    fetch("/email_service")
+      .then(response => response.json())
+      .then(data => setEmailService(data))
+
+    fetch("/email_key")
+      .then(response => response.json())
+      .then(data => setEmailKey(data))
+        
+  }, []);
+
+  console.log(emailService)
+  console.log(emailKey)
   
   const [physicalTherapist, setPhysicalTherapist] = useState("");
 
@@ -65,7 +84,7 @@ function ScheduleAppointment({setShowScheduleAppointment, setShowConfirmation, g
       <br/>
       <br/>
 
-      {physicalTherapist !== "" ? <AppointmentForm physicalTherapist={physicalTherapist} setShowScheduleAppointment={setShowScheduleAppointment} setShowConfirmation={setShowConfirmation} givenConfirmationInfo={givenConfirmationInfo}/> : ""}
+      {physicalTherapist !== "" ? <AppointmentForm physicalTherapist={physicalTherapist} setShowScheduleAppointment={setShowScheduleAppointment} setShowConfirmation={setShowConfirmation} givenConfirmationInfo={givenConfirmationInfo} emailService={emailService} emailKey={emailKey}/> : ""}
 
 
 

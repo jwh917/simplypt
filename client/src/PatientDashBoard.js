@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUser, userUpdate } from "./userSlice";
+import { selectUser, userUpdate, userLogout, deleteUser } from "./userSlice";
 import { profileUpdate } from "./profileSlice";
 import ScheduleAppointment from "./ScheduleAppointment";
 import NewConfirmationInfo from "./NewConfirmationInfo";
@@ -28,7 +28,6 @@ function PatientDashBoard() {
 
   const {id, dob, address, phone, sex, muscle_injury} = user.patient_profile
 
-  // const [showConfirm, setShowConfirm] = useState(false);
 
   const [showScheduleAppointment, setShowScheduleAppointment] = useState(false);
 
@@ -40,9 +39,6 @@ function PatientDashBoard() {
     setConfirmationInfo(info)
   }
   
-  // const handleClick = () => {
-  //   setShowConfirm(true);
-  // };
 
   const handleAppClick = () => {
     setShowScheduleAppointment(true);
@@ -58,7 +54,7 @@ function PatientDashBoard() {
     image: image
   });
 
-    console.log(userInput)
+    // console.log(userInput)
 
 
   function inputOnChangeUser(e) {
@@ -133,10 +129,6 @@ function PatientDashBoard() {
   ))
 
   
-  // console.log(allPTs)
-  const PTs = useSelector((state) => state.pts.entities);
-  // console.log(PTs)
-
   // console.log(user.exercises)
 
   const exercises = Array.from(new Set(user.exercises.map(obj => obj.name))).map(name => {
@@ -146,11 +138,9 @@ function PatientDashBoard() {
   // console.log(exercises)
 
   const allExercises = exercises.map((exercise) => {
-    const selectedPT = PTs.find((pt) => pt.id === exercise.physical_therapist_id)
-    // console.log(selectedPT)
     return (
       <div key={exercise.id}>
-        <p><u>Exercise given by PT {selectedPT.name} </u></p>
+        <p><u>Exercise given by PT {exercise.physical_therapist_name} </u></p>
         <img src={exercise.gifurl} alt="exercise.gifUrl" width="150px" height="150px"/>
         <p>Name: {exercise.description}</p>
         <p>Muscle: {exercise.muscle}</p>
@@ -160,7 +150,24 @@ function PatientDashBoard() {
 
   })
 
+
   // DELETE USER
+
+  const [showConfirm, setShowConfirm] = useState(false);
+
+
+  const handleClick = () => {
+    setShowConfirm(true);
+  };
+
+
+  function handleDeleteUser() {
+
+    dispatch(userLogout());
+
+    dispatch(deleteUser());    
+
+  }
 
 
   // Appointments
@@ -170,18 +177,7 @@ function PatientDashBoard() {
     <>
       <h1><u>Patient DashBoard</u></h1>
 
-      {/* <span>
-        {showConfirm ? (
-        <div>
-          <p>Are you sure you want to delete your account?</p>
-          <button >Confirm</button>
-          <br/>
-          <button onClick={() => setShowConfirm(false)}>Cancel</button>
-        </div>
-        ) : (
-        <button onClick={handleClick}>Delete Account</button>
-        )}
-      </span>  */}
+    
     
 
       <h3><u>Patient User Info</u></h3>
@@ -217,6 +213,21 @@ function PatientDashBoard() {
         <button type="submit"> Edit User Info </button>
 
       </form>
+
+      <br/>
+
+      <span>
+        {showConfirm ? (
+        <div>
+          <p>Are you sure you want to delete your account?</p>
+          <button onClick={handleDeleteUser} >Confirm</button>
+          <br/>
+          <button onClick={() => setShowConfirm(false)}>Cancel</button>
+        </div>
+        ) : (
+        <button onClick={handleClick}>Delete Account</button>
+        )}
+      </span> 
 
 
       <h3><u>Patient Profile Info</u></h3>

@@ -2,7 +2,7 @@ import React from "react";
 
 
 function NewConfirmationInfo({setShowConfirmation, confirmationInfo}) {
-  // console.log(confirmationInfo)
+  console.log(confirmationInfo)
 
   function closeConfirmation(){
     setShowConfirmation(false)
@@ -32,7 +32,10 @@ function NewConfirmationInfo({setShowConfirmation, confirmationInfo}) {
       <br/>
       <br/>
 
-      {confirmationInfo.date} at {confirmationInfo.time} !! 😃
+      {confirmationInfo.date} at {confirmationInfo.time} !! 😃👍
+      <br/>
+      👨🏾‍⚕️|👩🏻‍⚕️ with {confirmationInfo.pt_info.name} 
+
       <br/>
       <br/>
 
@@ -42,6 +45,7 @@ function NewConfirmationInfo({setShowConfirmation, confirmationInfo}) {
         <li>And Method of Payment</li>
       </ul>
 
+      An email will be sent with your confirmation information.
       {/* *** */}
       {/* signs */}
       {/* pictures */}

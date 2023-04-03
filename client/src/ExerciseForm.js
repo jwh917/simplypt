@@ -1,64 +1,79 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { selectUser } from "./userSlice";
 
 
-function ExerciseForm({patientId, muscleInjury, setShowExerciseForm}) {
+function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, exerciseKey}) {
+
 
   console.log(patientId)
   console.log(muscleInjury)
+  console.log(exerciseKey)
+  
 
   const user = useSelector(selectUser);
   console.log(user)
   console.log(user.id)
 
 
-  const [exercises, setExercises] = useState([
-    {bodyPart
-      : 
-      "upper legs",
-      equipment
-      : 
-      "body weight",
-      gifUrl
-      : 
-      "http://d205bpvrqc9yn1.cloudfront.net/1512.gif",
-      id
-      : 
-      "1512",
-      name
-      : 
-      "all fours squad stretch",
-      target
-      : 
-      "quads"}
-  ])
+  // const [exercises, setExercises] = useState([
+  //   {bodyPart
+  //     : 
+  //     "upper legs",
+  //     equipment
+  //     : 
+  //     "body weight",
+  //     gifUrl
+  //     : 
+  //     "http://d205bpvrqc9yn1.cloudfront.net/1512.gif",
+  //     id
+  //     : 
+  //     "1512",
+  //     name
+  //     : 
+  //     "all fours squad stretch",
+  //     target
+  //     : 
+  //     "quads"}
+  // ])
 
-  // const [exercises, setExercises] = useState([])
+  const [exercises, setExercises] = useState([])
 
 
   const [selectedExercises, setSelectedExercises] = useState(null)
 
 
-  const options = {
-  method: 'GET',
-  headers: {
-    'X-RapidAPI-Key': '',
-    'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
-  }
-  };
+  
+  // const memoObj = React.useMemo(() => { return { bar: 'foo' } }, [])
+  // const someValue = useMemo(() => ({ value: options }))
+  
+  const optionsValues = useMemo(() => {
+    const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': `${exerciseKey.exercise_key}`,
+        'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
+      }
+      };
 
-  // useEffect(() => {
+      return options
+ }, [exerciseKey.exercise_key])
+ 
 
-  // fetch(`https://exercisedb.p.rapidapi.com/exercises/target/${muscleInjury}`, options)
-  // .then(response => response.json())
-  // .then(response => {
-  //   console.log(response)
-  //   setExercises(response)
-  // })
-  // .catch(err => console.error(err));
+  // console.log(optionsValues)
+
+
+  useEffect(() => {
+
+  fetch(`https://exercisedb.p.rapidapi.com/exercises/target/${muscleInjury}`, optionsValues)
+  .then(response => response.json())
+  .then(response => {
+    console.log(response)
+    setExercises(response)
+  })
+  .catch(err => console.error(err));
         
-  // }, []);
+  }, [muscleInjury, optionsValues]);
 
 
   // fetch
@@ -109,6 +124,7 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm}) {
     const newExerciseInfo = {
       patient_id: patientId,
       physical_therapist_id: user.id,
+      physical_therapist_name: user.name,
       muscle: selectedExercises.target,
       description: selectedExercises.name,
       equipment: selectedExercises.equipment,
@@ -128,6 +144,7 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm}) {
       if (r.ok) {
         r.json().then((newExerciseInfo) => console.log(newExerciseInfo));
       } 
+      // Succesful - the exercise has been assinged MESSAGE or NOTIFCATION*
       // else {
       //   r.json().then((err) => {
       //     setErrors(err.errors)});
@@ -135,6 +152,13 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm}) {
     })
     // event.target.reset()
     setShowExerciseForm(false)
+
+    // emailjs.send("service_l9nkl0m", "template_7rghcj9", newExerciseInfo, "YjGIlb4l4IW5VXFDe")
+    // .then(res => {
+    //   console.log("Success", res)
+    // }, error => {
+    //   console.log("Failed...", error)
+    // })
 
   }
   

@@ -35,13 +35,11 @@ export const userUpdate = createAsyncThunk("user/update", (user) =>
 
 
 // DELETE USER
-// export const deleteUser = createAsyncThunk("user/delete", (user) =>
-//   fetch("/me", {
-//     method: "DELETE",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify(newUserInput),
-//   }).then((res) => res.json())
-// );
+export const deleteUser = createAsyncThunk("user/delete", () =>
+  fetch("/me", {
+    method: "DELETE",
+  })
+);
 
 
 const userSlice = createSlice({
@@ -97,6 +95,9 @@ const userSlice = createSlice({
     },
     [userUpdate.fulfilled](state, action) {
       state.value = action.payload;
+    },
+    [deleteUser.fulfilled](state) {
+      state.value = null;
     },
   },
 });

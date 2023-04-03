@@ -33,7 +33,7 @@ class ExercisesController < ApplicationController
     end
   
     def exe_params
-      params.permit(:patient_id, :physical_therapist_id, :description, :muscle, :equipment, :gifurl)
+      params.permit(:patient_id, :physical_therapist_id, :physical_therapist_name, :description, :muscle, :equipment, :gifurl)
     end
   
     def render_not_found_response
