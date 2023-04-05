@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addProfile, selectUser } from "./userSlice";
-import { profileCreate, profileSelectErrors } from "./profileSlice";
+import { profileCreate } from "./profileSlice";
 
 
 function ProfileForm() {
 
   const dispatch = useDispatch();
-
-  const errors = useSelector(profileSelectErrors);
 
   const user = useSelector(selectUser);
 
@@ -98,8 +96,6 @@ function ProfileForm() {
       </select>
 
       <button>Continue...</button>
-
-      {errors.map((err) => ( <h6 key={err}>{err}</h6>))}
 
     </form>
   );

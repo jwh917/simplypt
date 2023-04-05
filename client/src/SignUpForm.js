@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userSignup, selectErrors } from "./userSlice";
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
 
 
 function SignUpForm({setLoginSignup}) {
@@ -38,14 +38,14 @@ function SignUpForm({setLoginSignup}) {
     // console.log(userInput)
     dispatch(userSignup(userInput));
     
-    if(userInput.username === "" || userInput.password === "" || userInput.name === "" || userInput.email === "" || userInput.image === "") return
+    // if(userInput.username === "" || userInput.password === "" || userInput.name === "" || userInput.email === "" || userInput.image === "") return
 
-    emailjs.send()
-      .then(res => {
-        console.log("Success", res)
-      }, error => {
-        console.log("Failed...", error)
-      })
+    // emailjs.send()
+    //   .then(res => {
+    //     console.log("Success", res)
+    //   }, error => {
+    //     console.log("Failed...", error)
+    //   })
   }
 
   return (

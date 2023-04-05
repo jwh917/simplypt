@@ -22,8 +22,8 @@ function ScheduleAppointment({setShowScheduleAppointment, setShowConfirmation, g
         
   }, []);
 
-  console.log(emailService)
-  console.log(emailKey)
+  // console.log(emailService)
+  // console.log(emailKey)
   
   const [physicalTherapist, setPhysicalTherapist] = useState("");
 

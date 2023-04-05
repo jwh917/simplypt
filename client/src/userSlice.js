@@ -84,7 +84,7 @@ const userSlice = createSlice({
     [fetchUser.fulfilled](state, action) {
       state.value = action.payload;
     },
-    [userLogout.fulfilled](state) {
+    [userLogout.fulfilled](state, action) {
       state.value = null;
     },
     [userLogin.fulfilled](state, action) {

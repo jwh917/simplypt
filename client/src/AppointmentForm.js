@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser, addAppointment, addPhysicalTherapist } from "./userSlice";
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
 
 
 
@@ -60,7 +60,7 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
       time: appointmentInfo.time
     }
 
-    // console.log(newConfirmationInfo)
+    console.log(newConfirmationInfo)
 
     fetch("/appointments", {
       method: "POST",
@@ -69,6 +69,7 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
       },
       body: JSON.stringify(newAppointmentInfo),
       }).then((r) => {
+        // console.log(r)
       if (r.ok) {
         r.json().then((newAppointmentInfo) => {
             dispatch(addAppointment(newAppointmentInfo))
@@ -77,17 +78,21 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
             setShowConfirmation(true)
             // givenConfirmationInfo(newConfirmationInfo)
 
-            emailjs.send(`${emailService.email_service}`, "template_kvqnewo", newConfirmationInfo, `${emailKey.email_key}`)
-              .then(res => {
-                console.log("Success", res)
-              }, error => {
-                console.log("Failed...", error)
-              })
+            // emailjs.send(`${emailService.email_service}`, "template_kvqnewo", newConfirmationInfo, `${emailKey.email_key}`)
+            //   .then(res => {
+            //     console.log("Success", res)
+            //   }, error => {
+            //     console.log("Failed...", error)
+            //   })
         
           
           })
       } else {
-        r.json().then((err) => setErrors(err.error));
+        r.json().then((err) => {
+          setErrors(err.error)
+        e.target.reset();
+
+        });
       }
 
     });

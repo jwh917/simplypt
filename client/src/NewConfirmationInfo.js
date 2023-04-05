@@ -2,7 +2,7 @@ import React from "react";
 
 
 function NewConfirmationInfo({setShowConfirmation, confirmationInfo}) {
-  console.log(confirmationInfo)
+  // console.log(confirmationInfo)
 
   function closeConfirmation(){
     setShowConfirmation(false)

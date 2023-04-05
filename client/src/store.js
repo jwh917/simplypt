@@ -13,6 +13,13 @@ const store = configureStore({
     patient_profile: profileReducer,
     appointments: appointmentsReducer
   },
+  middleware: (getDefaultMiddleware) =>
+  getDefaultMiddleware({
+    serializableCheck: {
+      // Ignore these action types
+      ignoredActions: ['user/logout/fulfilled', 'appointment/delete/fulfilled', 'user/delete/fulfilled'],
+    },
+  }),
 });
 
 export default store;

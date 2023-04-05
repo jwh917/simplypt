@@ -42,7 +42,7 @@ class PatientProfilesController < ApplicationController
     end
     
     def render_not_found_response
-      render json: { error: "Patient not found" }, status: :not_found
+      render json: { error: "Patient profile not found" }, status: :not_found
     end
 
 end
