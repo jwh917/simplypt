@@ -36,3 +36,97 @@
     transform: rotate(360deg);
   }
 } */
+
+/* AD Carousel */
+
+.adsCarousel{
+  position:relative; 
+  top: 70px;
+  left: 15px;
+  background-color: gray;
+  margin: auto;
+  width: 800px;
+  height: 300px;
+}
+
+#adsCarouselImg {
+  width: 100px; 
+  height: 300px;
+}
+
+
+.homeHeaders{
+  margin-left: 150px;
+
+}
+/* Item Carousel */
+.itemsCarousel{
+  position:relative; 
+  top: 50px;
+  /* margin: auto; */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Items Pop Up */
+.popup-box {
+  position: fixed;
+  background: #00000050;
+  width: 100%;
+  height: 120vh;
+  top: 0;
+  left: 0;
+}
+
+.popupHeader{
+  text-align: center;
+}
+
+.box {
+  width: 90%;
+  height: 95%;
+  margin: auto;
+  background: white;
+}
+  
+.close-icon {
+  content: 'x';
+  cursor: pointer;
+  position: fixed;
+  right: calc(15% - 30px);
+  top: calc(100vh - 85vh - 90px);
+  background: #ededed;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  line-height: 20px;
+  text-align: center;
+  border: 1px solid #999;
+  font-size: 20px;
+} 
+
+
+.clickedItem{
+  text-align: center;
+}
+
+.clickedItem img{
+  width: 300px;
+  height: 220px;	
+}
+
+.clickedItemInfo{
+  position: relative;
+  margin-left: 700px;
+  top: -30px;
+}
+
+.itemInfo{
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  margin-left: 50px;
+  
+}
