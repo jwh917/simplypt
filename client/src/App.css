@@ -127,6 +127,52 @@
   /* display: flex; */
   align-items: center;
   justify-content: center;
-  margin-left: 50px;
-  
+  margin-left: 50px; 
+}
+
+/* Search Container */
+.searchContainer{
+  margin: 50px 450px; 
+  position: relative;
+  bottom: 0;
+  width:100px;
+  height:100px;
+  display:grid;
+  grid-template-columns: 8ch auto;
+  grid-row: auto auto;
+  grid-column-gap: 205px;
+  grid-row-gap: 20px;
+}
+
+
+#searchBar{
+  width: 700px;
+  height: 50px;
+  margin-left: 350px; 
+}
+
+.categoryGrid{
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  padding: 10px;
+}
+
+
+#ptPic8{
+  height: 150px;
+  width: 350px;
+}
+
+.tabsContainer{
+  text-align: center;
+  position: relative;
+}
+
+#sortBadge{
+  border-radius: 5px;
+}
+
+#activeButton{
+  color: blue;
 }
