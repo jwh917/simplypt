@@ -167,6 +167,35 @@
       "itemUrl": "https://ptuzencart.s3.us-east-2.amazonaws.com/images/7429_5e98c52466e91.jpg"
     }
   ],
-  "myCart": [],
+  "myCart": [
+    {
+      "item": {
+        "id": 1,
+        "category": "braces",
+        "name": "BodyMed Neoprene Knee Brace",
+        "brand": "BodyMed",
+        "color": "Black",
+        "price": 54,
+        "productDetails": "Made of breathable material. Comfortable but firm compression. Provides support with removable stays to allow movement. Washable.",
+        "itemUrl": "https://ptuzencart.s3.us-east-2.amazonaws.com/images/3920_593aeb1b4c0fb.jpg"
+      },
+      "size": "X-Large",
+      "id": 1
+    },
+    {
+      "item": {
+        "id": 2,
+        "category": "exercise",
+        "name": "Norco Balance-Bubble",
+        "brand": "Norco",
+        "color": "Blue",
+        "price": 39.99,
+        "productDetails": "Sit or stand for challenging balance exercises. Vinyl cushion is an ideal tool for posture, stability and balance therapy with older adults, rehabilitating lower extremities and athletic training. Help improve sensorimotor skills, core",
+        "itemUrl": "https://ptuzencart.s3.us-east-2.amazonaws.com/images/NC50115_5e9274d03e30c.jpg"
+      },
+      "size": "",
+      "id": 3
+    }
+  ],
   "completedOrders": []
 }
