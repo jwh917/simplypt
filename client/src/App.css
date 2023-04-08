@@ -37,6 +37,31 @@
   }
 } */
 
+/* NavBar */
+
+#navBar{
+  padding: 50px;
+  background: silver;
+  border-bottom: 5px solid black;
+
+}
+
+#navBarUl{
+  margin-right: 158px;
+  /* position: fixed; */
+}
+
+
+.nav-item {
+  display:inline;
+  padding: 5px 20px;
+}
+
+.storeNavBar{
+  margin-left: 1110px;
+  margin-top: -80px;
+}
+
 /* AD Carousel */
 
 .adsCarousel{
@@ -85,10 +110,13 @@
 }
 
 .box {
-  width: 90%;
-  height: 95%;
-  margin: auto;
+  width: 70%;
+  height: 75%;
+  /* margin: auto; */
+  margin-top: 40px;
+  margin-left: 216px;
   background: white;
+  text-align: center;
 }
   
 .close-icon {
@@ -167,6 +195,7 @@
 .tabsContainer{
   text-align: center;
   position: relative;
+  color: silver;
 }
 
 #sortBadge{

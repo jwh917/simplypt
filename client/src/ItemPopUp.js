@@ -59,7 +59,7 @@ function ItemPopUp({togglePopUp, isOpen, itemDisplayed}) {
     else
       return (
         <div>
-          <h4>Product Details:</h4>
+          <h4><u>Product Details:</u></h4>
           <p>{productDetails}</p>
         </div>
       )
@@ -96,8 +96,8 @@ function ItemPopUp({togglePopUp, isOpen, itemDisplayed}) {
        <div className="popup-box">
          <div className="box">
 
-          <h1 className="popupHeader">{name}</h1>
-          <p className="popupHeader">{color}</p>
+          <h1 className="popupHeader"><u>{name}</u></h1>
+          <p className="popupHeader"><u>{color}</u></p>
 
           <div className="clickedItem">
     

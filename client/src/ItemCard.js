@@ -14,10 +14,10 @@ function ItemCard({items, handleItemClick, togglePopUp}) {
   }
 
   return (
-    <div >
-      
-      <Card style={{ width: '15rem', height: "27rem", justifyContent: "center"}} onClick={clickedItem}>
-        <Card.Img style={{ width: "150px", height: "150px"}} src={itemUrl} />
+    <div>
+    
+      <Card style={{ width: '15rem', height: "27rem", textAlign: "center", backgroundColor: "silver"}} onClick={clickedItem}>
+        <Card.Img style={{ width: "150px", height: "150px", marginLeft: "50px", marginTop: "20px", marginBottom: "10px"}} src={itemUrl} />
         <Card.Body style={{ width: "fit-content"}}>
           <Card.Title><h3>{name}</h3></Card.Title>
           <br/>

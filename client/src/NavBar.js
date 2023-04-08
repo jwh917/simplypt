@@ -13,7 +13,7 @@ const linkStyles = {
   margin: "0 6px 6px",
   background: "grey",
   textDecoration: "none",
-  color: "white",
+  borderRadius: "20px"
 };
 
 
@@ -21,59 +21,77 @@ const linkStyles = {
 function NavBar() {
 
   const user = useSelector(selectUser);
-
+  console.log(user)
 
   return (
-    <div>
-      
+    <div id="navBar">
+
       <h1>Simply PT</h1>
+      {user ? <LogoutButton user={user}/> : "" }
 
-      <NavLink
-        to="/"
-        exact
-        style={linkStyles}
-        activeStyle={{
-          background: "lightgrey",
-        }}
+
+      <ul className="nav justify-content-end" id="navBarUl">
+
+        <li className="nav-item">
+
+           <NavLink
+            to="/"
+            exact
+            style={linkStyles}
+            activeStyle={{
+              background: "lightgrey",
+            }}
+            >
+            
+            <button class="btn btn-secondary" style={{color: "black"}}> Home </button>  
+          </NavLink>
+
+        </li>
+        <li className="nav-item">
+
+        <NavLink
+            to="/about"
+            exact
+            style={linkStyles}
+            activeStyle={{
+              background: "lightgrey",
+            }}
+          >
+            
+            <button class="btn btn-secondary" style={{color: "black"}}> About </button>  
+          </NavLink>        
+        </li>
+        <li className="nav-item">
+
+        <NavLink
+          to="/signin"
+          exact
+          style={linkStyles}
+          activeStyle={{
+            background: "lightgrey",
+          }}
         >
-        Home
-      </NavLink>
-
-      <NavLink
-        to="/about"
-        exact
-        style={linkStyles}
-        activeStyle={{
-          background: "lightgrey",
-        }}
-      >
-        About
-      </NavLink>
-
-      <NavLink
-        to="/signin"
-        exact
-        style={linkStyles}
-        activeStyle={{
-          background: "lightgrey",
-        }}
-      >
-        New Patient <br/> - <br/> Sign In
-      </NavLink>
-
-      <NavLink
-        to="/store/home"
-        exact
-        style={linkStyles}
-        activeStyle={{
-          background: "lightgrey",
-        }}
-      >
-        Store
-      </NavLink>
+        <button class="btn btn-secondary" style={{color: "black"}}> Sign In/Up </button>  
+        </NavLink>       
+        </li>
 
 
-      {user ? <LogoutButton /> : "" }
+        <li className="nav-item">
+          <NavLink
+          to="/store/home"
+          exact
+          style={linkStyles}
+          activeStyle={{
+            background: "lightgrey",
+          }}
+        >
+          <button class="btn btn-secondary" style={{color: "black"}}> Store </button>
+        </NavLink>
+        </li>
+
+      </ul>
+
+      {/* <hr/> */}
     </div>
   );
 }

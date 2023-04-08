@@ -10,14 +10,17 @@ const linkStyles = {
   margin: "0 6px 6px",
   background: "grey",
   textDecoration: "none",
-  color: "white",
+  color: "black",
+  borderRadius: "20px"
 };
+
+// style={{color: "black"}}
 
 function StoreNavBar() {
 
   return (
 
-        <div>            
+        <div className="storeNavBar">            
             <NavLink
             to="/store/home"
             exact

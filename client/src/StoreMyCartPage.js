@@ -179,28 +179,30 @@ function StoreMyCartPage(){
       </div>
 
 {/* container */}
+      <br/>
+      <br/>
+      <br/>
       <div className="container">
         <form id="my-form" onSubmit={formSumbitHandle}>
 
           <div className="grid-child"> 
             <h3>Billing Address</h3>
-            <label htmlFor="fname"><i className="fa fa-user"></i> Full Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="John M. Doe" onChange={fullNameInput}/>
-            <label htmlFor="email"><i className="fa fa-envelope"></i> Email</label>
-            <input type="text" id="email" name="email" placeholder="john@example.com" onChange={emailInput}/>
-            <label htmlFor="adr"><i className="fa fa-address-card-o"></i> Address</label>
-            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street" onChange={addressInput}/>
-            <label htmlFor="city"><i className="fa fa-institution"></i> City</label>
-            <input type="text" id="city" name="city" placeholder="New York" onChange={cityInput}/>
+            <label htmlFor="fname"><i className="fa fa-user"></i> Full Name: </label>
+            <input type="text" id="fname" name="firstname" placeholder="John M. Doe" onChange={fullNameInput}/> <br/>
+            <label htmlFor="email"><i className="fa fa-envelope"></i> Email: </label>
+            <input type="text" id="email" name="email" placeholder="john@example.com" onChange={emailInput}/> <br/>
+            <label htmlFor="adr"><i className="fa fa-address-card-o"></i> Address: </label>
+            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street" onChange={addressInput}/> <br/>
+            <label htmlFor="city"><i className="fa fa-institution"></i> City: </label>
+            <input type="text" id="city" name="city" placeholder="New York" onChange={cityInput}/> <br/>
 
             <div className="row">
               <div className="col-50">
-                <label htmlFor="state">State</label>
-                <input type="text" id="state" name="state" placeholder="NY" onChange={stateInput}/>
+                <label htmlFor="state">State: </label>
+                <input type="text" id="state" name="state" placeholder="NY" onChange={stateInput}/> <br/>
               </div>
               <div className="col-50">
-                <label htmlFor="zip">Zip</label>
-                <br></br>
+                <label htmlFor="zip">Zip: </label>
                 <input type="text" id="zip" name="zip" placeholder="10001" onChange={zipCodeInput}/>
               </div>
             </div>
@@ -221,7 +223,7 @@ function StoreMyCartPage(){
               <label htmlFor="cname">Name on Card</label>
               <input type="text" id="cname" name="cardname" placeholder="John More Doe" onChange={cardNameInput}/>
               <label htmlFor="ccnum">Credit card number</label>
-              <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" onChange={cardNumInput}/>
+              <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" onChange={cardNumInput}/> <br/>
               <label htmlFor="expmonth">Exp Month</label>
               <input type="text" id="expmonth" name="expmonth" placeholder="September" onChange={expMonInput}/>
               <div className="row">
@@ -231,7 +233,6 @@ function StoreMyCartPage(){
                 </div>
                 <div className="col-50">
                   <label htmlFor="cvv">CVV</label>
-                  <br></br>
                   <input type="text" id="cvv" name="cvv" placeholder="352" onChange={cvvInput}/>
                 </div>
               </div>
