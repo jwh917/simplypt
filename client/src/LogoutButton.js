@@ -14,13 +14,15 @@ function LogoutButton({user}) {
   return (
 
     <>
-      Welcome {user.username},({user.name})
-      <br/>
 
-      
-      <button class="btn btn-secondary" onClick={handleLogoutClick} style={{color: "black"}}>
-        Logout
-      </button>
+      <div>
+        <h4>Welcome {user.username},({user.name})</h4>
+        
+        <button class="btn btn-secondary" onClick={handleLogoutClick} style={{color: "black"}}>
+          Logout
+        </button>
+      </div>
+
     </>
 
   );

@@ -49,49 +49,72 @@ function SignUpForm({setLoginSignup}) {
   }
 
   return (
- 
-    <form  onSubmit={handleSubmit}>
-      <h2>New Patient SignUp Here</h2>
 
-      <label htmlFor="username">Username</label>
-      <input type="text" placeholder="Username" name="username" onChange={inputOnChange}/>
 
-      <label htmlFor="name">Name</label>
-      <input type="name" placeholder="Name" name="name" onChange={inputOnChange}/>
-
-      <label htmlFor="email">Email</label>
-      <input type="email" placeholder="Email" name="email" onChange={inputOnChange}/>
-
-      <label htmlFor="type">Type</label>
-      {/* DropDown */}
-      <select name="type" onChange={inputOnChange}>
-        <option value="Patient">Patient</option>
-      </select>
-
-      <label htmlFor="image">Image</label>
-      {/* Pic input */}
-      <input name="image" type="file" onChange={inputOnChange} />
-
-      <label htmlFor="password">Password</label>
-      <input type="password" placeholder="Password" name="password" onChange={inputOnChange}/>
-
-      <label htmlFor="passwordConformation">Password Conformation</label>
-      <input type="password" placeholder="Password Conformation" name="password_conformation" onChange={inputOnChange}/>
-
-      <button type="submit"> SignUp </button>
-
-      {errors.map((err) => (<h6 key={err}>{err}</h6>))}
+    <div className="categoryGrid">
 
       <div>
-        <h3>
-          Already have an account? &nbsp;
-          <button className="SignUpButton" onClick={() => setLoginSignup(true)}>
-            Log In
-          </button>
-        </h3>  
+        <form className="loginSignUp1" onSubmit={handleSubmit}>
+          <h2>New Patient SignUp Here</h2>
+
+        <div className="test">
+
+          <label htmlFor="username">Username: <input type="text" placeholder="Username" name="username" onChange={inputOnChange}/> </label>
+          
+
+          <label htmlFor="name">Name: <input type="name" placeholder="Name" name="name" onChange={inputOnChange}/></label>
+          
+
+          <label htmlFor="email">Email: <input type="email" placeholder="Email" name="email" onChange={inputOnChange}/></label>
+          
+
+          <label htmlFor="type">Type:   
+            <select name="type" onChange={inputOnChange}>
+              <option value="Patient">Patient</option>
+            </select>
+          </label>
+          {/* DropDown */}
+         
+
+          <label htmlFor="image">Image: <input name="image" type="file" onChange={inputOnChange} /> </label>
+          {/* Pic input */}
+          
+
+          <label htmlFor="password">Password: <input type="password" placeholder="Password" name="password" onChange={inputOnChange}/> </label>
+          
+          <label htmlFor="passwordConformation">Password Conformation: <input type="password" placeholder="Password Conformation" name="password_conformation" onChange={inputOnChange}/> </label>
+          
+
+        </div>
+
+
+          <button className="loginSignUpFormButton" type="submit"> SignUp </button>
+
+          <br/>
+          <br/>
+
+          {errors.map((err) => (<h6 key={err}>{err}</h6>))}
+
+          <div>
+            <h3>
+              Already have an account? &nbsp;
+              <button className="SignUpButton" onClick={() => setLoginSignup(true)}>
+                Log In
+              </button>
+            </h3>  
+          </div>
+
+        </form>
       </div>
 
-    </form>
+      <div style={{width: "50%", height: "800px"}}>
+        
+        <img style={{height:"600px", width:"600px", borderRadius: "300px", marginTop: "80px"}} src="https://png.pngtree.com/png-vector/20220518/ourmid/pngtree-training-injuries-treatment-sport-medicine-png-image_4622388.png" alt="ptPic5" />
+
+      </div>
+    
+    </div>
+
   );
 }
 

@@ -48,7 +48,7 @@
 
 #navBarUl{
   margin-right: 158px;
-  /* position: fixed; */
+  margin-top: -130px;
 }
 
 
@@ -63,7 +63,6 @@
 }
 
 /* Home page */
-
 .categoryGrid1{
   display: flex;
   justify-content: space-between;
@@ -112,8 +111,163 @@
   color: #7395B6;
 }
 
-/* AD Carousel */
 
+
+
+/* loginSignUp */
+
+.loginSignUp{
+  height: 520px;
+  width: 400px;
+  background-color: gray;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  padding: 50px 35px;
+  margin-left: -475px;
+  margin-top: 300px;
+}
+
+.loginSignUp *{
+  font-family: 'Poppins',sans-serif;
+  color: black;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
+}
+.loginSignUp h2{
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 42px;
+  text-align: center;
+}
+
+.loginSignUp label{
+  display: block;
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.loginSignUp input{
+  display: block;
+  height: 50px;
+  width: 100%;
+  background-color: rgba(255,255,255,0.07);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 1px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.loginSignUp::placeholder{
+  color: #e5e5e5;
+}
+
+.loginSignUpFormButton{
+  margin-top: 25px;
+  width: 100%;
+  background-color: #ffffff;
+  color: #080710;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.SignUpButton{
+  margin-top: 15px;
+  width: 50%;
+  background-color: lightgrey;
+  color: #080710;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.loginSignUp1{
+  height: 600px;
+  width: 600px;
+  background-color: gray;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  padding: 50px 35px;
+  margin-left: -350px;
+  margin-top: 300px;
+}
+
+.test{
+
+  /* display: grid; */
+  /* grid-template-columns: 100px 100px 100px ; */
+  /* display: flex; */
+  /* justify-content: center;
+  column-gap: 10px; */
+  display: grid;
+	grid-template-rows: 50px 50px ;
+	grid-template-columns: 150px 150px 150px;
+	
+	/* //grid-row-gap: 30px;
+	//grid-column-gap: 30px; */
+	grid-gap: 30px;
+}
+
+.loginSignUp1 *{
+  font-family: 'Poppins',sans-serif;
+  color: black;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
+}
+.loginSignUp1 h2{
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 42px;
+  text-align: center;
+}
+
+.loginSignUp1 label{
+  display: block;
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.loginSignUp1 input{
+  display: block;
+  height: 25px;
+  width: 100%;
+  background-color: rgba(255,255,255,0.07);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 1px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.loginSignUp1::placeholder{
+  color: #e5e5e5;
+}
+
+
+
+
+/* AD Carousel */
 .adsCarousel{
   position:relative; 
   top: 70px;

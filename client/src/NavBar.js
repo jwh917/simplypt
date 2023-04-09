@@ -26,7 +26,16 @@ function NavBar() {
   return (
     <div id="navBar">
 
-      <h1>Simply PT</h1>
+      <div style={{marginTop: "-30px", border: "5px solid black", width: "200px", textAlign: "center"}}>
+
+        <img src="https://icon-library.com/images/physical-therapy-icon/physical-therapy-icon-22.jpg" alt="ptPic9" style={{height: "150px", width: "150px"}}/>
+
+        <h1>Simply PT</h1>
+
+      </div>
+      
+      <br/>
+
       {user ? <LogoutButton user={user}/> : "" }
 
 

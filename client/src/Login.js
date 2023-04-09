@@ -4,7 +4,7 @@ import SignUpForm from "./SignUpForm";
 
 
 function Login() {
-  const [loginSignup, setLoginSignup] = useState(false);
+  const [loginSignup, setLoginSignup] = useState(true);
 
   return (
     <div>
