@@ -187,22 +187,22 @@ function StoreMyCartPage(){
 
           <div className="grid-child"> 
             <h3>Billing Address</h3>
-            <label htmlFor="fname"><i className="fa fa-user"></i> Full Name: </label>
+            <label htmlFor="fname"><i className="fa fa-user"></i> Full Name:&nbsp;</label>
             <input type="text" id="fname" name="firstname" placeholder="John M. Doe" onChange={fullNameInput}/> <br/>
-            <label htmlFor="email"><i className="fa fa-envelope"></i> Email: </label>
+            <label htmlFor="email"><i className="fa fa-envelope"></i> Email:&nbsp;</label>
             <input type="text" id="email" name="email" placeholder="john@example.com" onChange={emailInput}/> <br/>
-            <label htmlFor="adr"><i className="fa fa-address-card-o"></i> Address: </label>
+            <label htmlFor="adr"><i className="fa fa-address-card-o"></i> Address:&nbsp;</label>
             <input type="text" id="adr" name="address" placeholder="542 W. 15th Street" onChange={addressInput}/> <br/>
-            <label htmlFor="city"><i className="fa fa-institution"></i> City: </label>
+            <label htmlFor="city"><i className="fa fa-institution"></i> City:&nbsp;</label>
             <input type="text" id="city" name="city" placeholder="New York" onChange={cityInput}/> <br/>
 
             <div className="row">
               <div className="col-50">
-                <label htmlFor="state">State: </label>
+                <label htmlFor="state">State:&nbsp;</label>
                 <input type="text" id="state" name="state" placeholder="NY" onChange={stateInput}/> <br/>
               </div>
               <div className="col-50">
-                <label htmlFor="zip">Zip: </label>
+                <label htmlFor="zip">Zip:&nbsp;</label>
                 <input type="text" id="zip" name="zip" placeholder="10001" onChange={zipCodeInput}/>
               </div>
             </div>
@@ -220,19 +220,19 @@ function StoreMyCartPage(){
               <i className="fa fa-cc-mastercard" id="masterCard"></i>
               <i className="fa fa-cc-discover" id="discoverCard"></i>
             </div>
-              <label htmlFor="cname">Name on Card</label>
+              <label htmlFor="cname">Name on Card:&nbsp;</label>
               <input type="text" id="cname" name="cardname" placeholder="John More Doe" onChange={cardNameInput}/>
-              <label htmlFor="ccnum">Credit card number</label>
+              <label htmlFor="ccnum">Credit card number:&nbsp;</label>
               <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" onChange={cardNumInput}/> <br/>
-              <label htmlFor="expmonth">Exp Month</label>
+              <label htmlFor="expmonth">Exp Month:&nbsp;</label>
               <input type="text" id="expmonth" name="expmonth" placeholder="September" onChange={expMonInput}/>
               <div className="row">
                 <div className="col-50">
-                  <label htmlFor="expyear">Exp Year</label>
+                  <label htmlFor="expyear">Exp Year:&nbsp;</label>
                   <input type="text" id="expyear" name="expyear" placeholder="2018" onChange={expYrInput}/>
                 </div>
                 <div className="col-50">
-                  <label htmlFor="cvv">CVV</label>
+                  <label htmlFor="cvv">CVV:&nbsp;</label>
                   <input type="text" id="cvv" name="cvv" placeholder="352" onChange={cvvInput}/>
                 </div>
               </div>
