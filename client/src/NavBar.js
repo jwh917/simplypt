@@ -21,7 +21,7 @@ const linkStyles = {
 function NavBar() {
 
   const user = useSelector(selectUser);
-  console.log(user)
+  // console.log(user)
 
   return (
     <div id="navBar">
@@ -33,7 +33,7 @@ function NavBar() {
         <h1>Simply PT</h1>
 
       </div>
-      
+
       <br/>
 
       {user ? <LogoutButton user={user}/> : "" }
@@ -52,7 +52,7 @@ function NavBar() {
             }}
             >
             
-            <button class="btn btn-secondary" style={{color: "black"}}> Home </button>  
+            <button className="btn btn-secondary" style={{color: "black"}}> Home </button>  
           </NavLink>
 
         </li>
@@ -67,7 +67,7 @@ function NavBar() {
             }}
           >
             
-            <button class="btn btn-secondary" style={{color: "black"}}> About </button>  
+            <button className="btn btn-secondary" style={{color: "black"}}> About </button>  
           </NavLink>        
         </li>
         <li className="nav-item">
@@ -80,7 +80,7 @@ function NavBar() {
             background: "lightgrey",
           }}
         >
-        <button class="btn btn-secondary" style={{color: "black"}}> Sign In/Up </button>  
+        <button className="btn btn-secondary" style={{color: "black"}}> Sign In/Up </button>  
         </NavLink>       
         </li>
 
@@ -94,7 +94,7 @@ function NavBar() {
             background: "lightgrey",
           }}
         >
-          <button class="btn btn-secondary" style={{color: "black"}}> Store </button>
+          <button className="btn btn-secondary" style={{color: "black"}}> Store </button>
         </NavLink>
         </li>
 

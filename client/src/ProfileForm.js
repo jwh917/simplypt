@@ -50,7 +50,7 @@ function ProfileForm() {
 
   return (
  
-    <form onSubmit={handleSubmit} >
+    <form className="profileForm" onSubmit={handleSubmit} >
       <h2>Fill Out Profile Here</h2>
 
       <label htmlFor="dob">DOB:</label>
@@ -62,6 +62,8 @@ function ProfileForm() {
       <label htmlFor="phone">Phone number:</label>
       <input type="tel" id="phone" name="phone" onChange={inputOnChange}/>
       <small>Format: 123-456-7890</small>
+      <br/>
+      <br/>
 
 
       <fieldset data-role="controlgroup">
@@ -94,8 +96,10 @@ function ProfileForm() {
           <option value="triceps">triceps</option>
           <option value="upper%20back">upper back</option>
       </select>
+      <br/>
+      <br/>
 
-      <button>Continue...</button>
+      <button className="profileFormButton">Continue...</button>
 
     </form>
   );

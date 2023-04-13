@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, fetchUser } from "./userSlice";
 import Login from "./Login";
@@ -21,6 +21,28 @@ function NewPatientSignInPage(){
         
   }, [dispatch]);
 
+
+  const [uploadPreset, setUploadPreset] = useState("")
+  const [cloudName, setCloudName] = useState("")
+
+  useEffect(() => {
+
+    // dispatch(fetchPTs());
+    fetch("/upload_preset")
+      .then(response => response.json())
+      .then(data => setUploadPreset(data))
+  
+    fetch("/cloud_name")
+      .then(response => response.json())
+      .then(data => setCloudName(data))
+
+  }, []);
+
+
+
+    // console.log(uploadPreset)
+    // console.log(cloudName)
+
   if (!user) return <Login/>;
 
   // user is a Patient
@@ -33,20 +55,19 @@ function NewPatientSignInPage(){
   // Patient DashBoard
   // PhysicalTherapist DashBoard
   // Administrator DashBoard - Future
-
   
   function showDashBoard(user){
     switch (user.type) {
       case "Patient":
         // console.log("Patient");
         // Patient DashBoard
-        return <PatientDashBoard/>
+        return <PatientDashBoard uploadPreset={uploadPreset} cloudName={cloudName}/>
         // eslint-disable-next-line
         break;
       case "PhysicalTherapist":
         // console.log("Physical Therapist");
         // PhysicalTherapist DashBoard
-        return <PhysicalTherapistDashBoard/>
+        return <PhysicalTherapistDashBoard uploadPreset={uploadPreset} cloudName={cloudName}/>
         // eslint-disable-next-line
         break;
       case "Administrator":

@@ -6,7 +6,8 @@ import { fetchAppointments } from "./appointmentSlice";
 
 
 
-function PhysicalTherapistDashBoard() {
+function PhysicalTherapistDashBoard({ uploadPreset, cloudName }) {
+
 
   const [exerciseKey, setExerciseKey] = useState("")
 
@@ -19,6 +20,7 @@ function PhysicalTherapistDashBoard() {
   }, []);
 
   // console.log(exerciseKey)
+
 
   const dispatch = useDispatch();
 

@@ -25,8 +25,10 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
     patient_id: user.id,
     physical_therapist_id: selectedPT.id,
     date: "",
-    time: "9",
+    time: "9 am",
   });
+
+  console.log(appointmentInfo)
 
 
   function appointmentChange(e) {
@@ -68,14 +70,41 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newAppointmentInfo),
-      }).then((r) => {
-        // console.log(r)
+      }).then((r) => 
+      
+    //   r.json())
+    //   .then((newAppointmentInfo) => {
+    //             dispatch(addAppointment(newAppointmentInfo))
+    //             dispatch(addPhysicalTherapist(selectedPT))
+    //             setShowScheduleAppointment(false)
+    //             setShowConfirmation(true)
+    //             // e.target.reset();
+    //             // givenConfirmationInfo(newConfirmationInfo)
+    
+    //     //         // emailjs.send(`${emailService.email_service}`, "template_kvqnewo", newConfirmationInfo, `${emailKey.email_key}`)
+    //     //         //   .then(res => {
+    //     //         //     console.log("Success", res)
+    //     //         //   }, error => {
+    //     //         //     console.log("Failed...", error)
+    //     //         //   })
+            
+              
+    //           })
+    //           .catch(err => {
+    //             setErrors(err.error)
+    // //       // e.target.reset();
+    //           })
+
+      
+      {
+        console.log(r)
       if (r.ok) {
         r.json().then((newAppointmentInfo) => {
             dispatch(addAppointment(newAppointmentInfo))
             dispatch(addPhysicalTherapist(selectedPT))
             setShowScheduleAppointment(false)
             setShowConfirmation(true)
+            // e.target.reset();
             // givenConfirmationInfo(newConfirmationInfo)
 
             // emailjs.send(`${emailService.email_service}`, "template_kvqnewo", newConfirmationInfo, `${emailKey.email_key}`)
@@ -90,12 +119,14 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
       } else {
         r.json().then((err) => {
           setErrors(err.error)
-        e.target.reset();
+          // e.target.reset();
 
         });
       }
 
-    });
+    }
+    
+    );
 
     // dispatch(addPhysicalTherapist(selectedPT))
     // setShowScheduleAppointment(false)

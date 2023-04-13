@@ -45,11 +45,21 @@ class CompUsersController < ApplicationController
 
 
 
+  def upload_preset
+    render json: { upload_preset: ENV["upload_preset"] }
+  end
+
+  def cloud_name 
+    render json: { cloud_name: ENV["cloud_name"] }
+  end
+
+
+
 
   private
 
   def compuser_params
-    params.permit(:username, :password, :password_confirmation, :name, :email, :image, :type)
+    params.permit(:username, :password, :password_confirmation, :name, :email, :type, :image)
   end
 
   def render_not_found_response

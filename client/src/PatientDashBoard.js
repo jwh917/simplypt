@@ -11,7 +11,7 @@ import { fetchPTs } from "./ptsSlice";
 
 
 
-function PatientDashBoard() {
+function PatientDashBoard({uploadPreset, cloudName}) {
 
   const user = useSelector(selectUser);
 
@@ -21,13 +21,14 @@ function PatientDashBoard() {
     dispatch(fetchPTs());
   }, [dispatch]);
 
+
   // console.log(user)
+
   // console.log(user.appointments)
 
   const {username, name, email, image} = user
 
   const {id, dob, address, phone, sex, muscle_injury} = user.patient_profile
-
 
   const [showScheduleAppointment, setShowScheduleAppointment] = useState(false);
 
@@ -43,6 +44,8 @@ function PatientDashBoard() {
   const handleAppClick = () => {
     setShowScheduleAppointment(true);
   };
+
+  const [profilePic, setProfilePic] = useState("")
 
   const [userInput, setUserInput] = useState({
     username: username,
@@ -98,7 +101,30 @@ function PatientDashBoard() {
   function handleSubmitUser(e) {
     e.preventDefault();
 
-    dispatch(userUpdate(userInput));
+    if (userInput.image !== profilePic){
+
+      const data = new FormData()
+      data.append("file", profilePic)
+      data.append("upload_preset", uploadPreset)
+      data.append("cloud_name", cloudName)
+  
+      fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,{
+        method:"post",
+        body: data
+        })
+        .then(resp => resp.json())
+        .then(data => {
+        // setUrl(data.url)
+        // setUserInput(
+        //   {...userInput, image: data.url}
+        //   )
+          dispatch(userUpdate({...userInput, image: data.url}));
+        })
+        .catch(err => console.log(err))
+    }
+    else {
+      dispatch(userUpdate(userInput));
+    }
 
   }
 
@@ -201,8 +227,10 @@ function PatientDashBoard() {
           <option value="Patient">Patient</option>
         </select>
 
-        <label htmlFor="image">Image</label>
-        <input name="image" type="file" onChange={inputOnChangeUser} />
+        {/* <label htmlFor="image">Image</label>
+        <input name="image" type="file" onChange={inputOnChangeUser} /> */}
+
+        <label htmlFor="profilePic">Profile Picture: <input name="profilePic" type="file" accept="image/*" onChange={(e) => setProfilePic(e.target.files[0])} /> </label>
 
         <label htmlFor="password">Password</label>
         <input type="password" placeholder="Password" name="password" onChange={inputOnChangeUser}/>

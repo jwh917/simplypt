@@ -1,14 +1,19 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { userSignup, selectErrors } from "./userSlice";
+import { useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
+// import { userSignup, selectErrors } from "./userSlice";
+import { selectErrors } from "./userSlice";
 // import emailjs from '@emailjs/browser';
 
 
 function SignUpForm({setLoginSignup}) {
 
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const errors = useSelector(selectErrors);
+
+  // takes file
+  // const [profilePic, setProfilePic] = useState("")
 
   const [userInput, setUserInput] = useState({
     username: "",
@@ -16,8 +21,13 @@ function SignUpForm({setLoginSignup}) {
     name: "",
     email: "",
     type: "Patient",
-    image: "",
+    // takes url
+    image: "https://static.thenounproject.com/png/5034901-200.png",
+    // profile_picture: null
   });
+
+  console.log(userInput)
+
   
 
 
@@ -33,10 +43,21 @@ function SignUpForm({setLoginSignup}) {
     // e.target.reset();
   }
 
+  // const onImageChange = e => {
+  //   setUserInput(
+  //     {...userInput, profile_picture: e.target.files[0]}
+  //     )
+  // }
+
+
+
   function handleSubmit(e) {
     e.preventDefault();
     // console.log(userInput)
-    dispatch(userSignup(userInput));
+
+    // upload picture here
+
+    console.log(userInput)
     
     // if(userInput.username === "" || userInput.password === "" || userInput.name === "" || userInput.email === "" || userInput.image === "") return
 
@@ -57,15 +78,18 @@ function SignUpForm({setLoginSignup}) {
         <form className="loginSignUp1" onSubmit={handleSubmit}>
           <h2>New Patient SignUp Here</h2>
 
-        <div className="test">
+        <div className="signUpForm">          
 
           <label htmlFor="username">Username: <input type="text" placeholder="Username" name="username" onChange={inputOnChange}/> </label>
           
 
-          <label htmlFor="name">Name: <input type="name" placeholder="Name" name="name" onChange={inputOnChange}/></label>
+          <label htmlFor="name">Name: <input type="text" placeholder="Name" name="name" onChange={inputOnChange}/></label>
           
 
           <label htmlFor="email">Email: <input type="email" placeholder="Email" name="email" onChange={inputOnChange}/></label>
+
+          {/* <label htmlFor="image">ImageFAKE: <input type="text" placeholder="Image" name="image" onChange={inputOnChange}/></label> */}
+
           
 
           <label htmlFor="type">Type:   
@@ -76,7 +100,9 @@ function SignUpForm({setLoginSignup}) {
           {/* DropDown */}
          
 
-          <label htmlFor="image">Image: <input name="image" type="file" onChange={inputOnChange} /> </label>
+          {/* <label htmlFor="profilePic">Profile Picture: <input name="profilePic" type="file" accept="image/*" onChange={(e) => setProfilePic(e.target.files[0])} /> </label> */}
+          <label htmlFor="profilePic">Profile Picture: <input name="profilePic" type="file" accept="image/*" onChange={inputOnChange} /> </label>
+
           {/* Pic input */}
           
 
