@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUser, selectErrors, userUpdate } from "./userSlice";
 import ExerciseForm from "./ExerciseForm";
 import { fetchAppointments } from "./appointmentSlice";
+import HorizontalScroll from 'react-horizontal-scrolling'
+import our_clinic from './our_clinic.png'; 
 
 
 
@@ -50,7 +52,7 @@ function PhysicalTherapistDashBoard({ uploadPreset, cloudName }) {
 
   const userErrors = useSelector(selectErrors);
 
-  console.log(user)
+  // console.log(user)
   // console.log(user.appointments)
   // console.log(user.patients)
 
@@ -95,11 +97,10 @@ function PhysicalTherapistDashBoard({ uploadPreset, cloudName }) {
   }
 
   const showAllAppts = user.appointments.map((appt) => (
-    <div key={appt.id}>
+    <div key={appt.id}  style={{border: "1px solid white", borderRadius: "20px", padding: "5px", width: "10em", height: "85%", marginLeft: "15px", textAlign: "center", color: "white"}}>
       <p>Date: {appt.date}</p>
       <p>Time: {appt.time}</p>
       <p>Patient: {showPatientInfo(appt)}</p>
-      <p>___________________</p>
     </div>
   ))
 
@@ -126,11 +127,11 @@ function PhysicalTherapistDashBoard({ uploadPreset, cloudName }) {
 
   const appointmentInfo = useSelector((state) => state.appointments.entities);
 
-  console.log(appointmentInfo)
+  // console.log(appointmentInfo)
 
   const showInfo = appointmentInfo.filter(pts => pts.physical_therapist_id === user.id);
 
-  console.log(showInfo)
+  // console.log(showInfo)
 
 
   // appts but yea
@@ -146,7 +147,7 @@ function PhysicalTherapistDashBoard({ uploadPreset, cloudName }) {
       return uniquePatients;
     }
 
-  console.log(removeDuplicates(showInfo))
+  // console.log(removeDuplicates(showInfo))
 
   
 
@@ -155,18 +156,29 @@ function PhysicalTherapistDashBoard({ uploadPreset, cloudName }) {
   const showAllPatientsInfo = removeDuplicates(showInfo).map((patientInfo) => {
     // console.log(patient)
     return(
-    <div key={patientInfo.patient_id}>
-      <img src={patientInfo.patient.image} alt="patientImage" width="150px" height="150px"/>
-      <p>Name: {patientInfo.patient.name}</p>
-      <p>Email: {patientInfo.patient.email}</p>
-      <p>Phone: {patientInfo.patient.patient_profile.phone}</p>
-      <p>DOB: {patientInfo.patient.patient_profile.dob}</p>
-      <p>Sex: {patientInfo.patient.patient_profile.sex}</p>
-      <p>Muscle Injury: {patientInfo.patient.patient_profile.muscle_injury}</p>
-      <button value={patientInfo.patient_id} name={patientInfo.patient.patient_profile.muscle_injury} onClick={assignExercises}>Assign Exercises 💪🏽🦵🏼🦶🏿</button>
+    <div key={patientInfo.patient_id} style={{ borderRadius: "20px", padding: "5px", textAlign: "center", marginLeft: "50px", width: "300px"}}>
+      <div style={{ border: "2px solid rgba(255,255,255,0.1)", borderRadius: "20px", boxShadow: "0 0 10px rgba(8,7,16,0.6)"}}>
+        <br/>
+
+        <img src={patientInfo.patient.image} alt="patientImage" width="150px" height="150px" style={{border: "3px solid black", padding: "5px"}}/>
+        
+        <br/>
+        <br/>
+
+        <p>Name: {patientInfo.patient.name}</p>
+        <p>Email: {patientInfo.patient.email}</p>
+        <p>Phone: {patientInfo.patient.patient_profile.phone}</p>
+        <p>DOB: {patientInfo.patient.patient_profile.dob}</p>
+        <p>Sex: {patientInfo.patient.patient_profile.sex}</p>
+        <p>Muscle Injury: {patientInfo.patient.patient_profile.muscle_injury}</p>
+        <button value={patientInfo.patient_id} name={patientInfo.patient.patient_profile.muscle_injury} onClick={assignExercises} style={{ fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}>Assign Exercises 💪🏽🦵🏼🦶🏿</button>
+
+        <br/>
+        <br/>
+
+      </div>
       {/* opens up excerises from api  */}
       {/* PT pick one and it is posted/created for a patient */}
-      <p>___________________</p>
     </div>
   )
 
@@ -174,56 +186,111 @@ function PhysicalTherapistDashBoard({ uploadPreset, cloudName }) {
 
   
 
-
-
-
   return (
     <>
+      <br/>
+      <br/>
+
       <h1><u>Physical Therapist DashBoard</u></h1>
 
-      <h3><u>Physical Therapist Info</u></h3>
+      <br/>
 
-      {/* user image */}
-      <img src={image} alt="TherapistPic" width="150px" height="150px"/>
+      <div style={{backgroundColor: "darkgray", width: "450px", borderTop: "2px solid rgba(255,255,255,0.1)", borderRight: "2px solid rgba(255,255,255,0.1)", borderBottom: "2px solid rgba(255,255,255,0.1)", borderRadius: "0px 20px 20px 0px", boxShadow: "0 0 40px rgba(8,7,16,0.6)", letterSpacing: "0.5px", color: "white" }}>
+        <br/>
+        <h3 style={{marginLeft: "70px"}}><u>Physical Therapist Info</u></h3>
+        <br/>
+
+        {/* user image */}
+        <img src={image} alt="TherapistPic" width="150px" height="150px" style={{marginLeft: "130px", border: "3px solid black", padding: "5px"}}/>
+        <br/>
+        <br/>
+
+        <div style={{display: "flex", textAlign: "center", width: "50px"}}>
+
+          <form onSubmit={handleSubmitUser}>
+            <label htmlFor="username" style={{fontSize: "18px"}}> <b>Username:</b> <input type="text" placeholder="Username" name="username" value={userInput.username} onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+            
+
+            <label htmlFor="name" style={{fontSize: "18px"}}> <b>Name:</b> <input type="name" placeholder="Name" name="name" value={userInput.name} onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+            
+
+            <label htmlFor="email" style={{fontSize: "18px"}}> <b>Email:</b> <input type="email" placeholder="Email" name="email" value={userInput.email} onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+            
+
+            <label htmlFor="type" style={{fontSize: "18px"}}> <b>Type:</b>
+              <select name="type">
+              <option value="PhysicalTherapist">Physical Therapist</option>
+              </select>
+            </label> <br/> <br/>
+        
+
+            <label htmlFor="image" style={{fontSize: "18px", marginLeft: "-10px"}}> <b>Image:</b> <input name="image" type="file" onChange={inputOnChangeUser} style={{marginLeft: "80px", backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+
+            <label htmlFor="password" style={{fontSize: "18px"}}> <b>Password:</b> <input type="password" placeholder="Password" name="password" onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+            
+            <label htmlFor="passwordConformation" style={{fontSize: "18px"}}><b>Password Conformation:</b> <input type="password" placeholder="Password Confirmation" name="password_confirmation" onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label>
+            
+            <br/>
+            <br/>
+            <button type="submit" style={{backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}> Edit User Info </button>
+            <br/>
+            <br/>
+
+            {userErrors.map((err) => (<h6 key={err}>{err}</h6>))}
+
+          </form>
+        </div>
 
 
-      <form onSubmit={handleSubmitUser}>
-        <label htmlFor="username">Username</label>
-        <input type="text" placeholder="Username" name="username" value={userInput.username} onChange={inputOnChangeUser}/>
 
-        <label htmlFor="name">Name</label>
-        <input type="name" placeholder="Name" name="name" value={userInput.name} onChange={inputOnChangeUser}/>
+      </div>
 
-        <label htmlFor="email">Email</label>
-        <input type="email" placeholder="Email" name="email" value={userInput.email} onChange={inputOnChangeUser}/>
 
-        <label htmlFor="type">Type</label>
-        <select name="type">
-          <option value="PhysicalTherapist">Physical Therapist</option>
-        </select>
 
-        <label htmlFor="image">Image</label>
-        <input name="image" type="file" onChange={inputOnChangeUser} />
+      <br/>
+      <br/>
 
-        <label htmlFor="password">Password</label>
-        <input type="password" placeholder="Password" name="password" onChange={inputOnChangeUser}/>
+      <div style={{display: "grid", gap: "50px", padding: "5px", marginLeft: "600px", marginTop: "-650px"}}>
 
-        <label htmlFor="passwordConformation">Password Conformation</label>
-        <input type="password" placeholder="Password Confirmation" name="password_confirmation" onChange={inputOnChangeUser}/>
+        {user.appointments.length === 0 ? <h4>No Appointments Schedule</h4> : ""}
 
-        <button type="submit"> Edit User Info </button>
+        <div style={{backgroundColor: "darkgray", borderRadius: "20px", padding: "15px", width: "50em", height: "100%", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
+          <h2 style={{color: "white"}}><u>Appointments</u></h2>
+          <br/>
 
-        {userErrors.map((err) => (<h6 key={err}>{err}</h6>))}
+          <HorizontalScroll reverseScroll={true}>
+            {showAllAppts}
+          </HorizontalScroll>
 
-      </form>
+        </div>
 
-      <h2><u>Appointments</u></h2>
-      {user.appointments.length === 0 ? <h4>No Appointments Schedule</h4> : ""}
-      {showAllAppts}
+        <img src={our_clinic} alt="our_clinic" width="450px" height="250px" style={{marginLeft: "130px", borderRadius: "20px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}/>
+      </div>
 
-      <h2><u>Patients</u></h2>
+      <br/>
+      <br/>
+      <br/>     
+
+      <h2 style={{textAlign: "center"}}><u>Patients</u></h2>
+
+      <br/>
+      <br/>
+
+
       {user.patients.length === 0 ? <h4>No Patients Have Appointments</h4> : ""}
-      {showAllPatientsInfo}
+
+      <div style={{display: "flex", justifyContent: "space-around"}}>
+
+        <HorizontalScroll reverseScroll={true}>
+          {showAllPatientsInfo}
+        </HorizontalScroll>
+
+      </div>
+  
+
+      <br/>
+      <br/>
+      <br/>
 
       {showExerciseForm ? <ExerciseForm patientId={patientId} muscleInjury={muscleInjury} setShowExerciseForm={setShowExerciseForm} exerciseKey={exerciseKey}/> : " "}
       

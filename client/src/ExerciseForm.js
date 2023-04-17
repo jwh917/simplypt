@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { selectUser } from "./userSlice";
+import HorizontalScroll from 'react-horizontal-scrolling'
 
 
 function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, exerciseKey}) {
@@ -70,6 +71,7 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, exerciseKey
   .then(response => {
     console.log(response)
     setExercises(response)
+    window.scrollBy(0, 500);
   })
   .catch(err => console.error(err));
         
@@ -91,7 +93,7 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, exerciseKey
 
   const showExerciseChoice = exercises.map((exercise) => {
     return(
-    <button key={exercise.id} onClick={() => exceriseInfo(exercise)}>
+    <button key={exercise.id} onClick={() => exceriseInfo(exercise)} style={{ border: "2px solid black", borderRadius: "20px", padding: "5px", textAlign: "center", marginLeft: "25px", wordWrap: "break-word", width: "200px"}}>
       <p>Body Part: {exercise.bodyPart}</p>
       <p>Equipment: {exercise.equipment}</p>
       <img src={exercise.gifUrl} alt="exercise.gifUrl" width="150px" height="150px"/>
@@ -165,39 +167,50 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, exerciseKey
 
   return (
     <div>
-      <button onClick={closeExerciseForm}>
-        X
-      </button>
-
+            
+      <h3 style={{marginLeft: "5px"}}><u>Exercises</u></h3>
+      <button onClick={closeExerciseForm} style={{marginLeft: "45px", borderRadius: "3px"}}>X</button>
       <br/>
       <br/>
-      <h3><u>Exercises</u></h3>
       
       {/* buttons */}
-      {showExerciseChoice}
+      <HorizontalScroll reverseScroll={true}>
+        {showExerciseChoice.slice(0, 35)}
+      </HorizontalScroll>
+
+
 
       <br/>
       <br/>
       {/* form */}
 
+
       {selectedExercises ?
 
-      <form onSubmit={exerciseSubmit}>
-      <h3><u>Assign Patient Exercise Form</u></h3>
+      <div style={{textAlign: "center"}}>
 
-        <label htmlFor="description">Description:</label>
-        <input type="description" readOnly value={selectedExercises.name}/>
+        <form onSubmit={exerciseSubmit}>
+          <h3><u>Assign Patient Exercise Form</u></h3>
 
-        <label htmlFor="equipment">Equipment:</label>
-        <input type="equipment" readOnly value={selectedExercises.equipment}/>
+          <label htmlFor="description" style={{fontSize: "18px"}}>Description: <input type="description" readOnly value={selectedExercises.name} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/></label> <br/><br/>
+          
 
-        <label htmlFor="muscle">Muscle:</label>
-        <input type="muscle" readOnly value={selectedExercises.target}/>
+          <label htmlFor="equipment" style={{fontSize: "18px"}}>Equipment: <input type="equipment" readOnly value={selectedExercises.equipment} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/></label> <br/><br/>
+          
 
-        <button>Submit To Patient</button>
+          <label htmlFor="muscle" style={{fontSize: "18px"}}>Muscle: <input type="muscle" readOnly value={selectedExercises.target} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/></label> <br/><br/>
+          
 
-      </form>
+          <button style={{ fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}>Submit To Patient</button>
+
+        </form>
+        
+      </div>
+
+
+
        : ""}
+       <br/>
     </div>
   );
 }
