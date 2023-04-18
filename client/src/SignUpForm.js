@@ -1,19 +1,17 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
-// import { useDispatch, useSelector } from "react-redux";
-// import { userSignup, selectErrors } from "./userSlice";
-import { selectErrors } from "./userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { userSignup, selectErrors } from "./userSlice";
 // import emailjs from '@emailjs/browser';
 
 
-function SignUpForm({setLoginSignup}) {
+function SignUpForm({setLoginSignup, keysToSimplyPT}) {
 
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const errors = useSelector(selectErrors);
 
   // takes file
-  // const [profilePic, setProfilePic] = useState("")
+  const [profilePic, setProfilePic] = useState("")
 
   const [userInput, setUserInput] = useState({
     username: "",
@@ -26,7 +24,7 @@ function SignUpForm({setLoginSignup}) {
     // profile_picture: null
   });
 
-  console.log(userInput)
+  // console.log(userInput)
 
   
 
@@ -49,19 +47,45 @@ function SignUpForm({setLoginSignup}) {
   //     )
   // }
 
-
-
   function handleSubmit(e) {
     e.preventDefault();
     // console.log(userInput)
 
     // upload picture here
 
-    console.log(userInput)
+    // console.log(userInput)
+    // dispatch(userSignup(userInput));
+
+    if (userInput.image !== profilePic){
+
+      const data = new FormData()
+      data.append("file", profilePic)
+      data.append("upload_preset", keysToSimplyPT.upload_preset)
+      data.append("cloud_name", keysToSimplyPT.cloud_name)
+  
+      fetch(`https://api.cloudinary.com/v1_1/${keysToSimplyPT.cloud_name}/image/upload`,{
+        method:"post",
+        body: data
+        })
+        .then(resp => resp.json())
+        .then(data => {
+          // console.log(data)
+        // setUrl(data.url)
+        // setUserInput(
+        //   {...userInput, image: data.url}
+        //   )
+          dispatch(userSignup({...userInput, image: data.url}));
+        })
+        .catch(err => console.log(err))
+    }
+    else {
+      dispatch(userSignup(userInput));
+    }
+
     
     // if(userInput.username === "" || userInput.password === "" || userInput.name === "" || userInput.email === "" || userInput.image === "") return
 
-    // emailjs.send()
+    // emailjs.send(`${keysToSimplyPT.email_service}`, "template_7rghcj9", newConfirmationInfo, `${keysToSimplyPT.email_key}`)
     //   .then(res => {
     //     console.log("Success", res)
     //   }, error => {
@@ -101,7 +125,7 @@ function SignUpForm({setLoginSignup}) {
          
 
           {/* <label htmlFor="profilePic">Profile Picture: <input name="profilePic" type="file" accept="image/*" onChange={(e) => setProfilePic(e.target.files[0])} /> </label> */}
-          <label htmlFor="profilePic">Profile Picture: <input name="profilePic" type="file" accept="image/*" onChange={inputOnChange} /> </label>
+          <label htmlFor="profilePic">Profile Picture: <input name="profilePic" type="file" accept="image/*" onChange={(e) => setProfilePic(e.target.files[0])} /> </label>
 
           {/* Pic input */}
           

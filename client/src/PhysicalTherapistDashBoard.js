@@ -8,20 +8,7 @@ import our_clinic from './our_clinic.png';
 
 
 
-function PhysicalTherapistDashBoard({ uploadPreset, cloudName }) {
-
-
-  const [exerciseKey, setExerciseKey] = useState("")
-
-  useEffect(() => {
-
-    fetch("/exercise_key")
-      .then(response => response.json())
-      .then(data => setExerciseKey(data))
-        
-  }, []);
-
-  // console.log(exerciseKey)
+function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
 
 
   const dispatch = useDispatch();
@@ -60,6 +47,7 @@ function PhysicalTherapistDashBoard({ uploadPreset, cloudName }) {
 
   const {username, name, email, image} = user
 
+  const [profilePic, setProfilePic] = useState("")
 
   const [userInput, setUserInput] = useState({
     username: username,
@@ -87,7 +75,34 @@ function PhysicalTherapistDashBoard({ uploadPreset, cloudName }) {
   function handleSubmitUser(e) {
     e.preventDefault();
 
-    dispatch(userUpdate(userInput));
+    // dispatch(userUpdate(userInput));
+
+    if (userInput.image !== profilePic){
+
+      const data = new FormData()
+      data.append("file", profilePic)
+      data.append("upload_preset", keysToSimplyPT.upload_preset)
+      data.append("cloud_name", keysToSimplyPT.cloud_name)
+  
+      fetch(`https://api.cloudinary.com/v1_1/${keysToSimplyPT.cloud_name}/image/upload`,{
+        method:"post",
+        body: data
+        })
+        .then(resp => resp.json())
+        .then(data => {
+          // console.log(data)
+        // setUrl(data.url)
+        // setUserInput(
+        //   {...userInput, image: data.url}
+        //   )
+          dispatch(userUpdate({...userInput, image: data.url}));
+        })
+        .catch(err => console.log(err))
+    }
+    else {
+      dispatch(userUpdate(userInput));
+    }
+
   }
 
 
@@ -224,7 +239,7 @@ function PhysicalTherapistDashBoard({ uploadPreset, cloudName }) {
             </label> <br/> <br/>
         
 
-            <label htmlFor="image" style={{fontSize: "18px", marginLeft: "-10px"}}> <b>Image:</b> <input name="image" type="file" onChange={inputOnChangeUser} style={{marginLeft: "80px", backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+            <label htmlFor="image" style={{fontSize: "18px", marginLeft: "-10px"}}> <b>Image:</b> <input name="image" type="file" accept="image/*" onChange={(e) => setProfilePic(e.target.files[0])} style={{marginLeft: "80px", backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
 
             <label htmlFor="password" style={{fontSize: "18px"}}> <b>Password:</b> <input type="password" placeholder="Password" name="password" onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
             
@@ -292,7 +307,7 @@ function PhysicalTherapistDashBoard({ uploadPreset, cloudName }) {
       <br/>
       <br/>
 
-      {showExerciseForm ? <ExerciseForm patientId={patientId} muscleInjury={muscleInjury} setShowExerciseForm={setShowExerciseForm} exerciseKey={exerciseKey}/> : " "}
+      {showExerciseForm ? <ExerciseForm patientId={patientId} muscleInjury={muscleInjury} setShowExerciseForm={setShowExerciseForm} keysToSimplyPT={keysToSimplyPT}/> : " "}
       
 
       

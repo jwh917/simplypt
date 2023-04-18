@@ -5,7 +5,9 @@ import { selectUser, addAppointment, addPhysicalTherapist } from "./userSlice";
 
 
 
-function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShowConfirmation , givenConfirmationInfo, emailService, emailKey}) {
+function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShowConfirmation , givenConfirmationInfo, keysToSimplyPT, appointmentInfo, setAppointmentInfo}) {
+
+  console.log(physicalTherapist)
 
   const dispatch = useDispatch();
 
@@ -16,17 +18,20 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
   // console.log(user)
   // console.log(errors)
 
-  const allPTs = useSelector((state) => state.pts.entities);
+  // const allPTs = useSelector((state) => state.pts.entities);
 
-  const selectedPT = allPTs.find((pt) => pt.name === physicalTherapist)
+  // const selectedPT = allPTs.find((pt) => pt.name === physicalTherapist)
+
+  // console.log(selectedPT)
 
 
-  const [appointmentInfo, setAppointmentInfo] = useState({
-    patient_id: user.id,
-    physical_therapist_id: selectedPT.id,
-    date: "",
-    time: "9 am",
-  });
+
+  // const [appointmentInfo, setAppointmentInfo] = useState({
+  //   patient_id: user.id,
+  //   physical_therapist_id: physicalTherapist.id,
+  //   date: "",
+  //   time: "9 am",
+  // });
 
   console.log(appointmentInfo)
 
@@ -50,14 +55,14 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
 
     const newAppointmentInfo = {
       patient_id: user.id,
-      physical_therapist_id: selectedPT.id,
+      physical_therapist_id: physicalTherapist.id,
       date: appointmentInfo.date,
       time: appointmentInfo.time
     }
 
     const newConfirmationInfo = {
       patient_info: user,
-      pt_info: selectedPT,
+      pt_info: physicalTherapist,
       date: appointmentInfo.date,
       time: appointmentInfo.time
     }
@@ -70,61 +75,35 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newAppointmentInfo),
-      }).then((r) => 
-      
-    //   r.json())
-    //   .then((newAppointmentInfo) => {
-    //             dispatch(addAppointment(newAppointmentInfo))
-    //             dispatch(addPhysicalTherapist(selectedPT))
-    //             setShowScheduleAppointment(false)
-    //             setShowConfirmation(true)
-    //             // e.target.reset();
-    //             // givenConfirmationInfo(newConfirmationInfo)
-    
-    //     //         // emailjs.send(`${emailService.email_service}`, "template_kvqnewo", newConfirmationInfo, `${emailKey.email_key}`)
-    //     //         //   .then(res => {
-    //     //         //     console.log("Success", res)
-    //     //         //   }, error => {
-    //     //         //     console.log("Failed...", error)
-    //     //         //   })
-            
-              
-    //           })
-    //           .catch(err => {
-    //             setErrors(err.error)
-    // //       // e.target.reset();
-    //           })
-
-      
-      {
-        console.log(r)
-      if (r.ok) {
+      }).then((r) => {
+        if (r.ok) {
         r.json().then((newAppointmentInfo) => {
-            dispatch(addAppointment(newAppointmentInfo))
-            dispatch(addPhysicalTherapist(selectedPT))
-            setShowScheduleAppointment(false)
-            setShowConfirmation(true)
-            // e.target.reset();
-            // givenConfirmationInfo(newConfirmationInfo)
+          dispatch(addAppointment(newAppointmentInfo))
+          dispatch(addPhysicalTherapist(physicalTherapist))
+          setShowScheduleAppointment(false)
+          setShowConfirmation(true)
+          // e.target.reset();
+          // givenConfirmationInfo(newConfirmationInfo)
 
-            // emailjs.send(`${emailService.email_service}`, "template_kvqnewo", newConfirmationInfo, `${emailKey.email_key}`)
-            //   .then(res => {
-            //     console.log("Success", res)
-            //   }, error => {
-            //     console.log("Failed...", error)
-            //   })
+          // emailjs.send(`${keysToSimplyPT.email_service}`, "template_kvqnewo", newConfirmationInfo, `${keysToSimplyPT.email_key}`)
+          //   .then(res => {
+          //     console.log("Success", res)
+          //   }, error => {
+          //     console.log("Failed...", error)
+          //   })
         
           
-          })
-      } else {
-        r.json().then((err) => {
-          setErrors(err.error)
-          // e.target.reset();
+        })
+        } else {
+          r.json().then((err) => {
+            console.log(err)
+            setErrors(err.error)
+            // e.target.reset();
 
-        });
+          });
+        }
+
       }
-
-    }
     
     );
 
@@ -149,7 +128,7 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
       <form onSubmit={appointmentSubmit}>
 
         <label htmlFor="physical_therapist_name">Physical Therapist Name: </label>
-        <input type="text" name="physical_therapist_name" readOnly value={physicalTherapist}/>
+        <input type="text" name="physical_therapist_name" readOnly value={physicalTherapist.name}/>
         
         <br/>
         <br/>

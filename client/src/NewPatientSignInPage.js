@@ -22,19 +22,13 @@ function NewPatientSignInPage(){
   }, [dispatch]);
 
 
-  const [uploadPreset, setUploadPreset] = useState("")
-  const [cloudName, setCloudName] = useState("")
+  const [keysToSimplyPT, setKeysToSimplyPT] = useState(null);
 
   useEffect(() => {
 
-    // dispatch(fetchPTs());
-    fetch("/upload_preset")
+    fetch("/keysToSimplyPT")
       .then(response => response.json())
-      .then(data => setUploadPreset(data))
-  
-    fetch("/cloud_name")
-      .then(response => response.json())
-      .then(data => setCloudName(data))
+      .then(data => setKeysToSimplyPT(data))
 
   }, []);
 
@@ -61,13 +55,13 @@ function NewPatientSignInPage(){
       case "Patient":
         // console.log("Patient");
         // Patient DashBoard
-        return <PatientDashBoard uploadPreset={uploadPreset} cloudName={cloudName}/>
+        return <PatientDashBoard keysToSimplyPT={keysToSimplyPT} />
         // eslint-disable-next-line
         break;
       case "PhysicalTherapist":
         // console.log("Physical Therapist");
         // PhysicalTherapist DashBoard
-        return <PhysicalTherapistDashBoard uploadPreset={uploadPreset} cloudName={cloudName}/>
+        return <PhysicalTherapistDashBoard keysToSimplyPT={keysToSimplyPT} />
         // eslint-disable-next-line
         break;
       case "Administrator":

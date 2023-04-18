@@ -1,7 +1,8 @@
 class CompUsersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
-  skip_before_action :authorize, only: [:create]
+  skip_before_action :authorize, only: [:create, :keysToSimplyPT]
+
 
   def all
     comp_users = CompUser.all
@@ -31,29 +32,16 @@ class CompUsersController < ApplicationController
   end
   
 
-  def email_service 
-    render json: { email_service: ENV["email_service"] }
+
+  def keysToSimplyPT
+    render json: { 
+                    email_service: ENV["email_service"],
+                    email_key: ENV["email_key"],
+                    exercise_key: ENV["exercise_key"],
+                    upload_preset: ENV["upload_preset"],
+                    cloud_name: ENV["cloud_name"]
+                  }
   end
-
-  def email_key
-    render json: { email_key: ENV["email_key"] }
-  end
-
-  def exercise_key 
-    render json: { exercise_key: ENV["exercise_key"] }
-  end
-
-
-
-  def upload_preset
-    render json: { upload_preset: ENV["upload_preset"] }
-  end
-
-  def cloud_name 
-    render json: { cloud_name: ENV["cloud_name"] }
-  end
-
-
 
 
   private

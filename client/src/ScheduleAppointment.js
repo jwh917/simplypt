@@ -2,28 +2,21 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPTs } from "./ptsSlice";
 import AppointmentForm from "./AppointmentForm";
+import { selectUser } from "./userSlice";
 
 
 function ScheduleAppointment({setShowScheduleAppointment, setShowConfirmation, givenConfirmationInfo}) {
 
-  const [emailService, setEmailService] = useState("")
-  const [emailKey, setEmailKey ]= useState("")
+  const [keysToSimplyPT, setKeysToSimplyPT] = useState(null);
 
-  
   useEffect(() => {
 
-    fetch("/email_service")
+    fetch("/keysToSimplyPT")
       .then(response => response.json())
-      .then(data => setEmailService(data))
+      .then(data => setKeysToSimplyPT(data))
 
-    fetch("/email_key")
-      .then(response => response.json())
-      .then(data => setEmailKey(data))
-        
   }, []);
 
-  // console.log(emailService)
-  // console.log(emailKey)
   
   const [physicalTherapist, setPhysicalTherapist] = useState("");
 
@@ -43,10 +36,26 @@ function ScheduleAppointment({setShowScheduleAppointment, setShowConfirmation, g
   }, [dispatch]);
 
   // console.log(allPTs)
+  // const allPTs = useSelector((state) => state.pts.entities);
+
+  const user = useSelector(selectUser);
+
+
+  const [appointmentInfo, setAppointmentInfo] = useState({
+    patient_id: user.id,
+    physical_therapist_id: "",
+    date: "",
+    time: "9 am",
+  });
 
 
   const handlePTInfo = (e) => {
-    setPhysicalTherapist(e.target.name)
+    console.log(e.target.name)
+
+    const selectedPT = allPTs.find((pt) => pt.name === e.target.name)
+
+    setPhysicalTherapist(selectedPT)
+    setAppointmentInfo({...appointmentInfo, physical_therapist_id: selectedPT.id})
   };
 
 
@@ -84,7 +93,7 @@ function ScheduleAppointment({setShowScheduleAppointment, setShowConfirmation, g
       <br/>
       <br/>
 
-      {physicalTherapist !== "" ? <AppointmentForm physicalTherapist={physicalTherapist} setShowScheduleAppointment={setShowScheduleAppointment} setShowConfirmation={setShowConfirmation} givenConfirmationInfo={givenConfirmationInfo} emailService={emailService} emailKey={emailKey}/> : ""}
+      {physicalTherapist !== "" ? <AppointmentForm physicalTherapist={physicalTherapist} setShowScheduleAppointment={setShowScheduleAppointment} setShowConfirmation={setShowConfirmation} givenConfirmationInfo={givenConfirmationInfo} keysToSimplyPT={keysToSimplyPT} appointmentInfo={appointmentInfo} setAppointmentInfo={setAppointmentInfo}/> : ""}
 
 
 

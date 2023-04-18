@@ -4,17 +4,17 @@ import { selectUser } from "./userSlice";
 import HorizontalScroll from 'react-horizontal-scrolling'
 
 
-function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, exerciseKey}) {
+function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, keysToSimplyPT}) {
 
 
-  console.log(patientId)
-  console.log(muscleInjury)
-  console.log(exerciseKey)
+  // console.log(patientId)
+  // console.log(muscleInjury)
+  // console.log(exerciseKey)
   
 
   const user = useSelector(selectUser);
-  console.log(user)
-  console.log(user.id)
+  // console.log(user)
+  // console.log(user.id)
 
 
   // const [exercises, setExercises] = useState([
@@ -52,13 +52,13 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, exerciseKey
     const options = {
       method: 'GET',
       headers: {
-        'X-RapidAPI-Key': `${exerciseKey.exercise_key}`,
+        'X-RapidAPI-Key': `${keysToSimplyPT.exercise_key}`,
         'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
       }
       };
 
       return options
- }, [exerciseKey.exercise_key])
+ }, [keysToSimplyPT.exercise_key])
  
 
   // console.log(optionsValues)

@@ -8,19 +8,16 @@ Rails.application.routes.draw do
   resources :comp_users
 
 
-  post "/signup", to: "comp_users#create"
 
+  get "/keysToSimplyPT", to: "comp_users#keysToSimplyPT"
+
+  # Destroy Later!
   get "/all_comp_users", to: "comp_users#all"
 
-  get "/email_service", to: "comp_users#email_service"
-  get "/email_key", to: "comp_users#email_key"
-  get "/exercise_key", to: "comp_users#exercise_key"
-
-  get "/upload_preset", to: "comp_users#upload_preset"
-  get "/cloud_name", to: "comp_users#cloud_name"
-
-
   
+
+  post "/signup", to: "comp_users#create"
+
   get "/me", to: "comp_users#show"
 
   patch "/me", to: "comp_users#update"

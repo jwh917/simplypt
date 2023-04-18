@@ -11,7 +11,7 @@ import { fetchPTs } from "./ptsSlice";
 
 
 
-function PatientDashBoard({uploadPreset, cloudName}) {
+function PatientDashBoard({keysToSimplyPT}) {
 
   const user = useSelector(selectUser);
 
@@ -23,6 +23,8 @@ function PatientDashBoard({uploadPreset, cloudName}) {
 
 
   // console.log(user)
+  // console.log(uploadPreset.upload_preset)
+  // console.log(cloudName.cloud_name)
 
   // console.log(user.appointments)
 
@@ -105,15 +107,16 @@ function PatientDashBoard({uploadPreset, cloudName}) {
 
       const data = new FormData()
       data.append("file", profilePic)
-      data.append("upload_preset", uploadPreset)
-      data.append("cloud_name", cloudName)
+      data.append("upload_preset", keysToSimplyPT.upload_preset)
+      data.append("cloud_name", keysToSimplyPT.cloud_name)
   
-      fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,{
+      fetch(`https://api.cloudinary.com/v1_1/${keysToSimplyPT.cloud_name}/image/upload`,{
         method:"post",
         body: data
         })
         .then(resp => resp.json())
         .then(data => {
+          // console.log(data)
         // setUrl(data.url)
         // setUserInput(
         //   {...userInput, image: data.url}
