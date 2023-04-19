@@ -119,47 +119,46 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
 
   return (
 
-    <div>
+    <div style={{textAlign: "center", fontSize: "18px", marginLeft: "-90px"}}>
       {/* Appointment times already booked */}
-      
-      Fill Out Appointment Form
       <br/>
+      <h2>Fill Out Appointment Form</h2>
       <br/>
       <form onSubmit={appointmentSubmit}>
 
-        <label htmlFor="physical_therapist_name">Physical Therapist Name: </label>
-        <input type="text" name="physical_therapist_name" readOnly value={physicalTherapist.name}/>
+        <label htmlFor="physical_therapist_name" style={{marginLeft: "20px"}}>Physical Therapist Name: <input type="text" name="physical_therapist_name" readOnly value={physicalTherapist.name} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label>
         
         <br/>
         <br/>
 
-        <label htmlFor="date">Date: </label>
-        <input type="date" name="date" min={today} onChange={appointmentChange}/>
-
+        <label htmlFor="date">Date: <input type="date" name="date" min={today} onChange={appointmentChange} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/></label>
+        
         <br/>
           {/* Show current date no appointments show next date and already taken appointments on that day and disable the time on time options -  */}
         <br/>
 
-        <label htmlFor="time">Time:</label>
-        <select name="time" onChange={appointmentChange}>
-          <option value="9 am">9 am</option>
-          <option value="10 am">10 am</option>
-          <option value="11 am">11 am</option>
-          <option value="12 pm">12 pm</option>
-          <option disabled value="1">1 pm</option>
-          <option value="2 pm">2 pm</option>
-          <option value="3 pm">3 pm</option>
-          <option value="4 pm">4 pm</option>
-          <option value="5 pm">5 pm</option>
-        </select>
+        <label htmlFor="time">Time:
+          <select name="time" onChange={appointmentChange} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}>
+            <option value="9 am">9 am</option>
+            <option value="10 am">10 am</option>
+            <option value="11 am">11 am</option>
+            <option value="12 pm">12 pm</option>
+            <option disabled value="1">1 pm</option>
+            <option value="2 pm">2 pm</option>
+            <option value="3 pm">3 pm</option>
+            <option value="4 pm">4 pm</option>
+            <option value="5 pm">5 pm</option>
+          </select>
+        </label>
+  
 
         <br/>
         <br/>
 
         {errors.map((err) => (<h6 key={err}>{err}</h6>))}
 
-
-        <button>Book Appointment</button>
+        <br/>
+        <button style={{backgroundColor: "#b0bec5", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>Book Appointment</button>
 
       </form>
     </div>

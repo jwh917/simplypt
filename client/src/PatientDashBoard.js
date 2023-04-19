@@ -6,6 +6,7 @@ import ScheduleAppointment from "./ScheduleAppointment";
 import NewConfirmationInfo from "./NewConfirmationInfo";
 import UpcomingVisits from "./UpcomingVisits";
 import { fetchPTs } from "./ptsSlice";
+import HorizontalScroll from 'react-horizontal-scrolling'
 
 
 
@@ -150,10 +151,12 @@ function PatientDashBoard({keysToSimplyPT}) {
 
   // console.log(allPTs)
   const showAllPTS = allPTs.map((pt) => (
-    <div key={pt.id}>
-      <img style={{height:"100px", width:"100px"}} src={pt.image} alt="pt" />
-      <p>Name: {pt.name}</p>
-      <p>Email: {pt.email}</p>
+    <div key={pt.id} style={{color: "white", border: "2px solid rgba(255,255,255,0.1)", textAlign: "center", borderRadius: "20px", padding: "10px", marginLeft: "20px"}}>
+      <p><u>Name:</u> {pt.name}</p>
+      <img style={{height:"100px", width:"100px", borderRadius: "20px"}} src={pt.image} alt="pt" />
+      <br/>
+      <br/>
+      <p><u>Email:</u> {pt.email}</p>
     </div>
   ))
 
@@ -168,9 +171,9 @@ function PatientDashBoard({keysToSimplyPT}) {
 
   const allExercises = exercises.map((exercise) => {
     return (
-      <div key={exercise.id}>
+      <div key={exercise.id} style={{ color:"white", border: "2px solid white", borderRadius: "20px", padding: "5px", textAlign: "center", marginLeft: "25px", wordWrap: "break-word", width: "200px"}}>
         <p><u>Exercise given by PT {exercise.physical_therapist_name} </u></p>
-        <img src={exercise.gifurl} alt="exercise.gifUrl" width="150px" height="150px"/>
+        <img src={exercise.gifurl} alt="exercise.gifUrl" width="150px" height="150px" style={{borderRadius: "20px"}}/>
         <p>Name: {exercise.description}</p>
         <p>Muscle: {exercise.muscle}</p>
         <p>Equipment Needed: {exercise.equipment}</p>
@@ -204,152 +207,214 @@ function PatientDashBoard({keysToSimplyPT}) {
 
   return (
     <>
+      <br/>
+      <br/>
+
       <h1><u>Patient DashBoard</u></h1>
 
-    
-    
-
-      <h3><u>Patient User Info</u></h3>
-
-      {/* user image */}
-      <img src={image} alt="PatientPic" width="150px" height="150px"/>
-
-
-      <form onSubmit={handleSubmitUser}>
-        <label htmlFor="username">Username</label>
-        <input type="text" placeholder="Username" name="username" value={userInput.username} onChange={inputOnChangeUser}/>
-
-        <label htmlFor="name">Name</label>
-        <input type="name" placeholder="Name" name="name" value={userInput.name} onChange={inputOnChangeUser}/>
-
-        <label htmlFor="email">Email</label>
-        <input type="email" placeholder="Email" name="email" value={userInput.email} onChange={inputOnChangeUser}/>
-
-        <label htmlFor="type">Type</label>
-        <select name="type">
-          <option value="Patient">Patient</option>
-        </select>
-
-        {/* <label htmlFor="image">Image</label>
-        <input name="image" type="file" onChange={inputOnChangeUser} /> */}
-
-        <label htmlFor="profilePic">Profile Picture: <input name="profilePic" type="file" accept="image/*" onChange={(e) => setProfilePic(e.target.files[0])} /> </label>
-
-        <label htmlFor="password">Password</label>
-        <input type="password" placeholder="Password" name="password" onChange={inputOnChangeUser}/>
-
-        <label htmlFor="passwordConformation">Password Conformation</label>
-        <input type="password" placeholder="Password Confirmation" name="password_confirmation" onChange={inputOnChangeUser}/>
-
-        <button type="submit"> Edit User Info </button>
-
-      </form>
-
       <br/>
+    
+      <div style={{backgroundColor: "darkgray", width: "450px", borderTop: "2px solid rgba(255,255,255,0.1)", borderRight: "2px solid rgba(255,255,255,0.1)", borderBottom: "2px solid rgba(255,255,255,0.1)", borderRadius: "0px 20px 20px 0px", boxShadow: "0 0 40px rgba(8,7,16,0.6)", letterSpacing: "0.5px", color: "white" }}>
+        <br/>
+        <h3 style={{marginLeft: "105px"}}><u>Patient User Info</u></h3>
+        <br/>
 
-      <span>
-        {showConfirm ? (
-        <div>
-          <p>Are you sure you want to delete your account?</p>
-          <button onClick={handleDeleteUser} >Confirm</button>
-          <br/>
-          <button onClick={() => setShowConfirm(false)}>Cancel</button>
+        {/* user image */}
+        <img src={image} alt="PatientPic" width="150px" height="150px" style={{marginLeft: "130px", border: "3px solid black", padding: "5px"}}/>
+
+        <br/>
+        <br/>
+
+        {/* edit this */}
+        <span>  
+          {showConfirm ? (
+          <div>
+            <p style={{marginLeft: "35px", color: "red"}}>Are you sure you want to delete your account?</p>
+            <button onClick={handleDeleteUser} style={{marginLeft: "170px", backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px", color: "red"}}>Confirm</button>
+            <br/>
+            <br/>
+            <button onClick={() => setShowConfirm(false)} style={{marginLeft: "175px", backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}>Cancel</button>
+          </div>
+          ) : (
+          <button onClick={handleClick} style={{marginLeft: "130px", backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "40px", color: "red"}}>Delete Account</button>
+          )}
+        </span> 
+
+        <br/>
+        <br/>
+
+        <div style={{display: "flex", textAlign: "center", width: "50px"}}>
+
+          <form onSubmit={handleSubmitUser}>
+            <label htmlFor="username" style={{fontSize: "18px"}}> <b>Username:</b> <input type="text" placeholder="Username" name="username" value={userInput.username} onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+            
+
+            <label htmlFor="name" style={{fontSize: "18px"}}> <b>Name:</b> <input type="name" placeholder="Name" name="name" value={userInput.name} onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+            
+
+            <label htmlFor="email" style={{fontSize: "18px"}}> <b>Email:</b> <input type="email" placeholder="Email" name="email" value={userInput.email} onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+            
+
+            <label htmlFor="type" style={{fontSize: "18px"}}> <b>Type:</b>
+              <select name="type">
+              <option value="Patient">Patient</option>
+              </select>
+            </label> <br/> <br/>
+        
+
+            <label htmlFor="image" style={{fontSize: "18px", marginLeft: "-10px"}}> <b>Image:</b> <input name="image" type="file" accept="image/*" onChange={(e) => setProfilePic(e.target.files[0])} style={{marginLeft: "80px", backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+
+            <label htmlFor="password" style={{fontSize: "18px"}}> <b>Password:</b> <input type="password" placeholder="Password" name="password" onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+            
+            <label htmlFor="passwordConformation" style={{fontSize: "18px"}}><b>Password Conformation:</b> <input type="password" placeholder="Password Confirmation" name="password_confirmation" onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label>
+            
+            <br/>
+            <br/>
+            <button type="submit" style={{backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}> Edit User Info </button>
+            <br/>
+
+          </form>
         </div>
-        ) : (
-        <button onClick={handleClick}>Delete Account</button>
-        )}
-      </span> 
+
+        <br/> 
+        <hr style={{border: "3px solid black"}}/> 
+        <br/> 
+
+        <h3 style={{marginLeft: "110px"}}><u>Patient Profile Info</u></h3>
+        <br/>
 
 
-      <h3><u>Patient Profile Info</u></h3>
+        <div style={{display: "flex", textAlign: "center", width: "50px", marginLeft: "110px"}}>
 
-      <form onSubmit={handleSubmitProfile}>
+          <form onSubmit={handleSubmitProfile}>
 
-        <label htmlFor="dob">DOB:</label>
-        <input type="date" id="dob" name="dob" value={newProfileInput.dob} onChange={inputOnChangeProfile} />
+            <label htmlFor="dob" style={{fontSize: "18px"}}>DOB: <br/> <input type="date" id="dob" name="dob" value={newProfileInput.dob} onChange={inputOnChangeProfile} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/></label> <br/> <br/>
 
-        <label htmlFor="address">Address:</label>
-        <input type="text" placeholder="Address" id="address" name="address" value={newProfileInput.address} onChange={inputOnChangeProfile}/>
+            <label htmlFor="address" style={{fontSize: "18px"}}>Address: <input type="text" placeholder="Address" id="address" name="address" value={newProfileInput.address} onChange={inputOnChangeProfile} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
 
-        <label htmlFor="phone">Phone number:</label>
-        <input type="tel" id="phone" name="phone" value={newProfileInput.phone} onChange={inputOnChangeProfile}/>
-        <small>Format: 123-456-7890</small>
+            <label htmlFor="phone" style={{fontSize: "18px"}}>Phone number: <br/>
+              <input type="tel" id="phone" name="phone" value={newProfileInput.phone} onChange={inputOnChangeProfile} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/>
+              <small>Format: 123-456-7890</small>
+            </label> <br/> <br/>
+         
+            <fieldset data-role="controlgroup">
+            <legend>Choose your gender:</legend>
+              <label htmlFor="male" style={{fontSize: "18px"}}>Male <input type="radio" name="sex" id="male" value="male" defaultChecked={sex === "male"} onChange={inputOnChangeProfile} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> &nbsp;
+              <label htmlFor="female" style={{fontSize: "18px"}}>Female <input type="radio" name="sex" id="female" value="female" defaultChecked={sex === "female"} onChange={inputOnChangeProfile} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/></label>
+            </fieldset> <br/>
 
 
-        <fieldset data-role="controlgroup">
-        <legend>Choose your gender:</legend>
-          <label htmlFor="male">Male</label>
-          <input type="radio" name="sex" id="male" value="male" defaultChecked={sex === "male"} onChange={inputOnChangeProfile}/> 
-          <label htmlFor="female">Female</label>
-         <input type="radio" name="sex" id="female" value="female" defaultChecked={sex === "female"} onChange={inputOnChangeProfile}/>
-        </fieldset>
+            <label htmlFor="muscle_injury" style={{fontSize: "18px"}}>Muscle Injury:
 
-        <label htmlFor="muscle_injury">Muscle Injury:</label>
-        <select name="muscle_injury" value={newProfileInput.muscle_injury} onChange={inputOnChangeProfile}>
-          <option value="abductors">abductors</option>
-          <option value="abs">abs</option>
-          <option value="adductors">adductors</option>
-          <option value="biceps">biceps</option>
-          <option value="calves">calves</option>
-          <option value="cardiovascular%20system">cardiovascular system</option>
-          <option value="delts">delts</option>
-          <option value="forearms">forearms</option>
-          <option value="glutes">glutes</option>
-          <option value="hamstrings">hamstrings</option>
-          <option value="lats">lats</option>
-          <option value="levator%20scapulae">levator scapulae</option>
-          <option value="pectorals">pectorals</option>
-          <option value="quads">quads</option>
-          <option value="serratus%20anterior">serratus anterior</option>
-          <option value="spine">spine</option>
-          <option value="traps">traps</option>
-          <option value="triceps">triceps</option>
-          <option value="upper%20back">upper back</option>
-        </select>
-
-        <button>Edit Profile Info</button>
-
-      </form>
-
-      <br/>
-      <br/>
-      <br/>
-
-      <h2><u>Appointments and Visits</u></h2>
-      <button onClick={handleAppClick}>Schedule an Appointment</button>
-      {showScheduleAppointment ? <ScheduleAppointment setShowScheduleAppointment={setShowScheduleAppointment} setShowConfirmation={setShowConfirmation} givenConfirmationInfo={givenConfirmationInfo}/> : "" }
-      {showConfirmation ? <NewConfirmationInfo setShowConfirmation={setShowConfirmation} confirmationInfo={confirmationInfo}/> : "" }
+             <select name="muscle_injury" value={newProfileInput.muscle_injury} onChange={inputOnChangeProfile}  style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}>
+                <option value="abductors">abductors</option>
+                <option value="abs">abs</option>
+                <option value="adductors">adductors</option>
+                <option value="biceps">biceps</option>
+                <option value="calves">calves</option>
+                <option value="cardiovascular%20system">cardiovascular system</option>
+                <option value="delts">delts</option>
+                <option value="forearms">forearms</option>
+                <option value="glutes">glutes</option>
+                <option value="hamstrings">hamstrings</option>
+                <option value="lats">lats</option>
+                <option value="levator%20scapulae">levator scapulae</option>
+                <option value="pectorals">pectorals</option>
+                <option value="quads">quads</option>
+                <option value="serratus%20anterior">serratus anterior</option>
+                <option value="spine">spine</option>
+                <option value="traps">traps</option>
+                <option value="triceps">triceps</option>
+                <option value="upper%20back">upper back</option>
+              </select>
+            
+            </label> <br/> <br/>
       
-      <br/>
-      <br/>
 
-      <h2><u>Upcoming Visits</u></h2>
-      {/*before current date order and date order */}
-      {user.appointments.length === 0 ? <h4>No Upcoming Visits Scheduled</h4> : ""}
-      <UpcomingVisits/>
-
-
-      <br/>
-      <br/>
-      {/* <h2><u>Past Visits</u></h2> */}
-      {/* if pasted current date order */}
+            <button style={{backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}>Edit Profile Info</button>
+            
+            <br/> 
+            <br/> 
+          </form>
 
 
+        </div>
 
-      <h2><u>Physical Therapists</u></h2>
-      {user.physical_therapists.length === 0 ? <h4>No Treaments By Any Physical Therapists</h4> : ""}
 
-      {showAllPTS}
+      </div>
 
 
       <br/>
       <br/>
+      <br/>
 
-      
-      <h2><u>Exercises</u></h2>
-      {exercises.length === 0 ? <h4>0 Exercises Available</h4> : <h4>{exercises.length} Exercises Available</h4>}
-      {allExercises}
+      <div style={{display: "grid", gap: "50px", padding: "5px", marginLeft: "600px", marginTop: "-1600px"}}>
 
+        {user.physical_therapists.length === 0 ? <h4>No Treaments By Any Physical Therapists</h4> : ""}
+
+        <div style={{backgroundColor: "darkgray", borderRadius: "20px", padding: "15px", width: "50em", height: "100%", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
+          <h2 style={{color: "white"}}><u>Physical Therapists</u></h2>
+          <br/>
+
+          <HorizontalScroll reverseScroll={true}>
+            {showAllPTS}
+          </HorizontalScroll>
+
+        </div>
+        
+        <br/>
+
+
+        <div style={{backgroundColor: "darkgray", borderRadius: "20px", padding: "15px", width: "50em", height: "100%", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
+          <h2 style={{color: "white"}}><u>Exercises</u></h2>
+          <br/>
+          {exercises.length === 0 ? <h4 style={{color: "white"}}>0 Exercises Available</h4> : <h4 style={{color: "white"}}>{exercises.length} Exercises Available</h4>}
+
+          <br/>
+
+          <HorizontalScroll reverseScroll={true}>
+            {allExercises}
+          </HorizontalScroll>
+
+        </div>
+
+        <br/>
+        <br/>
+
+        <div>
+          <h2><u>Appointments and Visits</u></h2>
+          <br/>
+          <button onClick={handleAppClick} style={{backgroundColor: "#b0bec5", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>Schedule an Appointment</button>
+          {showScheduleAppointment ? <ScheduleAppointment setShowScheduleAppointment={setShowScheduleAppointment} setShowConfirmation={setShowConfirmation} givenConfirmationInfo={givenConfirmationInfo}/> : "" }
+          {showConfirmation ? <NewConfirmationInfo setShowConfirmation={setShowConfirmation} confirmationInfo={confirmationInfo}/> : "" }
+        </div>
+
+        <br/>
+
+        {/* <img src={our_clinic} alt="our_clinic" width="450px" height="250px" style={{marginLeft: "130px", borderRadius: "20px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}/> */}
+        
+
+          <div style={{backgroundColor: "darkgray", borderRadius: "20px", padding: "15px", width: "500px", height: "100%", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", marginLeft: "125px"}}>
+            <h2 style={{color: "white", textAlign: "center"}}><u>Upcoming Visits</u></h2>
+            {user.appointments.length === 0 ? <h4 style={{color: "white"}}>No Upcoming Visits Scheduled</h4> : ""}
+            <br/>
+
+              {/* <UpcomingVisits/> */}
+
+              <div style={{display: "flex", justifyContent: "space-around"}}>
+                <UpcomingVisits/>
+              </div>
+
+    
+
+          </div>
+        </div>
+
+
+
+
+      <br/>
+      <br/>
 
     </>
   );
@@ -357,3 +422,5 @@ function PatientDashBoard({keysToSimplyPT}) {
 
 
 export default PatientDashBoard;
+
+

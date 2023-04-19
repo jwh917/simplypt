@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useSelector } from "react-redux";
 import { selectUser } from "./userSlice";
 import HorizontalScroll from 'react-horizontal-scrolling'
@@ -17,28 +17,28 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, keysToSimpl
   // console.log(user.id)
 
 
-  // const [exercises, setExercises] = useState([
-  //   {bodyPart
-  //     : 
-  //     "upper legs",
-  //     equipment
-  //     : 
-  //     "body weight",
-  //     gifUrl
-  //     : 
-  //     "http://d205bpvrqc9yn1.cloudfront.net/1512.gif",
-  //     id
-  //     : 
-  //     "1512",
-  //     name
-  //     : 
-  //     "all fours squad stretch",
-  //     target
-  //     : 
-  //     "quads"}
-  // ])
+  const [exercises, setExercises] = useState([
+    {bodyPart
+      : 
+      "upper legs",
+      equipment
+      : 
+      "body weight",
+      gifUrl
+      : 
+      "http://d205bpvrqc9yn1.cloudfront.net/1512.gif",
+      id
+      : 
+      "1512",
+      name
+      : 
+      "all fours squad stretch",
+      target
+      : 
+      "quads"}
+  ])
 
-  const [exercises, setExercises] = useState([])
+  // const [exercises, setExercises] = useState([])
 
 
   const [selectedExercises, setSelectedExercises] = useState(null)
@@ -64,18 +64,18 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, keysToSimpl
   // console.log(optionsValues)
 
 
-  useEffect(() => {
+  // useEffect(() => {
 
-  fetch(`https://exercisedb.p.rapidapi.com/exercises/target/${muscleInjury}`, optionsValues)
-  .then(response => response.json())
-  .then(response => {
-    console.log(response)
-    setExercises(response)
-    window.scrollBy(0, 500);
-  })
-  .catch(err => console.error(err));
+  // fetch(`https://exercisedb.p.rapidapi.com/exercises/target/${muscleInjury}`, optionsValues)
+  // .then(response => response.json())
+  // .then(response => {
+  //   console.log(response)
+  //   setExercises(response)
+  //   window.scrollBy(0, 500);
+  // })
+  // .catch(err => console.error(err));
         
-  }, [muscleInjury, optionsValues]);
+  // }, [muscleInjury, optionsValues]);
 
 
   // fetch
@@ -84,9 +84,20 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, keysToSimpl
     setShowExerciseForm(false)
   }
 
+  const ref = useRef(null);
+  // console.log(ref)
+
+
   function exceriseInfo(exercise){
     setSelectedExercises(exercise)
+
   }
+
+  useEffect(() => {
+    // scroll to bottom every time selectedExercises change
+    ref.current?.scrollIntoView({behavior: 'smooth'});
+  }, [selectedExercises]);
+
 
   // console.log(exercises)
   // console.log(exercises.slice(0, 10))
@@ -169,7 +180,7 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, keysToSimpl
     <div>
             
       <h3 style={{marginLeft: "5px"}}><u>Exercises</u></h3>
-      <button onClick={closeExerciseForm} style={{marginLeft: "45px", borderRadius: "3px"}}>X</button>
+      <button onClick={closeExerciseForm} style={{marginLeft: "45px", backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "40px"}}>X</button>
       <br/>
       <br/>
       
@@ -187,18 +198,18 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, keysToSimpl
 
       {selectedExercises ?
 
-      <div style={{textAlign: "center"}}>
+      <div  style={{textAlign: "center", fontSize: "18px"}}>
 
-        <form onSubmit={exerciseSubmit}>
+        <form ref={ref} onSubmit={exerciseSubmit}>
           <h3><u>Assign Patient Exercise Form</u></h3>
 
-          <label htmlFor="description" style={{fontSize: "18px"}}>Description: <input type="description" readOnly value={selectedExercises.name} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/></label> <br/><br/>
+          <label htmlFor="description">Description: <input type="description" readOnly value={selectedExercises.name} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/></label> <br/><br/>
           
 
-          <label htmlFor="equipment" style={{fontSize: "18px"}}>Equipment: <input type="equipment" readOnly value={selectedExercises.equipment} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/></label> <br/><br/>
+          <label htmlFor="equipment">Equipment: <input type="equipment" readOnly value={selectedExercises.equipment} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/></label> <br/><br/>
           
 
-          <label htmlFor="muscle" style={{fontSize: "18px"}}>Muscle: <input type="muscle" readOnly value={selectedExercises.target} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/></label> <br/><br/>
+          <label htmlFor="muscle">Muscle: <input type="muscle" readOnly value={selectedExercises.target} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/></label> <br/><br/>
           
 
           <button style={{ fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}>Submit To Patient</button>

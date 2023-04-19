@@ -40,14 +40,16 @@ function UpcomingVisits() {
     const uniqueNames = [...new Set(ptName)];
 
     return (
-      <section key={appt.id}>
-        <h2>______________</h2>
+      <section key={appt.id} style={{color: "white", textAlign: "center"}}>
+        <br/>
         <h4>PT Treatment</h4>
         <h4>{appt.date}</h4>
         <h4>Starts at: {appt.time}</h4>
         <h4>Duration: 1 hr</h4>
         <h4>Physical Therapist: {uniqueNames}</h4>
-        <button value={appt.id} name={appt.physical_therapist_id} onClick={handleDeleteAppointment}>🗑</button>
+        <button value={appt.id} name={appt.physical_therapist_id} onClick={handleDeleteAppointment} style={{backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "40px"}}>🗑</button>
+        <h2>______________</h2>
+        <br/>
       </section>
     )
 

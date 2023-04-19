@@ -65,25 +65,22 @@ function ScheduleAppointment({setShowScheduleAppointment, setShowConfirmation, g
     <div>
       
       <br/>
+      <br/>
 
-      <button onClick={handleScheduleAppClose}>
+
+      <button onClick={handleScheduleAppClose} style={{marginLeft: "5px", backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "40px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
         X
       </button>
 
       <br/>
       <br/>
-
-      Physical Therapists
-
-      <br/>
       <br/>
 
       {allPTs.map((pt) => (
-        <button key={pt.id} name={pt.name}onClick={handlePTInfo}>
-          <img name={pt.name} style={{height:"100px", width:"100px"}} src={pt.image} alt="pt" />
-          <br/>
+        <button key={pt.id} name={pt.name}onClick={handlePTInfo} style={{marginLeft: "30px", borderRadius: "10px"}}>
           {pt.name}
           <br/>
+          <img name={pt.name} style={{height:"100px", width:"100px", borderRadius: "10px"}} src={pt.image} alt="pt" />
           <br/>
           Physical Therapist
           <br/>
