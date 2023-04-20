@@ -10,9 +10,7 @@ import our_clinic from './our_clinic.png';
 
 function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
 
-
   const dispatch = useDispatch();
-
 
   useEffect(() => {
 
@@ -20,30 +18,10 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
         
   }, [dispatch]);
 
-  // const [patientProfiles, setPatientProfiles] = useState([])
-
-  // useEffect(() => {
-
-  //   fetch("/patient_profiles").then((res) => {
-  //     if (res.ok) {
-  //       res.json().then((profiles) => setPatientProfiles(profiles));
-  //     }
-  //   });
-
-    
-  // }, []);
-
-  // console.log(patientProfiles)
 
   const user = useSelector(selectUser);
 
   const userErrors = useSelector(selectErrors);
-
-  // console.log(user)
-  // console.log(user.appointments)
-  // console.log(user.patients)
-
-  // const dispatch = useDispatch();
 
   const {username, name, email, image} = user
 
@@ -62,22 +40,18 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
   function inputOnChangeUser(e) {
     const name = e.target.name;
     const value = e.target.value;
-    // console.log(name)
-    // console.log(value)
+
     setUserInput({
       ...userInput, //spreading the userInput
       [name]: value, //inserting the name and value the user typed in
     });
-    // e.target.reset();
   }
 
 
   function handleSubmitUser(e) {
     e.preventDefault();
 
-    // dispatch(userUpdate(userInput));
-
-    if (userInput.image !== profilePic){
+    if (profilePic !== ""){
 
       const data = new FormData()
       data.append("file", profilePic)
@@ -90,19 +64,15 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
         })
         .then(resp => resp.json())
         .then(data => {
-          // console.log(data)
-        // setUrl(data.url)
-        // setUserInput(
-        //   {...userInput, image: data.url}
-        //   )
-          dispatch(userUpdate({...userInput, image: data.url}));
+          dispatch(userUpdate({...userInput, image: data.url}))
+          alert("User Info Has Been Updated")
         })
         .catch(err => console.log(err))
     }
     else {
-      dispatch(userUpdate(userInput));
+      dispatch(userUpdate(userInput))
+      alert("User Info Has Been Updated")
     }
-
   }
 
 
@@ -120,17 +90,10 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
   ))
 
 
-
-  // console.log(appointmentInfo)
-
   const [showExerciseForm, setShowExerciseForm] = useState(false)
 
   const [patientId, setPatientId] = useState(0)
   const [muscleInjury, setMuscleInjury] = useState("")
-
-  // state for 
-  // patient id
-  // muscle injury
  
 
   function assignExercises(e){
@@ -142,14 +105,8 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
 
   const appointmentInfo = useSelector((state) => state.appointments.entities);
 
-  // console.log(appointmentInfo)
-
   const showInfo = appointmentInfo.filter(pts => pts.physical_therapist_id === user.id);
 
-  // console.log(showInfo)
-
-
-  // appts but yea
   function removeDuplicates(patients) {
       const uniqueIds = new Set();
       const uniquePatients = [];
@@ -162,14 +119,8 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
       return uniquePatients;
     }
 
-  // console.log(removeDuplicates(showInfo))
-
-  
-
-  // calcuate age
 
   const showAllPatientsInfo = removeDuplicates(showInfo).map((patientInfo) => {
-    // console.log(patient)
     return(
     <div key={patientInfo.patient_id} className="dashBoard" style={{ borderRadius: "20px", padding: "5px", textAlign: "center", marginLeft: "50px", width: "300px"}}>
       <div style={{ border: "2px solid rgba(255,255,255,0.1)", borderRadius: "20px", boxShadow: "0 0 10px rgba(8,7,16,0.6)"}}>
@@ -192,10 +143,8 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
         <br/>
 
       </div>
-      {/* opens up excerises from api  */}
-      {/* PT pick one and it is posted/created for a patient */}
     </div>
-  )
+    )
 
   })
 
@@ -215,7 +164,6 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
         <h3 style={{marginLeft: "70px"}}><u>Physical Therapist Info</u></h3>
         <br/>
 
-        {/* user image */}
         <img src={image} alt="TherapistPic" width="150px" height="150px" style={{marginLeft: "130px", border: "3px solid black", padding: "5px"}}/>
         <br/>
         <br/>
@@ -256,21 +204,17 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
           </form>
         </div>
 
-
-
       </div>
-
-
 
       <br/>
       <br/>
 
       <div style={{display: "grid", gap: "50px", padding: "5px", marginLeft: "600px", marginTop: "-650px"}}>
 
-        {user.appointments.length === 0 ? <h4>No Appointments Schedule</h4> : ""}
-
         <div style={{backgroundColor: "darkgray", borderRadius: "20px", padding: "15px", width: "50em", height: "110%", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
           <h2 style={{color: "white"}}><u>Appointments</u></h2>
+          {user.appointments.length === 0 ? <h4 style={{color: "white"}}>No Appointments Schedule</h4> : ""}
+
           <br/>
 
           <HorizontalScroll reverseScroll={true}>
@@ -289,12 +233,11 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
       <br/>     
 
       <h2 style={{textAlign: "center"}}><u>Patients</u></h2>
+      {user.patients.length === 0 ? <h4 style={{textAlign: "center"}}>No Patients Have Appointments</h4> : ""}
+
 
       <br/>
       <br/>
-
-
-      {user.patients.length === 0 ? <h4>No Patients Have Appointments</h4> : ""}
 
       <div style={{display: "flex", justifyContent: "space-around"}}>
 
@@ -304,14 +247,11 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
 
       </div>
   
-
       <br/>
       <br/>
       <br/>
 
       {showExerciseForm ? <ExerciseForm patientId={patientId} muscleInjury={muscleInjury} setShowExerciseForm={setShowExerciseForm} keysToSimplyPT={keysToSimplyPT}/> : " "}
-      
-
       
     </>
   );

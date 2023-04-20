@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function ItemCard({items, handleItemClick, togglePopUp}) {
-  // console.log(items)
 
   const {itemUrl, name, color, price} = items
 

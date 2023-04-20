@@ -1,20 +1,19 @@
 Rails.application.routes.draw do
-  
-  resources :patient_profiles
-  resources :exercises
-  resources :appointments
-  resources :patients
-  resources :physical_therapists
-  resources :comp_users
 
 
+  resources :appointments, only: [:index, :create, :destroy]
+
+  resources :comp_users, only: [:create, :show, :update, :destroy]
+
+  resources :exercises, only: [:create]
+
+  resources :patient_profiles, only: [:index, :show, :create, :update]
+
+  resources :patients, only: [:create, :update, :destroy]
+
+  resources :physical_therapists, only: [:index]
 
   get "/keysToSimplyPT", to: "comp_users#keysToSimplyPT"
-
-  # Destroy Later!
-  get "/all_comp_users", to: "comp_users#all"
-
-  
 
   post "/signup", to: "comp_users#create"
 
@@ -23,7 +22,6 @@ Rails.application.routes.draw do
   patch "/me", to: "comp_users#update"
 
   delete "/me", to: "comp_users#destroy"
-
 
   post "/login", to: "sessions#create"
 

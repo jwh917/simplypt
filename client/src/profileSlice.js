@@ -1,9 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-// CRUD
-// user
-// ...user.profile 
-// initialState
 
 export const profileCreate = createAsyncThunk("profile/create", (newProfile) =>
   fetch("/patient_profiles", {
@@ -44,7 +40,6 @@ const profileSlice = createSlice({
     },
     [fetchProfiles.fulfilled](state, action) {
       state.entities = action.payload;
-      // state.status = "idle";
     },
   },
 });

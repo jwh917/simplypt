@@ -33,18 +33,11 @@ function NewPatientSignInPage(){
   }, []);
 
 
-
-    // console.log(uploadPreset)
-    // console.log(cloudName)
-
   if (!user) return <Login/>;
 
-  // user is a Patient
   if (user.type === "Patient" && user.patient_profile === null) return <ProfileForm/>
 
-  // console.log(user)
-  // depending on user type depends on the dashboard they will get either patients or pt ... in future - admin
-
+  // Depending on user type will determine the dashboard they will get either patients or pt ... in future - admin
 
   // Patient DashBoard
   // PhysicalTherapist DashBoard
@@ -65,7 +58,7 @@ function NewPatientSignInPage(){
         // eslint-disable-next-line
         break;
       case "Administrator":
-        console.log("Administrator");
+        // console.log("Administrator");
         // Administrator DashBoard
         break;
       default:

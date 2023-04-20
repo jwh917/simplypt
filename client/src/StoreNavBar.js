@@ -14,7 +14,6 @@ const linkStyles = {
   borderRadius: "20px"
 };
 
-// style={{color: "black"}}
 
 function StoreNavBar() {
 

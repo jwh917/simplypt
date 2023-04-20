@@ -6,47 +6,11 @@ import HorizontalScroll from 'react-horizontal-scrolling'
 
 function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, keysToSimplyPT}) {
 
-
-  // console.log(patientId)
-  // console.log(muscleInjury)
-  // console.log(exerciseKey)
-  
-
   const user = useSelector(selectUser);
-  // console.log(user)
-  // console.log(user.id)
 
-
-  const [exercises, setExercises] = useState([
-    {bodyPart
-      : 
-      "upper legs",
-      equipment
-      : 
-      "body weight",
-      gifUrl
-      : 
-      "http://d205bpvrqc9yn1.cloudfront.net/1512.gif",
-      id
-      : 
-      "1512",
-      name
-      : 
-      "all fours squad stretch",
-      target
-      : 
-      "quads"}
-  ])
-
-  // const [exercises, setExercises] = useState([])
-
+  const [exercises, setExercises] = useState([])
 
   const [selectedExercises, setSelectedExercises] = useState(null)
-
-
-  
-  // const memoObj = React.useMemo(() => { return { bar: 'foo' } }, [])
-  // const someValue = useMemo(() => ({ value: options }))
   
   const optionsValues = useMemo(() => {
     const options = {
@@ -61,32 +25,24 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, keysToSimpl
  }, [keysToSimplyPT.exercise_key])
  
 
-  // console.log(optionsValues)
+  useEffect(() => {
 
-
-  // useEffect(() => {
-
-  // fetch(`https://exercisedb.p.rapidapi.com/exercises/target/${muscleInjury}`, optionsValues)
-  // .then(response => response.json())
-  // .then(response => {
-  //   console.log(response)
-  //   setExercises(response)
-  //   window.scrollBy(0, 500);
-  // })
-  // .catch(err => console.error(err));
+  fetch(`https://exercisedb.p.rapidapi.com/exercises/target/${muscleInjury}`, optionsValues)
+  .then(response => response.json())
+  .then(response => {
+    setExercises(response)
+    window.scrollBy(0, 500);
+  })
+  .catch(err => console.error(err));
         
-  // }, [muscleInjury, optionsValues]);
+  }, [muscleInjury, optionsValues]);
 
 
-  // fetch
-  // set state for exercises after
   function closeExerciseForm(){
     setShowExerciseForm(false)
   }
 
   const ref = useRef(null);
-  // console.log(ref)
-
 
   function exceriseInfo(exercise){
     setSelectedExercises(exercise)
@@ -99,8 +55,6 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, keysToSimpl
   }, [selectedExercises]);
 
 
-  // console.log(exercises)
-  // console.log(exercises.slice(0, 10))
 
   const showExerciseChoice = exercises.map((exercise) => {
     return(
@@ -110,26 +64,10 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, keysToSimpl
       <img src={exercise.gifUrl} alt="exercise.gifUrl" width="150px" height="150px"/>
       <p>Name: {exercise.name}</p>
       <p>Target: {exercise.target}</p>
-      {/* opens up excerises from api  */}
-      {/* PT pick one and it is posted/created for a patient */}
     </button>
     )
 
   })
-
-  console.log(selectedExercises)
-  
-  // show exercises in buttons
-  // clicking of a button will populate form to be submited
-
-  // t.integer "patient_id"
-  // t.integer "physical_therapist_id"
-  // t.string "description"
-  // t.datetime "created_at", precision: 6, null: false
-  // t.datetime "updated_at", precision: 6, null: false
-  // t.string "muscle"
-  // t.string "equipment"
-  // t.string "gifurl"
 
   function exerciseSubmit(e){
     e.preventDefault();
@@ -144,8 +82,6 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, keysToSimpl
       gifurl: selectedExercises.gifUrl
     }
 
-    console.log(newExerciseInfo)
-
     fetch("/exercises", {
       method: "POST",
       headers: {
@@ -155,24 +91,17 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, keysToSimpl
     })
     .then((r) => {
       if (r.ok) {
-        r.json().then((newExerciseInfo) => console.log(newExerciseInfo));
+        r.json().then((newExerciseInfo) => 
+        console.log(newExerciseInfo))
+        alert("Patient Has Been Assigned An Exercise")
+
       } 
-      // Succesful - the exercise has been assinged MESSAGE or NOTIFCATION*
-      // else {
-      //   r.json().then((err) => {
-      //     setErrors(err.errors)});
-      // }
+      else {
+        r.json().then((err) => console.log(err.errors));
+      }
     })
-    // event.target.reset()
+
     setShowExerciseForm(false)
-
-    // emailjs.send("service_l9nkl0m", "template_7rghcj9", newExerciseInfo, "YjGIlb4l4IW5VXFDe")
-    // .then(res => {
-    //   console.log("Success", res)
-    // }, error => {
-    //   console.log("Failed...", error)
-    // })
-
   }
   
 
@@ -184,17 +113,12 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, keysToSimpl
       <br/>
       <br/>
       
-      {/* buttons */}
       <HorizontalScroll reverseScroll={true}>
         {showExerciseChoice.slice(0, 35)}
       </HorizontalScroll>
 
-
-
       <br/>
       <br/>
-      {/* form */}
-
 
       {selectedExercises ?
 
@@ -217,8 +141,6 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, keysToSimpl
         </form>
         
       </div>
-
-
 
        : ""}
        <br/>

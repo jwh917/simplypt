@@ -24,12 +24,6 @@ class PatientProfilesController < ApplicationController
       patient_profile.update(pat_pro_params)
       render json: patient_profile
     end 
-    
-    def destroy
-      patient_profile = find_pat_pro
-      patient_profile.destroy
-      head :no_content
-    end
   
     private
   

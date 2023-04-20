@@ -154,12 +154,14 @@ function StoreMyCartPage(){
 
     afterCheckOut(myCart)
 
+    alert("Your Purchase Has Been Completed, Thank You For Shopping With Us!")
+
     history.push("/")
   }
   
   return (
     <>
-      {/* StoreMyCartPage 🛒 */}
+{/* StoreMyCartPage 🛒 */}
      <br/>
      <br/>
      <br/>

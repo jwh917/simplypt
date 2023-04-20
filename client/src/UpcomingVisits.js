@@ -16,15 +16,15 @@ function UpcomingVisits() {
     const apptId = parseInt(e.target.value) 
     const ptId = parseInt(e.target.name)
 
-    // user function
     dispatch(deleteAppointment(apptId));
 
-    // delete request
     dispatch(appointmentDelete(apptId));
 
     if(user.appointments.filter((appt) => (appt.physical_therapist_id === ptId)).length === 1){
       dispatch(deletePhysicalTherapist(ptId));
     }
+
+    alert("Appointment Has Been Cancelled")
 
   }
 

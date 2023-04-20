@@ -21,7 +21,6 @@ const linkStyles = {
 function NavBar() {
 
   const user = useSelector(selectUser);
-  // console.log(user)
 
   return (
     <div id="navBar">
@@ -100,7 +99,6 @@ function NavBar() {
 
       </ul>
 
-      {/* <hr/> */}
     </div>
   );
 }

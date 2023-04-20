@@ -2,7 +2,6 @@ import React from "react";
 
 
 function NewConfirmationInfo({setShowConfirmation, confirmationInfo}) {
-  // console.log(confirmationInfo)
 
   function closeConfirmation(){
     setShowConfirmation(false)
@@ -46,10 +45,6 @@ function NewConfirmationInfo({setShowConfirmation, confirmationInfo}) {
       </ul>
 
       An email will be sent with your confirmation information.
-      {/* *** */}
-      {/* signs */}
-      {/* pictures */}
-      {/* gifs */}
       
     </div>
   );

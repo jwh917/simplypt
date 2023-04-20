@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser, addAppointment, addPhysicalTherapist } from "./userSlice";
-// import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 
 
 
 function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShowConfirmation , givenConfirmationInfo, keysToSimplyPT, appointmentInfo, setAppointmentInfo}) {
-
-  console.log(physicalTherapist)
 
   const dispatch = useDispatch();
 
@@ -15,33 +13,9 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
 
   const [errors, setErrors] = useState([]);
 
-  // console.log(user)
-  // console.log(errors)
-
-  // const allPTs = useSelector((state) => state.pts.entities);
-
-  // const selectedPT = allPTs.find((pt) => pt.name === physicalTherapist)
-
-  // console.log(selectedPT)
-
-
-
-  // const [appointmentInfo, setAppointmentInfo] = useState({
-  //   patient_id: user.id,
-  //   physical_therapist_id: physicalTherapist.id,
-  //   date: "",
-  //   time: "9 am",
-  // });
-
-  console.log(appointmentInfo)
-
-
   function appointmentChange(e) {
     const name = e.target.name;
     const value = e.target.value;
-
-    // console.log(name)
-    // console.log(value)
 
     setAppointmentInfo({
       ...appointmentInfo,
@@ -67,8 +41,6 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
       time: appointmentInfo.time
     }
 
-    console.log(newConfirmationInfo)
-
     fetch("/appointments", {
       method: "POST",
       headers: {
@@ -82,15 +54,13 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
           dispatch(addPhysicalTherapist(physicalTherapist))
           setShowScheduleAppointment(false)
           setShowConfirmation(true)
-          // e.target.reset();
-          // givenConfirmationInfo(newConfirmationInfo)
 
-          // emailjs.send(`${keysToSimplyPT.email_service}`, "template_kvqnewo", newConfirmationInfo, `${keysToSimplyPT.email_key}`)
-          //   .then(res => {
-          //     console.log("Success", res)
-          //   }, error => {
-          //     console.log("Failed...", error)
-          //   })
+          emailjs.send(`${keysToSimplyPT.email_service}`, "template_kvqnewo", newConfirmationInfo, `${keysToSimplyPT.email_key}`)
+            .then(res => {
+              console.log("Success", res)
+            }, error => {
+              console.log("Failed...", error)
+            })
         
           
         })
@@ -98,8 +68,6 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
           r.json().then((err) => {
             console.log(err)
             setErrors(err.error)
-            // e.target.reset();
-
           });
         }
 
@@ -107,9 +75,6 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
     
     );
 
-    // dispatch(addPhysicalTherapist(selectedPT))
-    // setShowScheduleAppointment(false)
-    // setShowConfirmation(true)
     givenConfirmationInfo(newConfirmationInfo)
 
   };
@@ -120,7 +85,6 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
   return (
 
     <div style={{textAlign: "center", fontSize: "18px", marginLeft: "-90px"}}>
-      {/* Appointment times already booked */}
       <br/>
       <h2>Fill Out Appointment Form</h2>
       <br/>
@@ -134,7 +98,6 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
         <label htmlFor="date">Date: <input type="date" name="date" min={today} onChange={appointmentChange} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/></label>
         
         <br/>
-          {/* Show current date no appointments show next date and already taken appointments on that day and disable the time on time options -  */}
         <br/>
 
         <label htmlFor="time">Time:

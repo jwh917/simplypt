@@ -24,7 +24,6 @@ export const userSignup = createAsyncThunk("user/signup", (userInput) =>
   }).then((res) => res.json())
 );
 
-// USER PATCH
 export const userUpdate = createAsyncThunk("user/update", (user) =>
   fetch("/me", {
     method: "PATCH",
@@ -33,8 +32,6 @@ export const userUpdate = createAsyncThunk("user/update", (user) =>
   }).then((res) => res.json())
 );
 
-
-// DELETE USER
 export const deleteUser = createAsyncThunk("user/delete", () =>
   fetch("/me", {
     method: "DELETE",

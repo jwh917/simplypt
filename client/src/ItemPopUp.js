@@ -42,12 +42,10 @@ function ItemPopUp({togglePopUp, isOpen, itemDisplayed}) {
       body: JSON.stringify(newCartItem),
     })
       .then((r) => r.json())
-      .then((newCartItemData) => {
-        console.log(newCartItemData)
-        togglePopUp()
-      });
+      .then((newCartItemData) => togglePopUp())
 
-  
+      alert("Item Has Been Added To The Cart")
+
 
   }
 

@@ -10,8 +10,6 @@ function ProfileForm() {
 
   const user = useSelector(selectUser);
 
-  // console.log(user)
-
   const [newProfileInput, setNewProfileInput] = useState({
     patient_id: user.id,
     dob: "",
@@ -21,26 +19,21 @@ function ProfileForm() {
     muscle_injury: ""
   });
 
-  // console.log(newProfileInput)
 
 
   function inputOnChange(e) {
     const name = e.target.name;
     const value = e.target.value;
-    // console.log(name)
-    // console.log(value)
+
     setNewProfileInput({
       ...newProfileInput, //spreading the newProfileInput
       [name]: value, //inserting the name and value the user typed in
     });
 
-
-    // e.target.reset();
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    // console.log(newProfileInput)
     dispatch(addProfile(newProfileInput));
     dispatch(profileCreate(newProfileInput));
 

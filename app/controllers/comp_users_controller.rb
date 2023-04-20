@@ -3,12 +3,6 @@ class CompUsersController < ApplicationController
 
   skip_before_action :authorize, only: [:create, :keysToSimplyPT]
 
-
-  def all
-    comp_users = CompUser.all
-    render json: comp_users
-  end
-
   def create
     user = CompUser.create!(compuser_params)
     session[:user_id] = user.id

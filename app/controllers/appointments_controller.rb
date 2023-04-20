@@ -1,27 +1,12 @@
 class AppointmentsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
-    # CRUD
-    # login/logout
-    # error messsages
 
     def index
       appointments = Appointment.all
       render json: appointments
     end
-
-    def show
-      appointment = find_app
-      render json: appointment
-    end
   
-    # def create
-    #   appointment = Appointment.create!(app_params)
-    #   render json: appointment, status: :created
-    # end
-
-    # show error message and stop confirmation, add Upcoming Visits and Physical Therapists
-
     def create 
       appointment = Appointment.new(app_params)
 
@@ -39,13 +24,6 @@ class AppointmentsController < ApplicationController
 
       end
     end
-
-  
-    def update
-      appointment = find_app
-      appointment.update(app_params)
-      render json: appointment
-    end 
   
     def destroy
       appointment = find_app

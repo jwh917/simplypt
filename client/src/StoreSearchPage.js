@@ -31,7 +31,6 @@ function StoreSearchPage(){
 
   }, []);
 
-  // search bar
 
   const [catorgey, setCatorgey] = useState('All');
 
@@ -98,10 +97,6 @@ function StoreSearchPage(){
 
   }
 
-
-// search container
-// console.log(catorgey)
-// const allItems = [...braces, ...exercise, ...rollers, ...hotncold]
 
 
 const searchedItems = allItems.filter((item) => item.name.toLowerCase().includes(searchInput.toLowerCase())).sort((item1, item2) => helpSort(sortLowHigh, sortHighLow, item1, item2))

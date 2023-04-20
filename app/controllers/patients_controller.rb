@@ -1,19 +1,5 @@
 class PatientsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-
-    # CRUD
-    # login/logout
-    # error messsages
-
-    def index
-      patients = Patient.all
-      render json: patients
-    end
-
-    def show
-      patient = find_pat
-      render json: patient
-    end
   
     def create
       patient = Patient.create!(pat_params)

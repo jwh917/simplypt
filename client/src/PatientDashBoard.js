@@ -23,12 +23,6 @@ function PatientDashBoard({keysToSimplyPT}) {
   }, [dispatch]);
 
 
-  // console.log(user)
-  // console.log(uploadPreset.upload_preset)
-  // console.log(cloudName.cloud_name)
-
-  // console.log(user.appointments)
-
   const {username, name, email, image} = user
 
   const {id, dob, address, phone, sex, muscle_injury} = user.patient_profile
@@ -60,19 +54,16 @@ function PatientDashBoard({keysToSimplyPT}) {
     image: image
   });
 
-    // console.log(userInput)
 
 
   function inputOnChangeUser(e) {
     const name = e.target.name;
     const value = e.target.value;
-    // console.log(name)
-    // console.log(value)
+
     setUserInput({
       ...userInput, //spreading the userInput
       [name]: value, //inserting the name and value the user typed in
     });
-    // e.target.reset();
   }
 
 
@@ -86,14 +77,12 @@ function PatientDashBoard({keysToSimplyPT}) {
     muscle_injury: muscle_injury
   });
 
-  // console.log(newProfileInput)
 
 
   function inputOnChangeProfile(e) {
     const name = e.target.name;
     const value = e.target.value;
-    // console.log(name)
-    // console.log(value)
+
     setNewProfileInput({
       ...newProfileInput, //spreading the newProfileInput
       [name]: value, //inserting the name and value the user typed in
@@ -104,7 +93,7 @@ function PatientDashBoard({keysToSimplyPT}) {
   function handleSubmitUser(e) {
     e.preventDefault();
 
-    if (userInput.image !== profilePic){
+    if (profilePic !== ""){
 
       const data = new FormData()
       data.append("file", profilePic)
@@ -117,39 +106,29 @@ function PatientDashBoard({keysToSimplyPT}) {
         })
         .then(resp => resp.json())
         .then(data => {
-          // console.log(data)
-        // setUrl(data.url)
-        // setUserInput(
-        //   {...userInput, image: data.url}
-        //   )
-          dispatch(userUpdate({...userInput, image: data.url}));
+          dispatch(userUpdate({...userInput, image: data.url}))
+          alert("User Info Has Been Updated")
         })
         .catch(err => console.log(err))
     }
     else {
-      dispatch(userUpdate(userInput));
+      dispatch(userUpdate(userInput))
+      alert("User Info Has Been Updated")
     }
-
   }
 
   function handleSubmitProfile(e) {
     e.preventDefault();
-    
     dispatch(profileUpdate(newProfileInput));
 
+    alert("User Profile Info Has Been Updated")
   }
 
-
-  // const allPTs = user.physical_therapists.map
-
-  // {user.physicaltherapists}
-  // const allPTs = [...new Set(user.physical_therapists)]; 
 
   const allPTs = Array.from(new Set(user.physical_therapists.map(a => a.id))).map(id => {
     return user.physical_therapists.find(a => a.id === id)
   })
 
-  // console.log(allPTs)
   const showAllPTS = allPTs.map((pt) => (
     <div key={pt.id} className="dashBoard" style={{color: "white", border: "2px solid rgba(255,255,255,0.1)", textAlign: "center", borderRadius: "20px", padding: "10px", marginLeft: "20px"}}>
       <p><u>Name:</u> {pt.name}</p>
@@ -161,13 +140,10 @@ function PatientDashBoard({keysToSimplyPT}) {
   ))
 
   
-  // console.log(user.exercises)
-
   const exercises = Array.from(new Set(user.exercises.map(obj => obj.name))).map(name => {
     return user.exercises.find(obj => obj.name === name);
   });
 
-  // console.log(exercises)
 
   const allExercises = exercises.map((exercise) => {
     return (
@@ -183,10 +159,7 @@ function PatientDashBoard({keysToSimplyPT}) {
   })
 
 
-  // DELETE USER
-
   const [showConfirm, setShowConfirm] = useState(false);
-
 
   const handleClick = () => {
     setShowConfirm(true);
@@ -194,15 +167,9 @@ function PatientDashBoard({keysToSimplyPT}) {
 
 
   function handleDeleteUser() {
-
     dispatch(userLogout());
-
     dispatch(deleteUser());    
-
   }
-
-
-  // Appointments
 
 
   return (
@@ -219,13 +186,11 @@ function PatientDashBoard({keysToSimplyPT}) {
         <h3 style={{marginLeft: "105px"}}><u>Patient User Info</u></h3>
         <br/>
 
-        {/* user image */}
         <img src={image} alt="PatientPic" width="150px" height="150px" style={{marginLeft: "130px", border: "3px solid black", padding: "5px"}}/>
 
         <br/>
         <br/>
 
-        {/* edit this */}
         <span>  
           {showConfirm ? (
           <div>
@@ -260,7 +225,6 @@ function PatientDashBoard({keysToSimplyPT}) {
               <option value="Patient">Patient</option>
               </select>
             </label> <br/> <br/>
-        
 
             <label htmlFor="image" style={{fontSize: "18px", marginLeft: "-10px"}}> <b>Image:</b> <input name="image" type="file" accept="image/*" onChange={(e) => setProfilePic(e.target.files[0])} style={{marginLeft: "80px", backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
 
@@ -283,7 +247,6 @@ function PatientDashBoard({keysToSimplyPT}) {
         <h3 style={{marginLeft: "110px"}}><u>Patient Profile Info</u></h3>
         <br/>
 
-
         <div style={{display: "flex", textAlign: "center", width: "50px", marginLeft: "110px"}}>
 
           <form onSubmit={handleSubmitProfile}>
@@ -302,7 +265,6 @@ function PatientDashBoard({keysToSimplyPT}) {
               <label htmlFor="male" style={{fontSize: "18px"}}>Male <input type="radio" name="sex" id="male" value="male" defaultChecked={sex === "male"} onChange={inputOnChangeProfile} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> &nbsp;
               <label htmlFor="female" style={{fontSize: "18px"}}>Female <input type="radio" name="sex" id="female" value="female" defaultChecked={sex === "female"} onChange={inputOnChangeProfile} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/></label>
             </fieldset> <br/>
-
 
             <label htmlFor="muscle_injury" style={{fontSize: "18px"}}>Muscle Injury:
 
@@ -330,19 +292,15 @@ function PatientDashBoard({keysToSimplyPT}) {
             
             </label> <br/> <br/>
       
-
             <button className="buttonEffect" style={{backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}>Edit Profile Info</button>
             
             <br/> 
             <br/> 
           </form>
 
-
         </div>
 
-
       </div>
-
 
       <br/>
       <br/>
@@ -350,11 +308,11 @@ function PatientDashBoard({keysToSimplyPT}) {
 
       <div style={{display: "grid", gap: "50px", padding: "5px", marginLeft: "600px", marginTop: "-1600px"}}>
 
-        {user.physical_therapists.length === 0 ? <h4>No Treaments By Any Physical Therapists</h4> : ""}
-
         <div style={{backgroundColor: "darkgray", borderRadius: "20px", padding: "15px", width: "50em", height: "100%", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
           <h2 style={{color: "white"}}><u>Physical Therapists</u></h2>
           <br/>
+          {user.physical_therapists.length === 0 ? <h4 style={{color: "white"}}>No Treaments By Any Physical Therapists</h4> : ""}
+
 
           <HorizontalScroll reverseScroll={true}>
             {showAllPTS}
@@ -363,7 +321,6 @@ function PatientDashBoard({keysToSimplyPT}) {
         </div>
         
         <br/>
-
 
         <div style={{backgroundColor: "darkgray", borderRadius: "20px", padding: "15px", width: "50em", height: "100%", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
           <h2 style={{color: "white"}}><u>Exercises</u></h2>
@@ -390,28 +347,18 @@ function PatientDashBoard({keysToSimplyPT}) {
         </div>
 
         <br/>
-
-        {/* <img src={our_clinic} alt="our_clinic" width="450px" height="250px" style={{marginLeft: "130px", borderRadius: "20px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}/> */}
-        
-
+  
           <div style={{backgroundColor: "darkgray", borderRadius: "20px", padding: "15px", width: "500px", height: "100%", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", marginLeft: "125px"}}>
             <h2 style={{color: "white", textAlign: "center"}}><u>Upcoming Visits</u></h2>
             {user.appointments.length === 0 ? <h4 style={{color: "white"}}>No Upcoming Visits Scheduled</h4> : ""}
             <br/>
 
-              {/* <UpcomingVisits/> */}
-
               <div style={{display: "flex", justifyContent: "space-around"}}>
                 <UpcomingVisits/>
               </div>
 
-    
-
           </div>
         </div>
-
-
-
 
       <br/>
       <br/>

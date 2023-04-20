@@ -20,11 +20,9 @@ function ScheduleAppointment({setShowScheduleAppointment, setShowConfirmation, g
   
   const [physicalTherapist, setPhysicalTherapist] = useState("");
 
-  // console.log(physicalTherapist)
 
   const handleScheduleAppClose = () => {
     setShowScheduleAppointment(false);
-    // or !==
   };
 
   const allPTs = useSelector((state) => state.pts.entities);
@@ -35,8 +33,6 @@ function ScheduleAppointment({setShowScheduleAppointment, setShowConfirmation, g
     dispatch(fetchPTs());
   }, [dispatch]);
 
-  // console.log(allPTs)
-  // const allPTs = useSelector((state) => state.pts.entities);
 
   const user = useSelector(selectUser);
 
@@ -50,8 +46,6 @@ function ScheduleAppointment({setShowScheduleAppointment, setShowConfirmation, g
 
 
   const handlePTInfo = (e) => {
-    console.log(e.target.name)
-
     const selectedPT = allPTs.find((pt) => pt.name === e.target.name)
 
     setPhysicalTherapist(selectedPT)

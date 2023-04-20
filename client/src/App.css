@@ -1,42 +1,3 @@
-/* .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
-
 /* NavBar */
 
 #navBar{
@@ -368,13 +329,6 @@
 }
 
 
-/* store items */
-.storeItems:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-}
-
-
 
 /* Item Carousel */
 .itemsCarousel{
@@ -404,7 +358,6 @@
 .box {
   width: 70%;
   height: 75%;
-  /* margin: auto; */
   margin-top: 40px;
   margin-left: 216px;
   background: white;
@@ -444,13 +397,12 @@
 }
 
 .itemInfo{
-  /* display: flex; */
   align-items: center;
   justify-content: center;
   margin-left: 50px; 
 }
 
-/* Search Container */
+/* Search Container Store*/
 .searchContainer{
   margin: 50px 450px; 
   position: relative;
@@ -552,7 +504,13 @@
   height: 40px;
 }
 
+/* hovers */
 
+/* store items */
+.storeItems:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
 
 .dashBoard:hover {
   background: #e1e1e1;

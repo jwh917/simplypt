@@ -32,6 +32,9 @@ function StoreMyCartPageCard({myCartItem, handleDelItem}) {
       .then((r) => r.json())
       .then(() => handleDelItem(myCartItem));
 
+    alert("Item Has Been Deleted From The Cart")
+
+
   }
   
   function itemSizing(){
