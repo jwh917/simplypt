@@ -73,6 +73,8 @@
   margin-left: 40px;
   border-radius: 200px;
   width: 80%;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
 }
 
 .categoryGrid2{
@@ -86,6 +88,8 @@
   border-radius: 200px;
   width: 90%;
   height: 455px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
 }
 
 /* About page */
@@ -101,6 +105,8 @@
   border-radius: 200px;
   width: 50%;
   height: 455px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
 }
 
 .categoryGrid4{
@@ -180,6 +186,11 @@
   font-weight: 600;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 1s;
+}
+
+.loginSignUpFormButton:hover{
+  opacity: .5;
 }
 
 .SignUpButton{
@@ -192,6 +203,10 @@
   font-weight: 600;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.SignUpButton:hover{
+  opacity: .5;
 }
 
 .loginSignUp1{
@@ -322,6 +337,9 @@
   cursor: pointer;
 }
 
+.profileFormButton:hover{
+  opacity: .5;
+}
 
 
 
@@ -334,6 +352,8 @@
   margin: auto;
   width: 800px;
   height: 300px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
 }
 
 #adsCarouselImg {
@@ -346,6 +366,16 @@
   margin-left: 150px;
 
 }
+
+
+/* store items */
+.storeItems:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+
+
 /* Item Carousel */
 .itemsCarousel{
   position:relative; 
@@ -488,6 +518,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 15px;
+  font-size: 25px;
 }
 
 #visaCard{
@@ -512,9 +543,36 @@
   margin-top: 290px;
   position: absolute;
   border-radius: 55px 55px 0px 0px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
 }
 
 #checkoutBarButton{
   width: 150px;
   height: 40px;
 }
+
+
+
+.dashBoard:hover {
+  background: #e1e1e1;
+  border: 1px solid #d0d0d0;
+}
+
+.buttonEffect:hover{
+  opacity: .5;
+}
+
+.buttonEffect1:hover{
+  background-color: white;
+}
+
+.buttonEffect2:hover{
+  background-color: white;
+  border-color: red;
+}
+
+#buttonEffect3:hover{
+  opacity: .5;
+}
+

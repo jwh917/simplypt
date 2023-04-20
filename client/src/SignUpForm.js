@@ -159,7 +159,7 @@ function SignUpForm({setLoginSignup, keysToSimplyPT}) {
 
       <div style={{width: "50%", height: "800px"}}>
         
-        <img style={{height:"600px", width:"600px", borderRadius: "300px", marginTop: "80px"}} src="https://png.pngtree.com/png-vector/20220518/ourmid/pngtree-training-injuries-treatment-sport-medicine-png-image_4622388.png" alt="ptPic5" />
+        <img style={{height:"600px", width:"600px", borderRadius: "300px", marginTop: "80px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}} src="https://png.pngtree.com/png-vector/20220518/ourmid/pngtree-training-injuries-treatment-sport-medicine-png-image_4622388.png" alt="ptPic5" />
 
       </div>
     

@@ -158,7 +158,7 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
         {errors.map((err) => (<h6 key={err}>{err}</h6>))}
 
         <br/>
-        <button style={{backgroundColor: "#b0bec5", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>Book Appointment</button>
+        <button className="buttonEffect" style={{backgroundColor: "#b0bec5", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>Book Appointment</button>
 
       </form>
     </div>

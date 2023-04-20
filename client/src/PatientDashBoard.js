@@ -151,7 +151,7 @@ function PatientDashBoard({keysToSimplyPT}) {
 
   // console.log(allPTs)
   const showAllPTS = allPTs.map((pt) => (
-    <div key={pt.id} style={{color: "white", border: "2px solid rgba(255,255,255,0.1)", textAlign: "center", borderRadius: "20px", padding: "10px", marginLeft: "20px"}}>
+    <div key={pt.id} className="dashBoard" style={{color: "white", border: "2px solid rgba(255,255,255,0.1)", textAlign: "center", borderRadius: "20px", padding: "10px", marginLeft: "20px"}}>
       <p><u>Name:</u> {pt.name}</p>
       <img style={{height:"100px", width:"100px", borderRadius: "20px"}} src={pt.image} alt="pt" />
       <br/>
@@ -171,7 +171,7 @@ function PatientDashBoard({keysToSimplyPT}) {
 
   const allExercises = exercises.map((exercise) => {
     return (
-      <div key={exercise.id} style={{ color:"white", border: "2px solid white", borderRadius: "20px", padding: "5px", textAlign: "center", marginLeft: "25px", wordWrap: "break-word", width: "200px"}}>
+      <div key={exercise.id} className="dashBoard" style={{ color:"white", border: "2px solid white", borderRadius: "20px", padding: "5px", textAlign: "center", marginLeft: "25px", wordWrap: "break-word", width: "200px"}}>
         <p><u>Exercise given by PT {exercise.physical_therapist_name} </u></p>
         <img src={exercise.gifurl} alt="exercise.gifUrl" width="150px" height="150px" style={{borderRadius: "20px"}}/>
         <p>Name: {exercise.description}</p>
@@ -230,13 +230,13 @@ function PatientDashBoard({keysToSimplyPT}) {
           {showConfirm ? (
           <div>
             <p style={{marginLeft: "35px", color: "red"}}>Are you sure you want to delete your account?</p>
-            <button onClick={handleDeleteUser} style={{marginLeft: "170px", backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px", color: "red"}}>Confirm</button>
+            <button className="buttonEffect" onClick={handleDeleteUser} style={{marginLeft: "170px", backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px", color: "red"}}>Confirm</button>
             <br/>
             <br/>
-            <button onClick={() => setShowConfirm(false)} style={{marginLeft: "175px", backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}>Cancel</button>
+            <button className="buttonEffect" onClick={() => setShowConfirm(false)} style={{marginLeft: "175px", backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}>Cancel</button>
           </div>
           ) : (
-          <button onClick={handleClick} style={{marginLeft: "130px", backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "40px", color: "red"}}>Delete Account</button>
+          <button className="buttonEffect" onClick={handleClick} style={{marginLeft: "130px", backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "40px", color: "red"}}>Delete Account</button>
           )}
         </span> 
 
@@ -270,7 +270,7 @@ function PatientDashBoard({keysToSimplyPT}) {
             
             <br/>
             <br/>
-            <button type="submit" style={{backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}> Edit User Info </button>
+            <button className="buttonEffect" type="submit" style={{backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}> Edit User Info </button>
             <br/>
 
           </form>
@@ -331,7 +331,7 @@ function PatientDashBoard({keysToSimplyPT}) {
             </label> <br/> <br/>
       
 
-            <button style={{backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}>Edit Profile Info</button>
+            <button className="buttonEffect" style={{backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}>Edit Profile Info</button>
             
             <br/> 
             <br/> 
@@ -384,7 +384,7 @@ function PatientDashBoard({keysToSimplyPT}) {
         <div>
           <h2><u>Appointments and Visits</u></h2>
           <br/>
-          <button onClick={handleAppClick} style={{backgroundColor: "#b0bec5", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>Schedule an Appointment</button>
+          <button className="buttonEffect" onClick={handleAppClick} style={{backgroundColor: "#b0bec5", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>Schedule an Appointment</button>
           {showScheduleAppointment ? <ScheduleAppointment setShowScheduleAppointment={setShowScheduleAppointment} setShowConfirmation={setShowConfirmation} givenConfirmationInfo={givenConfirmationInfo}/> : "" }
           {showConfirmation ? <NewConfirmationInfo setShowConfirmation={setShowConfirmation} confirmationInfo={confirmationInfo}/> : "" }
         </div>

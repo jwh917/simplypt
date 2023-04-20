@@ -112,7 +112,7 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
   }
 
   const showAllAppts = user.appointments.map((appt) => (
-    <div key={appt.id}  style={{border: "1px solid white", borderRadius: "20px", padding: "5px", width: "10em", height: "85%", marginLeft: "15px", textAlign: "center", color: "white"}}>
+    <div key={appt.id} className="dashBoard"  style={{border: "1px solid white", borderRadius: "20px", padding: "5px", width: "150px", height: "115px", marginLeft: "15px", textAlign: "center", color: "white"}}>
       <p>Date: {appt.date}</p>
       <p>Time: {appt.time}</p>
       <p>Patient: {showPatientInfo(appt)}</p>
@@ -171,7 +171,7 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
   const showAllPatientsInfo = removeDuplicates(showInfo).map((patientInfo) => {
     // console.log(patient)
     return(
-    <div key={patientInfo.patient_id} style={{ borderRadius: "20px", padding: "5px", textAlign: "center", marginLeft: "50px", width: "300px"}}>
+    <div key={patientInfo.patient_id} className="dashBoard" style={{ borderRadius: "20px", padding: "5px", textAlign: "center", marginLeft: "50px", width: "300px"}}>
       <div style={{ border: "2px solid rgba(255,255,255,0.1)", borderRadius: "20px", boxShadow: "0 0 10px rgba(8,7,16,0.6)"}}>
         <br/>
 
@@ -186,7 +186,7 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
         <p>DOB: {patientInfo.patient.patient_profile.dob}</p>
         <p>Sex: {patientInfo.patient.patient_profile.sex}</p>
         <p>Muscle Injury: {patientInfo.patient.patient_profile.muscle_injury}</p>
-        <button value={patientInfo.patient_id} name={patientInfo.patient.patient_profile.muscle_injury} onClick={assignExercises} style={{ fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}>Assign Exercises 💪🏽🦵🏼🦶🏿</button>
+        <button className="buttonEffect1" value={patientInfo.patient_id} name={patientInfo.patient.patient_profile.muscle_injury} onClick={assignExercises} style={{ fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}>Assign Exercises 💪🏽🦵🏼🦶🏿</button>
 
         <br/>
         <br/>
@@ -247,7 +247,7 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
             
             <br/>
             <br/>
-            <button type="submit" style={{backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}> Edit User Info </button>
+            <button type="submit" className="buttonEffect" style={{backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}> Edit User Info </button>
             <br/>
             <br/>
 
@@ -269,7 +269,7 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
 
         {user.appointments.length === 0 ? <h4>No Appointments Schedule</h4> : ""}
 
-        <div style={{backgroundColor: "darkgray", borderRadius: "20px", padding: "15px", width: "50em", height: "100%", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
+        <div style={{backgroundColor: "darkgray", borderRadius: "20px", padding: "15px", width: "50em", height: "110%", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
           <h2 style={{color: "white"}}><u>Appointments</u></h2>
           <br/>
 
@@ -278,6 +278,8 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
           </HorizontalScroll>
 
         </div>
+        <br/>
+
 
         <img src={our_clinic} alt="our_clinic" width="450px" height="250px" style={{marginLeft: "130px", borderRadius: "20px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}/>
       </div>

@@ -37,10 +37,10 @@ function LoginForm({setLoginSignup}) {
         <form className="loginSignUp" onSubmit={loginSubmit}>
           <h2>Login Here</h2>
 
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username"> <i className="bi bi-person-fill"></i> Username </label>
           <input type="text" placeholder="Username" name="username" onChange={loginOnChange}/>
 
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password"> <i className="bi bi-lock-fill"></i> Password</label>
           <input type="password" placeholder="Password" name="password" onChange={loginOnChange}/>
 
           <button type="submit" className="loginSignUpFormButton">Login</button>
@@ -69,7 +69,7 @@ function LoginForm({setLoginSignup}) {
 
       <div style={{width: "50%", height: "800px"}}>
         
-        <img style={{height:"600px", width:"600px", borderRadius: "300px", marginTop: "80px"}} src="https://png.pngtree.com/png-vector/20220518/ourmid/pngtree-training-injuries-treatment-sport-medicine-png-image_4622388.png" alt="ptPic5" />
+        <img style={{height:"600px", width:"600px", borderRadius: "300px", marginTop: "80px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}} src="https://png.pngtree.com/png-vector/20220518/ourmid/pngtree-training-injuries-treatment-sport-medicine-png-image_4622388.png" alt="ptPic5" />
 
       </div>
       

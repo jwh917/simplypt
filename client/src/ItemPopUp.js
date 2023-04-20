@@ -124,15 +124,14 @@ function ItemPopUp({togglePopUp, isOpen, itemDisplayed}) {
               <br></br>
 
 
-              {/* Category Add Aug. 7th*/}
-              <Badge className="badge bg-secondary">
+              <Badge className="badge bg-secondary" id="buttonEffect3">
                 <h5>Size</h5>
                 {itemSizing()}
               </Badge>
 
               <br></br>
               <br></br>
-              <Button className="badge bg-secondary" onClick={addToCart}>Add To Cart</Button>
+              <Button className="btn btn-secondary" onClick={addToCart}  id="buttonEffect3">Add To Cart</Button>
             </div>
 
            <span className="close-icon" onClick={togglePopUp}>x</span>

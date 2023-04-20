@@ -9,14 +9,14 @@ function AboutPage(){
   return (
     <>
 
-      <div style={{height: "350px", width: "350px", marginLeft: "570px", marginTop: "50px", backgroundColor: "darkgray", textAlign: "center", borderRadius: "200px", color: "white"}}>
+      <div style={{height: "350px", width: "350px", marginLeft: "570px", marginTop: "50px", backgroundColor: "darkgray", textAlign: "center", borderRadius: "200px", color: "white", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
         <br/>
         <br/>
         <h1><u>About Us</u></h1>
         <img src={ptPic6} alt="ptPic1" />
       </div>
 
-      <div style={{textAlign: "center", backgroundColor: "darkgray", position: "absolute",  marginTop: "-50px", color: "white", borderRadius: "50px", width: "75%", marginLeft: "200px"}}>
+      <div style={{textAlign: "center", backgroundColor: "darkgray", position: "absolute",  marginTop: "-50px", color: "white", borderRadius: "50px", width: "75%", marginLeft: "200px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
         <h2>Optimized schedule along with allowing patients\therapist to view their appointments and therapist can communicate various information that consist of inspirational emails, workouts, store recommendations.</h2>
       </div>
 
@@ -44,7 +44,7 @@ function AboutPage(){
 
       <div className="categoryGrid4">
         <h3>
-          Muscles Treated-
+          Orthopedic Conditions Treated-
           <ul>
             <li>abductors</li>
             <li>abs</li>

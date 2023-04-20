@@ -15,7 +15,7 @@ function HomePage(){
         <div style={{marginTop: "50px", marginRight: "80px", color: "white"}}>
 
           <h3 style={{fontSize: "xxx-large"}}>
-            Our office are proud to offer
+            Our office is proud to offer
             state-of-the-art, compassionate care. By sharing
             knowledge and investing in research, we
             empower our therapists in advancing the field
@@ -38,8 +38,9 @@ function HomePage(){
         <div style={{marginRight: "80px", color: "white"}}>
 
           <h3><u>What you can expect at your appointment:</u></h3>
+          <br/>
           <h3>
-            <ul>
+            <ul style={{fontSize: "25px"}}>
               <li>Dedication to compassionate</li>
               <li>Comprehensive care and outcomes</li>
               <li>Highly qualified clinicians</li>
