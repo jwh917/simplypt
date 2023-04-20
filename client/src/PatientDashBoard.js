@@ -306,7 +306,7 @@ function PatientDashBoard({keysToSimplyPT}) {
       <br/>
       <br/>
 
-      <div style={{display: "grid", gap: "50px", padding: "5px", marginLeft: "600px", marginTop: "-1600px"}}>
+      <div style={{display: "grid", gap: "50px", padding: "5px", marginLeft: "600px", marginTop: "-1300px"}}>
 
         <div style={{backgroundColor: "darkgray", borderRadius: "20px", padding: "15px", width: "50em", height: "100%", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
           <h2 style={{color: "white"}}><u>Physical Therapists</u></h2>
