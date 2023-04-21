@@ -12,7 +12,9 @@ class AppointmentsController < ApplicationController
 
       existing_appointment = Appointment.where(physical_therapist_id: appointment.physical_therapist_id, date: appointment.date, time: appointment.time).first
 
-      if existing_appointment.present?
+      existing_dt_appointment = Appointment.where(patient_id: appointment.patient_id, date: appointment.date, time: appointment.time).first
+
+      if existing_appointment.present? || existing_dt_appointment.present?
    
         render json: {error: ["An appointment already exists at this date and time."] }, status: :unprocessable_entity
     
@@ -21,7 +23,6 @@ class AppointmentsController < ApplicationController
 
       else 
         render json: {error: ["1 Appointment Per Day"] }, status: :unprocessable_entity
-
       end
     end
   
