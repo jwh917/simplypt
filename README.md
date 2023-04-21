@@ -22,7 +22,7 @@ A comprehensible scheduling application for physical therapist and patients that
 - Update patient's information
 - Upload/update profile picture
 - Physical therapist information
-- View Assigned exercies
+- View Assigned exercises
 - Upcoming visits
 - Ability to schedule/cancel appointments with selected physical therapist
 - Email: New accounts/Appointments
