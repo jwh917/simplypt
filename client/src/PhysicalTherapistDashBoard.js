@@ -79,7 +79,7 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
               })
           }
           else {
-            setUserInput({...userInput})
+            dispatch(userUpdate({...userInput}))
             alert("User Info Has Been Updated")
             setErrors([])
           }
