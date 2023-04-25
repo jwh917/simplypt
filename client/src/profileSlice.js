@@ -1,13 +1,20 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 
-export const profileCreate = createAsyncThunk("profile/create", (newProfile) =>
-  fetch("/patient_profiles", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(newProfile),
-  }).then((res) => res.json())
-);
+// export const profileCreate = createAsyncThunk("profile/create", (newProfile) =>
+//   fetch("/patient_profiles", {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify(newProfile),
+//   }).then((res) => {
+//     if(res.ok){
+//       res.json()
+//     }
+//     else {
+//       res.json().then((errors) => console.log(errors));
+//     }
+//   })
+// );
 
 export const profileUpdate = createAsyncThunk("profile/update", (newProfile) =>
   fetch(`/patient_profiles/${newProfile.id}`, {
@@ -32,9 +39,9 @@ const profileSlice = createSlice({
   },
   reducers: {},
   extraReducers: {
-    [profileCreate.fulfilled](state, action) {
-      state.value = action.payload;
-    },
+    // [profileCreate.fulfilled](state, action) {
+    //   state.value = action.payload;
+    // },
     [profileUpdate.fulfilled](state, action) {
       state.value = action.payload;
     },
@@ -43,10 +50,5 @@ const profileSlice = createSlice({
     },
   },
 });
-
-export const profileSelectErrors = (state) => {
-  const userProfile = state.user.value;
-  return userProfile && userProfile.errors ? userProfile.errors : [];
-};
 
 export default profileSlice.reducer;

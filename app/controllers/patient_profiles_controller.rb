@@ -1,8 +1,6 @@
 class PatientProfilesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-  
-      # CRUD
-      # error messsages
+
   
     def index
       patient_profiles = PatientProfile.all
@@ -21,8 +19,16 @@ class PatientProfilesController < ApplicationController
     
     def update
       patient_profile = find_pat_pro
+
       patient_profile.update(pat_pro_params)
-      render json: patient_profile
+
+      if patient_profile.errors.present?
+        render json: patient_profile.errors.full_messages, status: :unprocessable_entity
+      
+      else patient_profile.save
+        render json: patient_profile, status: :ok
+      
+      end
     end 
   
     private

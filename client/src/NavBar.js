@@ -74,12 +74,21 @@ function NavBar() {
         <NavLink
           to="/signin"
           exact
-          style={linkStyles}
+          style={{
+            display: "inline-block",
+            width: "110px",
+            textAlign: "center",
+            padding: "12px",
+            margin: "0 6px 6px",
+            background: "grey",
+            textDecoration: "none",
+            borderRadius: "20px"
+          }}
           activeStyle={{
             background: "lightgrey",
           }}
         >
-        <button className="btn btn-secondary" style={{color: "black"}}> Sign In/Up </button>  
+        <button className="btn btn-secondary" style={{color: "black"}}> {user ? "Profile - Appts" : "Sign In/Up" } </button>  
         </NavLink>       
         </li>
 

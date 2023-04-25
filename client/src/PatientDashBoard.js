@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, userUpdate, userLogout, deleteUser } from "./userSlice";
-import { profileUpdate } from "./profileSlice";
+// import { selectUser, userLogout, deleteUser } from "./userSlice";
+// import { profileUpdate } from "./profileSlice";
 import ScheduleAppointment from "./ScheduleAppointment";
 import NewConfirmationInfo from "./NewConfirmationInfo";
 import UpcomingVisits from "./UpcomingVisits";
@@ -54,8 +55,10 @@ function PatientDashBoard({keysToSimplyPT}) {
     image: image
   });
 
+  const [errors, setErrors] = useState([])
+  const [profileErrors, setProfileErrors] = useState([])
 
-
+  
   function inputOnChangeUser(e) {
     const name = e.target.name;
     const value = e.target.value;
@@ -93,35 +96,70 @@ function PatientDashBoard({keysToSimplyPT}) {
   function handleSubmitUser(e) {
     e.preventDefault();
 
-    if (profilePic !== ""){
+    fetch("/me", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userInput),
+      }).then((r) => {
+        if (r.ok) {
+        r.json().then((userInput) => {
+          if (profilePic !== ""){
 
-      const data = new FormData()
-      data.append("file", profilePic)
-      data.append("upload_preset", keysToSimplyPT.upload_preset)
-      data.append("cloud_name", keysToSimplyPT.cloud_name)
-  
-      fetch(`https://api.cloudinary.com/v1_1/${keysToSimplyPT.cloud_name}/image/upload`,{
-        method:"post",
-        body: data
+            const data = new FormData()
+            data.append("file", profilePic)
+            data.append("upload_preset", keysToSimplyPT.upload_preset)
+            data.append("cloud_name", keysToSimplyPT.cloud_name)
+        
+            fetch(`https://api.cloudinary.com/v1_1/${keysToSimplyPT.cloud_name}/image/upload`,{
+              method:"post",
+              body: data
+              })
+              .then(resp => resp.json())
+              .then(data => {
+                dispatch(userUpdate({...userInput, image: data.url}))
+                alert("User Info Has Been Updated")
+                setErrors([])
+              })
+          }
+          else {
+            setUserInput({...userInput})
+            alert("User Info Has Been Updated")
+            setErrors([])
+          }
         })
-        .then(resp => resp.json())
-        .then(data => {
-          dispatch(userUpdate({...userInput, image: data.url}))
-          alert("User Info Has Been Updated")
-        })
-        .catch(err => console.log(err))
-    }
-    else {
-      dispatch(userUpdate(userInput))
-      alert("User Info Has Been Updated")
-    }
+        } else {
+          r.json().then((err) => setErrors(err))
+        }
+
+      })
+      e.target.reset()
   }
+
 
   function handleSubmitProfile(e) {
     e.preventDefault();
-    dispatch(profileUpdate(newProfileInput));
 
-    alert("User Profile Info Has Been Updated")
+    fetch(`/patient_profiles/${newProfileInput.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newProfileInput),
+      }).then((r) => {
+        if (r.ok) {
+        r.json().then((newProfileInput) => {
+          setNewProfileInput({...newProfileInput})
+          alert("User Profile Info Has Been Updated")
+          setProfileErrors([])
+        })
+        } else {
+          r.json().then((err) => setProfileErrors(err))
+        }
+
+      })
+
   }
 
 
@@ -139,13 +177,8 @@ function PatientDashBoard({keysToSimplyPT}) {
     </div>
   ))
 
-  
-  const exercises = Array.from(new Set(user.exercises.map(obj => obj.name))).map(name => {
-    return user.exercises.find(obj => obj.name === name);
-  });
 
-
-  const allExercises = exercises.map((exercise) => {
+  const allExercises = user.exercises.map((exercise) => {
     return (
       <div key={exercise.id} className="dashBoard" style={{ color:"white", border: "2px solid white", borderRadius: "20px", padding: "5px", textAlign: "center", marginLeft: "25px", wordWrap: "break-word", width: "200px"}}>
         <p><u>Exercise given by PT {exercise.physical_therapist_name} </u></p>
@@ -236,6 +269,10 @@ function PatientDashBoard({keysToSimplyPT}) {
             <br/>
             <button className="buttonEffect" type="submit" style={{backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}> Edit User Info </button>
             <br/>
+            <br/>
+
+            {errors.map((err) => (<h6 key={err}>{err}</h6>))}
+
 
           </form>
         </div>
@@ -296,6 +333,9 @@ function PatientDashBoard({keysToSimplyPT}) {
             
             <br/> 
             <br/> 
+
+            {profileErrors.map((err) => (<h6 key={err}>{err}</h6>))}
+
           </form>
 
         </div>
@@ -325,7 +365,7 @@ function PatientDashBoard({keysToSimplyPT}) {
         <div style={{backgroundColor: "darkgray", borderRadius: "20px", padding: "15px", width: "50em", height: "100%", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
           <h2 style={{color: "white"}}><u>Exercises</u></h2>
           <br/>
-          {exercises.length === 0 ? <h4 style={{color: "white"}}>0 Exercises Available</h4> : <h4 style={{color: "white"}}>{exercises.length} Exercises Available</h4>}
+          {user.exercises.length === 0 ? <h4 style={{color: "white"}}>0 Exercises Available</h4> : <h4 style={{color: "white"}}>{user.exercises.length} Exercises Available</h4>}
 
           <br/>
 

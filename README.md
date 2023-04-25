@@ -14,7 +14,7 @@ A comprehensible scheduling application for physical therapist and patients that
 - Update therapist's information
 - Upload/update profile picture
 - Upcoming treatment sessions
-- View Patients information
+- View patients information
 - Capability to assign patients exercises
 
 ### Patients
@@ -22,7 +22,7 @@ A comprehensible scheduling application for physical therapist and patients that
 - Update patient's information
 - Upload/update profile picture
 - Physical therapist information
-- View Assigned exercises
+- View assigned exercises
 - Upcoming visits
 - Ability to schedule/cancel appointments with selected physical therapist
 - Email: New accounts/Appointments
@@ -68,7 +68,9 @@ You can use the following commands to run the application:
   [http://localhost:4001](http://localhost:4001)
 
 
-## Acknowledgements
+
+## Usage and Acknowledgements
+### In order for full functionality of the application, you must have credentials for all below:
 - Rapidapi [Exercise Api](https://rapidapi.com/developer)
 - EmailJS [EmailJS](https://emailjs.com)
 - Profile Picture Upload [Cloudinary](https://cloudinary.com)

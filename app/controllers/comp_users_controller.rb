@@ -15,8 +15,15 @@ class CompUsersController < ApplicationController
 
   def update
     user = @current_user
+    
     user.update(compuser_params)
-    render json: user
+
+    if user.errors.present?
+      render json: user.errors.full_messages, status: :unprocessable_entity
+    else user.save
+      render json: user, status: :ok
+    end
+        
   end 
 
   def destroy

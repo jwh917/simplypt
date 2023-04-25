@@ -15,12 +15,12 @@ function SignUpForm({setLoginSignup, keysToSimplyPT}) {
   const [userInput, setUserInput] = useState({
     username: "",
     password: "",
+    password_confirmation: "",
     name: "",
     email: "",
     type: "Patient",
     image: "https://static.thenounproject.com/png/5034901-200.png",
   });
-
 
   function inputOnChange(e) {
     const name = e.target.name;
@@ -93,7 +93,7 @@ function SignUpForm({setLoginSignup, keysToSimplyPT}) {
           
           <label htmlFor="password">Password: <input type="password" placeholder="Password" name="password" onChange={inputOnChange}/> </label>
           
-          <label htmlFor="passwordConformation">Password Conformation: <input type="password" placeholder="Password Conformation" name="password_conformation" onChange={inputOnChange}/> </label>
+          <label htmlFor="passwordConformation">Password Conformation: <input type="password" placeholder="Password Conformation" name="password_confirmation" onChange={inputOnChange}/> </label>
 
         </div>
 

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addProfile, selectUser } from "./userSlice";
-import { profileCreate } from "./profileSlice";
 
 
 function ProfileForm() {
@@ -19,6 +18,9 @@ function ProfileForm() {
     muscle_injury: ""
   });
 
+  const [errors, setErrors] = useState([]);
+
+  console.log(errors)
 
 
   function inputOnChange(e) {
@@ -34,8 +36,28 @@ function ProfileForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(addProfile(newProfileInput));
-    dispatch(profileCreate(newProfileInput));
+
+    fetch("/patient_profiles", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newProfileInput),
+      }).then((r) => {
+        if (r.ok) {
+        r.json().then((newProfileInput) => {
+          dispatch(addProfile(newProfileInput));
+          
+        })
+        } else {
+          r.json().then((err) => {
+            setErrors(err.errors)
+          });
+        }
+
+      }
+    
+    );
 
   }
 
@@ -93,6 +115,8 @@ function ProfileForm() {
       <br/>
 
       <button className="profileFormButton">Continue...</button>
+
+      {errors.map((err) => (<h6 key={err}>{err}</h6>))}
 
     </form>
   );

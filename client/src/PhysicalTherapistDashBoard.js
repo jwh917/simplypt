@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUser, selectErrors, userUpdate } from "./userSlice";
+import { selectUser, userUpdate } from "./userSlice";
 import ExerciseForm from "./ExerciseForm";
 import { fetchAppointments } from "./appointmentSlice";
 import HorizontalScroll from 'react-horizontal-scrolling'
@@ -21,7 +21,7 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
 
   const user = useSelector(selectUser);
 
-  const userErrors = useSelector(selectErrors);
+  const [errors, setErrors] = useState([])
 
   const {username, name, email, image} = user
 
@@ -51,28 +51,45 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
   function handleSubmitUser(e) {
     e.preventDefault();
 
-    if (profilePic !== ""){
+    fetch("/me", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userInput),
+      }).then((r) => {
+        if (r.ok) {
+        r.json().then((userInput) => {
+          if (profilePic !== ""){
 
-      const data = new FormData()
-      data.append("file", profilePic)
-      data.append("upload_preset", keysToSimplyPT.upload_preset)
-      data.append("cloud_name", keysToSimplyPT.cloud_name)
-  
-      fetch(`https://api.cloudinary.com/v1_1/${keysToSimplyPT.cloud_name}/image/upload`,{
-        method:"post",
-        body: data
+            const data = new FormData()
+            data.append("file", profilePic)
+            data.append("upload_preset", keysToSimplyPT.upload_preset)
+            data.append("cloud_name", keysToSimplyPT.cloud_name)
+        
+            fetch(`https://api.cloudinary.com/v1_1/${keysToSimplyPT.cloud_name}/image/upload`,{
+              method:"post",
+              body: data
+              })
+              .then(resp => resp.json())
+              .then(data => {
+                dispatch(userUpdate({...userInput, image: data.url}))
+                alert("User Info Has Been Updated")
+                setErrors([])
+              })
+          }
+          else {
+            setUserInput({...userInput})
+            alert("User Info Has Been Updated")
+            setErrors([])
+          }
         })
-        .then(resp => resp.json())
-        .then(data => {
-          dispatch(userUpdate({...userInput, image: data.url}))
-          alert("User Info Has Been Updated")
-        })
-        .catch(err => console.log(err))
-    }
-    else {
-      dispatch(userUpdate(userInput))
-      alert("User Info Has Been Updated")
-    }
+        } else {
+          r.json().then((err) => setErrors(err))
+        }
+
+      })
+      e.target.reset()
   }
 
 
@@ -199,7 +216,7 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
             <br/>
             <br/>
 
-            {userErrors.map((err) => (<h6 key={err}>{err}</h6>))}
+            {errors.map((err) => (<h6 key={err}>{err}</h6>))}
 
           </form>
         </div>
