@@ -534,3 +534,13 @@
   opacity: .5;
 }
 
+
+
+
+.navLink:hover{
+  opacity: .5;
+}
+.navStyle{
+  border: 2px solid rgba(8,7,16,0.6);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+}

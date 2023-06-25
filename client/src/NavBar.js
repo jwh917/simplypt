@@ -3,17 +3,15 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUser } from "./userSlice";
 import LogoutButton from "./LogoutButton";
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Image from 'react-bootstrap/Image';
+import Button from 'react-bootstrap/Button';
 
 
 const linkStyles = {
-  display: "inline-block",
-  width: "90px",
-  textAlign: "center",
-  padding: "12px",
-  margin: "0 6px 6px",
-  background: "grey",
-  textDecoration: "none",
-  borderRadius: "20px"
+  color: "black"
 };
 
 
@@ -23,93 +21,114 @@ function NavBar() {
   const user = useSelector(selectUser);
 
   return (
-    <div id="navBar">
 
-      <div style={{marginTop: "-30px", border: "5px solid black", width: "200px", textAlign: "center"}}>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="navStyle">
+    <Container>
+      <Navbar.Brand href="/">
+        <Image src="https://icon-library.com/images/physical-therapy-icon/physical-therapy-icon-22.jpg" alt="ptPic9" rounded />
+        <br/>
+        <h1 style={{color: "black"}}>Simply PT</h1>
+        {user ? <LogoutButton user={user}/> : "" }
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
+      <Nav>
+          <Nav.Link href="/">
+            <NavLink
+              to="/"
+              exact
+              className="navLink"
+              style={linkStyles}
+              activeStyle={{
+                color: "white"
+              }}
+              >
+              Home <i className="bi bi-house" ></i>
+            </NavLink>
+          </Nav.Link>
 
-        <img src="https://icon-library.com/images/physical-therapy-icon/physical-therapy-icon-22.jpg" alt="ptPic9" style={{height: "150px", width: "150px"}}/>
+          <Nav.Link href="/about">
+            <NavLink
+              to="/about"
+              exact
+              className="navLink"
+              style={linkStyles}
+              activeStyle={{
+                color: "white"
+              }}
+            >
+              About <i class="bi bi-file-earmark-text"></i>
+            </NavLink>  
+          </Nav.Link>
 
-        <h1>Simply PT</h1>
 
-      </div>
-
-      <br/>
-
-      {user ? <LogoutButton user={user}/> : "" }
-
-
-      <ul className="nav justify-content-end" id="navBarUl">
-
-        <li className="nav-item">
-
-           <NavLink
-            to="/"
+          <Nav.Link href="/signin">
+            <NavLink
+            to="/signin"
             exact
+            className="navLink"
             style={linkStyles}
             activeStyle={{
-              background: "lightgrey",
+              color: "white"
             }}
             >
-            
-            <button className="btn btn-secondary" style={{color: "black"}}> Home </button>  
-          </NavLink>
-
-        </li>
-        <li className="nav-item">
-
-        <NavLink
-            to="/about"
-            exact
-            style={linkStyles}
-            activeStyle={{
-              background: "lightgrey",
-            }}
-          >
-            
-            <button className="btn btn-secondary" style={{color: "black"}}> About </button>  
-          </NavLink>        
-        </li>
-        <li className="nav-item">
-
-        <NavLink
-          to="/signin"
-          exact
-          style={{
-            display: "inline-block",
-            width: "110px",
-            textAlign: "center",
-            padding: "12px",
-            margin: "0 6px 6px",
-            background: "grey",
-            textDecoration: "none",
-            borderRadius: "20px"
-          }}
-          activeStyle={{
-            background: "lightgrey",
-          }}
-        >
-        <button className="btn btn-secondary" style={{color: "black"}}> {user ? "Profile - Appts" : "Sign In/Up" } </button>  
-        </NavLink>       
-        </li>
+            {user ? "Profile - Appts" : "Sign In - Up"} <i class="bi bi-people"></i>
+            </NavLink> 
+          </Nav.Link>
 
 
-        <li className="nav-item">
-          <NavLink
-          to="/store/home"
-          exact
-          style={linkStyles}
-          activeStyle={{
-            background: "lightgrey",
-          }}
-        >
-          <button className="btn btn-secondary" style={{color: "black"}}> Store </button>
-        </NavLink>
-        </li>
+          <Nav.Link href="/store/home">
+            <NavLink
+              to="/store/home"
+              exact
+              className="navLink"
+              style={linkStyles}
+              activeStyle={{
+                color: "white"
+              }}
+              >
+              Store <i class="bi bi-shop"></i>
+            </NavLink>
+          </Nav.Link> 
 
-      </ul>
+          <Nav.Link href="/store/search">
+            <NavLink
+              to="/store/search"
+              exact
+              className="navLink"
+              style={linkStyles}
+              activeStyle={{
+                color: "white"
+              }}
+              >
+              Search <i className="bi bi-search"></i>
+            </NavLink>
+          </Nav.Link>
 
-    </div>
+
+          <Nav.Link href="/store/cart">
+            <NavLink
+              to="/store/cart"
+              exact
+              className="navLink"
+              style={linkStyles}
+              activeStyle={{
+                color: "white"
+              }}
+              >
+              MyCart <i className="bi bi-cart4"></i> 
+            </NavLink>
+          </Nav.Link>
+     
+
+        </Nav>
+        <Button type="button" className="btn btn-secondary" style={{marginLeft: "20px", border: "1px black solid"}}><i className="bi bi-moon-fill"></i></Button>
+
+      </Navbar.Collapse>
+    </Container>
+  </Navbar>
   );
 }
 
 export default NavBar;
+
