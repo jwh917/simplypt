@@ -14,6 +14,21 @@ const linkStyles = {
   color: "black"
 };
 
+// Light mode - grey nonactive & black active
+// Dark mode - black nonactive & white active
+
+// const lightLinkStyles = {
+//   color: "#6d757d"
+// };
+
+// const activeStyleDark = {
+//   color: "white"
+// }
+
+// const activeStyleLight = {
+//   color: "black"
+// }
+
 
 
 function NavBar() {
@@ -29,11 +44,11 @@ function NavBar() {
         <br/>
         <h1 style={{color: "black"}}>Simply PT</h1>
         {user ? <LogoutButton user={user}/> : "" }
+        <br/>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
-      <Nav>
-          <Nav.Link href="/">
+      <Nav style={{gap: "25px"}}>
             <NavLink
               to="/"
               exact
@@ -45,9 +60,7 @@ function NavBar() {
               >
               Home <i className="bi bi-house" ></i>
             </NavLink>
-          </Nav.Link>
 
-          <Nav.Link href="/about">
             <NavLink
               to="/about"
               exact
@@ -57,12 +70,10 @@ function NavBar() {
                 color: "white"
               }}
             >
-              About <i class="bi bi-file-earmark-text"></i>
+              About <i className="bi bi-file-earmark-text"></i>
             </NavLink>  
-          </Nav.Link>
 
 
-          <Nav.Link href="/signin">
             <NavLink
             to="/signin"
             exact
@@ -72,12 +83,10 @@ function NavBar() {
               color: "white"
             }}
             >
-            {user ? "Profile - Appts" : "Sign In - Up"} <i class="bi bi-people"></i>
+            {user ? "Profile - Appts" : "Sign In - Up"} <i className="bi bi-people"></i>
             </NavLink> 
-          </Nav.Link>
 
 
-          <Nav.Link href="/store/home">
             <NavLink
               to="/store/home"
               exact
@@ -87,11 +96,9 @@ function NavBar() {
                 color: "white"
               }}
               >
-              Store <i class="bi bi-shop"></i>
+              Store <i className="bi bi-shop"></i>
             </NavLink>
-          </Nav.Link> 
 
-          <Nav.Link href="/store/search">
             <NavLink
               to="/store/search"
               exact
@@ -103,10 +110,8 @@ function NavBar() {
               >
               Search <i className="bi bi-search"></i>
             </NavLink>
-          </Nav.Link>
 
 
-          <Nav.Link href="/store/cart">
             <NavLink
               to="/store/cart"
               exact
@@ -118,10 +123,10 @@ function NavBar() {
               >
               MyCart <i className="bi bi-cart4"></i> 
             </NavLink>
-          </Nav.Link>
      
 
         </Nav>
+        <br/>
         <Button type="button" className="btn btn-secondary" style={{marginLeft: "20px", border: "1px black solid"}}><i className="bi bi-moon-fill"></i></Button>
 
       </Navbar.Collapse>
