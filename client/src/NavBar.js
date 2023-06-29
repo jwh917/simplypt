@@ -7,27 +7,11 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Image from 'react-bootstrap/Image';
-import Button from 'react-bootstrap/Button';
 
 
 const linkStyles = {
   color: "black"
 };
-
-// Light mode - grey nonactive & black active
-// Dark mode - black nonactive & white active
-
-// const lightLinkStyles = {
-//   color: "#6d757d"
-// };
-
-// const activeStyleDark = {
-//   color: "white"
-// }
-
-// const activeStyleLight = {
-//   color: "black"
-// }
 
 
 
@@ -37,7 +21,7 @@ function NavBar() {
 
   return (
 
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="navStyle">
+    <Navbar collapseOnSelect expand="lg" className="navStyle" style={{backgroundColor: "#212529"}}>
     <Container>
       <Navbar.Brand href="/">
         <Image src="https://icon-library.com/images/physical-therapy-icon/physical-therapy-icon-22.jpg" alt="ptPic9" rounded />
@@ -126,10 +110,10 @@ function NavBar() {
      
 
         </Nav>
-        <br/>
-        <Button type="button" className="btn btn-secondary" style={{marginLeft: "20px", border: "1px black solid"}}><i className="bi bi-moon-fill"></i></Button>
-
+  
       </Navbar.Collapse>
+
+      <br/>
     </Container>
   </Navbar>
   );

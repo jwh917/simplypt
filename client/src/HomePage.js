@@ -1,5 +1,4 @@
 import React from "react";
-import ptPic1 from './ptPic1.gif'; 
 import ptPic2 from './ptPic2.gif'; 
 import ptPic3 from './ptPic3.gif'; 
 import ptPic4 from './ptPic4.jpg'; 
@@ -10,41 +9,36 @@ import Col from 'react-bootstrap/Col';
 
 
 
-
-
-
 function HomePage(){
   return (
     <>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-
-      <Container fluid="sm" style={{ width: "65%", textAlign: "center",   backgroundColor: "darkgray",   borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
-
-        <Image src={ptPic1} alt="ptPic1" roundedCircle fluid="true"/> 
-        <h2 style={{ overflow: "break-word", padding: "5px"}}>
-            Our office is proud to offer
-            state-of-the-art, compassionate care. By sharing
-            knowledge and investing in research, we
-            empower our therapists in advancing the field
-            and improving patient quality of life.
-        </h2>
-
-      </Container>
-
-
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
+      <div className="page-header">
+        <div className="container">
+            <div className="row">
+                <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div className="page-caption">
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
       
+      <div className="card-section">
+        <div className="container">
+          <div className="card-block bg-white" >
+            <div className="section-title mb-0">
+              Our office is proud to offer
+              state-of-the-art, compassionate care. By sharing
+              knowledge and investing in research, we
+              empower our therapists in advancing the field
+              and improving patient quality of life.
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <Container style={{ width: "85%", height: "30%", textAlign: "center",  backgroundColor: "darkgray",   borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", padding: "20px"}}>
+     
+      <Container style={{ color: "white", width: "85%", height: "30%", textAlign: "center",  backgroundColor: "#212529",   borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", padding: "20px", marginTop: "-20px"}}>
         <Row>
           <Col>        
             <Image src={ptPic2} alt="ptPic2" roundedCircle fluid="true" style={{marginTop: "35px"}}/> 
@@ -53,7 +47,7 @@ function HomePage(){
 
         <Row>
           <Col> 
-            <h3 className="display-6" style={{fontSize: "85%", marginTop: "50px"}}><u>What you can expect at your appointment:</u></h3>
+            <h3 className="display-6" style={{fontSize: "95%", marginTop: "50px"}}><u>What you can expect at your appointment:</u></h3>
             <br/>
             <h3 className="display-4">
             <ul style={{fontSize: "30%"}}>
@@ -76,8 +70,6 @@ function HomePage(){
         </Row>
       </Container>
        
-      <br/>
-      <br/>
       <br/>
       <br/>
       <br/>

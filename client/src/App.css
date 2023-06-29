@@ -537,6 +537,8 @@
 
 
 
+/* 1.5 */
+
 .navLink:hover{
   opacity: .5;
 }
@@ -544,3 +546,12 @@
   border: 2px solid rgba(8,7,16,0.6);
   box-shadow: 0 0 40px rgba(8,7,16,0.6);
 }
+
+.aboutPage0 ul {
+  list-style-type: none;
+}
+
+.page-header { background: url(https://pt.wustl.edu/wp-content/uploads/2015/11/patient-care-landing-page-feature-full-width.jpg)no-repeat; position: relative; background-size: cover; }
+.page-caption { padding-top: 170px; padding-bottom: 174px; }
+.card-section { position: relative; bottom: 60px; text-align: center;}
+.card-block { padding: 80px; }
