@@ -25,20 +25,22 @@ function HomePage(){
       
       <div className="card-section">
         <div className="container">
-          <div className="card-block bg-white" >
-            <div className="section-title mb-0">
-              Our office is proud to offer
-              state-of-the-art, compassionate care. By sharing
-              knowledge and investing in research, we
-              empower our therapists in advancing the field
-              and improving patient quality of life.
+          <div className="card-block" style={{backgroundColor: "#212529", borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
+            <div className="section-title mb-0" style={{backgroundColor: "#212529", color: "white"}}>
+              <h3>
+                Our office is proud to offer
+                state-of-the-art, compassionate care. By sharing
+                knowledge and investing in research, we
+                empower our therapists in advancing the field
+                and improving patient quality of life.
+              </h3>
             </div>
           </div>
         </div>
       </div>
 
      
-      <Container style={{ color: "white", width: "85%", height: "30%", textAlign: "center",  backgroundColor: "#212529",   borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", padding: "20px", marginTop: "-20px"}}>
+      <Container style={{ color: "white", width: "100%", height: "30%", textAlign: "center",  backgroundColor: "#212529",   borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", padding: "20px", marginTop: "-150px"}}>
         <Row>
           <Col>        
             <Image src={ptPic2} alt="ptPic2" roundedCircle fluid="true" style={{marginTop: "35px"}}/> 
@@ -58,6 +60,8 @@ function HomePage(){
               <li>Access to the latest medical procedures and treatments</li>
               <li>Friendly, welcoming staff</li>
               <li>A relaxed, professional atmosphere</li>
+              <br/>
+              <li>To Learn More (About Us) - underlined: Link to AboutPage</li>
             </ul>
             </h3>
           </Col>
@@ -75,11 +79,15 @@ function HomePage(){
       <br/>
       <br/>
       <br/>
+      <br/>
+      <br/>
 
 
       <Container fluid="sm" style={{ textAlign: "center"}}>
         <Image src={ptPic4} alt="ptPic4" thumbnail fluid="true" style={{border: "2px solid rgba(255,255,255,0.1)"}}/> 
       </Container>
+
+      {/* store promo */}
   
     </>
   );

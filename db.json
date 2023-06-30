@@ -167,35 +167,6 @@
       "itemUrl": "https://ptuzencart.s3.us-east-2.amazonaws.com/images/7429_5e98c52466e91.jpg"
     }
   ],
-  "myCart": [
-    {
-      "item": {
-        "id": 1,
-        "category": "braces",
-        "name": "BodyMed Neoprene Knee Brace",
-        "brand": "BodyMed",
-        "color": "Black",
-        "price": 54,
-        "productDetails": "Made of breathable material. Comfortable but firm compression. Provides support with removable stays to allow movement. Washable.",
-        "itemUrl": "https://ptuzencart.s3.us-east-2.amazonaws.com/images/3920_593aeb1b4c0fb.jpg"
-      },
-      "size": "Large",
-      "id": 1
-    },
-    {
-      "item": {
-        "id": 2,
-        "category": "braces",
-        "name": "ASO Ankle Stabilizer",
-        "brand": "ASO",
-        "color": "White",
-        "price": 44.99,
-        "productDetails": "The ASO has unique stabilizing straps that resemble a figure 8 - that provides superior defense against inversion injuries, the most common ankle injury.",
-        "itemUrl": "https://ptuzencart.s3.us-east-2.amazonaws.com/images/264002_52a5ee488dffe.jpg"
-      },
-      "size": "Medium",
-      "id": 2
-    }
-  ],
+  "myCart": [],
   "completedOrders": []
 }

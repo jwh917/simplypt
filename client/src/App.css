@@ -551,7 +551,7 @@
   list-style-type: none;
 }
 
-.page-header { background: url(https://pt.wustl.edu/wp-content/uploads/2015/11/patient-care-landing-page-feature-full-width.jpg)no-repeat; position: relative; background-size: cover; }
-.page-caption { padding-top: 170px; padding-bottom: 174px; }
-.card-section { position: relative; bottom: 60px; text-align: center;}
+.page-header { background: url(ptPic9.jpg)no-repeat; position: flex; background-size: cover; height: 500px;}
+.page-caption { padding-top: 250px; padding-bottom: 250px; }
+.card-section { position: relative; bottom: 250px; text-align: center;}
 .card-block { padding: 80px; }

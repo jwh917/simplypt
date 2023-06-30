@@ -23,8 +23,8 @@ function NavBar() {
 
     <Navbar collapseOnSelect expand="lg" className="navStyle" style={{backgroundColor: "#212529"}}>
     <Container>
-      <Navbar.Brand href="/">
-        <Image src="https://icon-library.com/images/physical-therapy-icon/physical-therapy-icon-22.jpg" alt="ptPic9" rounded />
+      <Navbar.Brand>
+        <a href="/"> <Image src="https://icon-library.com/images/physical-therapy-icon/physical-therapy-icon-22.jpg" alt="ptPic9" rounded /> </a>
         <br/>
         <h1 style={{color: "black"}}>Simply PT</h1>
         {user ? <LogoutButton user={user}/> : "" }
