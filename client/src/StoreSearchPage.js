@@ -5,6 +5,10 @@ import Tabs from 'react-bootstrap/Tabs';
 import ptPic8 from './ptPic8.png'; 
 import ItemCard from "./ItemCard";
 
+import Row from 'react-bootstrap/Row';
+
+
+
 
 function StoreSearchPage(){
 
@@ -195,15 +199,16 @@ function displayItems(){
     <>
       {/* StoreSearchPage 🔎 */}        
         
-        <section className="header-main border-bottom bg-white">
+     
             <div className="container-fluid">
                 <div className="row p-2 pt-3 pb-3 d-flex align-items-center">
-                    <div className="col-md-8">
-                      <div className="d-flex form-inputs" id="searchBar">
-      
-                        <input className="form-control" type="text" placeholder="Search any item..." onChange={itemSearch}/>
-                      </div>
-                    </div>
+
+                  <br/>
+                  <br/>
+                  <input className="form-control" type="text" placeholder="Search any item..." onChange={itemSearch} style={{ width: "50%", height: "40px", textAlign: "center", margin: "0 auto", display: "block"}}/>
+                  <br/>
+                  <br/>
+
 
                   
                   <hr/>
@@ -224,10 +229,6 @@ function displayItems(){
 
                   <div className="categoryGrid">
 
-                    <div>
-                      <img src={ptPic8} alt="ptPic8" id="ptPic8"/>
-                    </div>
-                    
                     <div className="badge bg-secondary" id="sortBadge">
                       Sort Prices
 
@@ -235,35 +236,42 @@ function displayItems(){
                       <br></br>
 
                       {sortHighLow ? (
-                        <button onClick={sortHandleHighLow} id="activeButton" className="btn btn-light">(High to Low) ⬆️</button>
+                        <button onClick={sortHandleHighLow} id="activeButton" className="btn btn-light">(High to Low) <i className="bi bi-arrow-up-square-fill"></i></button>
                       ) : (
-                        <button onClick={sortHandleHighLow} className="btn btn-light">(High to Low) ⬆️</button>
+                        <button onClick={sortHandleHighLow} className="btn btn-light">(High to Low) <i className="bi bi-arrow-up-square"></i></button>
                       )}
 
                       <br></br>
                       <br></br>
 
                       {sortLowHigh ? (
-                        <button onClick={sortHandleLowHigh} id="activeButton" className="btn btn-light">(Low to High) ⬇️</button>
+                        <button onClick={sortHandleLowHigh} id="activeButton" className="btn btn-light">(Low to High) <i className="bi bi-arrow-down-square-fill"></i></button>
                       ) : (
-                        <button onClick={sortHandleLowHigh} className="btn btn-light">(Low to High) ⬇️</button>
+                        <button onClick={sortHandleLowHigh} className="btn btn-light">(Low to High) <i className="bi bi-arrow-down-square"></i></button>
                       )}
                     
                     </div>
 
+                    <div>
+                      <img src={ptPic8} alt="ptPic8" id="ptPic8" style={{borderRadius: "5px"}}/>
+                    </div>
+                    
                   </div>
      
                 </div>
             </div> 
-          </section>
 
-        <div className="searchContainer">
+        <hr/>
 
+        <br/>                  
+        <br/>                  
+        <Row md={4} className="g-1" style={{rowGap: "50px"}}>
           {displayItems()}
+        </Row>
 
-          <br/>
 
-        </div>
+        <br/>                  
+        <br/>
 
 
 
