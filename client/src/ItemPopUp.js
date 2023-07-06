@@ -3,6 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button'
 import Badge from 'react-bootstrap/Badge';
 
+import Modal from 'react-bootstrap/Modal';
+import Image from 'react-bootstrap/Image';
+
+
 
 
 function ItemPopUp({togglePopUp, isOpen, itemDisplayed}) {
@@ -87,56 +91,51 @@ function ItemPopUp({togglePopUp, isOpen, itemDisplayed}) {
     }
 
   }
+
   
 
   return (
-    <div>
-       <div className="popup-box">
-         <div className="box">
+    <>
 
-          <h1 className="popupHeader"><u>{name}</u></h1>
-          <p className="popupHeader"><u>{color}</u></p>
 
-          <div className="clickedItem">
-    
-            <img src={itemUrl} alt="item pic"/>
-          </div>
+      <Modal show={isOpen} onHide={togglePopUp} animation={true} backdrop="static">
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <h1 className="popupHeader"><u>{name}</u></h1>
+            <p className="popupHeader"><u>{color}</u></p>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+
+          <Image className="d-block mx-auto" src={itemUrl} alt={name} thumbnail fluid="true" style={{width: "250px", height: "250px"}}/> 
+          <br/>
+          <br/>
+          
+          <Badge className="badge bg-secondary">
+            <h4>Price: ${price}</h4>
+          </Badge>
 
           <br/>
+          <br/>
 
-            <div className="itemInfo">
-              <Badge className="badge bg-secondary">
-                <h4>Price: ${price}</h4>
-              </Badge>
-              <br/>
-              <br/>
-              <br/>
-
-              {showProductDetails()}
-            </div>
-
-            <div className="clickedItemInfo">
-
-              <br></br>
-              <br></br>
-              <br></br>
+          
+          {showProductDetails()}
+          
+          <Badge className="badge bg-secondary" id="buttonEffect3">
+            <h5>Size</h5>
+            {itemSizing()}
+          </Badge>
 
 
-              <Badge className="badge bg-secondary" id="buttonEffect3">
-                <h5>Size</h5>
-                {itemSizing()}
-              </Badge>
+          
+        </Modal.Body>
+        <Modal.Footer>
+          
+          <Button className="btn btn-secondary" onClick={addToCart}  id="buttonEffect3">Add To Cart</Button>
 
-              <br></br>
-              <br></br>
-              <Button className="btn btn-secondary" onClick={addToCart}  id="buttonEffect3">Add To Cart</Button>
-            </div>
-
-           <span className="close-icon" onClick={togglePopUp}>x</span>
-         </div>
-      </div>
-  
-    </div>
+        </Modal.Footer>
+      </Modal>
+    </>
 
   );
 }

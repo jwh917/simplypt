@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from 'react-bootstrap/Carousel';
-import Stack from 'react-bootstrap/Stack';
 import ItemCard from "./ItemCard";
 import ItemPopUp from "./ItemPopUp";
+
+import Row from 'react-bootstrap/Row';
 
 
 function StoreHomePage(){
@@ -91,10 +92,11 @@ function StoreHomePage(){
     <>
       <br/>
       <br/>
+      <br/>
+      <br/>
 
-      <div className="adsCarousel">
 
-        <Carousel>
+        <Carousel className="mx-auto" style={{ width: "60%"}}>
           <Carousel.Item>
             <img
               className="d-block w-100"
@@ -115,85 +117,88 @@ function StoreHomePage(){
           </Carousel.Item>
         </Carousel>
 
-      </div>
 
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-
-      <h2 className="homeHeaders"><u>Trending Braces</u></h2>
-      <div className="itemsCarousel">
-        <Stack direction="horizontal" gap={3}>
-          {bracesDisplayed}
-        </Stack>
-      </div>
-
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-
-      <h2 className="homeHeaders"><u>Exercise Equipment</u></h2>
-      <div className="itemsCarousel">
-        <Stack direction="horizontal" gap={3}>
-          {exerciseEqDisplayed}
-        </Stack>
-      </div>
-
-      <br/>
-      <br/>
-
-      <div className="adsCarousel">
-
-        <Carousel>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="https://www.webpt.com/wp-content/uploads/2014/03/201403_blog_purchasingEquipmentAndSupplies_1.png"
-              alt="Second slide"
-              id="adsCarouselImg"
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="https://www.advantagemedical.com/media/wysiwyg/megaMenu/AdvantageMedical/ADV_menu_ads_rehab.png"
-              alt="Third slide"
-              id="adsCarouselImg"
-            />
-          </Carousel.Item>
-        </Carousel>
-
-      </div>
-
-      <br/>
-      <br/>
       <br/>
       <br/>
       <br/>
 
 
-      <h2 className="homeHeaders"><u>Foam & Massager Rollers</u></h2>
-      <div className="itemsCarousel">
-        <Stack direction="horizontal" gap={3}>
-          {rollersDisplayed}
-        </Stack>
-      </div>
+      <h2 style={{marginLeft: "50px"}}><u>Trending Braces</u></h2>
+      <br/> 
+      <br/> 
+   
+
+      <Row md={4} className="g-1" style={{rowGap: "50px"}}>
+        {bracesDisplayed}
+      </Row>
+    
+
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      
+      <h2 style={{marginLeft: "50px"}}><u>Exercise Equipment</u></h2>
+      <br/>
+      <br/>
+
+      <Row md={4} className="g-1" style={{rowGap: "50px"}}>
+        {exerciseEqDisplayed}
+      </Row>
+
+      <br/>
+      <br/>
+      <br/>
+      
+      
+      <Carousel className="mx-auto" style={{ width: "60%"}}>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="https://www.webpt.com/wp-content/uploads/2014/03/201403_blog_purchasingEquipmentAndSupplies_1.png"
+            alt="Second slide"
+            id="adsCarouselImg"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="https://www.advantagemedical.com/media/wysiwyg/megaMenu/AdvantageMedical/ADV_menu_ads_rehab.png"
+            alt="Third slide"
+            id="adsCarouselImg"
+          />
+        </Carousel.Item>
+      </Carousel>
+
+    
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+
+
+      <h2 style={{marginLeft: "50px"}}><u>Foam & Massager Rollers</u></h2>
+      <br/>
+      <br/>
+ 
+      <Row md={4} className="g-1" style={{rowGap: "50px"}}>
+        {rollersDisplayed}
+      </Row>
 
       <br/>
       <br/>
       <br/>
       <br/>
 
-      <h2 className="homeHeaders"><u>Hot N Cold</u></h2>
-      <div className="itemsCarousel">
-        <Stack direction="horizontal" gap={3}>
-          {hotncoldEqDisplayed}
-        </Stack>
-      </div>
+      <h2 style={{marginLeft: "50px"}}><u>Hot N Cold</u></h2>
+
+      <br/>
+      <br/>
+      
+      <Row md={4} className="g-1" style={{rowGap: "50px"}}>
+        {hotncoldEqDisplayed}
+      </Row>
 
       <br/>
       <br/>
