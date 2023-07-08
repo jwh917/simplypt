@@ -17,11 +17,11 @@ function ItemPopUp({togglePopUp, isOpen, itemDisplayed}) {
   }
 
   
-  if(isOpen) {
-    document.body.classList.add('active-modal')
-  } else {
-    document.body.classList.remove('active-modal')
-  }
+  // if(isOpen) {
+  //   document.body.classList.add('active-modal')
+  // } else {
+  //   document.body.classList.remove('active-modal')
+  // }
 
 
 

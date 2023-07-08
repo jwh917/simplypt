@@ -6,6 +6,7 @@ import ptPic8 from './ptPic8.png';
 import ItemCard from "./ItemCard";
 
 import Row from 'react-bootstrap/Row';
+import Image from 'react-bootstrap/Image';
 
 
 
@@ -253,16 +254,14 @@ function displayItems(){
                     </div>
 
                     <div>
-                      <img src={ptPic8} alt="ptPic8" id="ptPic8" style={{borderRadius: "5px"}}/>
+                      <Image src={ptPic8} alt="ptPic8" id="ptPic8" thumbnail fluid="true" /> 
                     </div>
-                    
                   </div>
-     
                 </div>
             </div> 
-
+        
         <hr/>
-
+        
         <br/>                  
         <br/>                  
         <Row md={4} className="g-1" style={{rowGap: "50px"}}>
@@ -272,7 +271,6 @@ function displayItems(){
 
         <br/>                  
         <br/>
-
 
 
       {isOpen && <ItemPopUp

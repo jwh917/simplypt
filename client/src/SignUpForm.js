@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { userSignup, selectErrors } from "./userSlice";
 import emailjs from '@emailjs/browser';
 
+import Image from 'react-bootstrap/Image';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 function SignUpForm({setLoginSignup, keysToSimplyPT}) {
 
@@ -67,61 +71,77 @@ function SignUpForm({setLoginSignup, keysToSimplyPT}) {
   }
 
   return (
-
-
-    <div className="categoryGrid">
-
-      <div>
-        <form className="loginSignUp1" onSubmit={handleSubmit}>
-          <h2>New Patient SignUp Here</h2>
-
-        <div className="signUpForm">          
-
-          <label htmlFor="username">Username: <input type="text" placeholder="Username" name="username" onChange={inputOnChange}/> </label>
-          
-          <label htmlFor="name">Name: <input type="text" placeholder="Name" name="name" onChange={inputOnChange}/></label>
-          
-          <label htmlFor="email">Email: <input type="email" placeholder="Email" name="email" onChange={inputOnChange}/></label>          
-
-          <label htmlFor="type">Type:   
-            <select name="type" onChange={inputOnChange}>
-              <option value="Patient">Patient</option>
-            </select>
-          </label>
-         
-          <label htmlFor="profilePic">Profile Picture: <input name="profilePic" type="file" accept="image/*" onChange={(e) => setProfilePic(e.target.files[0])} /> </label>
-          
-          <label htmlFor="password">Password: <input type="password" placeholder="Password" name="password" onChange={inputOnChange}/> </label>
-          
-          <label htmlFor="passwordConformation">Password Conformation: <input type="password" placeholder="Password Conformation" name="password_confirmation" onChange={inputOnChange}/> </label>
-
-        </div>
-
-          <button className="loginSignUpFormButton" type="submit"> SignUp </button>
-
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+          <br/>
+          <br/>
           <br/>
           <br/>
 
-          {errors.map((err) => (<h6 key={err}>{err}</h6>))}
+          <form className="loginSignUp1" onSubmit={handleSubmit}>
+            <h2>New Patient SignUp Here</h2>
+            
+            <Row>
+              <Col>
+                <label htmlFor="username">Username: <input type="text" placeholder="Username" name="username" onChange={inputOnChange}/> </label>
+              </Col>
+              <Col>          
+                <label htmlFor="name">Name: <input type="text" placeholder="Name" name="name" onChange={inputOnChange}/></label>
+              </Col>
+              <Col>
+                <label htmlFor="email">Email: <input type="email" placeholder="Email" name="email" onChange={inputOnChange}/></label>
+              </Col>
+            </Row>
 
-          <div>
-            <h3>
-              Already have an account? &nbsp;
-              <button className="SignUpButton" onClick={() => setLoginSignup(true)}>
-                Log In
-              </button>
-            </h3>  
-          </div>
+            <Row>
+              <Col>   
+                <label htmlFor="type">Type:   
+                  <select name="type" onChange={inputOnChange}>
+                    <option value="Patient">Patient</option>
+                  </select>
+                </label>                
+              </Col>
+              <Col>          
+                <label htmlFor="profilePic">Profile Picture: <input name="profilePic" type="file" accept="image/*" onChange={(e) => setProfilePic(e.target.files[0])} /> </label>
+              </Col>
+            </Row>
 
-        </form>
-      </div>
-
-      <div style={{width: "50%", height: "800px"}}>
-        
-        <img style={{height:"600px", width:"600px", borderRadius: "300px", marginTop: "80px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}} src="https://png.pngtree.com/png-vector/20220518/ourmid/pngtree-training-injuries-treatment-sport-medicine-png-image_4622388.png" alt="ptPic5" />
-
-      </div>
+            <Row>
+              <Col>          
+                <label htmlFor="password">Password: <input type="password" placeholder="Password" name="password" onChange={inputOnChange}/> </label>
+              </Col>
+              <Col>          
+                <label htmlFor="passwordConformation">Password Conformation: <input type="password" placeholder="Password Conformation" name="password_confirmation" onChange={inputOnChange}/> </label>
+              </Col>
+            </Row>
     
+
+            <button className="loginSignUpFormButton" type="submit"> SignUp </button>
+
+            <br/>
+            <br/>
+
+            {errors.map((err) => (<h6 key={err}>{err}</h6>))}
+
+            <div>
+              <h3>
+                Already have an account? &nbsp;
+                <button className="SignUpButton" onClick={() => setLoginSignup(true)}>
+                  Log In
+                </button>
+              </h3>  
+            </div>
+
+          </form>
+        </div>
+        
+        <div class="col-lg-5 offset-md-3">
+          <Image src="https://png.pngtree.com/png-vector/20220518/ourmid/pngtree-training-injuries-treatment-sport-medicine-png-image_4622388.png" alt="ptPic5" roundedCircle fluid="true" style={{height:"600px", width:"100%", marginTop: "100px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}/> 
+        </div>
+      </div>
+      <br/>
+      <br/>
     </div>
 
   );

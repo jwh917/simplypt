@@ -2,6 +2,15 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin, selectErrors } from "./userSlice";
 
+// import Stack from 'react-bootstrap/Stack';
+// import Container from 'react-bootstrap/Container';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
+// import { Container } from "react-bootstrap";
+import Image from 'react-bootstrap/Image';
+
+
+
 
 function LoginForm({setLoginSignup}) {
 
@@ -30,53 +39,55 @@ function LoginForm({setLoginSignup}) {
   };
 
   return (
- 
-    <div className="categoryGrid">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          
+          <form className="loginSignUp" onSubmit={loginSubmit}>
+            <h2>Login Here</h2>
 
-      <div>
-        <form className="loginSignUp" onSubmit={loginSubmit}>
-          <h2>Login Here</h2>
+            <label htmlFor="username"> <i className="bi bi-person-fill"></i> Username </label>
+            <input type="text" placeholder="Username" name="username" onChange={loginOnChange}/>
 
-          <label htmlFor="username"> <i className="bi bi-person-fill"></i> Username </label>
-          <input type="text" placeholder="Username" name="username" onChange={loginOnChange}/>
+            <label htmlFor="password"> <i className="bi bi-lock-fill"></i> Password</label>
+            <input type="password" placeholder="Password" name="password" onChange={loginOnChange}/>
 
-          <label htmlFor="password"> <i className="bi bi-lock-fill"></i> Password</label>
-          <input type="password" placeholder="Password" name="password" onChange={loginOnChange}/>
+            <button type="submit" className="loginSignUpFormButton">Login</button>
 
-          <button type="submit" className="loginSignUpFormButton">Login</button>
+            {errors.map((err) => ( <h6 key={err}>{err}</h6>))}
+            
+            <div>
+              <br/>
+              <h3>
+                Don't have an account? &nbsp;
+                <button className="SignUpButton" onClick={() => setLoginSignup(false)}>
+                  Sign Up
+                </button>
+              </h3>
+            </div>
 
-          {errors.map((err) => ( <h6 key={err}>{err}</h6>))}
-
-          <div>
             <br/>
-            <h3>
-              Don't have an account? &nbsp;
-              <button className="SignUpButton" onClick={() => setLoginSignup(false)}>
-                Sign Up
-              </button>
-            </h3>
-          </div>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
 
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-
-        </form>
+          </form>
+    
+        </div>
+        <div class="col-lg-5 offset-md-3">
+          <Image src="https://png.pngtree.com/png-vector/20220518/ourmid/pngtree-training-injuries-treatment-sport-medicine-png-image_4622388.png" alt="ptPic5" roundedCircle fluid="true" style={{height:"600px", width:"100%", marginTop: "100px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}/> 
+        </div>
       </div>
-
-      <div style={{width: "50%", height: "800px"}}>
-        
-        <img style={{height:"600px", width:"600px", borderRadius: "300px", marginTop: "80px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}} src="https://png.pngtree.com/png-vector/20220518/ourmid/pngtree-training-injuries-treatment-sport-medicine-png-image_4622388.png" alt="ptPic5" />
-
-      </div>
-      
+      <br/>
+      <br/>
     </div>
-
   );
 }
-
 
 export default LoginForm;
