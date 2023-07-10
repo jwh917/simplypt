@@ -39,9 +39,9 @@ function LoginForm({setLoginSignup}) {
   };
 
   return (
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-4">
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-md-4">
           <br/>
           <br/>
           <br/>
@@ -80,7 +80,7 @@ function LoginForm({setLoginSignup}) {
           </form>
     
         </div>
-        <div class="col-lg-5 offset-md-3">
+        <div className="col-lg-5 offset-md-3">
           <Image src="https://png.pngtree.com/png-vector/20220518/ourmid/pngtree-training-injuries-treatment-sport-medicine-png-image_4622388.png" alt="ptPic5" roundedCircle fluid="true" style={{height:"600px", width:"100%", marginTop: "100px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}/> 
         </div>
       </div>

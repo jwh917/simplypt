@@ -79,7 +79,7 @@ function StoreMyCartPageCard({myCartItem, handleDelItem}) {
 
           <br></br>
 
-          <span onClick={handleDeleteClick}>🗑</span>
+          <span onClick={handleDeleteClick} style={{cursor: "pointer"}}>🗑</span>
 
         </div>
         <br></br>

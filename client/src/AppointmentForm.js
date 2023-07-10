@@ -84,7 +84,7 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
 
   return (
 
-    <div style={{textAlign: "center", fontSize: "18px", marginLeft: "-90px"}}>
+    <div style={{textAlign: "center", fontSize: "18px"}}>
       <br/>
       <h2>Fill Out Appointment Form</h2>
       <br/>

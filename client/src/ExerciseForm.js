@@ -113,9 +113,12 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, keysToSimpl
       <br/>
       <br/>
       
-      <HorizontalScroll reverseScroll={true}>
-        {showExerciseChoice.slice(0, 35)}
-      </HorizontalScroll>
+      <div>
+        <HorizontalScroll reverseScroll={true}>
+          {showExerciseChoice.slice(0, 35)}
+        </HorizontalScroll>
+      </div>
+   
 
       <br/>
       <br/>

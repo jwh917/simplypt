@@ -48,7 +48,7 @@ function UpcomingVisits() {
         <h4>Duration: 1 hr</h4>
         <h4>Physical Therapist: {uniqueNames}</h4>
         <button className="buttonEffect2" value={appt.id} name={appt.physical_therapist_id} onClick={handleDeleteAppointment} style={{backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "40px"}}>🗑</button>
-        <h2>______________</h2>
+        <h2>____________</h2>
         <br/>
       </section>
     )

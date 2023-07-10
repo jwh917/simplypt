@@ -6,6 +6,8 @@ import { fetchAppointments } from "./appointmentSlice";
 import HorizontalScroll from 'react-horizontal-scrolling'
 import our_clinic from './our_clinic.png'; 
 
+import Image from 'react-bootstrap/Image';
+
 
 
 function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
@@ -176,100 +178,106 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
 
       <br/>
 
-      <div style={{backgroundColor: "darkgray", width: "450px", borderTop: "2px solid rgba(255,255,255,0.1)", borderRight: "2px solid rgba(255,255,255,0.1)", borderBottom: "2px solid rgba(255,255,255,0.1)", borderRadius: "0px 20px 20px 0px", boxShadow: "0 0 40px rgba(8,7,16,0.6)", letterSpacing: "0.5px", color: "white" }}>
-        <br/>
-        <h3 style={{marginLeft: "70px"}}><u>Physical Therapist Info</u></h3>
-        <br/>
+      <div className="row" style={{width: "90%"}}>
+        <div className="col-md-4">
 
-        <img src={image} alt="TherapistPic" width="150px" height="150px" style={{marginLeft: "130px", border: "3px solid black", padding: "5px"}}/>
-        <br/>
-        <br/>
-
-        <div style={{display: "flex", textAlign: "center", width: "50px"}}>
-
-          <form onSubmit={handleSubmitUser}>
-            <label htmlFor="username" style={{fontSize: "18px"}}> <b>Username:</b> <input type="text" placeholder="Username" name="username" value={userInput.username} onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
-            
-
-            <label htmlFor="name" style={{fontSize: "18px"}}> <b>Name:</b> <input type="name" placeholder="Name" name="name" value={userInput.name} onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
-            
-
-            <label htmlFor="email" style={{fontSize: "18px"}}> <b>Email:</b> <input type="email" placeholder="Email" name="email" value={userInput.email} onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
-            
-
-            <label htmlFor="type" style={{fontSize: "18px"}}> <b>Type:</b>
-              <select name="type">
-              <option value="PhysicalTherapist">Physical Therapist</option>
-              </select>
-            </label> <br/> <br/>
-        
-
-            <label htmlFor="image" style={{fontSize: "18px", marginLeft: "-10px"}}> <b>Image:</b> <input name="image" type="file" accept="image/*" onChange={(e) => setProfilePic(e.target.files[0])} style={{marginLeft: "80px", backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
-
-            <label htmlFor="password" style={{fontSize: "18px"}}> <b>Password:</b> <input type="password" placeholder="Password" name="password" onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
-            
-            <label htmlFor="passwordConformation" style={{fontSize: "18px"}}><b>Password Conformation:</b> <input type="password" placeholder="Password Confirmation" name="password_confirmation" onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label>
-            
+          <div style={{backgroundColor: "darkgray", textAlign: "center", width: "100%", borderTop: "2px solid rgba(255,255,255,0.1)", borderRight: "2px solid rgba(255,255,255,0.1)", borderBottom: "2px solid rgba(255,255,255,0.1)", borderRadius: "0px 20px 20px 0px", boxShadow: "0 0 40px rgba(8,7,16,0.6)", letterSpacing: "0.5px", color: "white" }}>
             <br/>
-            <br/>
-            <button type="submit" className="buttonEffect" style={{backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}> Edit User Info </button>
-            <br/>
+            <h3 style={{textAlign: "center"}}><u>Physical Therapist Info</u></h3>
             <br/>
 
-            {errors.map((err) => (<h6 key={err}>{err}</h6>))}
+            <Image src={image} alt="TherapistPic" fluid="true" style={{border: "3px solid black", padding: "5px"}}/> 
 
-          </form>
-        </div>
+            <br/>
+            <br/>
+            
+            <form onSubmit={handleSubmitUser}>
+              <label htmlFor="username" style={{fontSize: "18px"}}> <b>Username:</b> <br/> <input type="text" placeholder="Username" name="username" value={userInput.username} onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+                
 
-      </div>
+              <label htmlFor="name" style={{fontSize: "18px"}}> <b>Name:</b> <br/> <input type="name" placeholder="Name" name="name" value={userInput.name} onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+                
 
-      <br/>
-      <br/>
+              <label htmlFor="email" style={{fontSize: "18px"}}> <b>Email:</b> <br/> <input type="email" placeholder="Email" name="email" value={userInput.email} onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+                
 
-      <div style={{display: "grid", gap: "50px", padding: "5px", marginLeft: "600px", marginTop: "-650px"}}>
+              <label htmlFor="type" style={{fontSize: "18px"}}> <b>Type:</b> <br/>
+                <select name="type">
+                  <option value="PhysicalTherapist">Physical Therapist</option>
+                </select>
+              </label> <br/> <br/>
+            
 
-        <div style={{backgroundColor: "darkgray", borderRadius: "20px", padding: "15px", width: "50em", height: "110%", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
-          <h2 style={{color: "white"}}><u>Appointments</u></h2>
-          {user.appointments.length === 0 ? <h4 style={{color: "white"}}>No Appointments Schedule</h4> : ""}
+              <label htmlFor="image" style={{fontSize: "18px"}}> <b>Image:</b> <br/> <input name="image" type="file" accept="image/*" onChange={(e) => setProfilePic(e.target.files[0])} style={{fontSize: "72%", backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+
+              <label htmlFor="password" style={{fontSize: "18px"}}> <b>Password:</b> <br/> <input type="password" placeholder="Password" name="password" onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+                
+              <label htmlFor="passwordConformation" style={{fontSize: "18px"}}><b>Password Conformation:</b> <br/> <input type="password" placeholder="Password Confirmation" name="password_confirmation" onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label>
+                
+              <br/>
+              <br/>
+              <button type="submit" className="buttonEffect" style={{backgroundColor: "white", fontSize: "18px", color: "black", fontWeight: "800", borderRadius: "5px", height: "50px"}}> Edit User Info </button>
+              <br/>
+              <br/>
+
+                {errors.map((err) => (<h6 key={err}>{err}</h6>))}
+
+            </form>
+
+          </div>
 
           <br/>
+          <br/>
+          <br/>
 
-          <HorizontalScroll reverseScroll={true}>
-            {showAllAppts}
-          </HorizontalScroll>
 
         </div>
-        <br/>
+
+        <div className="col-md-6 offset-md-2">
+
+          <div style={{backgroundColor: "darkgray", borderRadius: "20px", padding: "15px", width: "100%", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
+            <h2 style={{color: "white"}}><u>Appointments</u></h2>
+            {user.appointments.length === 0 ? <h4 style={{color: "white"}}>No Appointments Schedule</h4> : ""}
+
+            <br/>
+
+            <HorizontalScroll reverseScroll={true}>
+              {showAllAppts}
+            </HorizontalScroll>
+
+          </div>
+          <br/>
+          <br/>
+
+          <Image src={our_clinic} alt="our_clinic" fluid="true" style={{borderRadius: "20px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}/> 
+
+          <br/>
+          <br/>
+          <br/>     
+
+          <h2 style={{textAlign: "center"}}><u>Patients</u></h2>
+          {user.patients.length === 0 ? <h4 style={{textAlign: "center"}}>No Patients Have Appointments</h4> : ""}
 
 
-        <img src={our_clinic} alt="our_clinic" width="450px" height="250px" style={{marginLeft: "130px", borderRadius: "20px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}/>
-      </div>
+          <br/>
+          <br/>
 
-      <br/>
-      <br/>
-      <br/>     
+          <div style={{display: "flex", justifyContent: "space-around"}}>
 
-      <h2 style={{textAlign: "center"}}><u>Patients</u></h2>
-      {user.patients.length === 0 ? <h4 style={{textAlign: "center"}}>No Patients Have Appointments</h4> : ""}
+            <HorizontalScroll reverseScroll={true}>
+              {showAllPatientsInfo}
+            </HorizontalScroll>
 
-
-      <br/>
-      <br/>
-
-      <div style={{display: "flex", justifyContent: "space-around"}}>
-
-        <HorizontalScroll reverseScroll={true}>
-          {showAllPatientsInfo}
-        </HorizontalScroll>
-
-      </div>
-  
-      <br/>
-      <br/>
-      <br/>
-
-      {showExerciseForm ? <ExerciseForm patientId={patientId} muscleInjury={muscleInjury} setShowExerciseForm={setShowExerciseForm} keysToSimplyPT={keysToSimplyPT}/> : " "}
+          </div>
       
+          <br/>
+          <br/>
+          <br/>
+
+          {showExerciseForm ? <ExerciseForm patientId={patientId} muscleInjury={muscleInjury} setShowExerciseForm={setShowExerciseForm} keysToSimplyPT={keysToSimplyPT}/> : " "}
+        
+        </div>
+      </div>
     </>
   );
 }
