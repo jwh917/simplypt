@@ -142,6 +142,8 @@ function SignUpForm({setLoginSignup, keysToSimplyPT}) {
       </div>
       <br/>
       <br/>
+      <br/>
+      <br/>
     </div>
 
   );

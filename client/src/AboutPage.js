@@ -109,6 +109,9 @@ function AboutPage(){
           </Col>
         </Row>
       </Container>
+      <br/>
+      <br/>
+      <br/>
     </>
   );
 }

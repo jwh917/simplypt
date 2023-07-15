@@ -271,6 +271,8 @@ function displayItems(){
 
         <br/>                  
         <br/>
+        <br/>
+        <br/>
 
 
       {isOpen && <ItemPopUp

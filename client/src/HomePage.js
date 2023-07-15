@@ -36,9 +36,23 @@ function HomePage(){
               </h3>
             </div>
           </div>
+
+          
+        </div>
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+        <div className="col-md-6 offset-md-5" style={{backgroundColor: "#212529", borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", padding: "30px"}}>
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/BNsoZiP3YZs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style={{ borderRadius: "70px", width: "100%"}}></iframe>
+
         </div>
       </div>
 
+    
      
       <Container style={{ color: "white", width: "100%", height: "30%", textAlign: "center",  backgroundColor: "#212529",   borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", padding: "20px", marginTop: "-150px"}}>
         <Row>
@@ -78,9 +92,7 @@ function HomePage(){
       <br/>
       <br/>
       <br/>
-      <br/>
-      <br/>
-      <br/>
+  
 
 
       <Container fluid="sm" style={{ textAlign: "center"}}>
@@ -88,6 +100,10 @@ function HomePage(){
       </Container>
 
       {/* store promo */}
+
+      <br/>
+      <br/>
+      <br/>
   
     </>
   );

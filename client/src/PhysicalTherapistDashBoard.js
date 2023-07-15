@@ -278,6 +278,9 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
         
         </div>
       </div>
+      <br/>
+      <br/>
+      <br/>
     </>
   );
 }

@@ -418,6 +418,9 @@ function PatientDashBoard({keysToSimplyPT}) {
         
         
       </div>
+      <br/>
+      <br/>
+      <br/>
     </>
   );
 }

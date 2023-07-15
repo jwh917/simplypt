@@ -204,7 +204,6 @@ function StoreHomePage(){
       <br/>
       <br/>
       <br/>
-      <br/>
 
       {isOpen && <ItemPopUp
         togglePopUp={togglePopUp}

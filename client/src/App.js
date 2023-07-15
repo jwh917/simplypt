@@ -6,13 +6,20 @@ import HomePage from "./HomePage";
 import AboutPage from "./AboutPage";
 import NewPatientSignInPage from "./NewPatientSignInPage";
 import StorePage from "./StorePage";
+import Footer from './Footer';
+
+import { useSelector } from "react-redux";
+import { selectUser } from "./userSlice";
+
 
 
 function App() {
 
+  const user = useSelector(selectUser);
+
   return (
     <>
-      <NavBar />
+      <NavBar/>
 
       <Switch>
 
@@ -30,6 +37,8 @@ function App() {
         </Route>
 
       </Switch>
+
+      <Footer user={user}/>
     </>
   );
 }

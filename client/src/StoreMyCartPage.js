@@ -247,7 +247,9 @@ function StoreMyCartPage(){
           
         </form>
       </div>
-
+<br/>
+<br/>
+<br/>
 {/* checkoutbar */}
       <div>
         <Badge className="badge bg-secondary" id="checkoutBarBadge">         
