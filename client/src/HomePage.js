@@ -47,7 +47,7 @@ function HomePage(){
 
         <div className="col-md-6 offset-md-5" style={{backgroundColor: "#212529", borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", padding: "30px"}}>
 
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/BNsoZiP3YZs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style={{ borderRadius: "70px", width: "100%"}}></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/BNsoZiP3YZs" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen style={{ borderRadius: "70px", width: "100%"}}></iframe>
 
         </div>
       </div>
@@ -75,7 +75,7 @@ function HomePage(){
               <li>Friendly, welcoming staff</li>
               <li>A relaxed, professional atmosphere</li>
               <br/>
-              <li>To Learn More (About Us) - underlined: Link to AboutPage</li>
+              <li>To Learn More Visit Our <a href="/about">About</a> Page</li>
             </ul>
             </h3>
           </Col>

@@ -1,5 +1,5 @@
 import './App.css';
-import React from "react";
+import React , {useEffect, useState} from "react";
 import { Switch, Route } from "react-router-dom";
 import NavBar from "./NavBar";
 import HomePage from "./HomePage";
@@ -15,7 +15,20 @@ import { selectUser } from "./userSlice";
 
 function App() {
 
+  // user and pts
+
   const user = useSelector(selectUser);
+
+  const [pts, setPts] = useState([])
+
+  useEffect(() => {
+
+    fetch("/physical_therapists")
+      .then(response => response.json())
+      .then(data => setPts(data))
+
+  }, []);
+
 
   return (
     <>
@@ -24,7 +37,7 @@ function App() {
       <Switch>
 
         <Route exact path="/about">
-          <AboutPage />
+          <AboutPage pts={pts}/>
         </Route>
         <Route exact path="/signin">
           <NewPatientSignInPage />

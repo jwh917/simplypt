@@ -23,10 +23,33 @@ import traps from './traps.jpeg';
 import triceps from './triceps.jpeg'; 
 
 import HorizontalScroll from 'react-horizontal-scrolling'
+import Card from 'react-bootstrap/Card';
+import Carousel from 'react-bootstrap/Carousel';
 
 
 
-function AboutPage(){
+
+function AboutPage({pts}){
+
+
+  const showPTs = pts.map((pt) => (
+    <Carousel.Item key={pt.id}>
+      <Card className="mx-auto"  style={{width: "70%", height: "50%", textAlign: "center", backgroundColor: "white", color: "black", borderRadius: "90px"}}>
+      <br/>
+      <Card.Img className="mx-auto" variant="top" src={pt.image} alt="pt" style={{width: "50%", height: "50%", borderRadius: "20px"}}/>
+      <Card.Body>
+        <Card.Title>
+          <u>Name</u>: {pt.name}
+          <br/>
+          <u>Email</u>: {pt.email}
+        </Card.Title>
+      </Card.Body>
+      </Card>
+      <br/>
+    </Carousel.Item>
+  ))
+
+
 
   return (
     <>
@@ -73,7 +96,16 @@ function AboutPage(){
       <br/>
       <br/>
       <br/>
-      {/* MEET THE TEAM */}
+      <br/>
+      <br/>
+
+      <h2 style={{textAlign: "center"}}>Meet The Team</h2>
+      <br/>
+      <Carousel className="mx-auto" style={{width: "45%", backgroundColor: "#212529",   borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", padding: "20px"}}>
+        {showPTs}
+      </Carousel>
+
+      <br/>
       <br/>
       <br/>
       <br/>

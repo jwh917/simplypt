@@ -21,7 +21,7 @@ const Footer = ({user}) =>
         
         <br/>
 
-        <form class="form-footer my-0">
+        <form className="form-footer my-0">
           <h5>Newsletter - Subscribe Today!</h5>
           <input type="text"  placeholder="Email.." name="search" style={{borderRadius: "16px 0 0 16px", height: "54px", padding: "5px"}}/>
           <button style={{border: "2px solid black", borderRadius: "0 16px 16px 0", width: "50px", height: "55px", backgroundColor: "#212529"}}> <i className="bi bi-send-fill"></i> </button>
@@ -33,14 +33,14 @@ const Footer = ({user}) =>
         
       <hr className="clearfix w-100 d-md-none pb-0"/>
         
-      <div className="col-md-3 mb-md-0 mb-3" style={{marginTop: "85px", fontSize: "25px"}}>
+      <div className="col-md-3 mb-md-0 mb-3" style={{marginTop: "55px", fontSize: "25px"}}>
         <ul className="list-unstyled">
-          <li><a href="#!">Home</a></li>
-          <li><a href="#!">About</a></li>
-          <li><a href="#!">{user ? "Profile - Appts" : "Sign In - Up"}</a></li>
-          <li><a href="#!">Store</a></li>
-          <li><a href="#!">Search</a></li>
-          <li><a href="#!">MyCart</a></li>
+          <li style={{marginBottom: "15px"}}><a href="#!">Home</a></li>
+          <li style={{marginBottom: "15px"}}><a href="#!">About</a></li>
+          <li style={{marginBottom: "15px"}}><a href="#!">{user ? "Profile - Appts" : "Sign In - Up"}</a></li>
+          <li style={{marginBottom: "15px"}}><a href="#!">Store</a></li>
+          <li style={{marginBottom: "15px"}}><a href="#!">Search</a></li>
+          <li style={{marginBottom: "15px"}}><a href="#!">MyCart</a></li>
             
         </ul>
       </div>
@@ -80,17 +80,17 @@ const Footer = ({user}) =>
 
   <div style={{display: "flex", textAlign: "center", justifyContent: "space-evenly", fontSize: "25px"}}>
 
-    <i class="bi bi-facebook" style={{border: "2px solid black", borderRadius: "10%", padding: "5px"}}></i>
+    <i className="bi bi-facebook" style={{border: "2px solid black", borderRadius: "10%", padding: "5px"}}></i>
 
-    <i class="bi bi-instagram" style={{border: "2px solid black", borderRadius: "10%", padding: "5px"}}></i>
+    <i className="bi bi-instagram" style={{border: "2px solid black", borderRadius: "10%", padding: "5px"}}></i>
 
-    <i class="bi bi-twitter" style={{border: "2px solid black", borderRadius: "10%", padding: "5px"}}></i>
+    <i className="bi bi-twitter" style={{border: "2px solid black", borderRadius: "10%", padding: "5px"}}></i>
 
-    <i class="bi bi-google" style={{border: "2px solid black", borderRadius: "10%", padding: "5px"}}></i>
+    <i className="bi bi-google" style={{border: "2px solid black", borderRadius: "10%", padding: "5px"}}></i>
 
-    <i class="bi bi-github" style={{border: "2px solid black", borderRadius: "10%", padding: "5px"}}></i>
+    <i className="bi bi-github" style={{border: "2px solid black", borderRadius: "10%", padding: "5px"}}></i>
 
-    <i class="bi bi-linkedin" style={{border: "2px solid black", borderRadius: "10%", padding: "5px"}}></i>
+    <i className="bi bi-linkedin" style={{border: "2px solid black", borderRadius: "10%", padding: "5px"}}></i>
     
 
   </div>
