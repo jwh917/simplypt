@@ -4,9 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from 'react-bootstrap/Carousel';
 import ItemCard from "./ItemCard";
 import ItemPopUp from "./ItemPopUp";
-
 import Row from 'react-bootstrap/Row';
-
+import Image from 'react-bootstrap/Image';
 
 function StoreHomePage(){
 
@@ -16,6 +15,8 @@ function StoreHomePage(){
   const [hotncold, setHotnCold] = useState([])
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
 
     fetch("http://localhost:4000/braces")
       .then((r) => r.json())
@@ -96,26 +97,25 @@ function StoreHomePage(){
       <br/>
 
 
-        <Carousel className="mx-auto" style={{ width: "60%"}}>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="https://media.istockphoto.com/id/1201247867/vector/isometric-rehabilitation-physiotherapy-set.jpg?s=612x612&w=0&k=20&c=LwOs6-UAMGQOXT6ML88EUFfU4nCeBarkMCWQtPFwTjI="
-              alt="First slide"
-              id="adsCarouselImg"
-            />
-          </Carousel.Item>
+      <Carousel className="mx-auto" style={{ width: "60%"}}>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="https://media.istockphoto.com/id/1201247867/vector/isometric-rehabilitation-physiotherapy-set.jpg?s=612x612&w=0&k=20&c=LwOs6-UAMGQOXT6ML88EUFfU4nCeBarkMCWQtPFwTjI="
+            alt="First slide"
+            id="adsCarouselImg"
+          />
+        </Carousel.Item>
  
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="https://media.istockphoto.com/id/1176367049/vector/isometric-rehab-people-icons.jpg?s=612x612&w=0&k=20&c=yFQqhRS_ZS_GUCKGf8tE1J9t6hrjZzBt6rDtSb5mPqw="
-              alt="Third slide"
-              id="adsCarouselImg"
-            />
-
-          </Carousel.Item>
-        </Carousel>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="https://media.istockphoto.com/id/1176367049/vector/isometric-rehab-people-icons.jpg?s=612x612&w=0&k=20&c=yFQqhRS_ZS_GUCKGf8tE1J9t6hrjZzBt6rDtSb5mPqw="
+            alt="Third slide"
+            id="adsCarouselImg"
+          />
+        </Carousel.Item>
+      </Carousel>
 
 
       <br/>
@@ -149,35 +149,26 @@ function StoreHomePage(){
       <br/>
       <br/>
       <br/>
-      
-      
-      <Carousel className="mx-auto" style={{ width: "60%"}}>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://www.webpt.com/wp-content/uploads/2014/03/201403_blog_purchasingEquipmentAndSupplies_1.png"
-            alt="Second slide"
-            id="adsCarouselImg"
-          />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://www.advantagemedical.com/media/wysiwyg/megaMenu/AdvantageMedical/ADV_menu_ads_rehab.png"
-            alt="Third slide"
-            id="adsCarouselImg"
-          />
-        </Carousel.Item>
-      </Carousel>
+      <br/>
+      <br/>
 
+      <div class="row mx-auto" style={{padding: "20px"}}>
+        <div class="col-md-6"> <Image src="https://cdn.thewirecutter.com/wp-content/media/2023/02/exerciseballs-2048px-09602-2x1-1.jpg?auto=webp&quality=75&crop=2:1&width=1024" alt="ptPic4" thumbnail fluid="true" style={{ width: "100%", height: "400px", borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", marginTop: "90px"}}/> </div>
+        <div class="col-md-6" style={{ color: "white", backgroundColor: "#212529",  borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", padding: "20px", textAlign: "right", paddingTop: "15px"}}>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/EzxYTsfuB6c" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen style={{ borderRadius: "70px", width: "100%"}}></iframe>
+
+          <br/>
+          <br/>
+          <h1>Workout with Jordan</h1>
+          <h3>15 Minute Beginner Exercise Ball Workout</h3>
+          <h4>Jordan walks us through this at-home exercise routine using an exercise ball to work various muscles. This easy-to-follow routine is designed for beginners on up.</h4>      
+        </div>
+      </div>
     
       <br/>
       <br/>
       <br/>
-      <br/>
-      <br/>
-
-
+     
       <h2 style={{marginLeft: "50px"}}><u>Foam & Massager Rollers</u></h2>
       <br/>
       <br/>
@@ -199,6 +190,31 @@ function StoreHomePage(){
       <Row md={4} className="g-1" style={{rowGap: "50px"}}>
         {hotncoldEqDisplayed}
       </Row>
+
+      <br/>
+      <br/>   
+      <br/>
+      <br/>
+
+
+      <Carousel className="mx-auto" style={{ width: "60%"}}>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="https://www.webpt.com/wp-content/uploads/2014/03/201403_blog_purchasingEquipmentAndSupplies_1.png"
+            alt="Second slide"
+            id="adsCarouselImg"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="https://www.advantagemedical.com/media/wysiwyg/megaMenu/AdvantageMedical/ADV_menu_ads_rehab.png"
+            alt="Third slide"
+            id="adsCarouselImg"
+          />
+        </Carousel.Item>
+      </Carousel>
 
       <br/>
       <br/>

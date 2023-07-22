@@ -1,6 +1,7 @@
 import React from "react"
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
+import { Link } from 'react-router-dom';
 
 
 
@@ -9,7 +10,7 @@ const Footer = ({user}) =>
   <div className="container-fluid text-center text-md-left">
     <div className="row">
       <div className="col-md-6 mt-md-0 mt-3">
-        <a href="/"> <Image src="https://icon-library.com/images/physical-therapy-icon/physical-therapy-icon-22.jpg" alt="ptPic9" rounded style={{width: "50px", height: "50px"}}/> </a>
+        <Link to="/"> <Image src="https://icon-library.com/images/physical-therapy-icon/physical-therapy-icon-22.jpg" alt="ptPic9" rounded  style={{width: "50px", height: "50px"}}/> </Link>
         
         <br/>
 
@@ -24,7 +25,7 @@ const Footer = ({user}) =>
         <form className="form-footer my-0">
           <h5>Newsletter - Subscribe Today!</h5>
           <input type="text"  placeholder="Email.." name="search" style={{borderRadius: "16px 0 0 16px", height: "54px", padding: "5px"}}/>
-          <button style={{border: "2px solid black", borderRadius: "0 16px 16px 0", width: "50px", height: "55px", backgroundColor: "#212529"}}> <i className="bi bi-send-fill"></i> </button>
+          <button className="buttonEffect" style={{border: "2px solid black", borderRadius: "0 16px 16px 0", width: "50px", height: "55px", backgroundColor: "#212529"}}> <i className="bi bi-send-fill"></i> </button>
         </form>
 
         <br/>
@@ -35,12 +36,12 @@ const Footer = ({user}) =>
         
       <div className="col-md-3 mb-md-0 mb-3" style={{marginTop: "55px", fontSize: "25px"}}>
         <ul className="list-unstyled">
-          <li style={{marginBottom: "15px"}}><a href="#!">Home</a></li>
-          <li style={{marginBottom: "15px"}}><a href="#!">About</a></li>
-          <li style={{marginBottom: "15px"}}><a href="#!">{user ? "Profile - Appts" : "Sign In - Up"}</a></li>
-          <li style={{marginBottom: "15px"}}><a href="#!">Store</a></li>
-          <li style={{marginBottom: "15px"}}><a href="#!">Search</a></li>
-          <li style={{marginBottom: "15px"}}><a href="#!">MyCart</a></li>
+          <li style={{marginBottom: "15px"}}><a href="/">Home</a></li>
+          <li style={{marginBottom: "15px"}}><a href="/about">About</a></li>
+          <li style={{marginBottom: "15px"}}><a href="/signin">{user ? "Profile - Appts" : "Sign In - Up"}</a></li>
+          <li style={{marginBottom: "15px"}}><a href="/store/home">Store</a></li>
+          <li style={{marginBottom: "15px"}}><a href="/store/search">Search</a></li>
+          <li style={{marginBottom: "15px"}}><a href="/store/cart">MyCart</a></li>
             
         </ul>
       </div>
@@ -48,22 +49,17 @@ const Footer = ({user}) =>
       <div className="col-md-3 mb-md-0 mb-3">
         <ul className="list-unstyled" style={{marginTop: "85px", fontSize: "25px"}}>
           <li>
-            <a href="#!">
-              <Button size="sm" style={{backgroundColor: "#212529", border: "2px black solid", borderRadius: "15px", color: "black", width: "30%", height: "55px", fontSize: "55%"}}>
-                More Info 
-              </Button>
-            </a>
+            <Button className="buttonEffect" size="sm" style={{backgroundColor: "#212529", border: "2px black solid", borderRadius: "15px", color: "black", width: "30%", height: "55px", fontSize: "55%"}}>
+              More Info 
+            </Button>
           </li>
 
           <br/>
           <br/>
-            
           <li>
-            <a href="#!">
-              <Button size="sm" style={{backgroundColor: "#212529", border: "2px black solid", borderRadius: "15px", color: "black", width: "30%", height: "55px", fontSize: "55%"}}>
-                Contact Us
-              </Button>
-            </a>
+            <Button className="buttonEffect" size="sm" style={{backgroundColor: "#212529", border: "2px black solid", borderRadius: "15px", color: "black", width: "30%", height: "55px", fontSize: "55%"}}>
+              Contact Us
+            </Button>
           </li>
           <br/>
         </ul>
@@ -78,7 +74,7 @@ const Footer = ({user}) =>
 
 
 
-  <div style={{display: "flex", textAlign: "center", justifyContent: "space-evenly", fontSize: "25px"}}>
+  <div className="social" style={{display: "flex", textAlign: "center", justifyContent: "space-evenly", fontSize: "25px"}}>
 
     <i className="bi bi-facebook" style={{border: "2px solid black", borderRadius: "10%", padding: "5px"}}></i>
 

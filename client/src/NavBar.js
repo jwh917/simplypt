@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { selectUser } from "./userSlice";
 import LogoutButton from "./LogoutButton";
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Image from 'react-bootstrap/Image';
@@ -26,13 +27,13 @@ function NavBar() {
     <Navbar collapseOnSelect expand="lg" className="navStyle" style={{backgroundColor: "#212529"}}>
     <Container>
       <Navbar.Brand>
-        <a href="/"> <Image src="https://icon-library.com/images/physical-therapy-icon/physical-therapy-icon-22.jpg" alt="ptPic9" rounded /> </a>
+        <Link to="/"> <Image src="https://icon-library.com/images/physical-therapy-icon/physical-therapy-icon-22.jpg" alt="ptPic9" rounded /> </Link>
         <br/>
         <h1 style={{color: "black"}}>Simply PT</h1>
         {user ? <LogoutButton user={user}/> :  <Link to="/signin">
-          <button className="btn btn-secondary" href="/signin" style={{color: "black", border: "1px black solid"}}>
+          <Button className="btn btn-secondary" style={{color: "black", border: "1px black solid"}}>
             Log  in <i className="bi bi-person-fill"></i>
-          </button>
+          </Button>
       </Link>
       
         }

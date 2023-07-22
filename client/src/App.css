@@ -541,3 +541,12 @@
 .page-caption { padding-top: 250px; padding-bottom: 250px; }
 .card-section { position: relative; bottom: 250px; text-align: center;}
 .card-block { padding: 80px; }
+
+
+/* footer */
+.social > i:hover {
+  opacity:0.5;
+}
+
+
+
