@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUser } from "./userSlice";
@@ -18,9 +18,19 @@ const linkStyles = {
 
 
 
-function NavBar() {
+function NavBar({itemsCountRefresher}) {
 
   const user = useSelector(selectUser);
+
+  const [myCart, setMyCart] = useState([])
+
+
+  useEffect(() => {
+    fetch("http://localhost:4000/myCart")
+      .then((r) => r.json())
+      .then((myCartData) => setMyCart(myCartData));
+  }, [itemsCountRefresher]);
+
 
   return (
 
@@ -114,7 +124,13 @@ function NavBar() {
                 color: "white"
               }}
               >
-              MyCart <i className="bi bi-cart4"></i> 
+              MyCart {myCart.length <= 0 ? <i className="bi bi-cart4"></i>     :  <i className="bi bi-cart4"><span className="badge">{myCart.length}</span></i>}  
+              {/* MyCart <i className="bi bi-cart4"></i> */}
+              {/* MyCart <i className="bi bi-cart4"><span class="badge">3</span></i>  */}
+
+              {/* {myCart.length > 0  ? "Profile - Appts" : {MyCart <i className="bi bi-cart4"></i> <span class="badge">3</span>}} */}
+              {/* {showCartCount()} */}
+              
             </NavLink>
      
 

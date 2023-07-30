@@ -2,7 +2,7 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-function StoreMyCartPageCard({myCartItem, handleDelItem}) {
+function StoreMyCartPageCard({myCartItem, handleDelItem, setItemsCountRefresher}) {
 
   const { itemUrl, name, color, price, category} = myCartItem.item
   const { id, size } = myCartItem
@@ -30,7 +30,10 @@ function StoreMyCartPageCard({myCartItem, handleDelItem}) {
       method: "DELETE",
     })
       .then((r) => r.json())
-      .then(() => handleDelItem(myCartItem));
+      .then(() => {
+        handleDelItem(myCartItem)
+        setItemsCountRefresher(myCartItem)
+      });
 
     alert("Item Has Been Deleted From The Cart")
 

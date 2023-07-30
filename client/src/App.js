@@ -21,6 +21,9 @@ function App() {
 
   const [pts, setPts] = useState([])
 
+  const [itemsCountRefresher, setItemsCountRefresher] = useState([])
+
+
   useEffect(() => {
 
     fetch("/physical_therapists")
@@ -32,7 +35,7 @@ function App() {
 
   return (
     <>
-      <NavBar/>
+      <NavBar itemsCountRefresher={itemsCountRefresher}/>
 
       <Switch>
 
@@ -43,7 +46,7 @@ function App() {
           <NewPatientSignInPage />
         </Route>
         <Route path="/store">
-          <StorePage />
+          <StorePage setItemsCountRefresher={setItemsCountRefresher}/>
         </Route>
         <Route exact path="/">
           <HomePage />

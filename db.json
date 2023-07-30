@@ -167,6 +167,21 @@
       "itemUrl": "https://ptuzencart.s3.us-east-2.amazonaws.com/images/7429_5e98c52466e91.jpg"
     }
   ],
-  "myCart": [],
+  "myCart": [
+    {
+      "item": {
+        "id": 2,
+        "category": "braces",
+        "name": "ASO Ankle Stabilizer",
+        "brand": "ASO",
+        "color": "White",
+        "price": 44.99,
+        "productDetails": "The ASO has unique stabilizing straps that resemble a figure 8 - that provides superior defense against inversion injuries, the most common ankle injury.",
+        "itemUrl": "https://ptuzencart.s3.us-east-2.amazonaws.com/images/264002_52a5ee488dffe.jpg"
+      },
+      "size": "Medium",
+      "id": 1
+    }
+  ],
   "completedOrders": []
 }

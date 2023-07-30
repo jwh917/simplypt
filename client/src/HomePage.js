@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import ptPic2 from './ptPic2.gif'; 
 import ptPic3 from './ptPic3.gif'; 
 import ptPic4 from './ptPic4.jpg'; 
@@ -13,6 +13,10 @@ import { Link } from 'react-router-dom';
 
 
 function HomePage(){
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   return (
     <>
       <div className="page-header">
@@ -49,9 +53,7 @@ function HomePage(){
         <br/>
 
         <div className="col-md-6 offset-md-5" style={{backgroundColor: "#212529", borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", padding: "30px"}}>
-
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/BNsoZiP3YZs" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen style={{ borderRadius: "70px", width: "100%"}}></iframe>
-
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/BNsoZiP3YZs" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen style={{ borderRadius: "70px", width: "100%"}}></iframe>
         </div>
       </div>
 
@@ -102,9 +104,9 @@ function HomePage(){
         <Image src={ptPic4} alt="ptPic4" thumbnail fluid="true" style={{border: "2px solid rgba(255,255,255,0.1)"}}/> 
       </Container>
 
-      <div class="row mx-auto" style={{padding: "20px"}}>
-        <div class="col-md-6"> <Image src="https://pilatesmatters.com/cdn/shop/files/Merrithew_PilatesRehabAccessoryBundle_1024x1024.jpg" alt="ptPic4" thumbnail fluid="true" style={{ width: "100%", height: "400px", borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)"}}/> </div>
-        <div class="col-md-6" style={{ color: "white", backgroundColor: "#212529",  borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", padding: "20px", textAlign: "right", paddingTop: "15px"}}>
+      <div className="row mx-auto" style={{padding: "20px"}}>
+        <div className="col-md-6"> <Image src="https://pilatesmatters.com/cdn/shop/files/Merrithew_PilatesRehabAccessoryBundle_1024x1024.jpg" alt="ptPic4" thumbnail fluid="true" style={{ width: "100%", height: "400px", borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)"}}/> </div>
+        <div className="col-md-6" style={{ color: "white", backgroundColor: "#212529",  borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", padding: "20px", textAlign: "right", paddingTop: "15px"}}>
           <Image src="https://www.protherapysupplies.com/pts_website_assets/images/pts_logo.png" alt="ptPic4" thumbnail fluid="true" style={{ width: "100%", height: "200px", borderRadius: "70px", border: "2px solid rgba(255,255,255,0.1)"}}/>
           <br/>
           <br/>

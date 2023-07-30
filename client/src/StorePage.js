@@ -4,7 +4,7 @@ import StoreHomePage from "./StoreHomePage";
 import StoreSearchPage from "./StoreSearchPage";
 import StoreMyCartPage from "./StoreMyCartPage";
 
-function StorePage(){
+function StorePage({setItemsCountRefresher}){
   
   return (
     <>
@@ -12,15 +12,15 @@ function StorePage(){
       <Switch>
 
         <Route path="/store/home">
-          <StoreHomePage />
+          <StoreHomePage setItemsCountRefresher={setItemsCountRefresher}/>
         </Route>
 
         <Route path="/store/search">
-          <StoreSearchPage />
+          <StoreSearchPage setItemsCountRefresher={setItemsCountRefresher}/>
         </Route>
 
         <Route path="/store/cart">
-          <StoreMyCartPage />
+          <StoreMyCartPage setItemsCountRefresher={setItemsCountRefresher}/>
         </Route>
 
       </Switch>      

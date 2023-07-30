@@ -7,7 +7,7 @@ import ItemPopUp from "./ItemPopUp";
 import Row from 'react-bootstrap/Row';
 import Image from 'react-bootstrap/Image';
 
-function StoreHomePage(){
+function StoreHomePage({setItemsCountRefresher}){
 
   const [braces, setBraces] = useState([])
   const [exercise, setExercise] = useState([])
@@ -155,7 +155,7 @@ function StoreHomePage(){
       <div class="row mx-auto" style={{padding: "20px"}}>
         <div class="col-md-6"> <Image src="https://cdn.thewirecutter.com/wp-content/media/2023/02/exerciseballs-2048px-09602-2x1-1.jpg?auto=webp&quality=75&crop=2:1&width=1024" alt="ptPic4" thumbnail fluid="true" style={{ width: "100%", height: "400px", borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", marginTop: "90px"}}/> </div>
         <div class="col-md-6" style={{ color: "white", backgroundColor: "#212529",  borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", padding: "20px", textAlign: "right", paddingTop: "15px"}}>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/EzxYTsfuB6c" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen style={{ borderRadius: "70px", width: "100%"}}></iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/EzxYTsfuB6c" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen style={{ borderRadius: "70px", width: "100%"}}></iframe>
 
           <br/>
           <br/>
@@ -225,6 +225,7 @@ function StoreHomePage(){
         togglePopUp={togglePopUp}
         isOpen={isOpen}
         itemDisplayed={itemDisplayed}
+        setItemsCountRefresher={setItemsCountRefresher}
       />}
 
     </>

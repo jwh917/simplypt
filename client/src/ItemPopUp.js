@@ -9,7 +9,7 @@ import Image from 'react-bootstrap/Image';
 
 
 
-function ItemPopUp({togglePopUp, isOpen, itemDisplayed}) {
+function ItemPopUp({togglePopUp, isOpen, itemDisplayed, setItemsCountRefresher}) {
   const [size, setSize] = useState("")
 
   function newSize(event){
@@ -46,11 +46,11 @@ function ItemPopUp({togglePopUp, isOpen, itemDisplayed}) {
       body: JSON.stringify(newCartItem),
     })
       .then((r) => r.json())
-      .then((newCartItemData) => togglePopUp())
-
+      .then((newCartItemData) => {
+        togglePopUp()
+        setItemsCountRefresher(newCartItemData)
+      })
       alert("Item Has Been Added To The Cart")
-
-
   }
 
 
@@ -111,7 +111,7 @@ function ItemPopUp({togglePopUp, isOpen, itemDisplayed}) {
           <br/>
           <br/>
           
-          <Badge className="badge bg-secondary">
+          <Badge className="badge bg-secondary" style={{marginLeft: "15px"}}>
             <h4>Price: ${price}</h4>
           </Badge>
 
@@ -120,8 +120,10 @@ function ItemPopUp({togglePopUp, isOpen, itemDisplayed}) {
 
           
           {showProductDetails()}
+
+          <br/>
           
-          <Badge className="badge bg-secondary" id="buttonEffect3">
+          <Badge className="badge bg-secondary" id="buttonEffect3" style={{marginLeft: "15px"}}>
             <h5>Size</h5>
             {itemSizing()}
           </Badge>

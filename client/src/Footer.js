@@ -76,17 +76,17 @@ const Footer = ({user}) =>
 
   <div className="social" style={{display: "flex", textAlign: "center", justifyContent: "space-evenly", fontSize: "25px"}}>
 
-    <i className="bi bi-facebook" style={{border: "2px solid black", borderRadius: "10%", padding: "5px"}}></i>
+    <i className="bi bi-facebook" style={{border: "2px solid black", borderRadius: "10%", padding: "5px", cursor: "pointer"}}></i>
 
-    <i className="bi bi-instagram" style={{border: "2px solid black", borderRadius: "10%", padding: "5px"}}></i>
+    <i className="bi bi-instagram" style={{border: "2px solid black", borderRadius: "10%", padding: "5px", cursor: "pointer"}}></i>
 
-    <i className="bi bi-twitter" style={{border: "2px solid black", borderRadius: "10%", padding: "5px"}}></i>
+    <i className="bi bi-twitter" style={{border: "2px solid black", borderRadius: "10%", padding: "5px", cursor: "pointer"}}></i>
 
-    <i className="bi bi-google" style={{border: "2px solid black", borderRadius: "10%", padding: "5px"}}></i>
+    <i className="bi bi-google" style={{border: "2px solid black", borderRadius: "10%", padding: "5px", cursor: "pointer"}}></i>
 
-    <i className="bi bi-github" style={{border: "2px solid black", borderRadius: "10%", padding: "5px"}}></i>
+    <i className="bi bi-github" style={{border: "2px solid black", borderRadius: "10%", padding: "5px", cursor: "pointer"}}></i>
 
-    <i className="bi bi-linkedin" style={{border: "2px solid black", borderRadius: "10%", padding: "5px"}}></i>
+    <i className="bi bi-linkedin" style={{border: "2px solid black", borderRadius: "10%", padding: "5px", cursor: "pointer"}}></i>
     
 
   </div>

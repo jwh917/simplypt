@@ -11,7 +11,7 @@ import Image from 'react-bootstrap/Image';
 
 
 
-function StoreSearchPage(){
+function StoreSearchPage({setItemsCountRefresher}){
 
 
   const [braces, setBraces] = useState([])
@@ -279,6 +279,7 @@ function displayItems(){
         togglePopUp={togglePopUp}
         isOpen={isOpen}
         itemDisplayed={itemDisplayed}
+        setItemsCountRefresher={setItemsCountRefresher}
       />}
 
     </>

@@ -4,7 +4,7 @@ import StoreMyCartPageCard from "./StoreMyCartPageCard";
 import Badge from 'react-bootstrap/Badge';
 import { Button } from 'react-bootstrap';
 
-function StoreMyCartPage(){
+function StoreMyCartPage({setItemsCountRefresher}){
 
   const [myCart, setMyCart] = useState([])
 
@@ -54,6 +54,7 @@ function StoreMyCartPage(){
       key={myCartItem.id}
       myCartItem={myCartItem}
       handleDelItem={handleDelItem}
+      setItemsCountRefresher={setItemsCountRefresher}
       />
     )
   })
@@ -140,7 +141,7 @@ function StoreMyCartPage(){
     // error or window saying which ever one isnt filled
     if(newCompletedOrder.fullName === "" || newCompletedOrder.email === "" || newCompletedOrder.email === "" || newCompletedOrder.address === "" || newCompletedOrder.city === "" || newCompletedOrder.state === "" || newCompletedOrder.zipCode === "" || newCompletedOrder.cardName === "" || newCompletedOrder.cardNum === "" || newCompletedOrder.expMon === "" || newCompletedOrder.expYr === "" || newCompletedOrder.cvv === "" || newCompletedOrder.myCart.length === 0 || newCompletedOrder.total === 0) return
 
-    fetch("http://localhost:3000/completedOrders", {
+    fetch("http://localhost:4000/completedOrders", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -153,6 +154,8 @@ function StoreMyCartPage(){
     event.target.reset()
 
     afterCheckOut(myCart)
+
+    setItemsCountRefresher(newCompletedOrder)
 
     alert("Your Purchase Has Been Completed, Thank You For Shopping With Us!")
 
@@ -227,7 +230,7 @@ function StoreMyCartPage(){
               <label htmlFor="ccnum">Credit Card #:&nbsp;</label> 
               <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" onChange={cardNumInput} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> <br/>
               <label htmlFor="expmonth">Exp Month:&nbsp;</label>
-              <input type="text" id="expmonth" name="expmonth" placeholder="September" onChange={expMonInput} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/>
+              <input type="text" id="expmonth" name="expmonth" placeholder="09" onChange={expMonInput} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/>
               <div className="row">
                 <div className="col-50">
                   <label htmlFor="expyear">Exp Year:&nbsp;</label>
@@ -251,7 +254,6 @@ function StoreMyCartPage(){
 <br/>
 <br/>
 {/* checkoutbar */}
-      <div>
         <Badge className="badge bg-secondary" id="checkoutBarBadge">         
           <div>
             <h3> Delivery Cost: FREE</h3>
@@ -259,7 +261,7 @@ function StoreMyCartPage(){
             <Button className="btn btn-light" id="checkoutBarButton" type="submit" form="my-form"> Checkout </Button>
           </div>
         </Badge>
-      </div>
+      
 
 
 
