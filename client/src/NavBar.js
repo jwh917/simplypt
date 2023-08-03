@@ -125,12 +125,6 @@ function NavBar({itemsCountRefresher}) {
               }}
               >
               MyCart {myCart.length <= 0 ? <i className="bi bi-cart4"></i>     :  <i className="bi bi-cart4"><span className="badge">{myCart.length}</span></i>}  
-              {/* MyCart <i className="bi bi-cart4"></i> */}
-              {/* MyCart <i className="bi bi-cart4"><span class="badge">3</span></i>  */}
-
-              {/* {myCart.length > 0  ? "Profile - Appts" : {MyCart <i className="bi bi-cart4"></i> <span class="badge">3</span>}} */}
-              {/* {showCartCount()} */}
-              
             </NavLink>
      
 

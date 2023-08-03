@@ -35,8 +35,7 @@ function StoreMyCartPageCard({myCartItem, handleDelItem, setItemsCountRefresher}
         setItemsCountRefresher(myCartItem)
       });
 
-    alert("Item Has Been Deleted From The Cart")
-
+    alert(`${myCartItem.item.name} Has Been Removed From The Cart`)
 
   }
   

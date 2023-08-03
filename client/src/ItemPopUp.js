@@ -16,15 +16,6 @@ function ItemPopUp({togglePopUp, isOpen, itemDisplayed, setItemsCountRefresher})
     setSize(event.target.value)
   }
 
-  
-  // if(isOpen) {
-  //   document.body.classList.add('active-modal')
-  // } else {
-  //   document.body.classList.remove('active-modal')
-  // }
-
-
-
   const {name, category, color, itemUrl, productDetails, price} = itemDisplayed
 
   function addToCart(){
@@ -50,7 +41,7 @@ function ItemPopUp({togglePopUp, isOpen, itemDisplayed, setItemsCountRefresher})
         togglePopUp()
         setItemsCountRefresher(newCartItemData)
       })
-      alert("Item Has Been Added To The Cart")
+      alert(`${newCartItem.item.name} Has Been Added To The Cart`)
   }
 
 
@@ -96,8 +87,6 @@ function ItemPopUp({togglePopUp, isOpen, itemDisplayed, setItemsCountRefresher})
 
   return (
     <>
-
-
       <Modal show={isOpen} onHide={togglePopUp} animation={true} backdrop="static">
         <Modal.Header closeButton>
           <Modal.Title>
