@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
 
+  
   resources :appointments, only: [:index, :create, :destroy]
 
   resources :comp_users, only: [:create, :show, :update, :destroy]
 
   resources :exercises, only: [:create]
+
+  resources :recommended_equipments, only: [:create]
 
   resources :patient_profiles, only: [:index, :show, :create, :update]
 

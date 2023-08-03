@@ -5,6 +5,8 @@ class Patient < CompUser
   
   has_many :exercises, dependent: :destroy
 
+  has_many :recommended_equipments, dependent: :destroy
+
   has_many :physical_therapists, through: :appointments
 
 end

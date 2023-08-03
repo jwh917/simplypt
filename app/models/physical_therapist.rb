@@ -5,4 +5,7 @@ class PhysicalTherapist < CompUser
 
   has_many :exercises
 
+  has_many :recommended_equipments
+
+
 end
