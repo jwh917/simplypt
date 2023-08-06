@@ -7,6 +7,10 @@ import HorizontalScroll from 'react-horizontal-scrolling'
 import our_clinic from './our_clinic.png'; 
 
 import Image from 'react-bootstrap/Image';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+import RecommendEquipmentSearch from "./RecommendEquipmentSearch";
 
 
 
@@ -100,6 +104,7 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
     return patientInfo.name
   }
 
+
   const showAllAppts = user.appointments.map((appt) => (
     <div key={appt.id} className="dashBoard"  style={{border: "1px solid white", borderRadius: "20px", padding: "5px", width: "150px", height: "115px", marginLeft: "15px", textAlign: "center", color: "white"}}>
       <p>Date: {appt.date}</p>
@@ -113,12 +118,20 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
 
   const [patientId, setPatientId] = useState(0)
   const [muscleInjury, setMuscleInjury] = useState("")
- 
+
+  const [showRecommendEquipmentSearch, setShowRecommendEquipmentSearch] = useState(false)
+
 
   function assignExercises(e){
     setPatientId(e.target.value)
     setMuscleInjury(e.target.name)
     setShowExerciseForm(true)
+  }
+
+
+  function ptRecommendEquipment(e){
+    setPatientId(e.target.value)
+    setShowRecommendEquipmentSearch(true)
   }
 
 
@@ -156,7 +169,16 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
         <p>DOB: {patientInfo.patient.patient_profile.dob}</p>
         <p>Sex: {patientInfo.patient.patient_profile.sex}</p>
         <p>Muscle Injury: {patientInfo.patient.patient_profile.muscle_injury}</p>
-        <button className="buttonEffect1" value={patientInfo.patient_id} name={patientInfo.patient.patient_profile.muscle_injury} onClick={assignExercises} style={{ fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}>Assign Exercises 💪🏽🦵🏼🦶🏿</button>
+        <Row className="justify-content-md-center">
+          <Col xs lg="5">
+            <button className="buttonEffect1" value={patientInfo.patient_id} name={patientInfo.patient.patient_profile.muscle_injury} onClick={assignExercises} style={{ fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "fit-content"}}>Assign Exercises <br/> 💪🏽🦵🏼🦶🏿</button> 
+          </Col>
+          <Col xs lg="6">
+            <button className="buttonEffect1" value={patientInfo.patient_id} name={patientInfo.patient.patient_profile.muscle_injury} onClick={ptRecommendEquipment} style={{ fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "fit-content"}}>Recommend Equipment <br/> 🪢🩼🩹</button>
+          </Col>
+        </Row>
+
+    
 
         <br/>
         <br/>
@@ -275,6 +297,8 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
           <br/>
 
           {showExerciseForm ? <ExerciseForm patientId={patientId} muscleInjury={muscleInjury} setShowExerciseForm={setShowExerciseForm} keysToSimplyPT={keysToSimplyPT}/> : " "}
+
+          {showRecommendEquipmentSearch ? <RecommendEquipmentSearch patientId={patientId} setShowRecommendEquipmentSearch={setShowRecommendEquipmentSearch}/> : " "}
         
         </div>
       </div>

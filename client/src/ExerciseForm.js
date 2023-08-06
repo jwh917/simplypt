@@ -103,12 +103,18 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, keysToSimpl
 
     setShowExerciseForm(false)
   }
+
+function showPatientInfo(patientId){
+  const patientInfo = user.patients.find((patient) => patient.id === parseInt(patientId))
+  return patientInfo.name
+}
   
 
   return (
     <div>
             
       <h3 style={{marginLeft: "5px"}}><u>Exercises</u></h3>
+      <h2>For Patient: {showPatientInfo(patientId)}</h2>
       <button className="buttonEffect" onClick={closeExerciseForm} style={{marginLeft: "45px", backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "40px"}}>X</button>
       <br/>
       <br/>

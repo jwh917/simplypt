@@ -3,7 +3,7 @@ class RecommendedEquipmentsController < ApplicationController
 
   def create
     recommended_equipment = RecommendedEquipment.create!(rec_eq_params)
-    render json: exercise, status: :created
+    render json: recommended_equipment, status: :created
   end
 
   private

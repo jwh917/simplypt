@@ -562,3 +562,11 @@
   background: red;
   color: white;
 }
+
+
+#clipboard:hover{
+  background: darkgray;
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 20%;
+}

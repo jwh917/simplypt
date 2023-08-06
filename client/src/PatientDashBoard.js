@@ -17,6 +17,8 @@ function PatientDashBoard({keysToSimplyPT}) {
 
   const user = useSelector(selectUser);
 
+  console.log(user)
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -172,7 +174,6 @@ function PatientDashBoard({keysToSimplyPT}) {
       <p><u>Name:</u> {pt.name}</p>
       <Image src={pt.image} alt="pt" fluid="true" style={{height:"100px", width:"100px", borderRadius: "20px"}}/> 
 
-      {/* <img style={{height:"100px", width:"100px", borderRadius: "20px"}} src={pt.image} alt="pt" /> */}
       <br/>
       <br/>
       <p><u>Email:</u> {pt.email}</p>
@@ -186,10 +187,25 @@ function PatientDashBoard({keysToSimplyPT}) {
         <p><u>Exercise given by PT {exercise.physical_therapist_name} </u></p>
         <Image src={exercise.gifurl} alt="exercise.gifUrl" fluid="true" style={{height:"150px", width:"150px", borderRadius: "20px"}}/> 
 
-        {/* <img src={exercise.gifurl} alt="exercise.gifUrl" width="150px" height="150px" style={{borderRadius: "20px"}}/> */}
         <p>Name: {exercise.description}</p>
         <p>Muscle: {exercise.muscle}</p>
         <p>Equipment Needed: {exercise.equipment}</p>
+      </div>
+    )
+
+  })
+
+
+  const allRecommendedEquipment = user.recommended_equipments.map((equipment) => {
+    return (
+      <div key={equipment.id} className="dashBoard" style={{ color:"white", border: "2px solid white", borderRadius: "20px", padding: "5px", textAlign: "center", marginLeft: "25px", wordWrap: "break-word", width: "200px"}}>
+        
+        <p>Name: {equipment.product_name} &nbsp; <i className="bi bi-clipboard" id="clipboard" title={equipment.product_name} onClick={() => {navigator.clipboard.writeText(equipment.product_name)}}></i> </p> 
+
+        <Image src={equipment.product_url} alt="exercise.gifUrl" fluid="true" style={{height:"150px", width:"150px", borderRadius: "20px"}}/> 
+        <br/>
+        <br/>
+        <p>Desc: {equipment.product_description}</p>
       </div>
     )
 
@@ -380,6 +396,18 @@ function PatientDashBoard({keysToSimplyPT}) {
 
             <HorizontalScroll reverseScroll={true}>
               {allExercises}
+            </HorizontalScroll>
+
+            <br/>
+            <br/>
+
+            <h2 style={{color: "white"}}><u>Recommendeded Equipment</u></h2>
+            <p style={{color: "white", marginLeft: "25px"}}>-Note: Copy and Paste Equipment Name To The <a href="/store/search">Search Page</a> </p>
+            <br/>
+            {user.recommended_equipments.length === 0 ? <h4 style={{color: "white"}}>0 Recommendeded Equipment Available</h4> : <h4 style={{color: "white"}}>{user.recommended_equipments.length} Recommendeded Equipment Available</h4>}
+
+            <HorizontalScroll reverseScroll={true}>
+              {allRecommendedEquipment}
             </HorizontalScroll>
 
           </div>
