@@ -263,9 +263,12 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
 
             <br/>
 
-            <HorizontalScroll reverseScroll={true}>
-              {showAllAppts}
-            </HorizontalScroll>
+            <div>
+              <HorizontalScroll reverseScroll={true}>
+                {showAllAppts}
+              </HorizontalScroll>
+            </div>
+            
 
           </div>
           <br/>
@@ -284,12 +287,12 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
           <br/>
           <br/>
 
-          <div style={{display: "flex", justifyContent: "space-around"}}>
-
-            <HorizontalScroll reverseScroll={true}>
-              {showAllPatientsInfo}
-            </HorizontalScroll>
-
+          <div>
+            <div>
+              <HorizontalScroll reverseScroll={true}>
+                {showAllPatientsInfo}
+              </HorizontalScroll>
+            </div>  
           </div>
       
           <br/>

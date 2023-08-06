@@ -9,14 +9,15 @@ function NewConfirmationInfo({setShowConfirmation, confirmationInfo}) {
   
  
   return (
-    <div>
+    <div style={{marginLeft: "50px"}}>
 
       <br/>
       <br/>
 
-      <button onClick={closeConfirmation}>
+      <button onClick={closeConfirmation} style={{marginLeft: "45px", backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "40px"}}>
         X
       </button>
+      <br/>
       <br/>
       <br/>
       Simply PT
@@ -45,6 +46,9 @@ function NewConfirmationInfo({setShowConfirmation, confirmationInfo}) {
       </ul>
 
       An email will be sent with your confirmation information.
+
+      <br/>
+      <br/>
       
     </div>
   );
