@@ -6,15 +6,15 @@ import { Link } from 'react-router-dom';
 
 
 const Footer = ({user}) => 
-<footer className="page-footer font-small blue pt-4" style={{width: "100%", backgroundColor: "#212529", color: "black", borderTop: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", letterSpacing: "0.5px"}}> 
+<footer className="page-footer font-small blue pt-4" id="footer"> 
   <div className="container-fluid text-center text-md-left">
     <div className="row">
       <div className="col-md-6 mt-md-0 mt-3">
-        <Link to="/"> <Image src="https://icon-library.com/images/physical-therapy-icon/physical-therapy-icon-22.jpg" alt="ptPic9" rounded  style={{width: "50px", height: "50px"}}/> </Link>
+        <Link to="/"> <Image src="https://icon-library.com/images/physical-therapy-icon/physical-therapy-icon-22.jpg" alt="ptPic9" rounded /> </Link>
         
         <br/>
 
-        <h4 style={{color: "black"}}>Simply PT</h4>
+        <h4>Simply PT</h4>
         <p>Committed to excellence in care. Discover Your Potential!</p>
         <p>1000 SimplyPT Ave. New York, NY 10001</p>
         <p>simplypt2023@gmail.com</p>
@@ -22,10 +22,10 @@ const Footer = ({user}) =>
         
         <br/>
 
-        <form className="form-footer my-0">
+        <form className="form-footer my-0" id="footerForm">
           <h5>Newsletter - Subscribe Today!</h5>
-          <input type="text"  placeholder="Email.." name="search" style={{borderRadius: "16px 0 0 16px", height: "54px", padding: "5px"}}/>
-          <button className="buttonEffect" style={{border: "2px solid black", borderRadius: "0 16px 16px 0", width: "50px", height: "55px", backgroundColor: "#212529"}}> <i className="bi bi-send-fill"></i> </button>
+          <input type="text"  placeholder="Email.." name="search" />
+          <button className="buttonEffect" > <i className="bi bi-send-fill"></i> </button>
         </form>
 
         <br/>
@@ -34,22 +34,22 @@ const Footer = ({user}) =>
         
       <hr className="clearfix w-100 d-md-none pb-0"/>
         
-      <div className="col-md-3 mb-md-0 mb-3" style={{marginTop: "55px", fontSize: "25px"}}>
+      <div className="col-md-3 mb-md-0 mb-3" id="footerLinks">
         <ul className="list-unstyled">
-          <li style={{marginBottom: "15px"}}><a href="/">Home</a></li>
-          <li style={{marginBottom: "15px"}}><a href="/about">About</a></li>
-          <li style={{marginBottom: "15px"}}><a href="/signin">{user ? "Profile - Appts" : "Sign In - Up"}</a></li>
-          <li style={{marginBottom: "15px"}}><a href="/store/home">Store</a></li>
-          <li style={{marginBottom: "15px"}}><a href="/store/search">Search</a></li>
-          <li style={{marginBottom: "15px"}}><a href="/store/cart">MyCart</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/signin">{user ? "Profile - Appts" : "Sign In - Up"}</a></li>
+          <li><a href="/store/home">Store</a></li>
+          <li><a href="/store/search">Search</a></li>
+          <li><a href="/store/cart">MyCart</a></li>
             
         </ul>
       </div>
         
       <div className="col-md-3 mb-md-0 mb-3">
-        <ul className="list-unstyled" style={{marginTop: "85px", fontSize: "25px"}}>
+        <ul className="list-unstyled" id="footerButtons">
           <li>
-            <Button className="buttonEffect" size="sm" style={{backgroundColor: "#212529", border: "2px black solid", borderRadius: "15px", color: "black", width: "30%", height: "55px", fontSize: "55%"}}>
+            <Button className="buttonEffect" size="sm">
               More Info 
             </Button>
           </li>
@@ -57,7 +57,7 @@ const Footer = ({user}) =>
           <br/>
           <br/>
           <li>
-            <Button className="buttonEffect" size="sm" style={{backgroundColor: "#212529", border: "2px black solid", borderRadius: "15px", color: "black", width: "30%", height: "55px", fontSize: "55%"}}>
+            <Button className="buttonEffect" size="sm">
               Contact Us
             </Button>
           </li>
@@ -74,20 +74,19 @@ const Footer = ({user}) =>
 
 
 
-  <div className="social" style={{display: "flex", textAlign: "center", justifyContent: "space-evenly", fontSize: "25px"}}>
+  <div className="footerSocial">
 
-    <i className="bi bi-facebook" style={{border: "2px solid black", borderRadius: "10%", padding: "5px", cursor: "pointer"}}></i>
+    <i className="bi bi-facebook"></i>
 
-    <i className="bi bi-instagram" style={{border: "2px solid black", borderRadius: "10%", padding: "5px", cursor: "pointer"}}></i>
+    <i className="bi bi-instagram"></i>
 
-    <i className="bi bi-twitter" style={{border: "2px solid black", borderRadius: "10%", padding: "5px", cursor: "pointer"}}></i>
+    <i className="bi bi-twitter"></i>
 
-    <i className="bi bi-google" style={{border: "2px solid black", borderRadius: "10%", padding: "5px", cursor: "pointer"}}></i>
+    <i className="bi bi-google"></i>
 
-    <i className="bi bi-github" style={{border: "2px solid black", borderRadius: "10%", padding: "5px", cursor: "pointer"}}></i>
+    <i className="bi bi-github"></i>
 
-    <i className="bi bi-linkedin" style={{border: "2px solid black", borderRadius: "10%", padding: "5px", cursor: "pointer"}}></i>
-    
+    <i className="bi bi-linkedin"></i>
 
   </div>
 

@@ -9,12 +9,12 @@ function NewConfirmationInfo({setShowConfirmation, confirmationInfo}) {
   
  
   return (
-    <div style={{marginLeft: "50px"}}>
+    <div className="newConfirmationInfoDiv">
 
       <br/>
       <br/>
 
-      <button onClick={closeConfirmation} style={{marginLeft: "45px", backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "40px"}}>
+      <button onClick={closeConfirmation} id="xButton">
         X
       </button>
       <br/>

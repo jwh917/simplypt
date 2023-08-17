@@ -323,18 +323,205 @@
 
 /* Simply PT 2.0  newest css addition */
 
-.navLink:hover{
-  opacity: .5;
+/* AboutPage */
+#aboutPageCard{
+  width: 70%;
+  height: 50%;
+  text-align: center;
+  background-color: white;
+  color: black;
+  border-radius: 90px;
 }
-.navStyle{
-  border: 2px solid rgba(8,7,16,0.6);
+
+#aboutPageCardImg{
+  width: 50%;
+  height: 50%;
+  border-radius: 20px;
+}
+
+.aboutPageContainer0{
+  color: white;
+  width: 65%;
+  text-align: center;
+  background-color: #212529;
+  border-radius: 90px;
+  border: 2px solid rgba(255,255,255,0.1);
   box-shadow: 0 0 40px rgba(8,7,16,0.6);
+}
+
+#aboutPageContainer1{
+  color: white;
+  width: 40%;
+  height: 30%;
+  text-align: center;
+  background-color: #212529;
+  border-radius: 90px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  padding: 20px;
+}
+
+#aboutPageContainer1 img{
+  border-radius: 200px;
+  margin-top: 20px;
+}
+
+.aboutMeetTeamHeader{
+  text-align: center;
+}
+
+#aboutPtCarousel{
+  width: 45%;
+  background-color: #212529;
+  border-radius: 90px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  padding: 20px;
+}
+
+.aboutPage0{
+  text-align: center;
+  justify-content: space-around;
+  color: #7395B6;
 }
 
 .aboutPage0 ul {
   list-style-type: none;
 }
 
+.aboutTreated img{
+  width: 100px;
+  height: 100px;
+}
+
+/* AppointmentForm */
+.appointmentFormDiv{
+  text-align: center;
+  font-size: 18px;
+}
+
+.appointmentFormDiv input{
+  border-radius: 3px;
+}
+
+.appointmentFormPtLabel{
+  margin-left: 20px;
+}
+
+#appointmentFormButton{
+  background-color: #b0bec5;
+  font-size: 18px;
+  font-weight: 800;
+  border-radius: 5px;
+  height: 50px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+}
+
+/* ExerciseForm */
+#ExerciseFormChoiceButton{
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 5px;
+  text-align: center;
+  margin-left: 25px;
+  word-wrap: break-word;
+  width: 200px;
+}
+
+.ExerciseFormHeader{
+  margin-left: 5px;
+}
+
+.ExerciseFormDiv{
+  text-align: center;
+  font-size: 18px;
+}
+
+.ExerciseFormDiv input{
+  background-color: rgba(255,255,255,0.07);
+  border-radius: 3px;
+}
+
+#ExerciseFormButton{
+  font-size: 18px;
+  font-weight: 800;
+  border-radius: 5px;
+  height: 50px;
+}
+
+/* Footer */
+#footer{
+  width: 100%;
+  background-color: #212529;
+  border-top: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  letter-spacing: 0.5px;
+  color: black;
+}
+
+#footer img{
+  width: 50px;
+  height: 50px;
+}
+
+#footerForm input{
+  border-radius: 16px 0 0 16px;
+  height: 54px;
+  padding: 5px;
+}
+
+#footerForm button{
+  border: 2px solid black;
+  border-radius: 0 16px 16px 0;
+  width: 50px;
+  height: 55px;
+  background-color: #212529;
+}
+
+#footerLinks{
+  margin-top: 55px;
+  font-size: 25px;
+}
+
+#footerLinks li{
+  margin-bottom: 15px;
+}
+
+#footerButtons{
+  margin-top: 85px;
+  font-size: 25px;
+}
+
+#footerButtons button{
+  background-color: #212529;
+  border: 2px black solid;
+  border-radius: 15px;
+  color: black;
+  width: 30%;
+  height: 55px;
+  font-size: 55%;
+}
+
+.footerSocial{
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  font-size: 25px;
+}
+
+.footerSocial i{
+  border: 2px solid black;
+  border-radius: 10%;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.footerSocial > i:hover {
+  opacity:0.5;
+}
+
+/* HomePage */
 .page-header { 
   background: url(ptPic9.jpg)no-repeat; 
   position: flex; 
@@ -354,13 +541,164 @@
 }
 
 .card-block { 
+  background-color: #212529;
+  border-radius: 90px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
   padding: 80px; 
+  color: white;
 }
 
-/* footer */
+#homePageHeader{
+  color: white;
+}
 
-.social > i:hover {
-  opacity:0.5;
+#homePageVideo{
+  background-color: #212529;
+  border-radius: 90px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  padding: 30px;
+}
+
+#homePageVideo iframe{
+  border-radius: 70px;
+  width: 100%;
+}
+
+.homePageContainer0{
+  color: white;
+  width: 100%;
+  height: 30%;
+  text-align: center;
+  background-color: #212529;
+  border-radius: 90px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  padding: 20px;
+  margin-top: -150px;
+}
+
+.homePageContainer0 img{
+  margin-top: 35px;
+}
+
+#homePageContainer0H3{
+  font-size: 95%;
+  margin-top: 50px;
+}
+
+.homePageContainer0Ul{
+  font-size: 30%;
+}
+
+.homePageContainer1{
+  text-align: center;
+}
+
+.homePageContainer1 img{
+  border: 2px solid rgba(255,255,255,0.1);
+}
+
+#storePromoDiv0{
+  padding: 20px;
+}
+
+#storePromoDivImg0{
+  width: 100%;
+  height: 400px;
+  border-radius: 90px;
+  border: 2px solid rgba(255,255,255,0.1);
+}
+
+#storePromoDiv1{
+  color: white;
+  background-color: #212529;
+  border-radius: 90px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  padding: 20px;
+  text-align: right;
+  padding-top: 15px;
+
+}
+
+#storePromoDivImg1{
+  width: 100%;
+  height: 200px;
+  border-radius: 70px;
+  border: 2px solid rgba(255,255,255,0.1);
+}
+
+#storePromoDiv1 button{
+  margin-right: 30px;
+  color: black;
+  border: 1px black solid;
+}
+
+/* ItemCard */
+#itemCard{
+  width: 15rem;
+  height: 27rem;
+  text-align: center;
+  background-color: silver;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+}
+
+.itemCardImg{
+  width: 150px;
+  height: 150px;
+  margin-left: 50px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.itemCardBody{
+  width: fit-content;
+}
+
+/* ItemPopUp */
+#itemPopUpBadge{
+  margin-left: 15px;
+}
+
+#itemPopUpBadge:hover{
+  opacity: .5;
+}
+
+
+/* LogoutButton */
+.logoutButton img{
+  width: 75px;
+  height: 75px;
+  /* padding-top: 10px; */
+  margin-top: 10px;
+}
+
+.logoutButton button{
+  color: black;
+  border: 1px black solid;
+}
+
+/* NavBar */
+.navStyle{
+  border: 2px solid rgba(8,7,16,0.6);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  background-color: #212529;
+}
+
+.navStyle button{
+  color: black;
+  border: 1px black solid;
+}
+
+.navBar{
+  gap: 30px;
+} 
+
+.navLink:hover{
+  opacity: .5;
 }
 
 .badge {
@@ -372,10 +710,432 @@
   color: white;
 }
 
+/* NewConfirmationInfo */
+.newConfirmationInfoDiv{
+  margin-left: 50px;
+}
+
+/* PatientDashBoard */
+.allPts{
+  color: white;
+  border: 2px solid rgba(255,255,255,0.1);
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px;
+  margin-left: 20px;
+}
+
+.allPts img{
+  height: 100px;
+  width: 100px;
+  border-radius: 20px;
+}
+
+.allPts:hover {
+  background: #e1e1e1;
+  border: 1px solid #d0d0d0;
+}
+
+.dashBoardItem{
+  color: white;
+  border: 2px solid white;
+  border-radius: 20px;
+  padding: 5px;
+  text-align: center;
+  margin-left: 25px;
+  word-wrap: break-word;
+  width: 200px;
+}
+
+.dashBoardItem img{
+  height: 150px;
+  width: 150px;
+  border-radius: 20px;
+}
+
+.dashBoardItem:hover {
+  background: #e1e1e1;
+  border: 1px solid #d0d0d0;
+}
 
 #clipboard:hover{
   background: darkgray;
   cursor: pointer;
   padding: 2px;
   border-radius: 20%;
+}
+
+#patientDashBoardDiv0{
+  width: 90%;
+}
+
+#patientDashBoardDiv1{
+  background-color: darkgray;
+  text-align: center;
+  width: 100%;
+  border-top: 2px solid rgba(255,255,255,0.1);
+  border-right: 2px solid rgba(255,255,255,0.1);
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+  border-radius: 0px 20px 20px 0px;
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  letter-spacing: 0.5px;
+  color: white;
+}
+
+#patientDashBoardDiv1 h3{
+  text-align: center;
+}
+
+#patientDashBoardDiv1 img{
+  border: 3px solid black;
+  padding: 5px;
+}
+
+.showConfirm p{
+  color: red;
+}
+
+#confrimDeleteButton{
+  background-color: white;
+  font-size: 18px;
+  font-weight: 800;
+  border-radius: 5px;
+  height: 50px;
+  color: red;
+}
+
+#cancelButton{
+  background-color: white;
+  font-size: 18px;
+  font-weight: 800;
+  border-radius: 5px;
+  height: 50px;
+}
+
+.hr{
+  border: 3px solid black;
+}
+
+#patientDashBoardDiv2{
+  background-color: darkgray;
+  border-radius: 20px;
+  padding: 15px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+}
+
+#patientDashBoardDiv2 h2{
+  color: white;
+}
+
+#patientDashBoardDiv2 h4{
+  color: white;
+}
+
+#patientDashBoardDiv2 p{
+  color: white;
+  margin-left: 25px;
+}
+
+#patientDashBoardDiv3 button{
+  background-color: #b0bec5;
+  font-size: 18px;
+  font-weight: 800;
+  border-radius: 5px;
+  height: 50px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+}
+
+#patientDashBoardDiv4{
+  background-color: darkgray;
+  border-radius: 20px;
+  padding: 15px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  margin-left: 125px;
+}
+
+#patientDashBoardDiv4 h2{
+  color: white;
+  text-align: center;
+}
+
+#patientDashBoardDiv4 h4{
+  color: white;
+}
+
+#patientDashBoardDiv5{
+  justify-content: space-around;
+}
+
+.ptDashBoardItem{
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 5px;
+  width: 150px;
+  height: 115px;
+  margin-left: 15px;
+  text-align: center;
+  color: white;
+}
+
+.ptDashBoardItem:hover {
+  background: #e1e1e1;
+  border: 1px solid #d0d0d0;
+}
+
+.showAllPatientsInfo{
+  border-radius: 20px;
+  padding: 5px;
+  text-align: center;
+  margin-left: 50px;
+  width: 300px;
+}
+
+.showAllPatientsInfo:hover {
+  background: #e1e1e1;
+  border: 1px solid #d0d0d0;
+}
+
+.showAllPatientsCard{
+  border: 2px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(8,7,16,0.6);
+}
+
+#showAllPatientsButton{
+  font-size: 18px;
+  font-weight: 800;
+  border-radius: 5px;
+  height: fit-content;
+}
+
+#ptDashBoardDiv0{
+  width: 90%;
+}
+
+#ptDashBoardDiv1{
+  background-color: darkgray;
+  text-align: center;
+  width: 100%;
+  border-top: 2px solid rgba(255,255,255,0.1);
+  border-right: 2px solid rgba(255,255,255,0.1);
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+  border-radius: 0px 20px 20px 0px;
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  letter-spacing: 0.5px;
+  color: white;
+}
+
+
+#ptDashBoardDiv1 img{
+  border: 3px solid black;
+  padding: 5px;
+}
+
+#ptDashBoardDiv2{
+  background-color: darkgray;
+  border-radius: 20px;
+  padding: 15px;
+  width: 100%;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+}
+
+#ptDashBoardDiv2 h2{
+  color: white;
+}
+
+.ptDashBoardImg{
+  border-radius: 20px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+}
+
+.ptDashBoardHeader{
+  text-align: center;
+}
+
+/* ProfileForm */
+.profileFormDiv{
+  display: flex;
+  justify-content: center;
+  padding: 70px;
+  padding-bottom: 70px;
+}
+
+/* RecEqItemCard */
+#RecEqItemCard{
+  width: 15rem;
+  height: 350px;
+  text-align: center;
+  background-color: silver;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  display: flex;
+  justify-content: center;
+}
+
+#RecEqItemCard img{
+  width: 150px;
+  height: 150px;
+  margin-left: 45px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+#RecEqItemCardButton0{
+  background-color: white;
+  border-radius: 5px;
+  color: green;
+  margin-bottom: 40px;
+} 
+
+#RecEqItemCardButton1{
+  background-color: white;
+  border-radius: 5px;
+  color: red;
+} 
+
+#RecEqItemCardButton2{
+  font-size: 18px;
+  font-weight: 800;
+  border-radius: 5px;
+  width: fit-content;
+} 
+
+
+/* ScheduleAppointment */
+.allPtsButton{
+  margin-left: 30px;
+  border-radius: 10px;
+  height: 250px;
+  margin-top: 25px;
+}
+
+/* StoreHomePage */
+
+#storeHomeCarousel{
+  width: 60%;
+}
+
+#storeHomeHeader{
+  margin-left: 50px;
+}
+
+#storeHomeDiv0{
+  padding: 20px;
+}
+
+#storeHomeImg0{
+  width: 100%;
+  height: 400px;
+  border-radius: 90px;
+  border: 2px solid rgba(255,255,255,0.1);
+  margin-top: 90px;
+}
+
+#storeHomeDiv1{
+  color: white;
+  background-color: #212529;
+  border-radius: 90px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  padding: 20px;
+  text-align: right;
+  padding-top: 15px;
+}
+
+#storeHomeVid{
+  border-radius: 70px;
+  width: 100%;
+}
+
+/* StoreMyCartPage */
+.storeMyCartInput{
+  background-color: rgba(255,255,255,0.07);
+  border-radius: 3px;
+}
+
+/* StoreMyCartPageCard */
+.trashButton{
+  cursor: pointer;
+}
+
+/* UpcomingVisits */
+.showAppt{
+  color: white;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.showAppt button{
+  color: white;
+  font-size: 18px;
+  font-weight: 800;
+  border-radius: 5px;
+  height: 40px;
+}
+
+.showAppt:hover {
+  background: #e1e1e1;
+  border: 1px solid #d0d0d0;
+}
+
+
+/* USE 2X OR MORE */
+/* RecommendEquipmentSearch StoreSearchPage*/
+#recEqSearchInput{
+  width: 50%;
+  height: 40px;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+
+
+/* RecommendEquipmentSearch StoreHomePage StoreSearchPage */
+#fiftyGap{
+  row-gap: 50px;
+}
+
+/* PatientDashBoard PhysicalTherapistDashBoard */
+.userForm label{
+  font-size: 18px;
+}
+
+.userForm input{
+  background-color: rgba(255,255,255,0.07);
+  border-radius: 3px;
+}
+
+.userForm button{
+  background-color: white;
+  font-size: 18px;
+  font-weight: 800;
+  border-radius: 5px;
+  height: 50px;
+  color: black;
+}
+
+/* ExerciseForm NewConfirmationInfo RecommendEquipmentSearch ScheduleAppointment */
+#xButton{
+  margin-left: 45px;
+  background-color: white;
+  font-size: 18px;
+  font-weight: 800;
+  border-radius: 5px;
+  height: 40px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+}
+
+/* LogInForm SignUpForm */
+#logInSignUpFormImg{
+  height: 600px;
+  width: 100%;
+  margin-top: 100px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
 }

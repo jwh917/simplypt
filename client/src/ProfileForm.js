@@ -65,7 +65,7 @@ function ProfileForm() {
 
   return (
 
-    <div style={{display: "flex", justifyContent: "center", paddingTop: "70px", paddingBottom: "70px"}}>
+    <div className="profileFormDiv">
      
       <form className="profileForm" onSubmit={handleSubmit} >
         <h2>Fill Out Profile Here</h2>

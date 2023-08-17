@@ -96,11 +96,11 @@ function ItemPopUp({togglePopUp, isOpen, itemDisplayed, setItemsCountRefresher})
         </Modal.Header>
         <Modal.Body>
 
-          <Image className="d-block mx-auto" src={itemUrl} alt={name} thumbnail fluid="true" style={{width: "250px", height: "250px"}}/> 
+          <Image className="d-block mx-auto" src={itemUrl} alt={name} thumbnail fluid="true"/> 
           <br/>
           <br/>
           
-          <Badge className="badge bg-secondary" style={{marginLeft: "15px"}}>
+          <Badge className="badge bg-secondary" id="itemPopUpBadge">
             <h4>Price: ${price}</h4>
           </Badge>
 
@@ -112,7 +112,7 @@ function ItemPopUp({togglePopUp, isOpen, itemDisplayed, setItemsCountRefresher})
 
           <br/>
           
-          <Badge className="badge bg-secondary" id="buttonEffect3" style={{marginLeft: "15px"}}>
+          <Badge className="badge bg-secondary" id="itemPopUpBadge">
             <h5>Size</h5>
             {itemSizing()}
           </Badge>

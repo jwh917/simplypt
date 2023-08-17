@@ -81,7 +81,7 @@ function StoreMyCartPageCard({myCartItem, handleDelItem, setItemsCountRefresher}
 
           <br></br>
 
-          <span onClick={handleDeleteClick} style={{cursor: "pointer"}}>🗑</span>
+          <span onClick={handleDeleteClick} className="trashButton">🗑</span>
 
         </div>
         <br></br>

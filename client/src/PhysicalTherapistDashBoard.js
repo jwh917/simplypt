@@ -106,7 +106,7 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
 
 
   const showAllAppts = user.appointments.map((appt) => (
-    <div key={appt.id} className="dashBoard"  style={{border: "1px solid white", borderRadius: "20px", padding: "5px", width: "150px", height: "115px", marginLeft: "15px", textAlign: "center", color: "white"}}>
+    <div key={appt.id} className="ptDashBoardItem" >
       <p>Date: {appt.date}</p>
       <p>Time: {appt.time}</p>
       <p>Patient: {showPatientInfo(appt)}</p>
@@ -154,11 +154,11 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
 
   const showAllPatientsInfo = removeDuplicates(showInfo).map((patientInfo) => {
     return(
-    <div key={patientInfo.patient_id} className="dashBoard" style={{ borderRadius: "20px", padding: "5px", textAlign: "center", marginLeft: "50px", width: "300px"}}>
-      <div style={{ border: "2px solid rgba(255,255,255,0.1)", borderRadius: "20px", boxShadow: "0 0 10px rgba(8,7,16,0.6)"}}>
+    <div key={patientInfo.patient_id} className="showAllPatientsInfo" >
+      <div className="showAllPatientsCard">
         <br/>
 
-        <img src={patientInfo.patient.image} alt="patientImage" width="150px" height="150px" style={{border: "3px solid black", padding: "5px"}}/>
+        <Image src={patientInfo.patient.image} alt="patientImage" width="150px" height="150px" />
         
         <br/>
         <br/>
@@ -171,10 +171,10 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
         <p>Muscle Injury: {patientInfo.patient.patient_profile.muscle_injury}</p>
         <Row className="justify-content-md-center">
           <Col xs lg="5">
-            <button className="buttonEffect1" value={patientInfo.patient_id} name={patientInfo.patient.patient_profile.muscle_injury} onClick={assignExercises} style={{ fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "fit-content"}}>Assign Exercises <br/> 💪🏽🦵🏼🦶🏿</button> 
+            <button className="buttonEffect1" value={patientInfo.patient_id} name={patientInfo.patient.patient_profile.muscle_injury} onClick={assignExercises} id="showAllPatientsButton">Assign Exercises <br/> 💪🏽🦵🏼🦶🏿</button> 
           </Col>
           <Col xs lg="6">
-            <button className="buttonEffect1" value={patientInfo.patient_id} name={patientInfo.patient.patient_profile.muscle_injury} onClick={ptRecommendEquipment} style={{ fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "fit-content"}}>Recommend Equipment <br/> 🪢🩼🩹</button>
+            <button className="buttonEffect1" value={patientInfo.patient_id} name={patientInfo.patient.patient_profile.muscle_injury} onClick={ptRecommendEquipment} id="showAllPatientsButton">Recommend Equipment <br/> 🪢🩼🩹</button>
           </Col>
         </Row>
 
@@ -200,45 +200,45 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
 
       <br/>
 
-      <div className="row" style={{width: "90%"}}>
+      <div className="row" id="ptDashBoardDiv0">
         <div className="col-md-4">
 
-          <div style={{backgroundColor: "darkgray", textAlign: "center", width: "100%", borderTop: "2px solid rgba(255,255,255,0.1)", borderRight: "2px solid rgba(255,255,255,0.1)", borderBottom: "2px solid rgba(255,255,255,0.1)", borderRadius: "0px 20px 20px 0px", boxShadow: "0 0 40px rgba(8,7,16,0.6)", letterSpacing: "0.5px", color: "white" }}>
+          <div id="ptDashBoardDiv1">
             <br/>
-            <h3 style={{textAlign: "center"}}><u>Physical Therapist Info</u></h3>
+            <h3 ><u>Physical Therapist Info</u></h3>
             <br/>
 
-            <Image src={image} alt="TherapistPic" fluid="true" style={{border: "3px solid black", padding: "5px"}}/> 
+            <Image src={image} alt="TherapistPic" fluid="true" /> 
 
             <br/>
             <br/>
             
-            <form onSubmit={handleSubmitUser}>
-              <label htmlFor="username" style={{fontSize: "18px"}}> <b>Username:</b> <br/> <input type="text" placeholder="Username" name="username" value={userInput.username} onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+            <form onSubmit={handleSubmitUser} className="userForm">
+              <label htmlFor="username" > <b>Username:</b> <br/> <input type="text" placeholder="Username" name="username" value={userInput.username} onChange={inputOnChangeUser} /> </label> <br/> <br/>
                 
 
-              <label htmlFor="name" style={{fontSize: "18px"}}> <b>Name:</b> <br/> <input type="name" placeholder="Name" name="name" value={userInput.name} onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+              <label htmlFor="name" > <b>Name:</b> <br/> <input type="name" placeholder="Name" name="name" value={userInput.name} onChange={inputOnChangeUser} /> </label> <br/> <br/>
                 
 
-              <label htmlFor="email" style={{fontSize: "18px"}}> <b>Email:</b> <br/> <input type="email" placeholder="Email" name="email" value={userInput.email} onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+              <label htmlFor="email" > <b>Email:</b> <br/> <input type="email" placeholder="Email" name="email" value={userInput.email} onChange={inputOnChangeUser} /> </label> <br/> <br/>
                 
 
-              <label htmlFor="type" style={{fontSize: "18px"}}> <b>Type:</b> <br/>
+              <label htmlFor="type" > <b>Type:</b> <br/>
                 <select name="type">
                   <option value="PhysicalTherapist">Physical Therapist</option>
                 </select>
               </label> <br/> <br/>
             
 
-              <label htmlFor="image" style={{fontSize: "18px"}}> <b>Image:</b> <br/> <input name="image" type="file" accept="image/*" onChange={(e) => setProfilePic(e.target.files[0])} style={{fontSize: "72%", backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+              <label htmlFor="image" > <b>Image:</b> <br/> <input name="image" type="file" accept="image/*" onChange={(e) => setProfilePic(e.target.files[0])} /> </label> <br/> <br/>
 
-              <label htmlFor="password" style={{fontSize: "18px"}}> <b>Password:</b> <br/> <input type="password" placeholder="Password" name="password" onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+              <label htmlFor="password" > <b>Password:</b> <br/> <input type="password" placeholder="Password" name="password" onChange={inputOnChangeUser} /> </label> <br/> <br/>
                 
-              <label htmlFor="passwordConformation" style={{fontSize: "18px"}}><b>Password Conformation:</b> <br/> <input type="password" placeholder="Password Confirmation" name="password_confirmation" onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label>
+              <label htmlFor="passwordConformation" ><b>Password Conformation:</b> <br/> <input type="password" placeholder="Password Confirmation" name="password_confirmation" onChange={inputOnChangeUser} /> </label>
                 
               <br/>
               <br/>
-              <button type="submit" className="buttonEffect" style={{backgroundColor: "white", fontSize: "18px", color: "black", fontWeight: "800", borderRadius: "5px", height: "50px"}}> Edit User Info </button>
+              <button type="submit" className="buttonEffect" > Edit User Info </button>
               <br/>
               <br/>
 
@@ -257,8 +257,8 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
 
         <div className="col-md-6 offset-md-2">
 
-          <div style={{backgroundColor: "darkgray", borderRadius: "20px", padding: "15px", width: "100%", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
-            <h2 style={{color: "white"}}><u>Appointments</u></h2>
+          <div id="ptDashBoardDiv2">
+            <h2><u>Appointments</u></h2>
             {user.appointments.length === 0 ? <h4 style={{color: "white"}}>No Appointments Schedule</h4> : ""}
 
             <br/>
@@ -274,13 +274,13 @@ function PhysicalTherapistDashBoard({ keysToSimplyPT }) {
           <br/>
           <br/>
 
-          <Image src={our_clinic} alt="our_clinic" fluid="true" style={{borderRadius: "20px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}/> 
+          <Image src={our_clinic} alt="our_clinic" fluid="true" className="ptDashBoardImg"/> 
 
           <br/>
           <br/>
           <br/>     
 
-          <h2 style={{textAlign: "center"}}><u>Patients</u></h2>
+          <h2 className="ptDashBoardHeader"><u>Patients</u></h2>
           {user.patients.length === 0 ? <h4 style={{textAlign: "center"}}>No Patients Have Appointments</h4> : ""}
 
 

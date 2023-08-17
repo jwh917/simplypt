@@ -84,24 +84,24 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
 
   return (
 
-    <div style={{textAlign: "center", fontSize: "18px"}}>
+    <div className="appointmentFormDiv">
       <br/>
       <h2>Fill Out Appointment Form</h2>
       <br/>
       <form onSubmit={appointmentSubmit}>
 
-        <label htmlFor="physical_therapist_name" style={{marginLeft: "20px"}}>Physical Therapist Name: <input type="text" name="physical_therapist_name" readOnly value={physicalTherapist.name} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label>
+        <label htmlFor="physical_therapist_name" className="appointmentFormPtLabel">Physical Therapist Name: <input type="text" name="physical_therapist_name" readOnly value={physicalTherapist.name} /> </label>
         
         <br/>
         <br/>
 
-        <label htmlFor="date">Date: <input type="date" name="date" min={today} onChange={appointmentChange} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/></label>
+        <label htmlFor="date">Date: <input type="date" name="date" min={today} onChange={appointmentChange} /></label>
         
         <br/>
         <br/>
 
-        <label htmlFor="time">Time:
-          <select name="time" onChange={appointmentChange} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}>
+        <label htmlFor="time">Time:&nbsp;  
+          <select name="time" onChange={appointmentChange} >
             <option value="9 am">9 am</option>
             <option value="10 am">10 am</option>
             <option value="11 am">11 am</option>
@@ -121,9 +121,11 @@ function AppointmentForm({physicalTherapist, setShowScheduleAppointment, setShow
         {errors.map((err) => (<h6 key={err}>{err}</h6>))}
 
         <br/>
-        <button className="buttonEffect" style={{backgroundColor: "#b0bec5", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>Book Appointment</button>
+        <button className="buttonEffect" id="appointmentFormButton">Book Appointment</button>
 
       </form>
+      <br/>
+      <br/>
     </div>
   );
 }

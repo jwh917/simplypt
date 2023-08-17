@@ -32,8 +32,8 @@ function HomePage(){
       
       <div className="card-section">
         <div className="container">
-          <div className="card-block" style={{backgroundColor: "#212529", borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
-            <div className="section-title mb-0" style={{backgroundColor: "#212529", color: "white"}}>
+          <div className="card-block">
+            <div className="section-title mb-0" id="homePageHeader">
               <h3>
                 Our office is proud to offer
                 state-of-the-art, compassionate care. By sharing
@@ -52,26 +52,26 @@ function HomePage(){
         <br/>
         <br/>
 
-        <div className="col-md-6 offset-md-5" style={{backgroundColor: "#212529", borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", padding: "30px"}}>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/BNsoZiP3YZs" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen style={{ borderRadius: "70px", width: "100%"}}></iframe>
+        <div className="col-md-6 offset-md-5" id="homePageVideo">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/BNsoZiP3YZs" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen ></iframe>
         </div>
       </div>
 
     
      
-      <Container style={{ color: "white", width: "100%", height: "30%", textAlign: "center",  backgroundColor: "#212529",   borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", padding: "20px", marginTop: "-150px"}}>
+      <Container className="homePageContainer0">
         <Row>
           <Col>        
-            <Image src={ptPic2} alt="ptPic2" roundedCircle fluid="true" style={{marginTop: "35px"}}/> 
+            <Image src={ptPic2} alt="ptPic2" roundedCircle fluid="true" /> 
           </Col>
         </Row>
 
         <Row>
           <Col> 
-            <h3 className="display-6" style={{fontSize: "95%", marginTop: "50px"}}><u>What you can expect at your appointment:</u></h3>
+            <h3 className="display-6" id="homePageContainer0H3"><u>What you can expect at your appointment:</u></h3>
             <br/>
             <h3 className="display-4">
-            <ul style={{fontSize: "30%"}}>
+            <ul className="homePageContainer0Ul">
               <li>Dedication to compassionate</li>
               <li>Comprehensive care and outcomes</li>
               <li>Highly qualified clinicians</li>
@@ -88,7 +88,7 @@ function HomePage(){
 
         <Row>
           <Col>        
-            <Image src={ptPic3} alt="ptPic3" roundedCircle fluid="true"  style={{marginTop: "35px"}}/> 
+            <Image src={ptPic3} alt="ptPic3" roundedCircle fluid="true" /> 
           </Col>
         </Row>
       </Container>
@@ -100,14 +100,14 @@ function HomePage(){
   
 
 
-      <Container fluid="sm" style={{ textAlign: "center"}}>
-        <Image src={ptPic4} alt="ptPic4" thumbnail fluid="true" style={{border: "2px solid rgba(255,255,255,0.1)"}}/> 
+      <Container fluid="sm" className="homePageContainer1">
+        <Image src={ptPic4} alt="ptPic4" thumbnail fluid="true" /> 
       </Container>
 
-      <div className="row mx-auto" style={{padding: "20px"}}>
-        <div className="col-md-6"> <Image src="https://pilatesmatters.com/cdn/shop/files/Merrithew_PilatesRehabAccessoryBundle_1024x1024.jpg" alt="ptPic4" thumbnail fluid="true" style={{ width: "100%", height: "400px", borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)"}}/> </div>
-        <div className="col-md-6" style={{ color: "white", backgroundColor: "#212529",  borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", padding: "20px", textAlign: "right", paddingTop: "15px"}}>
-          <Image src="https://www.protherapysupplies.com/pts_website_assets/images/pts_logo.png" alt="ptPic4" thumbnail fluid="true" style={{ width: "100%", height: "200px", borderRadius: "70px", border: "2px solid rgba(255,255,255,0.1)"}}/>
+      <div className="row mx-auto" id="storePromoDiv0s">
+        <div className="col-md-6"> <Image src="https://pilatesmatters.com/cdn/shop/files/Merrithew_PilatesRehabAccessoryBundle_1024x1024.jpg" alt="ptPic4" thumbnail fluid="true" id="storePromoDivImg0"/> </div>
+        <div className="col-md-6" id="storePromoDiv1">
+          <Image src="https://www.protherapysupplies.com/pts_website_assets/images/pts_logo.png" alt="ptPic4" thumbnail fluid="true" id="storePromoDivImg1"/>
           <br/>
           <br/>
           <h1>Shop Certified Therapy Equipment </h1>
@@ -116,7 +116,7 @@ function HomePage(){
           <br/>
           
           <Link to="/store/home">
-            <Button className="btn btn-secondary" style={{marginRight: "30px", color: "black", border: "1px black solid"}}>
+            <Button className="btn btn-secondary">
               Shop Now
             </Button>
           </Link>

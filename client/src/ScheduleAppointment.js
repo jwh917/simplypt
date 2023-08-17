@@ -4,6 +4,16 @@ import { fetchPTs } from "./ptsSlice";
 import AppointmentForm from "./AppointmentForm";
 import { selectUser } from "./userSlice";
 
+import Image from 'react-bootstrap/Image';
+
+
+const allPTsButton = {
+  marginLeft: "30px", 
+  borderRadius: "10px", 
+  height: "220px", 
+  marginTop: "25px"
+};
+
 
 function ScheduleAppointment({setShowScheduleAppointment, setShowConfirmation, givenConfirmationInfo}) {
 
@@ -56,13 +66,13 @@ function ScheduleAppointment({setShowScheduleAppointment, setShowConfirmation, g
 
   return (
 
-    <div>
+    <div> 
       
       <br/>
       <br/>
 
 
-      <button className="buttonEffect" onClick={handleScheduleAppClose} style={{marginLeft: "5px", backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "40px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
+      <button className="buttonEffect" onClick={handleScheduleAppClose} id="xButton">
         X
       </button>
 
@@ -71,10 +81,10 @@ function ScheduleAppointment({setShowScheduleAppointment, setShowConfirmation, g
       <br/>
 
       {allPTs.map((pt) => (
-        <button className="buttonEffect1" key={pt.id} name={pt.name}onClick={handlePTInfo} style={{marginLeft: "30px", borderRadius: "10px"}}>
+        <button key={pt.id} name={pt.name}onClick={handlePTInfo} style={allPTsButton}>
           {pt.name}
           <br/>
-          <img name={pt.name} style={{height:"100px", width:"100px", borderRadius: "10px"}} src={pt.image} alt="pt" />
+          <Image name={pt.name} height="100px" width="100px" src={pt.image} alt="pt" thumbnail />
           <br/>
           Physical Therapist
           <br/>

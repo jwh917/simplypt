@@ -193,22 +193,22 @@ function StoreMyCartPage({setItemsCountRefresher}){
           <div className="grid-child"> 
             <h3>Billing Address</h3>
             <label htmlFor="fname"><i className="fa fa-user"></i> Full Name:&nbsp;</label>
-            <input type="text" id="fname" name="firstname" placeholder="John M. Doe" onChange={fullNameInput} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> <br/>
+            <input type="text" id="fname" name="firstname" placeholder="John M. Doe" onChange={fullNameInput} className="storeMyCartInput"/> <br/>
             <label htmlFor="email"><i className="fa fa-envelope"></i> Email:&nbsp;</label>
-            <input type="text" id="email" name="email" placeholder="john@example.com" onChange={emailInput} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> 
+            <input type="text" id="email" name="email" placeholder="john@example.com" onChange={emailInput} className="storeMyCartInput"/> 
             <label htmlFor="adr"><i className="fa fa-address-card-o"></i> Address:&nbsp;</label>
-            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street" onChange={addressInput} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> <br/>
+            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street" onChange={addressInput} className="storeMyCartInput"/> <br/>
             <label htmlFor="city"><i className="fa fa-institution"></i> City:&nbsp;</label>
-            <input type="text" id="city" name="city" placeholder="New York" onChange={cityInput} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> <br/>
+            <input type="text" id="city" name="city" placeholder="New York" onChange={cityInput} className="storeMyCartInput"/> <br/>
 
             <div className="row">
               <div className="col-50">
                 <label htmlFor="state">State:&nbsp;</label>
-                <input type="text" id="state" name="state" placeholder="NY" onChange={stateInput} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> <br/>
+                <input type="text" id="state" name="state" placeholder="NY" onChange={stateInput} className="storeMyCartInput"/> <br/>
               </div>
               <div className="col-50">
                 <label htmlFor="zip">Zip:&nbsp;</label>
-                <input type="text" id="zip" name="zip" placeholder="10001" onChange={zipCodeInput} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/>
+                <input type="text" id="zip" name="zip" placeholder="10001" onChange={zipCodeInput} className="storeMyCartInput"/>
               </div>
             </div>
           </div>
@@ -226,25 +226,25 @@ function StoreMyCartPage({setItemsCountRefresher}){
               <i className="fa fa-cc-discover" id="discoverCard"></i>
             </div>
               <label htmlFor="cname">Card Name :&nbsp;</label> 
-              <input type="text" id="cname" name="cardname" placeholder="John More Doe" onChange={cardNameInput} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/>
+              <input type="text" id="cname" name="cardname" placeholder="John More Doe" onChange={cardNameInput} className="storeMyCartInput"/>
               <label htmlFor="ccnum">Credit Card #:&nbsp;</label> 
-              <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" onChange={cardNumInput} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> <br/>
+              <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" onChange={cardNumInput} className="storeMyCartInput"/> <br/>
               <label htmlFor="expmonth">Exp Month:&nbsp;</label>
-              <input type="text" id="expmonth" name="expmonth" placeholder="09" onChange={expMonInput} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/>
+              <input type="text" id="expmonth" name="expmonth" placeholder="09" onChange={expMonInput} className="storeMyCartInput"/>
               <div className="row">
                 <div className="col-50">
                   <label htmlFor="expyear">Exp Year:&nbsp;</label>
-                  <input type="text" id="expyear" name="expyear" placeholder="2018" onChange={expYrInput} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/>
+                  <input type="text" id="expyear" name="expyear" placeholder="2018" onChange={expYrInput} className="storeMyCartInput"/>
                 </div>
                 <div className="col-50">
                   <label htmlFor="cvv">CVV:&nbsp;</label>
-                  <input type="text" id="cvv" name="cvv" placeholder="352" onChange={cvvInput} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/>
+                  <input type="text" id="cvv" name="cvv" placeholder="352" onChange={cvvInput} className="storeMyCartInput"/>
                 </div>
               </div>
           
           
             <label>
-              <input type="checkbox" defaultChecked="checked" name="sameadr" style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> Shipping address same as billing
+              <input type="checkbox" defaultChecked="checked" name="sameadr" /> Shipping address same as billing
             </label>
           </div>
           

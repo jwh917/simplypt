@@ -173,7 +173,7 @@ function showPatientInfo(patientId){
     <>
       <h1>Equipment Recommendations</h1>
       <h2>For Patient: {showPatientInfo(patientId)}</h2>
-      <button className="buttonEffect" onClick={closeSearch} style={{marginLeft: "45px", backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "40px"}}>X</button>
+      <button className="buttonEffect" onClick={closeSearch} id="xButton">X</button>
 
       <div className="container-fluid">
         <div className="row p-2 pt-3 pb-3 d-flex align-items-center">
@@ -181,7 +181,7 @@ function showPatientInfo(patientId){
           <br/>
           <br/>
                     
-          <input className="form-control" type="text" placeholder="Search any item..." onChange={itemSearch} style={{ width: "50%", height: "40px", textAlign: "center", margin: "0 auto", display: "block"}}/>
+          <input className="form-control" type="text" placeholder="Search any item..." onChange={itemSearch} id="recEqSearchInput"/>
           <br/>
           <br/>
 
@@ -213,7 +213,7 @@ function showPatientInfo(patientId){
       <br/>              
           
       
-      <Row md={2} className="g-1" style={{rowGap: "50px"}}>
+      <Row md={2} className="g-1" id="fiftyGap">
         {displayItems()}
       </Row>
 

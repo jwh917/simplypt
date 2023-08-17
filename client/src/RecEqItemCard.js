@@ -54,22 +54,22 @@ function RecEqItemCard({patientId, userId, items}) {
   return (
     <Col>
     
-      <Card className="card mx-auto" style={{width: '15rem', height: "350px", textAlign: "center", backgroundColor: "silver", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", display: "flex", justifyContent: "center"}}>
+      <Card className="card mx-auto" id="RecEqItemCard">
         <Card.Title>{name}</Card.Title>
 
-        <Card.Img style={{ width: "150px", height: "150px", marginLeft: "45px", marginTop: "20px", marginBottom: "10px"}} src={itemUrl} />
+        <Card.Img  src={itemUrl} />
         <h6>Details: {color} <br/> ${price}</h6>
 
         <span>  
           {showConfirm ? (
             <div>
               <p>Are you sure you want reccomend {name}?</p>
-              <button className="buttonEffect" onClick={recommendedItem} style={{ backgroundColor: "white", borderRadius: "5px", color: "green", marginBottom: "40px"}}>Confirm</button>
+              <button className="buttonEffect" onClick={recommendedItem} id="RecEqItemCardButton0">Confirm</button>
               &nbsp;
-              <button className="buttonEffect" onClick={() => setShowConfirm(false)} style={{ backgroundColor: "white", borderRadius: "5px", color: "red"}}>Cancel</button>
+              <button className="buttonEffect" onClick={() => setShowConfirm(false)} id="RecEqItemCardButton1">Cancel</button>
             </div>
             ) : (
-            <button className="buttonEffect" onClick={handleClick} style={{ fontSize: "18px", fontWeight: "800", borderRadius: "5px", width: "fit-content"}}>Recommend</button>
+            <button className="buttonEffect" onClick={handleClick} id="RecEqItemCardButton2">Recommend</button>
             )}
         </span> 
       

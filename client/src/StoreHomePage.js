@@ -97,9 +97,9 @@ function StoreHomePage({setItemsCountRefresher}){
       <br/>
 
 
-      <Carousel className="mx-auto" style={{ width: "60%"}}>
+      <Carousel className="mx-auto" id="storeHomeCarousel">
         <Carousel.Item>
-          <img
+          <Image
             className="d-block w-100"
             src="https://media.istockphoto.com/id/1201247867/vector/isometric-rehabilitation-physiotherapy-set.jpg?s=612x612&w=0&k=20&c=LwOs6-UAMGQOXT6ML88EUFfU4nCeBarkMCWQtPFwTjI="
             alt="First slide"
@@ -108,7 +108,7 @@ function StoreHomePage({setItemsCountRefresher}){
         </Carousel.Item>
  
         <Carousel.Item>
-          <img
+          <Image
             className="d-block w-100"
             src="https://media.istockphoto.com/id/1176367049/vector/isometric-rehab-people-icons.jpg?s=612x612&w=0&k=20&c=yFQqhRS_ZS_GUCKGf8tE1J9t6hrjZzBt6rDtSb5mPqw="
             alt="Third slide"
@@ -123,12 +123,12 @@ function StoreHomePage({setItemsCountRefresher}){
       <br/>
 
 
-      <h2 style={{marginLeft: "50px"}}><u>Trending Braces</u></h2>
+      <h2 id="storeHomeHeader"><u>Trending Braces</u></h2>
       <br/> 
       <br/> 
    
 
-      <Row md={4} className="g-1" style={{rowGap: "50px"}}>
+      <Row md={4} className="g-1" id="fiftyGap">
         {bracesDisplayed}
       </Row>
     
@@ -138,11 +138,11 @@ function StoreHomePage({setItemsCountRefresher}){
       <br/>
       <br/>
       
-      <h2 style={{marginLeft: "50px"}}><u>Exercise Equipment</u></h2>
+      <h2 id="storeHomeHeader"><u>Exercise Equipment</u></h2>
       <br/>
       <br/>
 
-      <Row md={4} className="g-1" style={{rowGap: "50px"}}>
+      <Row md={4} className="g-1" id="fiftyGap">
         {exerciseEqDisplayed}
       </Row>
 
@@ -152,10 +152,10 @@ function StoreHomePage({setItemsCountRefresher}){
       <br/>
       <br/>
 
-      <div className="row mx-auto" style={{padding: "20px"}}>
-        <div className="col-md-6"> <Image src="https://cdn.thewirecutter.com/wp-content/media/2023/02/exerciseballs-2048px-09602-2x1-1.jpg?auto=webp&quality=75&crop=2:1&width=1024" alt="ptPic4" thumbnail fluid="true" style={{ width: "100%", height: "400px", borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", marginTop: "90px"}}/> </div>
-        <div className="col-md-6" style={{ color: "white", backgroundColor: "#212529",  borderRadius: "90px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", padding: "20px", textAlign: "right", paddingTop: "15px"}}>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/EzxYTsfuB6c" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen style={{ borderRadius: "70px", width: "100%"}}></iframe>
+      <div className="row mx-auto" id="storeHomeDiv0">
+        <div className="col-md-6"> <Image src="https://cdn.thewirecutter.com/wp-content/media/2023/02/exerciseballs-2048px-09602-2x1-1.jpg?auto=webp&quality=75&crop=2:1&width=1024" alt="ptPic4" thumbnail fluid="true" id="storeHomeImg0"/> </div>
+        <div className="col-md-6" id="storeHomeDiv1">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/EzxYTsfuB6c" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen id="storeHomeVid"></iframe>
 
           <br/>
           <br/>
@@ -169,11 +169,11 @@ function StoreHomePage({setItemsCountRefresher}){
       <br/>
       <br/>
      
-      <h2 style={{marginLeft: "50px"}}><u>Foam & Massager Rollers</u></h2>
+      <h2 id="storeHomeHeader"><u>Foam & Massager Rollers</u></h2>
       <br/>
       <br/>
  
-      <Row md={4} className="g-1" style={{rowGap: "50px"}}>
+      <Row md={4} className="g-1" id="fiftyGap">
         {rollersDisplayed}
       </Row>
 
@@ -182,12 +182,12 @@ function StoreHomePage({setItemsCountRefresher}){
       <br/>
       <br/>
 
-      <h2 style={{marginLeft: "50px"}}><u>Hot N Cold</u></h2>
+      <h2 id="storeHomeHeader"><u>Hot N Cold</u></h2>
 
       <br/>
       <br/>
       
-      <Row md={4} className="g-1" style={{rowGap: "50px"}}>
+      <Row md={4} className="g-1" id="fiftyGap">
         {hotncoldEqDisplayed}
       </Row>
 
@@ -197,9 +197,9 @@ function StoreHomePage({setItemsCountRefresher}){
       <br/>
 
 
-      <Carousel className="mx-auto" style={{ width: "60%"}}>
+      <Carousel className="mx-auto" id="storeHomeCarousel">
         <Carousel.Item>
-          <img
+          <Image
             className="d-block w-100"
             src="https://www.webpt.com/wp-content/uploads/2014/03/201403_blog_purchasingEquipmentAndSupplies_1.png"
             alt="Second slide"
@@ -207,7 +207,7 @@ function StoreHomePage({setItemsCountRefresher}){
           />
         </Carousel.Item>
         <Carousel.Item>
-          <img
+          <Image
             className="d-block w-100"
             src="https://www.advantagemedical.com/media/wysiwyg/megaMenu/AdvantageMedical/ADV_menu_ads_rehab.png"
             alt="Third slide"

@@ -58,7 +58,7 @@ function ExerciseForm({patientId, muscleInjury, setShowExerciseForm, keysToSimpl
 
   const showExerciseChoice = exercises.map((exercise) => {
     return(
-    <button key={exercise.id} className="dashBoard" onClick={() => exceriseInfo(exercise)} style={{ border: "2px solid black", borderRadius: "20px", padding: "5px", textAlign: "center", marginLeft: "25px", wordWrap: "break-word", width: "200px"}}>
+    <button key={exercise.id} className="dashBoard" onClick={() => exceriseInfo(exercise)} id="ExerciseFormChoiceButton">
       <p>Body Part: {exercise.bodyPart}</p>
       <p>Equipment: {exercise.equipment}</p>
       <img src={exercise.gifUrl} alt="exercise.gifUrl" width="150px" height="150px"/>
@@ -113,9 +113,9 @@ function showPatientInfo(patientId){
   return (
     <div>
             
-      <h3 style={{marginLeft: "5px"}}><u>Exercises</u></h3>
+      <h3 className="ExerciseFormHeader"><u>Exercises</u></h3>
       <h2>For Patient: {showPatientInfo(patientId)}</h2>
-      <button className="buttonEffect" onClick={closeExerciseForm} style={{marginLeft: "45px", backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "40px"}}>X</button>
+      <button className="buttonEffect" onClick={closeExerciseForm} id="xButton">X</button>
       <br/>
       <br/>
       
@@ -131,21 +131,21 @@ function showPatientInfo(patientId){
 
       {selectedExercises ?
 
-      <div style={{textAlign: "center", fontSize: "18px"}}>
+      <div className="ExerciseFormDiv">
 
         <form ref={ref} onSubmit={exerciseSubmit}>
           <h3><u>Assign Patient Exercise Form</u></h3>
 
-          <label htmlFor="description">Description: <input type="description" readOnly value={selectedExercises.name} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/></label> <br/><br/>
+          <label htmlFor="description">Description: <input type="description" readOnly value={selectedExercises.name} /></label> <br/><br/>
           
 
-          <label htmlFor="equipment">Equipment: <input type="equipment" readOnly value={selectedExercises.equipment} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/></label> <br/><br/>
+          <label htmlFor="equipment">Equipment: <input type="equipment" readOnly value={selectedExercises.equipment} /></label> <br/><br/>
           
 
-          <label htmlFor="muscle">Muscle: <input type="muscle" readOnly value={selectedExercises.target} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/></label> <br/><br/>
+          <label htmlFor="muscle">Muscle: <input type="muscle" readOnly value={selectedExercises.target} /></label> <br/><br/>
           
 
-          <button className="buttonEffect1" style={{ fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}>Submit To Patient</button>
+          <button className="buttonEffect1" id="ExerciseFormButton">Submit To Patient</button>
 
         </form>
         

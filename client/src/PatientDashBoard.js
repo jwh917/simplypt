@@ -170,9 +170,9 @@ function PatientDashBoard({keysToSimplyPT}) {
   })
 
   const showAllPTS = allPTs.map((pt) => (
-    <div key={pt.id} className="dashBoard" style={{color: "white", border: "2px solid rgba(255,255,255,0.1)", textAlign: "center", borderRadius: "20px", padding: "10px", marginLeft: "20px"}}>
+    <div key={pt.id} className="allPts">
       <p><u>Name:</u> {pt.name}</p>
-      <Image src={pt.image} alt="pt" fluid="true" style={{height:"100px", width:"100px", borderRadius: "20px"}}/> 
+      <Image src={pt.image} alt="pt" fluid="true" /> 
 
       <br/>
       <br/>
@@ -183,9 +183,9 @@ function PatientDashBoard({keysToSimplyPT}) {
 
   const allExercises = user.exercises.map((exercise) => {
     return (
-      <div key={exercise.id} className="dashBoard" style={{ color:"white", border: "2px solid white", borderRadius: "20px", padding: "5px", textAlign: "center", marginLeft: "25px", wordWrap: "break-word", width: "200px"}}>
+      <div key={exercise.id} className="dashBoardItem">
         <p><u>Exercise given by PT {exercise.physical_therapist_name} </u></p>
-        <Image src={exercise.gifurl} alt="exercise.gifUrl" fluid="true" style={{height:"150px", width:"150px", borderRadius: "20px"}}/> 
+        <Image src={exercise.gifurl} alt="exercise.gifUrl" fluid="true"/> 
 
         <p>Name: {exercise.description}</p>
         <p>Muscle: {exercise.muscle}</p>
@@ -198,11 +198,11 @@ function PatientDashBoard({keysToSimplyPT}) {
 
   const allRecommendedEquipment = user.recommended_equipments.map((equipment) => {
     return (
-      <div key={equipment.id} className="dashBoard" style={{ color:"white", border: "2px solid white", borderRadius: "20px", padding: "5px", textAlign: "center", marginLeft: "25px", wordWrap: "break-word", width: "200px"}}>
+      <div key={equipment.id} className="dashBoardItem">
         
         <p>Name: {equipment.product_name} &nbsp; <i className="bi bi-clipboard" id="clipboard" title={equipment.product_name} onClick={() => {navigator.clipboard.writeText(equipment.product_name)}}></i> </p> 
 
-        <Image src={equipment.product_url} alt="exercise.gifUrl" fluid="true" style={{height:"150px", width:"150px", borderRadius: "20px"}}/> 
+        <Image src={equipment.product_url} alt="exercise.gifUrl" fluid="true" /> 
         <br/>
         <br/>
         <p>Desc: {equipment.product_description}</p>
@@ -234,14 +234,14 @@ function PatientDashBoard({keysToSimplyPT}) {
 
       <br/>
     
-      <div className="row" style={{width: "90%"}}>
+      <div className="row" id="patientDashBoardDiv0">
         <div className="col-md-4">
-          <div style={{backgroundColor: "darkgray", textAlign: "center", width: "100%", borderTop: "2px solid rgba(255,255,255,0.1)", borderRight: "2px solid rgba(255,255,255,0.1)", borderBottom: "2px solid rgba(255,255,255,0.1)", borderRadius: "0px 20px 20px 0px", boxShadow: "0 0 40px rgba(8,7,16,0.6)", letterSpacing: "0.5px", color: "white" }}>
+          <div id="patientDashBoardDiv1">
             <br/>
-            <h3 style={{textAlign: "center"}}><u>Patient User Info</u></h3>
+            <h3><u>Patient User Info</u></h3>
             <br/>
 
-            <Image src={image} alt="PatientPic" fluid="true" style={{border: "3px solid black", padding: "5px"}}/> 
+            <Image src={image} alt="PatientPic" fluid="true"/> 
 
 
             <br/>
@@ -249,15 +249,15 @@ function PatientDashBoard({keysToSimplyPT}) {
             
             <span>  
               {showConfirm ? (
-                <div>
-                  <p style={{ color: "red"}}>Are you sure you want to delete your account?</p>
-                  <button className="buttonEffect" onClick={handleDeleteUser} style={{ backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px", color: "red"}}>Confirm</button>
+                <div className="showConfirm">
+                  <p>Are you sure you want to delete your account?</p>
+                  <button className="buttonEffect" onClick={handleDeleteUser} id="confrimDeleteButton">Confirm</button>
                   <br/>
                   <br/>
-                  <button className="buttonEffect" onClick={() => setShowConfirm(false)} style={{ backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}>Cancel</button>
+                  <button className="buttonEffect" onClick={() => setShowConfirm(false)} id="cancelButton">Cancel</button>
                 </div>
               ) : (
-                <button className="buttonEffect" onClick={handleClick} style={{ backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "40px", color: "red"}}>Delete Account</button>
+                <button className="buttonEffect" onClick={handleClick} id="confrimDeleteButton">Delete Account</button>
               )}
             </span> 
 
@@ -265,32 +265,32 @@ function PatientDashBoard({keysToSimplyPT}) {
             <br/>
 
 
-            <form onSubmit={handleSubmitUser}>
-              <label htmlFor="username" style={{fontSize: "18px"}}> <b>Username:</b> <br/> <input type="text" placeholder="Username" name="username" value={userInput.username} onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+            <form onSubmit={handleSubmitUser} className="userForm">
+              <label htmlFor="username" > <b>Username:</b> <br/> <input type="text" placeholder="Username" name="username" value={userInput.username} onChange={inputOnChangeUser} /> </label> <br/> <br/>
             
 
-              <label htmlFor="name" style={{fontSize: "18px"}}> <b>Name:</b> <br/> <input type="name" placeholder="Name" name="name" value={userInput.name} onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+              <label htmlFor="name" > <b>Name:</b> <br/> <input type="name" placeholder="Name" name="name" value={userInput.name} onChange={inputOnChangeUser} /> </label> <br/> <br/>
             
 
-              <label htmlFor="email" style={{fontSize: "18px"}}> <b>Email:</b> <br/> <input type="email" placeholder="Email" name="email" value={userInput.email} onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+              <label htmlFor="email" > <b>Email:</b> <br/> <input type="email" placeholder="Email" name="email" value={userInput.email} onChange={inputOnChangeUser} /> </label> <br/> <br/>
             
 
-              <label htmlFor="type" style={{fontSize: "18px"}}> <b>Type:</b> <br/>
+              <label htmlFor="type" > <b>Type:</b> <br/>
               
                 <select name="type">
                   <option value="Patient">Patient</option>
                 </select>
               </label> <br/> <br/>
 
-              <label htmlFor="image" style={{fontSize: "18px"}}> <b>Image:</b> <br/> <input name="image" type="file" accept="image/*" onChange={(e) => setProfilePic(e.target.files[0])}  style={{fontSize: "72%", backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+              <label htmlFor="image" > <b>Image:</b> <br/> <input name="image" type="file" accept="image/*" onChange={(e) => setProfilePic(e.target.files[0])}  /> </label> <br/> <br/>
 
-              <label htmlFor="password" style={{fontSize: "18px"}}> <b>Password:</b> <br/> <input type="password" placeholder="Password" name="password" onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+              <label htmlFor="password" > <b>Password:</b> <br/> <input type="password" placeholder="Password" name="password" onChange={inputOnChangeUser} /> </label> <br/> <br/>
             
-              <label htmlFor="passwordConformation" style={{fontSize: "18px"}}><b>Password Conformation:</b> <br/> <input type="password" placeholder="Password Confirmation" name="password_confirmation" onChange={inputOnChangeUser} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label>
+              <label htmlFor="passwordConformation" ><b>Password Conformation:</b> <br/> <input type="password" placeholder="Password Confirmation" name="password_confirmation" onChange={inputOnChangeUser} /> </label>
             
               <br/>
               <br/>
-              <button className="buttonEffect" type="submit" style={{backgroundColor: "white", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px", color: "black"}}> Edit User Info </button>
+              <button className="buttonEffect" type="submit" > Edit User Info </button>
               <br/>
               <br/>
 
@@ -299,33 +299,33 @@ function PatientDashBoard({keysToSimplyPT}) {
             </form>
 
             <br/> 
-            <hr style={{border: "3px solid black"}}/> 
+            <hr className="hr"/> 
             <br/> 
 
-            <h3 style={{textAlign: "center"}}><u>Patient Profile Info</u></h3>
+            <h3><u>Patient Profile Info</u></h3>
             <br/>
 
-            <form onSubmit={handleSubmitProfile}>
+            <form onSubmit={handleSubmitProfile} className="userForm">
 
-              <label htmlFor="dob" style={{fontSize: "18px"}}>DOB: <br/> <input type="date" id="dob" name="dob" value={newProfileInput.dob} onChange={inputOnChangeProfile} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/></label> <br/> <br/>
+              <label htmlFor="dob" >DOB: <br/> <input type="date" id="dob" name="dob" value={newProfileInput.dob} onChange={inputOnChangeProfile} /></label> <br/> <br/>
 
-              <label htmlFor="address" style={{fontSize: "18px"}}>Address: <br/> <input type="text" placeholder="Address" id="address" name="address" value={newProfileInput.address} onChange={inputOnChangeProfile} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> <br/> <br/>
+              <label htmlFor="address" >Address: <br/> <input type="text" placeholder="Address" id="address" name="address" value={newProfileInput.address} onChange={inputOnChangeProfile} /> </label> <br/> <br/>
 
-              <label htmlFor="phone" style={{fontSize: "18px"}}>Phone number: <br/>
-                <input type="tel" id="phone" name="phone" value={newProfileInput.phone} onChange={inputOnChangeProfile} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/>
+              <label htmlFor="phone" >Phone number: <br/>
+                <input type="tel" id="phone" name="phone" value={newProfileInput.phone} onChange={inputOnChangeProfile} />
                 <br/>
                 <small>Format: 123-456-7890</small>
               </label> <br/> <br/>
           
               <fieldset data-role="controlgroup">
               <legend>Choose your gender:</legend>
-                <label htmlFor="male" style={{fontSize: "18px"}}>Male <input type="radio" name="sex" id="male" value="male" defaultChecked={sex === "male"} onChange={inputOnChangeProfile} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/> </label> &nbsp;
-                <label htmlFor="female" style={{fontSize: "18px"}}>Female <input type="radio" name="sex" id="female" value="female" defaultChecked={sex === "female"} onChange={inputOnChangeProfile} style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}/></label>
+                <label htmlFor="male" >Male <input type="radio" name="sex" id="male" value="male" defaultChecked={sex === "male"} onChange={inputOnChangeProfile} /> </label> &nbsp;
+                <label htmlFor="female" >Female <input type="radio" name="sex" id="female" value="female" defaultChecked={sex === "female"} onChange={inputOnChangeProfile} /></label>
               </fieldset> <br/>
 
-              <label htmlFor="muscle_injury" style={{fontSize: "18px"}}>Muscle Injury: <br/>
+              <label htmlFor="muscle_injury" >Muscle Injury: <br/>
 
-              <select name="muscle_injury" value={newProfileInput.muscle_injury} onChange={inputOnChangeProfile}  style={{backgroundColor: "rgba(255,255,255,0.07)", borderRadius: "3px"}}>
+              <select name="muscle_injury" value={newProfileInput.muscle_injury} onChange={inputOnChangeProfile}  >
                   <option value="abductors">abductors</option>
                   <option value="abs">abs</option>
                   <option value="adductors">adductors</option>
@@ -349,7 +349,7 @@ function PatientDashBoard({keysToSimplyPT}) {
               
               </label> <br/> <br/>
         
-              <button className="buttonEffect" style={{backgroundColor: "white", color: "black", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px"}}>Edit Profile Info</button>
+              <button className="buttonEffect" >Edit Profile Info</button>
               
               <br/> 
               <br/> 
@@ -372,10 +372,10 @@ function PatientDashBoard({keysToSimplyPT}) {
 
         <div className="col-md-6 offset-md-2">
           
-          <div style={{ backgroundColor: "darkgray", borderRadius: "20px", padding: "15px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
-            <h2 style={{color: "white"}}><u>Physical Therapists</u></h2>
+          <div id="patientDashBoardDiv2">
+            <h2 ><u>Physical Therapists</u></h2>
             <br/>
-            {user.physical_therapists.length === 0 ? <h4 style={{color: "white"}}>No Treaments By Any Physical Therapists</h4> : ""}
+            {user.physical_therapists.length === 0 ? <h4 >No Treaments By Any Physical Therapists</h4> : ""}
 
             <HorizontalScroll reverseScroll={true}>
               {showAllPTS}
@@ -387,10 +387,10 @@ function PatientDashBoard({keysToSimplyPT}) {
           <br/>
           <br/>
 
-          <div style={{backgroundColor: "darkgray", borderRadius: "20px", padding: "15px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>
-            <h2 style={{color: "white"}}><u>Exercises</u></h2>
+          <div id="patientDashBoardDiv2">
+            <h2 ><u>Exercises</u></h2>
             <br/>
-            {user.exercises.length === 0 ? <h4 style={{color: "white"}}>0 Exercises Available</h4> : <h4 style={{color: "white"}}>{user.exercises.length} Exercises Available</h4>}
+            {user.exercises.length === 0 ? <h4 >0 Exercises Available</h4> : <h4 >{user.exercises.length} Exercises Available</h4>}
 
             <br/>
 
@@ -401,10 +401,10 @@ function PatientDashBoard({keysToSimplyPT}) {
             <br/>
             <br/>
 
-            <h2 style={{color: "white"}}><u>Recommendeded Equipment</u></h2>
-            <p style={{color: "white", marginLeft: "25px"}}>-Note: Copy and Paste Equipment Name To The <a href="/store/search">Search Page</a> </p>
+            <h2 ><u>Recommendeded Equipment</u></h2>
+            <p >-Note: Copy and Paste Equipment Name To The <a href="/store/search">Search Page</a> </p>
             <br/>
-            {user.recommended_equipments.length === 0 ? <h4 style={{color: "white"}}>0 Recommendeded Equipment Available</h4> : <h4 style={{color: "white"}}>{user.recommended_equipments.length} Recommendeded Equipment Available</h4>}
+            {user.recommended_equipments.length === 0 ? <h4 >0 Recommendeded Equipment Available</h4> : <h4 >{user.recommended_equipments.length} Recommendeded Equipment Available</h4>}
 
             <HorizontalScroll reverseScroll={true}>
               {allRecommendedEquipment}
@@ -416,10 +416,10 @@ function PatientDashBoard({keysToSimplyPT}) {
           <br/>
           <br/>
 
-          <div>
+          <div id="patientDashBoardDiv3">
             <h2><u>Appointments and Visits</u></h2>
             <br/>
-            <button className="buttonEffect" onClick={handleAppClick} style={{backgroundColor: "#b0bec5", fontSize: "18px", fontWeight: "800", borderRadius: "5px", height: "50px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}>Schedule an Appointment</button>
+            <button className="buttonEffect" onClick={handleAppClick} >Schedule an Appointment</button>
             <br/>
             <br/>
             {showScheduleAppointment ? <ScheduleAppointment setShowScheduleAppointment={setShowScheduleAppointment} setShowConfirmation={setShowConfirmation} givenConfirmationInfo={givenConfirmationInfo}/> : "" }
@@ -428,14 +428,14 @@ function PatientDashBoard({keysToSimplyPT}) {
 
           <br/>
 
-          <div style={{backgroundColor: "darkgray", borderRadius: "20px", padding: "15px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)", marginLeft: "125px"}}>
-            <h2 style={{color: "white", textAlign: "center"}}><u>Upcoming Visits</u></h2>
-            {user.appointments.length === 0 ? <h4 style={{color: "white"}}>No Upcoming Visits Scheduled</h4> : ""}
+          <div id="patientDashBoardDiv4">
+            <h2 ><u>Upcoming Visits</u></h2>
+            {user.appointments.length === 0 ? <h4 >No Upcoming Visits Scheduled</h4> : ""}
             <br/>
 
-              <div style={{ justifyContent: "space-around"}}>
-                <UpcomingVisits/>
-              </div>
+            <div id="patientDashBoardDiv5">
+              <UpcomingVisits/>
+            </div>
 
           </div>
 

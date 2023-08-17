@@ -137,7 +137,7 @@ function SignUpForm({setLoginSignup, keysToSimplyPT}) {
         </div>
         
         <div className="col-lg-5 offset-md-3">
-          <Image src="https://png.pngtree.com/png-vector/20220518/ourmid/pngtree-training-injuries-treatment-sport-medicine-png-image_4622388.png" alt="ptPic5" roundedCircle fluid="true" style={{height:"600px", width:"100%", marginTop: "100px", border: "2px solid rgba(255,255,255,0.1)", boxShadow: "0 0 40px rgba(8,7,16,0.6)"}}/> 
+          <Image src="https://png.pngtree.com/png-vector/20220518/ourmid/pngtree-training-injuries-treatment-sport-medicine-png-image_4622388.png" alt="ptPic5" roundedCircle fluid="true" id="logInSignUpFormImg"/> 
         </div>
       </div>
       <br/>

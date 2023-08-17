@@ -199,80 +199,78 @@ function displayItems(){
   return (
     <>
       {/* StoreSearchPage 🔎 */}        
-        
-     
-            <div className="container-fluid">
-                <div className="row p-2 pt-3 pb-3 d-flex align-items-center">
+      <div className="container-fluid">
+        <div className="row p-2 pt-3 pb-3 d-flex align-items-center">
 
-                  <br/>
-                  <br/>
-                  <input className="form-control" type="text" placeholder="Search any item..." onChange={itemSearch} style={{ width: "50%", height: "40px", textAlign: "center", margin: "0 auto", display: "block"}}/>
-                  <br/>
-                  <br/>
+          <br/>
+          <br/>
+          <input className="form-control" type="text" placeholder="Search any item..." onChange={itemSearch} id="recEqSearchInput"/>
+          <br/>
+          <br/>
 
 
                   
-                  <hr/>
-                  <br></br>
-                  <br></br>
+          <hr/>
+          <br></br>
+          <br></br>
                     
-                    <div className="tabsContainer">
+          <div className="tabsContainer">
 
-                      <Tabs id="controlled-tab-example" activeKey={key} onSelect={knowKey} className="mb-3">
-                        <Tab eventKey="All" title="All"></Tab>                        
-                        <Tab eventKey="Braces" title="Braces"></Tab>
-                        <Tab eventKey="Exercise" title="Exercise"></Tab>
-                        <Tab eventKey="Rollers" title="Rollers"></Tab>
-                        <Tab eventKey="HotnCold" title="HotnCold"></Tab>
-                      </Tabs>
+            <Tabs id="controlled-tab-example" activeKey={key} onSelect={knowKey} className="mb-3">
+              <Tab eventKey="All" title="All"></Tab>                        
+              <Tab eventKey="Braces" title="Braces"></Tab>
+              <Tab eventKey="Exercise" title="Exercise"></Tab>
+              <Tab eventKey="Rollers" title="Rollers"></Tab>
+              <Tab eventKey="HotnCold" title="HotnCold"></Tab>
+            </Tabs>
 
-                    </div>
+          </div>
 
-                  <div className="categoryGrid">
+          <div className="categoryGrid">
 
-                    <div className="badge bg-secondary" id="sortBadge">
-                      Sort Prices
+            <div className="badge bg-secondary" id="sortBadge">
+              Sort Prices
 
-                      <br></br>
-                      <br></br>
+              <br></br>
+              <br></br>
 
-                      {sortHighLow ? (
-                        <button onClick={sortHandleHighLow} id="activeButton" className="btn btn-light">(High to Low) <i className="bi bi-arrow-up-square-fill"></i></button>
-                      ) : (
-                        <button onClick={sortHandleHighLow} className="btn btn-light">(High to Low) <i className="bi bi-arrow-up-square"></i></button>
-                      )}
+              {sortHighLow ? (
+                <button onClick={sortHandleHighLow} id="activeButton" className="btn btn-light">(High to Low) <i className="bi bi-arrow-up-square-fill"></i></button>
+                ) : (
+                <button onClick={sortHandleHighLow} className="btn btn-light">(High to Low) <i className="bi bi-arrow-up-square"></i></button>
+              )}
 
-                      <br></br>
-                      <br></br>
+              <br></br>
+              <br></br>
 
-                      {sortLowHigh ? (
-                        <button onClick={sortHandleLowHigh} id="activeButton" className="btn btn-light">(Low to High) <i className="bi bi-arrow-down-square-fill"></i></button>
-                      ) : (
-                        <button onClick={sortHandleLowHigh} className="btn btn-light">(Low to High) <i className="bi bi-arrow-down-square"></i></button>
-                      )}
+              {sortLowHigh ? (
+                <button onClick={sortHandleLowHigh} id="activeButton" className="btn btn-light">(Low to High) <i className="bi bi-arrow-down-square-fill"></i></button>
+                ) : (
+                <button onClick={sortHandleLowHigh} className="btn btn-light">(Low to High) <i className="bi bi-arrow-down-square"></i></button>
+              )}
                     
-                    </div>
+            </div>
 
-                    <div>
-                      <Image src={ptPic8} alt="ptPic8" id="ptPic8" thumbnail fluid="true" /> 
-                    </div>
-                  </div>
-                </div>
-            </div> 
+            <div>
+            <Image src={ptPic8} alt="ptPic8" id="ptPic8" thumbnail fluid="true" /> 
+            </div>
+          </div>
+        </div>
+      </div> 
         
-        <hr/>
+      <hr/>
         
-        <br/>                  
-        <br/>                  
-        <Row md={4} className="g-1" style={{rowGap: "50px"}}>
-          {displayItems()}
-        </Row>
+      <br/>                  
+      <br/>                  
+      <Row md={4} className="g-1" id="fiftyGap">
+        {displayItems()}
+      </Row>
 
 
-        <br/>                  
-        <br/>
-        <br/>
-        <br/>
+      <br/>                  
+      <br/>
+      <br/>
+      <br/>
 
 
       {isOpen && <ItemPopUp

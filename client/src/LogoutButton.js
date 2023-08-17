@@ -14,27 +14,25 @@ function LogoutButton({user}) {
 
   return (
 
-    <>
+    <div className="logoutButton">
 
-      <h4 style={{color: "black"}}>
+      <h4>
 
         Welcome {user.username} <br/>
         
         ({user.name}) &nbsp;
 
-        
-
-        <Image src={user.image} alt="UserPic" roundedCircle fluid="true" style={{width: "15%", height: "15%"}}/>
+        <Image src={user.image} alt="UserPic" roundedCircle fluid="true"/>
       
       </h4>
 
-      <button className="btn btn-secondary" onClick={handleLogoutClick} style={{color: "black", border: "1px black solid"}}>
+      <button className="btn btn-secondary" onClick={handleLogoutClick}>
         Logout
       </button>
 
       <br/>
 
-    </>
+    </div>
 
   );
 }
