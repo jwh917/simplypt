@@ -6,31 +6,12 @@ import ItemCard from "./ItemCard";
 import ItemPopUp from "./ItemPopUp";
 import Row from 'react-bootstrap/Row';
 import Image from 'react-bootstrap/Image';
+import equipmentAndSupplies from './equipmentAndSupplies.webp'; 
 
-function StoreHomePage({setItemsCountRefresher}){
-
-  const [braces, setBraces] = useState([])
-  const [exercise, setExercise] = useState([])
-  const [rollers, setRollers] = useState([])
-  const [hotncold, setHotnCold] = useState([])
+function StoreHomePage({braces, exercise, rollers, hotncold, setItemsCountRefresher}){
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
-
-    fetch("http://localhost:4000/braces")
-      .then((r) => r.json())
-      .then((data) => setBraces(data));
-    fetch("http://localhost:4000/exercise")
-      .then((r) => r.json())
-      .then((data) => setExercise(data));
-    fetch("http://localhost:4000/rollers")
-      .then((r) => r.json())
-      .then((data) => setRollers(data));
-    fetch("http://localhost:4000/hotncold")
-      .then((r) => r.json())
-      .then((data) => setHotnCold(data));
-
   }, []);
 
 
@@ -201,7 +182,7 @@ function StoreHomePage({setItemsCountRefresher}){
         <Carousel.Item>
           <Image
             className="d-block w-100"
-            src="https://www.webpt.com/wp-content/uploads/2014/03/201403_blog_purchasingEquipmentAndSupplies_1.png"
+            src={equipmentAndSupplies}
             alt="Second slide"
             id="adsCarouselImg"
           />

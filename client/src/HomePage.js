@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import ptPic2 from './ptPic2.gif'; 
 import ptPic3 from './ptPic3.gif'; 
 import ptPic4 from './ptPic4.jpg'; 
+import rehabAccessory from './rehabAccessoryBundle.jpeg'; 
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
@@ -105,7 +106,7 @@ function HomePage(){
       </Container>
 
       <div className="row mx-auto" id="storePromoDiv0s">
-        <div className="col-md-6"> <Image src="https://pilatesmatters.com/cdn/shop/files/Merrithew_PilatesRehabAccessoryBundle_1024x1024.jpg" alt="ptPic4" thumbnail fluid="true" id="storePromoDivImg0"/> </div>
+        <div className="col-md-6"> <Image src={rehabAccessory} alt="ptPic4" thumbnail fluid="true" id="storePromoDivImg0"/> </div>
         <div className="col-md-6" id="storePromoDiv1">
           <Image src="https://www.protherapysupplies.com/pts_website_assets/images/pts_logo.png" alt="ptPic4" thumbnail fluid="true" id="storePromoDivImg1"/>
           <br/>

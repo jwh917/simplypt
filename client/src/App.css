@@ -646,7 +646,7 @@
   box-shadow: 0 0 40px rgba(8,7,16,0.6);
 }
 
-.itemCardImg{
+#itemCardImg{
   width: 150px;
   height: 150px;
   margin-left: 50px;
@@ -654,7 +654,7 @@
   margin-bottom: 10px;
 }
 
-.itemCardBody{
+#itemCardBody{
   width: fit-content;
 }
 

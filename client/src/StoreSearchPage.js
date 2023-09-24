@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ItemPopUp from "./ItemPopUp";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
@@ -11,31 +11,7 @@ import Image from 'react-bootstrap/Image';
 
 
 
-function StoreSearchPage({setItemsCountRefresher}){
-
-
-  const [braces, setBraces] = useState([])
-  const [exercise, setExercise] = useState([])
-  const [rollers, setRollers] = useState([])
-  const [hotncold, setHotnCold] = useState([])
-
-  useEffect(() => {
-
-    fetch("http://localhost:4000/braces")
-      .then((r) => r.json())
-      .then((data) => setBraces(data));
-    fetch("http://localhost:4000/exercise")
-      .then((r) => r.json())
-      .then((data) => setExercise(data));
-    fetch("http://localhost:4000/rollers")
-      .then((r) => r.json())
-      .then((data) => setRollers(data));
-    fetch("http://localhost:4000/hotncold")
-      .then((r) => r.json())
-      .then((data) => setHotnCold(data));
-
-  }, []);
-
+function StoreSearchPage({braces, exercise, rollers, hotncold, setItemsCountRefresher}){
 
   const [catorgey, setCatorgey] = useState('All');
 
